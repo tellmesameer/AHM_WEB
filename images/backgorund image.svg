@@ -1,0 +1,137 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1400 800"
+  width="100%"
+  height="auto"
+  role="img"
+  aria-labelledby="title desc"
+  style="--primary:#0ea5e9; --accent:#22d3ee; --grid:#eef2ff;"
+>
+  <title id="title">Futuristic Data Security Illustration</title>
+  <desc id="desc">Database cylinder with a padlock, glowing orbit particles with comet trails, centered with safe margins.</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1400" height="800" fill="#ffffff"/>
+
+  <!-- Grid + Glow defs -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--grid)" stroke-width="1"/>
+    </pattern>
+
+    <radialGradient id="glowBg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Particle gradient with trail -->
+    <radialGradient id="particleTrail" cx="30%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="var(--accent)" stop-opacity="1"/>
+      <stop offset="60%" stop-color="var(--primary)" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="var(--primary)" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.0"/>
+      <stop offset="25%" stop-color="var(--primary)" stop-opacity="0.6"/>
+      <stop offset="75%" stop-color="var(--accent)" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="dbStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--primary)"/>
+      <stop offset="100%" stop-color="var(--accent)"/>
+    </linearGradient>
+
+    <radialGradient id="keyGlow" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Grid background -->
+  <rect x="0" y="0" width="1400" height="800" fill="url(#grid)"/>
+  <rect x="0" y="0" width="1400" height="800" fill="url(#glowBg)"/>
+
+  <!-- Orbits -->
+  <g id="orbits" transform="translate(700,400)" filter="url(#glow)">
+    <!-- Outer orbit -->
+    <circle r="300" fill="none" stroke="url(#lineGrad)" stroke-width="2" opacity="0.25"/>
+    <g>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="18s" repeatCount="indefinite"
+          path="M -300 0 A 300 300 0 1 1 299.9 0 A 300 300 0 1 1 -299.9 0"/>
+      </circle>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="18s" begin="3.6s" repeatCount="indefinite"
+          path="M -300 0 A 300 300 0 1 1 299.9 0 A 300 300 0 1 1 -299.9 0"/>
+      </circle>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="18s" begin="7.2s" repeatCount="indefinite"
+          path="M -300 0 A 300 300 0 1 1 299.9 0 A 300 300 0 1 1 -299.9 0"/>
+      </circle>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="18s" begin="10.8s" repeatCount="indefinite"
+          path="M -300 0 A 300 300 0 1 1 299.9 0 A 300 300 0 1 1 -299.9 0"/>
+      </circle>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="18s" begin="14.4s" repeatCount="indefinite"
+          path="M -300 0 A 300 300 0 1 1 299.9 0 A 300 300 0 1 1 -299.9 0"/>
+      </circle>
+    </g>
+
+    <!-- Middle orbit -->
+    <circle r="220" fill="none" stroke="url(#lineGrad)" stroke-width="2" opacity="0.25"/>
+    <g>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="14s" repeatCount="indefinite"
+          path="M -220 0 A 220 220 0 1 1 219.9 0 A 220 220 0 1 1 -219.9 0"/>
+      </circle>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="14s" begin="4.6s" repeatCount="indefinite"
+          path="M -220 0 A 220 220 0 1 1 219.9 0 A 220 220 0 1 1 -219.9 0"/>
+      </circle>
+      <circle r="12" fill="url(#particleTrail)">
+        <animateMotion dur="14s" begin="9.2s" repeatCount="indefinite"
+          path="M -220 0 A 220 220 0 1 1 219.9 0 A 220 220 0 1 1 -219.9 0"/>
+      </circle>
+    </g>
+
+    <!-- Inner orbit -->
+    <circle r="140" fill="none" stroke="url(#lineGrad)" stroke-width="2" opacity="0.25"/>
+    <circle r="12" fill="url(#particleTrail)">
+      <animateMotion dur="10s" repeatCount="indefinite"
+        path="M -140 0 A 140 140 0 1 1 139.9 0 A 140 140 0 1 1 -139.9 0"/>
+    </circle>
+  </g>
+
+  <!-- Database + Lock -->
+  <g transform="translate(700,400)">
+    <!-- Database -->
+    <g filter="url(#glow)">
+      <ellipse cx="0" cy="-80" rx="90" ry="26" fill="#ffffff" stroke="url(#dbStroke)" stroke-width="3"/>
+      <rect x="-90" y="-80" width="180" height="160" fill="#ffffff" stroke="url(#dbStroke)" stroke-width="3"/>
+      <ellipse cx="0" cy="80" rx="90" ry="26" fill="#ffffff" stroke="url(#dbStroke)" stroke-width="3"/>
+      <ellipse cx="0" cy="-20" rx="90" ry="26" fill="none" stroke="url(#dbStroke)" stroke-width="2"/>
+      <ellipse cx="0" cy="40" rx="90" ry="26" fill="none" stroke="url(#dbStroke)" stroke-width="2"/>
+    </g>
+
+    <!-- Lock -->
+    <g transform="translate(0,-20)">
+      <rect x="-32" y="0" width="64" height="80" rx="12" ry="12"
+            fill="#ffffff" stroke="url(#dbStroke)" stroke-width="3" filter="url(#glow)"/>
+      <path d="M -20,0 A 20 20 0 0 1 20 0"
+            fill="none" stroke="url(#dbStroke)" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="0" cy="36" r="8" fill="url(#keyGlow)"/>
+      <path d="M -4,48 L 4,48 L 2,60 L -2,60 Z" fill="var(--primary)" opacity="0.9"/>
+    </g>
+  </g>
+</svg>

@@ -99,3 +99,8 @@ main.container { flex: 1 0 auto; }
   .sub-footer__inner{flex-direction:column;align-items:flex-start;gap:8px}
   .site-footer .footer-inner{flex-direction:column;gap:12px}
 }
+
+/* partners grid */
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px;align-items:center;margin-top:12px}
+.partner-card{display:flex;align-items:center;justify-content:center;padding:12px;background:#fff;border:1px solid #eee;border-radius:8px}
+.partner-card img{max-width:100%;height:48px;object-fit:contain}
