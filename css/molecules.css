@@ -1,0 +1,641 @@
+/* ========================================
+   MOLECULES - Phase 2 Atomic Design System
+   ======================================== */
+
+/* ===== FORM GROUPS ===== */
+/* Form group with label, input, and validation */
+.form-group {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+  /* Spacing */
+  margin-bottom: var(--space-4);
+  
+  /* Reserved space to prevent CLS */
+  min-height: 80px;
+}
+
+.form-group .form-label {
+  margin-bottom: var(--space-2);
+}
+
+.form-group .form-control {
+  margin-bottom: var(--space-1);
+}
+
+/* Form group with help text */
+.form-group .form-text {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+  line-height: var(--line-height-normal);
+}
+
+/* Form group with validation feedback */
+.form-group .invalid-feedback {
+  font-size: var(--font-size-xs);
+  color: var(--color-danger);
+  margin-top: var(--space-1);
+  display: none;
+}
+
+.form-group .is-invalid + .invalid-feedback {
+  display: block;
+}
+
+.form-group .valid-feedback {
+  font-size: var(--font-size-xs);
+  color: var(--color-success);
+  margin-top: var(--space-1);
+  display: none;
+}
+
+.form-group .is-valid + .valid-feedback {
+  display: block;
+}
+
+/* ===== INPUT GROUPS ===== */
+/* Input group with addon or button */
+.input-group {
+  /* Layout */
+  display: flex;
+  width: 100%;
+  
+  /* Reserved space to prevent CLS */
+  min-height: 44px;
+}
+
+.input-group .form-control {
+  flex: 1;
+  border-radius: 0;
+  border-right: none;
+}
+
+.input-group .form-control:first-child {
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.input-group .form-control:last-child {
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  border-right: 1px solid var(--color-gray-300);
+}
+
+.input-group .btn {
+  border-radius: 0;
+  border-left: none;
+}
+
+.input-group .btn:first-child {
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.input-group .btn:last-child {
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+}
+
+.input-group .input-group-text {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Spacing */
+  padding: var(--space-3) var(--space-4);
+  
+  /* Visual */
+  background: var(--color-gray-100);
+  border: 1px solid var(--color-gray-300);
+  color: var(--text-muted);
+  
+  /* Typography */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
+  
+  /* Reserved space to prevent CLS */
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ===== SEARCH BOX ===== */
+/* Search input with icon and clear button */
+.search-box {
+  /* Layout */
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  
+  /* Reserved space to prevent CLS */
+  min-height: 44px;
+}
+
+.search-box .form-control {
+  padding-left: var(--space-10);
+  padding-right: var(--space-10);
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-box .clear-btn {
+  position: absolute;
+  right: var(--space-3);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.search-box .clear-btn:hover {
+  background: var(--color-gray-100);
+  color: var(--text-primary);
+}
+
+/* ===== SERVICE CARDS ===== */
+/* Service card molecule with icon, title, and description */
+.service-card {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  /* Spacing */
+  padding: var(--space-6);
+  
+  /* Visual */
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  
+  /* Reserved space to prevent CLS */
+  min-height: 200px;
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  
+  /* Position for hover effects */
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary-light);
+}
+
+.service-card .service-icon {
+  /* Reserved space to prevent CLS */
+  width: 80px;
+  height: 80px;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Visual */
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-full);
+  
+  /* Spacing */
+  margin-bottom: var(--space-4);
+  
+  /* Transitions */
+  transition: transform var(--transition-normal);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+}
+
+.service-card .service-icon .icon {
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+}
+
+.service-card .service-title {
+  /* Typography */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  line-height: var(--line-height-tight);
+  
+  /* Spacing */
+  margin-bottom: var(--space-3);
+  
+  /* Reserved space to prevent CLS */
+  min-height: 1.5em;
+}
+
+.service-card .service-description {
+  /* Typography */
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  
+  /* Layout */
+  flex-grow: 1;
+  
+  /* Reserved space to prevent CLS */
+  min-height: 3em;
+}
+
+/* ===== TESTIMONIAL CARDS ===== */
+/* Testimonial card with quote, author, and rating */
+.testimonial-card {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  
+  /* Spacing */
+  padding: var(--space-6);
+  
+  /* Visual */
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  
+  /* Reserved space to prevent CLS */
+  min-height: 250px;
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  
+  /* Position for quote mark */
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  font-size: var(--font-size-4xl);
+  color: var(--color-primary-light);
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+}
+
+.testimonial-card .testimonial-content {
+  /* Layout */
+  flex-grow: 1;
+  padding-left: var(--space-6);
+  
+  /* Spacing */
+  margin-bottom: var(--space-4);
+}
+
+.testimonial-card .testimonial-text {
+  /* Typography */
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+  
+  /* Reserved space to prevent CLS */
+  min-height: 4em;
+}
+
+.testimonial-card .testimonial-author {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: var(--space-6);
+}
+
+.testimonial-card .author-info h6 {
+  /* Typography */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.testimonial-card .author-info span {
+  /* Typography */
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.testimonial-card .rating {
+  /* Layout */
+  display: flex;
+  gap: var(--space-1);
+}
+
+.testimonial-card .rating .icon {
+  color: var(--color-warning);
+  font-size: var(--font-size-sm);
+}
+
+/* ===== PARTNER LOGO CARDS ===== */
+/* Partner logo card with image and hover effects */
+.partner-logo {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Spacing */
+  padding: var(--space-4);
+  
+  /* Visual */
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  
+  /* Reserved space to prevent CLS */
+  height: 100px;
+  width: 100%;
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+}
+
+.partner-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+}
+
+.partner-logo img {
+  /* Reserved space to prevent CLS */
+  max-height: 60px;
+  max-width: 120px;
+  width: auto;
+  height: auto;
+  
+  /* Visual */
+  filter: grayscale(100%);
+  transition: filter var(--transition-normal);
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0%);
+}
+
+/* ===== BREADCRUMB ===== */
+/* Breadcrumb navigation molecule */
+.breadcrumb {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  /* Spacing */
+  padding: var(--space-2) 0;
+  margin-bottom: var(--space-4);
+  
+  /* Typography */
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.breadcrumb .breadcrumb-item {
+  /* Layout */
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb .breadcrumb-item:not(:last-child)::after {
+  content: '/';
+  margin: 0 var(--space-2);
+  color: var(--text-muted);
+}
+
+.breadcrumb .breadcrumb-item a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb .breadcrumb-item a:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumb .breadcrumb-item.active {
+  color: var(--text-primary);
+}
+
+/* ===== PAGINATION ===== */
+/* Pagination molecule with page numbers and navigation */
+.pagination {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  
+  /* Spacing */
+  margin: var(--space-4) 0;
+  
+  /* Typography */
+  font-size: var(--font-size-sm);
+}
+
+.pagination .page-item {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Reserved space to prevent CLS */
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.pagination .page-link {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Spacing */
+  padding: var(--space-2) var(--space-3);
+  
+  /* Visual */
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  text-decoration: none;
+  
+  /* Reserved space to prevent CLS */
+  min-width: 40px;
+  min-height: 40px;
+  
+  /* Transitions */
+  transition: all var(--transition-fast);
+}
+
+.pagination .page-link:hover {
+  background: var(--color-gray-100);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.pagination .page-item.active .page-link {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pagination .page-item.disabled .page-link {
+  background: var(--color-gray-100);
+  border-color: var(--color-gray-300);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* ===== RESPONSIVE MOLECULE ADJUSTMENTS ===== */
+/* Mobile-first responsive adjustments for molecules */
+
+@media (max-width: 767.98px) {
+  /* Service cards on mobile */
+  .service-card {
+    padding: var(--space-4);
+    min-height: 180px;
+  }
+  
+  .service-card .service-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .service-card .service-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .service-card .service-description {
+    font-size: var(--font-size-xs);
+    min-height: 2.5em;
+  }
+  
+  /* Testimonial cards on mobile */
+  .testimonial-card {
+    padding: var(--space-4);
+    min-height: 200px;
+  }
+  
+  .testimonial-card .testimonial-text {
+    font-size: var(--font-size-sm);
+    min-height: 3em;
+  }
+  
+  .testimonial-card .testimonial-author {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  /* Partner logos on mobile */
+  .partner-logo {
+    height: 80px;
+    padding: var(--space-3);
+  }
+  
+  .partner-logo img {
+    max-height: 50px;
+    max-width: 100px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 991px) {
+  .service-card {
+    min-height: 220px;
+  }
+  
+  .testimonial-card {
+    min-height: 240px;
+  }
+}
+
+/* Desktop adjustments */
+@media (min-width: 992px) {
+  .service-card {
+    min-height: 200px;
+  }
+  
+  .testimonial-card {
+    min-height: 250px;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .service-card,
+  .testimonial-card,
+  .partner-logo {
+    border-width: 2px;
+  }
+  
+  .pagination .page-link {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .testimonial-card,
+  .partner-logo,
+  .pagination .page-link {
+    transition: none;
+  }
+  
+  .service-card:hover,
+  .testimonial-card:hover,
+  .partner-logo:hover {
+    transform: none;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+.pagination .page-link:focus-visible,
+.breadcrumb .breadcrumb-item a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

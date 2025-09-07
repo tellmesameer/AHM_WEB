@@ -1,0 +1,524 @@
+/* ========================================
+   MULTI-STEP FORMS - Phase 3.1 Enhancement
+   ======================================== */
+
+/* ===== MULTI-STEP FORM CONTAINER ===== */
+.multi-step-form {
+  /* Layout */
+  position: relative;
+  width: 100%;
+  
+  /* Visual */
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  
+  /* Spacing */
+  padding: var(--space-8);
+  
+  /* Reserved space to prevent CLS */
+  min-height: 600px;
+}
+
+/* ===== PROGRESS INDICATOR ===== */
+.form-progress {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  
+  /* Spacing */
+  margin-bottom: var(--space-8);
+  padding: 0 var(--space-4);
+}
+
+.form-progress::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-gray-200);
+  z-index: 0;
+  transform: translateY(-50%);
+}
+
+.form-progress-step {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  
+  /* Visual */
+  background: var(--color-white);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-full);
+  width: 50px;
+  height: 50px;
+  
+  /* Typography */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  
+  /* Position */
+  position: relative;
+  z-index: 1;
+}
+
+.form-progress-step.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-lightest);
+  transform: scale(1.1);
+}
+
+.form-progress-step.completed {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background: var(--color-success);
+}
+
+.form-progress-step.completed::after {
+  content: '✓';
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+}
+
+.form-progress-label {
+  /* Typography */
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-muted);
+  text-align: center;
+  
+  /* Layout */
+  margin-top: var(--space-1);
+  max-width: 80px;
+  line-height: var(--line-height-tight);
+}
+
+.form-progress-step.active .form-progress-label {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.form-progress-step.completed .form-progress-label {
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ===== FORM STEPS ===== */
+.form-step {
+  /* Layout */
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.form-step-header {
+  /* Layout */
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.form-step-title {
+  /* Typography */
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.form-step-subtitle {
+  /* Typography */
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== STEP NAVIGATION ===== */
+.form-step-navigation {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Spacing */
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.form-step-btn {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  
+  /* Spacing */
+  padding: var(--space-3) var(--space-6);
+  
+  /* Visual */
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--text-primary);
+  
+  /* Typography */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  
+  /* Transitions */
+  transition: all var(--transition-fast);
+  
+  /* Cursor */
+  cursor: pointer;
+}
+
+.form-step-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.form-step-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-step-btn.btn-primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.form-step-btn.btn-primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+/* ===== STEP CONTENT LAYOUTS ===== */
+/* Step 1: Personal Information */
+.step-personal-info {
+  /* Layout */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.step-personal-info .form-group:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Step 2: Company & Service */
+.step-company-service {
+  /* Layout */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* Step 3: Message & Preferences */
+.step-message-preferences {
+  /* Layout */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+/* Mobile: Single column layout */
+@media (max-width: 767.98px) {
+  .multi-step-form {
+    /* Spacing */
+    padding: var(--space-6);
+    margin: var(--space-4);
+  }
+  
+  .form-progress {
+    /* Layout */
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: 0;
+  }
+  
+  .form-progress::before {
+    /* Visual */
+    display: none;
+  }
+  
+  .form-progress-step {
+    /* Visual */
+    width: 40px;
+    height: 40px;
+  }
+  
+  .form-progress-label {
+    /* Typography */
+    font-size: 0.75rem;
+  }
+  
+  .step-personal-info {
+    /* Layout */
+    grid-template-columns: 1fr;
+  }
+  
+  .form-step-navigation {
+    /* Layout */
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .form-step-btn {
+    /* Layout */
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Tablet: Maintain multi-step but adjust spacing */
+@media (min-width: 768px) and (max-width: 991px) {
+  .multi-step-form {
+    /* Spacing */
+    padding: var(--space-7);
+  }
+  
+  .form-progress-step {
+    /* Visual */
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Desktop: Full multi-step experience */
+@media (min-width: 992px) {
+  .multi-step-form {
+    /* Spacing */
+    padding: var(--space-8);
+  }
+  
+  .form-progress-step {
+    /* Visual */
+    width: 50px;
+    height: 50px;
+  }
+  
+  .form-progress-label {
+    /* Typography */
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* 2K Monitor: Enhanced multi-step experience */
+@media (min-width: 1400px) {
+  .multi-step-form {
+    /* Spacing */
+    padding: var(--space-10);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .form-progress-step {
+    /* Visual */
+    width: 60px;
+    height: 60px;
+  }
+  
+  .form-progress-label {
+    /* Typography */
+    font-size: var(--font-size-sm);
+  }
+  
+  .form-step-title {
+    /* Typography */
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .form-progress-step {
+    border-width: 3px;
+  }
+  
+  .form-step-btn {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .form-step,
+  .form-progress-step,
+  .form-step-btn {
+    transition: none;
+    animation: none;
+  }
+  
+  .form-progress-step.active {
+    transform: none;
+  }
+  
+  .form-step-btn:hover {
+    transform: none;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+.form-progress-step:focus-visible,
+.form-step-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-step {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ===== STEP VALIDATION ===== */
+.form-step-valid {
+  /* Visual */
+  border-left: 4px solid var(--color-success);
+  padding-left: var(--space-4);
+}
+
+.form-step-invalid {
+  /* Visual */
+  border-left: 4px solid var(--color-danger);
+  padding-left: var(--space-4);
+}
+
+/* ===== PROGRESS BAR ALTERNATIVE ===== */
+.form-progress-bar {
+  /* Layout */
+  width: 100%;
+  height: 4px;
+  background: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  
+  /* Spacing */
+  margin-bottom: var(--space-6);
+}
+
+.form-progress-fill {
+  /* Layout */
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-full);
+  
+  /* Transitions */
+  transition: width var(--transition-normal);
+  transform-origin: left;
+}
+
+/* ===== STEP COUNTER ===== */
+.form-step-counter {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  
+  /* Spacing */
+  margin-bottom: var(--space-4);
+  
+  /* Typography */
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.form-step-counter .current-step {
+  /* Typography */
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+/* ===== STEP SUMMARY ===== */
+.form-step-summary {
+  /* Layout */
+  background: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.form-step-summary h4 {
+  /* Typography */
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.form-step-summary-item {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Spacing */
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.form-step-summary-item:last-child {
+  border-bottom: none;
+}
+
+.form-step-summary-label {
+  /* Typography */
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.form-step-summary-value {
+  /* Typography */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHM - Advanced Data Solutions</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS with Design Tokens -->
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/atoms.css">
+    <link rel="stylesheet" href="css/molecules.css">
+    <link rel="stylesheet" href="css/organisms.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Font Preload for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phase 3 scoped styles -->
+    <link rel="stylesheet" href="css/phase3.css">
+    <!-- Font Awesome (Free CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH0fV6Yk1GqvYfD3Qk6i5+1Vv6xKc3yQ7F2s6g3Q4pJf3ZLq1k2Gf5s6Hk7l2a3b9c0d1e2f3g4h5i6j7k8l9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <!-- Dev diagnostics removed for pure-static deployment -->
+    <!-- Navigation (modular include) -->
+    <div data-include="AHM_Website/components/organisms/header.html"></div>
+
+    <!-- Hero Section -->
+    <!-- Hero (modular include) -->
+    <div data-include="AHM_Website/components/organisms/hero.html"></div>
+
+    <!-- Overview of Services -->
+    <section id="services-overview" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Core Services</h2>
+                <p class="section-subtitle">Comprehensive data solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database icon icon-2xl"></i>
+                    </div>
+                    <h5 class="service-title"><a href="/AHM_Website/pages/services/informatica.html">Informatica</a></h5>
+                    <p class="service-description">Data integration and management solutions for enterprise environments</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-snowflake icon icon-2xl"></i>
+                    </div>
+                    <h5 class="service-title"><a href="/AHM_Website/pages/services/snowflake.html">Snowflake</a></h5>
+                    <p class="service-description">Cloud data warehousing and analytics platform</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud icon icon-2xl"></i>
+                    </div>
+                    <h5 class="service-title"><a href="/AHM_Website/pages/services/idmc.html">IDMC</a></h5>
+                    <p class="service-description">Intelligent data management cloud solutions</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot icon icon-2xl"></i>
+                    </div>
+                    <h5 class="service-title"><a href="/AHM_Website/pages/services/python-ai.html">Python & AI</a></h5>
+                    <p class="service-description">Machine learning and automation services</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code icon icon-2xl"></i>
+                    </div>
+                    <h5 class="service-title"><a href="/AHM_Website/pages/services/web-development.html">Web Development</a></h5>
+                    <p class="service-description">Custom web applications and responsive sites</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links to Solutions/Industries -->
+    <section id="solutions-preview" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Industry Solutions</h2>
+                    <p class="section-subtitle">Specialized data solutions for your industry</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h5>Finance</h5>
+                        <p>Risk management, fraud detection, and regulatory compliance</p>
+                        <a href="#finance" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h5>Healthcare</h5>
+                        <p>Patient data analytics and medical research insights</p>
+                        <a href="#healthcare" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h5>Retail</h5>
+                        <p>Customer analytics and inventory optimization</p>
+                        <a href="#retail" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h5>Manufacturing</h5>
+                        <p>Supply chain optimization and predictive maintenance</p>
+                        <a href="#manufacturing" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Certifications -->
+    <section id="partners" class="partners-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trusted Partners & Certifications</h2>
+                <p class="section-subtitle">Certified expertise with leading technology partners</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/0066cc?text=Informatica" 
+                         alt="Informatica" 
+                         width="150" 
+                         height="80"
+                         loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/0066cc?text=Snowflake" 
+                         alt="Snowflake" 
+                         width="150" 
+                         height="80"
+                         loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/0066cc?text=Microsoft" 
+                         alt="Microsoft" 
+                         width="150" 
+                         height="80"
+                         loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/0066cc?text=Amazon" 
+                         alt="Amazon Web Services" 
+                         width="150" 
+                         height="80"
+                         loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/0066cc?text=Google" 
+                         alt="Google Cloud" 
+                         width="150" 
+                         height="80"
+                         loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/ffffff/0066cc?text=Oracle" 
+                         alt="Oracle" 
+                         width="150" 
+                         height="80"
+                         loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Feedback Preview -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Success stories from businesses we've transformed</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"AHM transformed our data infrastructure completely. The ROI was visible within 3 months."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h6>Sarah Johnson</h6>
+                            <span>CTO, TechCorp</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Their expertise in Snowflake and data analytics helped us make data-driven decisions."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h6>Michael Chen</h6>
+                            <span>Data Director, FinanceFirst</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Outstanding support and implementation. They delivered exactly what we needed."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h6>Emily Rodriguez</h6>
+                            <span>VP Operations, HealthPlus</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                            <i class="fas fa-star icon icon-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action (Free Consultation) -->
+    <section id="consultation" class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="cta-title">Ready to Transform Your Data Strategy?</h2>
+                    <p class="cta-subtitle">Get a free consultation with our data experts and discover how we can help your business grow.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <button type="button" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                        Schedule Free Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Secure Form -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Ready to start your data transformation journey? Contact us today.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-container">
+                        <form id="contactForm" class="secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
+                            <!-- Formspree Configuration -->
+                            <input type="hidden" name="_subject" value="New Contact Form Submission - AHM Website">
+                            <input type="hidden" name="_next" value="https://yoursite.com/thank-you">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" class="form-control" required 
+                                               aria-describedby="firstNameHelp" autocomplete="given-name">
+                                        <div class="invalid-feedback">Please enter your first name.</div>
+                                        <div class="valid-feedback">Looks good!</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" class="form-control" required 
+                                               aria-describedby="lastNameHelp" autocomplete="family-name">
+                                        <div class="invalid-feedback">Please enter your last name.</div>
+                                        <div class="valid-feedback">Looks good!</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" id="email" name="email" class="form-control" required 
+                                               aria-describedby="emailHelp" autocomplete="email">
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                        <div class="valid-feedback">Looks good!</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" class="form-control" 
+                                               aria-describedby="phoneHelp" autocomplete="tel">
+                                        <div class="form-text" id="phoneHelp">Optional - We'll call you if needed</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="company" class="form-label">Company Name</label>
+                                        <input type="text" id="company" name="company" class="form-control" 
+                                               aria-describedby="companyHelp" autocomplete="organization">
+                                        <div class="form-text" id="companyHelp">Optional - Help us understand your business context</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="service" class="form-label">Service Interest *</label>
+                                        <select id="service" name="service" class="form-control" required aria-describedby="serviceHelp">
+                                            <option value="">Select a service...</option>
+                                            <option value="informatica">Informatica Services</option>
+                                            <option value="snowflake">Snowflake Services</option>
+                                            <option value="idmc">IDMC Solutions</option>
+                                            <option value="python-ai">Python & AI Services</option>
+                                            <option value="web-development">Web Development</option>
+                                            <option value="consultation">General Consultation</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select a service.</div>
+                                        <div class="valid-feedback">Looks good!</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="message" class="form-label">Message *</label>
+                                        <textarea id="message" name="message" class="form-control" rows="5" required 
+                                                  aria-describedby="messageHelp" placeholder="Tell us about your data challenges and how we can help..."></textarea>
+                                        <div class="invalid-feedback">Please enter your message.</div>
+                                        <div class="valid-feedback">Looks good!</div>
+                                        <div class="form-text" id="messageHelp">Minimum 10 characters</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
+                                            <label for="privacy" class="form-check-label">
+                                                I agree to the <a href="#privacy-policy" class="text-primary">Privacy Policy</a> and consent to being contacted by AHM Data Solutions. *
+                                            </label>
+                                            <div class="invalid-feedback">You must agree to the privacy policy.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                                            <span class="btn-text">Send Message</span>
+                                            <span class="btn-loading d-none">
+                                                <span class="spinner spinner-sm me-2"></span>
+                                                Sending...
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Modal -->
+    <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="consultationModalLabel">Schedule Your Free Consultation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="consultationForm" class="secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
+                        <!-- Formspree Configuration -->
+                        <input type="hidden" name="_subject" value="Free Consultation Request - AHM Website">
+                        <input type="hidden" name="_next" value="https://yoursite.com/consultation-confirmation">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="consultFirstName" class="form-label">First Name *</label>
+                                    <input type="text" id="consultFirstName" name="firstName" class="form-control" required autocomplete="given-name">
+                                    <div class="invalid-feedback">Please enter your first name.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="consultLastName" class="form-label">Last Name *</label>
+                                    <input type="text" id="consultLastName" name="lastName" class="form-control" required autocomplete="family-name">
+                                    <div class="invalid-feedback">Please enter your last name.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="consultEmail" class="form-label">Email Address *</label>
+                                    <input type="email" id="consultEmail" name="email" class="form-control" required autocomplete="email">
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="consultPhone" class="form-label">Phone Number *</label>
+                                    <input type="tel" id="consultPhone" name="phone" class="form-control" required autocomplete="tel">
+                                    <div class="invalid-feedback">Please enter your phone number.</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="consultCompany" class="form-label">Company Name *</label>
+                                    <input type="text" id="consultCompany" name="company" class="form-control" required autocomplete="organization">
+                                    <div class="invalid-feedback">Please enter your company name.</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="consultService" class="form-label">Primary Service Interest *</label>
+                                    <select id="consultService" name="service" class="form-control" required>
+                                        <option value="">Select a service...</option>
+                                        <option value="informatica">Informatica Services</option>
+                                        <option value="snowflake">Snowflake Services</option>
+                                        <option value="idmc">IDMC Solutions</option>
+                                        <option value="python-ai">Python & AI Services</option>
+                                        <option value="web-development">Web Development</option>
+                                        <option value="data-strategy">Data Strategy & Consulting</option>
+                                        <option value="multiple">Multiple Services</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a service.</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="consultMessage" class="form-label">Tell us about your data challenges *</label>
+                                    <textarea id="consultMessage" name="message" class="form-control" rows="4" required 
+                                              placeholder="Describe your current data situation and what you'd like to achieve..."></textarea>
+                                    <div class="invalid-feedback">Please describe your data challenges.</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input type="checkbox" id="consultPrivacy" name="privacy" class="form-check-input" required>
+                                        <label for="consultPrivacy" class="form-check-label">
+                                            I agree to the <a href="#privacy-policy" class="text-primary">Privacy Policy</a> and consent to being contacted by AHM Data Solutions. *
+                                        </label>
+                                        <div class="invalid-feedback">You must agree to the privacy policy.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="consultationForm" class="btn btn-primary">
+                        <span class="btn-text">Schedule Consultation</span>
+                        <span class="btn-loading d-none">
+                            <span class="spinner spinner-sm me-2"></span>
+                            Scheduling...
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Signup Section -->
+    <section id="newsletter" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h3 class="section-title">Stay Updated</h3>
+                    <p class="section-subtitle">Get the latest insights on data solutions, industry trends, and technology updates.</p>
+                    
+                    <form id="newsletterForm" class="newsletter-form secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
+                        <!-- Formspree Configuration -->
+                        <input type="hidden" name="_subject" value="Newsletter Subscription - AHM Website">
+                        <input type="hidden" name="_next" value="https://yoursite.com/newsletter-confirmation">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        
+                        <div class="input-group input-group-lg">
+                            <input type="email" id="newsletterEmail" name="email" class="form-control" 
+                                   placeholder="Enter your email address" required autocomplete="email"
+                                   aria-label="Email address for newsletter">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="btn-loading d-none">
+                                    <span class="spinner spinner-sm me-2"></span>
+                                    Subscribing...
+                                </span>
+                            </button>
+                        </div>
+                        <div class="form-text mt-2">
+                            <small>We respect your privacy. Unsubscribe at any time.</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="AHM_Website/components/organisms/footer.html"></div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Font Awesome kit removed (using CDN stylesheet in <head>) -->
+    
+    <!-- Partials loader (injects modular components) -->
+    <script src="js/partials.js" defer></script>
+    <!-- Phase 3 JS (small behaviors) -->
+    <script src="js/phase3.js" defer></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
