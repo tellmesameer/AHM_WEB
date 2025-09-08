@@ -258,6 +258,9 @@
   
   /* Reserved space to prevent CLS */
   min-height: 1.5em;
+  a {
+    text-decoration: none;
+  }
 }
 
 .service-card .service-description {
