@@ -8,16 +8,135 @@
   <link rel="stylesheet" href="/css/components.css">
 </head>
 <body>
+  <style>
+    .enhanced-services-section {
+      position: relative;
+      background: linear-gradient(135deg, #f5faff 0%, #e3f0ff 100%);
+      overflow: hidden;
+      padding-bottom: 64px;
+    }
+    .enhanced-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .enhanced-service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.07), 0 1.5px 6px rgba(33, 203, 243, 0.04);
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      text-align: center;
+      color: #222;
+      transition: box-shadow 0.25s, transform 0.22s, background 0.22s;
+      min-height: 340px;
+      border: 1.5px solid #e3f0ff;
+    }
+    .enhanced-service-card:hover {
+      box-shadow: 0 8px 32px rgba(25, 118, 210, 0.13), 0 4px 16px rgba(33, 203, 243, 0.09);
+      transform: translateY(-8px) scale(1.025);
+      background: linear-gradient(120deg, #f5faff 60%, #e3f0ff 100%);
+      border-color: #b3e0ff;
+    }
+    .enhanced-service-card .service-title {
+      color: #1976d2;
+      font-weight: 600;
+      font-size: 1.18rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .enhanced-service-card .service-description {
+      color: #222;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .enhanced-service-card .service-icon {
+      margin-bottom: 1.2rem;
+    }
+    .enhanced-service-card .service-icon svg {
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 2px 8px rgba(25, 118, 210, 0.08));
+    }
+    @media (max-width: 767.98px) {
+      .enhanced-services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .enhanced-service-card {
+        padding: 2rem 1rem 1.5rem 1rem;
+        min-height: 260px;
+      }
+    }
+  </style>
   <div data-include="AHM_Website/components/organisms/header.html"></div>
-  <main class="container">
-    <h1>Our Services</h1>
-    <ul class="services-list">
-      <li><a href="/AHM_Website/pages/services/informatica.html">Informatica Services</a></li>
-      <li><a href="/AHM_Website/pages/services/snowflake.html">Snowflake Services</a></li>
-      <li><a href="/AHM_Website/pages/services/idmc.html">IDMC Solutions</a></li>
-      <li><a href="/AHM_Website/pages/services/python-ai.html">Python &amp; AI Services</a></li>
-      <li><a href="/AHM_Website/pages/services/web-development.html">Web Development</a></li>
-    </ul>
+  <main>
+    <section class="services-section enhanced-services-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Core Services</h2>
+          <p class="section-subtitle">Comprehensive data solutions tailored to your business needs</p>
+        </div>
+        <div class="services-grid enhanced-services-grid">
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon gradient-icon">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="40" fill="#1976d2" />
+              </svg>
+            </div>
+            <h5 class="service-title">Informatica</h5>
+            <p class="service-description">Data integration and management solutions for enterprise environments</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon gradient-icon">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="40" fill="#1976d2" />
+              </svg>
+            </div>
+            <h5 class="service-title">Snowflake</h5>
+            <p class="service-description">Cloud data warehousing and analytics platform</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon gradient-icon">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="40" fill="#1976d2" />
+              </svg>
+            </div>
+            <h5 class="service-title">IDMC</h5>
+            <p class="service-description">Intelligent data management cloud solutions</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon gradient-icon">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="40" fill="#1976d2" />
+              </svg>
+            </div>
+            <h5 class="service-title">Python &amp; AI</h5>
+            <p class="service-description">Machine learning and automation services</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon gradient-icon">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="40" fill="#1976d2" />
+              </svg>
+            </div>
+            <h5 class="service-title">Web Development</h5>
+            <p class="service-description">Custom web applications and responsive sites</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon gradient-icon">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="40" fill="#1976d2" />
+              </svg>
+            </div>
+            <h5 class="service-title">Mobile App</h5>
+            <p class="service-description">Custom mobile applications as per clients dream</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <div data-include="AHM_Website/components/organisms/footer.html"></div>
   <script src="/js/partials.js" defer></script>
