@@ -43,7 +43,7 @@ main.container { flex: 1 0 auto; }
 }
 
 /* hero */
-.hero{padding:40px 0;background:linear-gradient(180deg,#f9fbff,#fff)}
+.hero{padding:40px 0;}
 .hero__title{font-size:clamp(24px,4vw,40px);margin:0}
 .hero__lead{margin:12px 0 20px;color:#444}
 

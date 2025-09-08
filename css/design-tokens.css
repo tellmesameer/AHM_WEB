@@ -47,7 +47,8 @@
   --text-muted: var(--color-gray-500);
   --text-light: var(--color-gray-400);
   --text-white: var(--color-white);
-  
+--text-black: var(--color-black);
+--text-secondary2: var(--color-gray-900);
   /* ===== TYPOGRAPHY SYSTEM ===== */
   /* Font Families */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

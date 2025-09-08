@@ -394,6 +394,7 @@
   color: var(--text-primary);
   margin-bottom: var(--space-4);
   text-align: center;
+
 }
 
 .section-subtitle {
@@ -403,6 +404,7 @@
   color: var(--text-secondary);
   margin-bottom: var(--space-8);
   text-align: center;
+  color: black;
 }
 
 /* ===== FOOTER STYLING ===== */

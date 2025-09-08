@@ -373,9 +373,10 @@
 .services-section {
   /* Spacing */
   padding: var(--space-16) 0;
-  
   /* Visual */
-  background: var(--color-white);
+  background: rgba(255, 255, 255, 0.295);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  border-radius: 12px;
 }
 
 .services-section .section-header {
