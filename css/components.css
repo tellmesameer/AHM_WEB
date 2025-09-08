@@ -155,6 +155,7 @@
   justify-content: center;
   margin: 0 auto var(--space-4);
   transition: all var(--transition-normal);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
 }
 
 .solution-card:hover .solution-icon {
@@ -175,8 +176,9 @@
 .solution-card h5 {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
+  /* color: var(--text-primary); */
   margin-bottom: var(--space-3);
+      color: rgba(var(--bs-link-color-rgb))
 }
 
 .solution-card p {
@@ -185,6 +187,7 @@
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-4);
   flex-grow: 1;
+  color: black;
 }
 
 /* ===== TESTIMONIAL CARDS ===== */
@@ -249,6 +252,7 @@
   font-size: var(--font-size-xs);
   color: var(--text-secondary);
 }
+
 
 .rating {
   display: flex;
@@ -394,6 +398,7 @@
   color: var(--text-primary);
   margin-bottom: var(--space-4);
   text-align: center;
+  color: black;
 
 }
 

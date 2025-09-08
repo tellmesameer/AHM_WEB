@@ -19,6 +19,7 @@
 
 .form-group .form-label {
   margin-bottom: var(--space-2);
+  color: black;
 }
 
 .form-group .form-control {
@@ -268,6 +269,7 @@
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: var(--line-height-relaxed);
+  color: black;
   
   /* Layout */
   flex-grow: 1;
@@ -331,9 +333,10 @@
 .testimonial-card .testimonial-text {
   /* Typography */
   font-size: var(--font-size-base);
-  color: var(--text-primary);
+  /* color: var(--text-primary); */
   line-height: var(--line-height-relaxed);
   font-style: italic;
+  color: black;
   
   /* Reserved space to prevent CLS */
   min-height: 4em;
@@ -353,13 +356,16 @@
   font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
   margin: 0;
+  color: black;
 }
 
 .testimonial-card .author-info span {
   /* Typography */
   font-size: var(--font-size-xs);
   color: var(--text-secondary);
+  color: black;
 }
+
 
 .testimonial-card .rating {
   /* Layout */
