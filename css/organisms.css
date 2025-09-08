@@ -1,3 +1,102 @@
+/* ===== ENHANCED FOOTER ===== */
+.site-footer {
+  background: var(--color-gray-900);
+  color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-8);
+  font-size: var(--font-size-sm);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 2fr;
+  gap: var(--space-12);
+  align-items: flex-start;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.footer-logo {
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  object-fit: contain;
+}
+.footer-links h6,
+.footer-contact h6 {
+  color: var(--color-primary-light);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-2);
+  font-weight: var(--font-weight-semibold);
+}
+.footer-links ul,
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-2) 0;
+}
+.footer-links li,
+.footer-contact li {
+  margin-bottom: var(--space-1);
+}
+.footer-links a,
+.footer-contact a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: var(--color-primary);
+}
+.footer-social {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.footer-social a {
+  color: var(--color-primary-light);
+  font-size: 1.3em;
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-full);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.footer-social a:hover {
+  background: var(--color-primary-light);
+  color: var(--color-white);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.6);
+}
+.footer-bottom a {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+  margin: 0 4px;
+}
+@media (max-width: 991.98px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .footer-bottom {
+    font-size: var(--font-size-xs);
+  }
+}
 /* ========================================
    ORGANISMS - Phase 2 Atomic Design System
    ======================================== */
@@ -392,7 +491,8 @@
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  color: var(--text-primary);
+  /* color: var(--text-primary); */
+  color: black;
   
   /* Spacing */
   margin-bottom: var(--space-4);
@@ -406,7 +506,8 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-relaxed);
-  color: var(--text-secondary);
+  /* color: var(--text-secondary); */
+  color: black;
   
   /* Reserved space to prevent CLS */
   min-height: 3em;
@@ -460,7 +561,7 @@
   padding: var(--space-16) 0;
   
   /* Visual */
-  background: var(--color-gray-50);
+  background: #d5d9dc;
 }
 
 .testimonials-section .section-header {
