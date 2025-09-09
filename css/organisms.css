@@ -1,7 +1,10 @@
 /* ===== ENHANCED FOOTER ===== */
 .site-footer {
-  background: var(--color-gray-900);
-  color: var(--color-white);
+  /* Neutral footer baseline: prefer main/phase3.css for final colors.
+     This prevents the design-system stylesheet from overriding the
+     site-scoped `phase3.css` footer color. */
+  background: transparent;
+  color: inherit;
   padding: var(--space-16) 0 var(--space-8);
   font-size: var(--font-size-sm);
 }
