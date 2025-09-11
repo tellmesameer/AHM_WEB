@@ -29,8 +29,113 @@
 <body>
   <div data-include="AHM_Website/components/organisms/header.html"></div>
   <main class="container">
-    <h1>Contact Us</h1>
-    <p>Use the form on the home page or email us at contact@ahm.example (replace with actual address).</p>
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Ready to start your data transformation journey? Contact us today.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="contact-form-container">
+          <form id="contactForm" class="secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
+            <input type="hidden" name="_subject" value="New Contact Form Submission - AHM Website">
+            <input type="hidden" name="_next" value="https://yoursite.com/thank-you">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstName" class="form-label">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" class="form-control" required aria-describedby="firstNameHelp" autocomplete="given-name">
+                  <div class="invalid-feedback">Please enter your first name.</div>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastName" class="form-label">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" class="form-control" required aria-describedby="lastNameHelp" autocomplete="family-name">
+                  <div class="invalid-feedback">Please enter your last name.</div>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input type="email" id="email" name="email" class="form-control" required aria-describedby="emailHelp" autocomplete="email">
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" aria-describedby="phoneHelp" autocomplete="tel">
+                  <div class="form-text" id="phoneHelp">Optional - We'll call you if needed</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="company" class="form-label">Company Name</label>
+                  <input type="text" id="company" name="company" class="form-control" aria-describedby="companyHelp" autocomplete="organization">
+                  <div class="form-text" id="companyHelp">Optional - Help us understand your business context</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="service" class="form-label">Service Interest *</label>
+                  <select id="service" name="service" class="form-control" required aria-describedby="serviceHelp">
+                    <option value="">Select a service...</option>
+                    <option value="informatica">Informatica Services</option>
+                    <option value="snowflake">Snowflake Services</option>
+                    <option value="idmc">IDMC Solutions</option>
+                    <option value="python-ai">Python & AI Services</option>
+                    <option value="web-development">Web Development</option>
+                    <option value="consultation">General Consultation</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="invalid-feedback">Please select a service.</div>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="message" class="form-label">Message *</label>
+                  <textarea id="message" name="message" class="form-control" rows="5" required aria-describedby="messageHelp" placeholder="Tell us about your data challenges and how we can help..."></textarea>
+                  <div class="invalid-feedback">Please enter your message.</div>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="form-text" id="messageHelp">Minimum 10 characters</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <div class="form-check">
+                    <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
+                    <label for="privacy" class="form-check-label">
+                      I agree to the <a href="/AHM_Website/pages/legal/privacy.html" class="text-primary">Privacy Policy</a> and consent to being contacted by AHM Data Solutions. *
+                    </label>
+                    <div class="invalid-feedback">You must agree to the privacy policy.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-lg w-100">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-loading d-none">
+                      <span class="spinner spinner-sm me-2"></span>
+                      Sending...
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
     <div data-include="AHM_Website/components/organisms/footer.html"></div>
   <script src="/js/partials.js" defer></script>

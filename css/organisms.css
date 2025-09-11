@@ -127,6 +127,129 @@
   transition: all var(--transition-normal);
 }
 
+/* ===== HEADER DOCK ===== */
+.header-dock {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: var(--space-4);
+}
+
+.header-dock .dock-list {
+  display: flex;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===== STICKY HEADER & MOBILE NAV ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-fixed);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-gray-200);
+  transition: transform var(--transition-normal), box-shadow var(--transition-fast);
+}
+
+.site-header.is-sticky {
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+.site-header .site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 64px;
+  padding: var(--space-2) 0;
+}
+
+.site-header .main-nav {
+  display: none;
+}
+
+.site-header .main-nav.is-open {
+  display: block;
+}
+
+.site-header .main-nav .main-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--space-2);
+}
+
+.site-header .nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  background: transparent;
+}
+
+@media (min-width: 768px) {
+  .site-header .main-nav {
+    display: block !important;
+  }
+  .site-header .nav-toggle {
+    display: none;
+  }
+}
+
+.header-dock .dock-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(0,0,0,0.04);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.header-dock .dock-link:hover,
+.header-dock .dock-link:focus-visible {
+  transform: scale(1.08);
+  background: var(--color-gray-100);
+  color: var(--color-primary);
+  outline: none;
+}
+
+.header-dock .dock-link i {
+  font-size: 1rem;
+}
+
+.header-dock .dock-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 575.98px) {
+  .header-dock .dock-link {
+    width: 36px;
+    height: 36px;
+  }
+  .header-dock .dock-list {
+    gap: var(--space-1);
+  }
+}
+
 .navbar .navbar-container {
   /* Layout */
   display: flex;
