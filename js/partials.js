@@ -40,7 +40,17 @@
     }
     await Promise.all(els.map(async el=>{
       const originalPath = el.getAttribute('data-include');
-      const attempts = [originalPath, '/' + originalPath, './' + originalPath];
+      // Resolve against document.baseURI first so pages with a <base> tag work
+      let resolvedHref = null;
+      try{
+        // new URL will respect <base href="..."> when resolving
+        resolvedHref = new URL(originalPath, document.baseURI).href;
+      }catch(e){
+        // ignore
+      }
+      const attempts = resolvedHref
+        ? [resolvedHref, originalPath, '/' + originalPath, './' + originalPath]
+        : [originalPath, '/' + originalPath, './' + originalPath];
       let loaded = false;
       for(const path of attempts){
         try{
