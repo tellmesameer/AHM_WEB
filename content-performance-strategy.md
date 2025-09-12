@@ -309,7 +309,7 @@ document.querySelectorAll('img[data-src]').forEach(img => {
     .navbar { /* ... */ }
     .hero-headline { /* ... */ }
   </style>
-  <link rel="stylesheet" href="css/non-critical.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/AHM_WEB/css/non-critical.css" media="print" onload="this.media='all'">
 </head>
 ```
 
