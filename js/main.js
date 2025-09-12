@@ -428,8 +428,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Preload critical resources
     function preloadCriticalResources() {
         const criticalImages = [
-            '/images/backgorundImage.svg',
-            '/images/AHM logo clear bg red[1].png'
+            '/AHM_WEB/images/backgorundImage.svg',
+                '/AHM_WEB/images/AHM logo clear bg red[1].png'
         ];
         
         criticalImages.forEach(src => {
