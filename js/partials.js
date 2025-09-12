@@ -48,9 +48,12 @@
       }catch(e){
         // ignore
       }
+      // Add a project-prefix fallback used for GitHub Pages project sites
+      const PROJECT_PREFIX = '/AHM_WEB/';
+      const prefixed = PROJECT_PREFIX + originalPath.replace(/^\/+/, '');
       const attempts = resolvedHref
-        ? [resolvedHref, originalPath, '/' + originalPath, './' + originalPath]
-        : [originalPath, '/' + originalPath, './' + originalPath];
+        ? [resolvedHref, prefixed, originalPath, '/' + originalPath, './' + originalPath]
+        : [prefixed, originalPath, '/' + originalPath, './' + originalPath];
       let loaded = false;
       for(const path of attempts){
         try{
