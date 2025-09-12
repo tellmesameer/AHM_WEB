@@ -100,6 +100,8 @@
   justify-content: center;
   margin-bottom: var(--space-4);
   transition: transform var(--transition-normal);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .service-card:hover .service-icon {
@@ -109,6 +111,9 @@
 .service-icon i {
   font-size: var(--font-size-2xl);
   color: var(--color-white);
+  display: block;
+  line-height: 1;
+  text-align: center;
 }
 
 .service-card h5 {
@@ -128,7 +133,7 @@
 /* ===== SOLUTION CARDS ===== */
 .solution-card {
   background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  border: 1px solid var(--color-primary);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   text-align: center;
@@ -140,37 +145,36 @@
 }
 
 .solution-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary);
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-gray-200);
 }
 
 .solution-icon {
   width: 60px;
   height: 60px;
-  background: var(--color-gray-100);
+  background: var(--color-primary);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto var(--space-4);
   transition: all var(--transition-normal);
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
 }
 
 .solution-card:hover .solution-icon {
   background: var(--color-primary);
-  transform: scale(1.1);
+  transform: none;
 }
 
 .solution-icon i {
   font-size: var(--font-size-xl);
-  color: var(--color-primary);
+  color: var(--color-white);
   transition: color var(--transition-normal);
 }
 
 .solution-card:hover .solution-icon i {
-  color: var(--color-white);
+  color: var(--color-danger);
 }
 
 .solution-card h5 {
@@ -509,6 +513,38 @@ footer ul li a:hover {
 .fade-in {
   animation: fadeIn 0.6s ease-in-out;
 }
+
+/* ========================================
+   ABOUT PAGE (scoped styles)
+   ======================================== */
+.about-hero { background: linear-gradient(135deg, #f5faff 0%, #e9f3ff 100%); border-radius: 16px; padding: 32px 24px; }
+.about-hero .section-title { margin-bottom: 8px; }
+.kpi-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:16px; margin-top: 8px; }
+.kpi-card { background:#fff; border:1px solid #e6eef6; border-radius:12px; padding:16px; text-align:center; box-shadow: 0 1px 6px rgba(16,24,40,.06); }
+.kpi-number { font-size: 28px; font-weight: 700; color: var(--color-primary); line-height:1; }
+.kpi-label { margin:6px 0 0; color:#47535a; font-size:14px; }
+
+.card.h-100 { border-radius:12px; border:1px solid #e6eef6; box-shadow: 0 1px 6px rgba(16,24,40,.06); margin-left:25px; margin-right:25px; }
+.card__title { color: var(--color-primary); }
+
+.team-card .avatar { width:56px; height:56px; border-radius:50%; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; margin-bottom:12px; }
+.team-card .role { color:#6b7780; font-size:14px; margin:0; }
+
+.values-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
+.value-card { background:#fff; border:1px solid #e6eef6; border-radius:12px; padding:16px; box-shadow: 0 1px 6px rgba(16,24,40,.06); }
+.value-icon { width:44px; height:44px; border-radius:50%; background: var(--color-primary); display:flex; align-items:center; justify-content:center; color:#fff; margin-bottom:10px; }
+.value-title { margin:0 0 6px; font-weight:600; }
+.value-desc { margin:0; color:#47535a; }
+
+/* Spacing fixes */
+.section-header { margin-bottom: 24px; }
+.about-hero { margin-bottom: 24px; }
+.card-body h3, .card-body h4 { margin: 0 0 8px; }
+.card-body p { margin: 0 0 8px; }
+.team-card .avatar { margin-bottom: 10px; }
+.team-card .card__title { margin-bottom: 4px; }
+.team-card .role { margin-bottom: 6px; }
+.values-grid { margin-top: 8px; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
