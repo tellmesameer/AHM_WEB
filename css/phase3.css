@@ -19,17 +19,9 @@ main.container { flex: 1 0 auto; }
 .btn--secondary{background:#f4f4f4;color:#111}
 .btn--ghost{background:transparent;border-color:#ddd}
 
-/* header */
-.site-header{
-  position:sticky;
-  top:0;
-  left:0;
-  right:0;
-  background: #fff;
-  z-index:1000;
-  border-bottom:1px solid #eee;
-}
-.site-header__inner{display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) 0}
+/* header - base (dock/hidden behavior implemented below) */
+.site-header { transition: transform .28s ease, box-shadow .28s ease, background-color .28s ease; }
+.site-header .site-header__inner{display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) 0; transition: padding .28s ease }
 .brand{font-weight:700;text-decoration:none;color:var(--color-primary)}
 .main-nav__list{list-style:none;margin:0;padding:0;display:flex;gap:12px}
 .main-nav__list li a{text-decoration: none; font-size: 20px; color: #333;padding: 0px 16px;}
@@ -51,6 +43,13 @@ main.container { flex: 1 0 auto; }
 .hero__inner img{width: 50%;}
 .hero__title{font-size:clamp(24px,4vw,60px);margin:0; font-weight: bold;}
 .hero__lead{font-size:20px; margin:12px 0 20px;color:#444}
+
+/* Hero background helper - moved from inline styles in hero include */
+.hero--bg {
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: contain;
+}
 
 /* cards grid */
 .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:16px}
@@ -109,3 +108,187 @@ main.container { flex: 1 0 auto; }
 .partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px;align-items:center;margin-top:12px}
 .partner-card{display:flex;align-items:center;justify-content:center;padding:17px;background:#fff;border:1px solid #eee;border-radius:8px}
 .partner-card img{max-width:100%;height:68px;object-fit:contain}
+
+/* Center icons and text inside the services grid cards */
+.services-grid .service-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 12px;
+}
+.services-grid .service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.services-grid .service-icon .icon {
+  font-size: 34px; /* slightly larger for visual balance */
+  line-height: 1;
+}
+.services-grid .service-title, .services-grid .service-description { text-align:center }
+
+/* Back to top button */
+.back-to-top{
+  position:fixed;
+  right:28px;
+  bottom:28px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#1976d2;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  border:0;
+  cursor:pointer;
+  z-index:1200;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s ease,transform .15s ease;
+}
+.back-to-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.back-to-top:focus{outline:3px solid rgba(25,118,210,0.3);outline-offset:3px}
+
+/* --- Card-style site footer (appended) --- */
+.site-footer-wrapper {
+  padding: 48px 20px 24px;
+  background: transparent;
+}
+.site-footer.card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(22, 28, 37, 0.06);
+  padding: 36px;
+  color: #263238;
+}
+.site-footer .footer-top {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.site-footer .footer-brand {
+  display: block;
+}
+.footer-logo { max-width: 150px; height: auto; display:block; margin-bottom:12px }
+.brand-desc { color: #556; font-size: 14px; margin: 0 0 12px; max-width: 420px }
+.social-icons { display:flex; gap:10px; margin-top:8px }
+.social-link { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:6px; background:#f5f7f9; color:#223; text-decoration:none }
+.social-link svg { display:block }
+/* nav columns */
+.site-footer .footer-nav { display: contents; }
+.site-footer .nav-col h4 { font-size: 14px; margin: 0 0 10px; color:#233; font-weight:600 }
+.site-footer .nav-col ul { list-style: none; padding:0; margin:0 }
+.site-footer .nav-col li { margin:6px 0 }
+.site-footer .nav-col a { color: #47535a; text-decoration:none; font-size:14px }
+.site-footer .nav-col a:hover { text-decoration:underline }
+
+.footer-bottom { border-top: 1px solid #eef3f6; margin-top: 22px; padding-top: 18px; display:flex; justify-content:space-between; align-items:center; font-size:13px; color:#6b7780 }
+.footer-bottom .policy-links a { margin-left:16px; color:#6b7780; text-decoration:none }
+.footer-bottom .policy-links a:hover { text-decoration:underline }
+
+/* Back to top — keep existing selector compatibility */
+.back-to-top { position: fixed; right: 28px; bottom: 28px; width:44px; height:44px; border-radius:8px; background:#0b5eff; color:#fff; border:0; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow: 0 6px 18px rgba(11,94,255,0.12); opacity:0; transform:translateY(6px); transition:opacity .22s ease, transform .22s ease; pointer-events:none }
+.back-to-top.show { opacity:1; transform:none; pointer-events:auto }
+
+/* --- Header dock-on-scroll styles (appended) --- */
+.site-header {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  transition: box-shadow .28s ease, background-color .28s ease, transform .28s ease;
+  z-index: 900;
+}
+.site-header .site-header__inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+  padding: 20px 16px;
+  transition: padding .28s ease, transform .28s ease;
+}
+.header-logo { height:48px; transition: height .28s ease; }
+
+/* docked (fixed) state */
+.site-header.docked {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff; /* white card-like header */
+  box-shadow: 0 8px 20px rgba(22,28,37,0.08);
+}
+.site-header.docked .site-header__inner { padding: 10px 16px; }
+.site-header.docked .header-logo { height:36px }
+
+/* hidden on scroll-down when docked */
+.site-header.hidden { transform: translateY(-120%); }
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .site-header .site-header__inner, .header-logo { transition: none !important; }
+}
+
+/* small screens: make dock behaviour compact */
+@media (max-width: 600px){
+  .site-header .site-header__inner{ padding:12px 12px }
+  .header-logo{ height:40px }
+  .site-header.docked .header-logo{ height:32px }
+}
+
+/* --------------------------------------------------
+   Site spacing normalization (low-risk overrides)
+   These rules tighten vertical rhythm across pages
+   and are intentionally conservative.
+  -------------------------------------------------- */
+.section {
+  padding-top: 3rem; /* consistent section spacing */
+  padding-bottom: 3rem;
+}
+
+.section-header { /* ensure consistent header spacing for sections */
+  margin-bottom: 1rem; /* compact but readable */
+}
+
+.section-title {
+  margin: 0 0 0.5rem 0; /* title spacing */
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  margin: 0 0 1rem 0;
+  color: #556; /* subtle subtitle color for parity */
+  max-width: 900px;
+}
+
+.card__body { padding: 16px; } /* slightly more breathing room in cards */
+
+.form-group { margin-bottom: 16px; } /* standardize form vertical spacing */
+
+.hero { padding: 56px 0; } /* slightly increased hero padding for balance */
+
+/* make centered section headers keep center alignment when used */
+.section-header.text-center { text-align: center; }
+
+/* small-screen adjustments (keep compact on very small devices) */
+@media (max-width: 420px) {
+  .section { padding-top: 2rem; padding-bottom: 2rem }
+  .card__body { padding: 12px }
+}
+
+/* Small spacing utility classes (use spacing tokens where possible) */
+.mt-1 { margin-top: 8px !important; }
+.mt-2 { margin-top: 16px !important; }
+.mt-3 { margin-top: 24px !important; }
+.mb-1 { margin-bottom: 8px !important; }
+.mb-2 { margin-bottom: 16px !important; }
+.mb-3 { margin-bottom: 24px !important; }
+.my-1 { margin-top: 8px !important; margin-bottom: 8px !important; }
+.my-2 { margin-top: 16px !important; margin-bottom: 16px !important; }
+.my-3 { margin-top: 24px !important; margin-bottom: 24px !important; }

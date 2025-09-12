@@ -395,11 +395,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // ===== HEADER DOCK ENHANCEMENTS =====
+    // Keyboard roving tabindex for dock items
+    const dock = document.querySelector('.header-dock .dock-list');
+    if (dock) {
+        const dockLinks = Array.from(dock.querySelectorAll('.dock-link'));
+        if (dockLinks.length) {
+            dockLinks.forEach((link, index) => {
+                link.setAttribute('tabindex', index === 0 ? '0' : '-1');
+            });
+
+            dock.addEventListener('keydown', (e) => {
+                const currentIndex = dockLinks.findIndex(l => l === document.activeElement);
+                if (currentIndex === -1) return;
+                let nextIndex = currentIndex;
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    nextIndex = (currentIndex + 1) % dockLinks.length;
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    nextIndex = (currentIndex - 1 + dockLinks.length) % dockLinks.length;
+                }
+                if (nextIndex !== currentIndex) {
+                    dockLinks.forEach((l, i) => l.setAttribute('tabindex', i === nextIndex ? '0' : '-1'));
+                    dockLinks[nextIndex].focus();
+                }
+            });
+        }
+    }
+
     // ===== PERFORMANCE OPTIMIZATIONS =====
     // Preload critical resources
     function preloadCriticalResources() {
         const criticalImages = [
-            'https://via.placeholder.com/600x400/0066cc/ffffff?text=Data+Visualization'
+            '/AHM_WEB/images/backgorundImage.svg',
+                '/AHM_WEB/images/AHM logo clear bg red[1].png'
         ];
         
         criticalImages.forEach(src => {
@@ -457,6 +487,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     preventLayoutShift();
     
+    // ===== MOBILE NAV TOGGLE =====
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.getElementById('site-nav');
+    if (navToggle && siteNav) {
+        navToggle.addEventListener('click', () => {
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', String(!expanded));
+            siteNav.classList.toggle('is-open');
+        });
+
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && siteNav.classList.contains('is-open')) {
+                siteNav.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.focus();
+            }
+        });
+    }
+
+    // ===== STICKY HEADER ON SCROLL =====
+    const header = document.querySelector('.site-header');
+    let lastScrollY = window.scrollY;
+    if (header) {
+        const onScroll = () => {
+            const current = window.scrollY;
+            header.classList.toggle('is-sticky', current > 8);
+            const scrollingDown = current > lastScrollY;
+            const shouldHide = scrollingDown && current > 120;
+            header.classList.toggle('is-hidden', shouldHide);
+            lastScrollY = current;
+        };
+        window.addEventListener('scroll', throttle(onScroll, 50));
+        onScroll();
+    }
+
     // ===== RESPONSIVE TESTING UTILITIES =====
     // Development helper to test different breakpoints
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {

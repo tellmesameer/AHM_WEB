@@ -1,17 +1,43 @@
 <!-- Organism: Site Header / Navigation -->
 <header class="site-header" role="banner">
   <div class="site-header__inner container">
-    <a class="brand" href="/index.html">
-      <img src="/images/AHM logo clear bg red[1].png" alt="AHM Data Solutions" style="height:50px;vertical-align:middle">
+    <a class="brand" href="/AHM_WEB/index.html">
+      <!-- logo uses CSS-controlled height for dock animation -->
+      <img src="/AHM_WEB/images/AHM logo clear bg red[1].png" alt="AHM Data Solutions" class="header-logo" />
     </a>
+    <!-- Dock: quick actions in the top header -->
+    <nav class="header-dock" aria-label="Quick actions">
+      <ul class="dock-list" role="menubar">
+        <li class="dock-item" role="none">
+          <a role="menuitem" href="/AHM_Website/pages/services/index.html" class="dock-link" aria-label="Services" title="Services">
+            <img src="/AHM_WEB/images/icons/015-database.png" alt="Services" class="dock-icon" loading="lazy" />
+          </a>
+        </li>
+        <li class="dock-item" role="none">
+          <a role="menuitem" href="/AHM_Website/pages/contact/index.html" class="dock-link" aria-label="Contact" title="Contact">
+            <img src="/AHM_WEB/images/icons/006-envelope.png" alt="Contact" class="dock-icon" loading="lazy" />
+          </a>
+        </li>
+        <li class="dock-item" role="none">
+          <a role="menuitem" href="/AHM_Website/pages/about/index.html" class="dock-link" aria-label="About" title="About">
+            <img src="/AHM_WEB/images/icons/017-information.png" alt="About" class="dock-icon" loading="lazy" />
+          </a>
+        </li>
+        <li class="dock-item" role="none">
+          <a role="menuitem" href="/AHM_Website/pages/partners/index.html" class="dock-link" aria-label="Partners" title="Partners">
+            <img src="/AHM_WEB/images/icons/003-microsoft.png" alt="Partners" class="dock-icon" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+    </nav>
     <nav id="site-nav" class="main-nav" role="navigation" aria-label="Main">
       <ul class="main-nav__list">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/AHM_Website/pages/services/index.html">Services</a></li>
-        <li><a href="/AHM_Website/pages/solutions/index.html">Solutions</a></li>
-        <li><a href="/AHM_Website/pages/partners/index.html">Partners</a></li>
-        <li><a href="/AHM_Website/pages/about/index.html">About</a></li>
-        <li><a href="/AHM_Website/pages/contact/index.html">Contact</a></li>
+  <li><a href="/AHM_WEB/index.html">Home</a></li>
+  <li><a href="/AHM_WEB/AHM_Website/pages/services/index.html">Services</a></li>
+  <li><a href="/AHM_WEB/AHM_Website/pages/solutions/index.html">Solutions</a></li>
+  <li><a href="/AHM_WEB/AHM_Website/pages/partners/index.html">Partners</a></li>
+  <li><a href="/AHM_WEB/AHM_Website/pages/about/index.html">About</a></li>
+  <li><a href="/AHM_WEB/AHM_Website/pages/contact/index.html">Contact</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>

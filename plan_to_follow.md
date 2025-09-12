@@ -65,10 +65,10 @@ Privacy Policy & Terms
  ├── Privacy Policy
  └── Terms of Service
 =========================================
-2. **Mobile-First but Desktop-Optimized Strategy**
-   - Start design at mobile (xs) but prioritize xxl/xl (2K monitor) experience since business audience likely uses larger screens
+2. **Mobile-First but Desktop-Optimised Strategy**
+   - Start design at mobile (xs) but prioritise xxl/xl (2K monitor) experience since business audience likely uses larger screens
    - Define "content priority" for each breakpoint: what content remains visible vs. gets hidden/rearranged
-   - **Add Design Tokens Strategy**: Establish CSS variables for spacing, colors, typography early in planning phase
+   - **Add Design Tokens Strategy**: Establish CSS variables for spacing, colours, typography early inthe  planning phase
 
 3. **Content Performance Strategy**
    - Plan for text truncation/ellipsis at smaller breakpoints
