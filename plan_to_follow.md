@@ -252,7 +252,7 @@ Privacy Policy & Terms
 
 ## 6. Performance & Optimization:
 
-**a.** Images are compressed and optimized (webp, lazy loading).
+**a.** Images are compressed and optimised (webp, lazy loading).
 
 **b.** Minify CSS & JS for production.
 
