@@ -631,12 +631,13 @@
   /* Typography */
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-relaxed);
+  /* line-height: var(--line-height-relaxed); */
   /* color: var(--text-secondary); */
   color: black;
   
   /* Reserved space to prevent CLS */
   min-height: 3em;
+  margin-top: -39px;
 }
 
 .services-section .services-grid {

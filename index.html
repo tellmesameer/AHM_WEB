@@ -11,39 +11,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
     <title>AHM - Advanced Data Solutions</title>
-    <!-- Base href for GitHub Pages project site; ensures relative paths resolve under /AHM_WEB/ -->
-    <base href="/AHM_WEB/">
+    
+            <script src="./js/site-config.js"></script>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS with Design Tokens -->
-    <link rel="stylesheet" href="/AHM_WEB/css/design-tokens.css">
-    <link rel="stylesheet" href="/AHM_WEB/css/responsive.css">
-    <link rel="stylesheet" href="/AHM_WEB/css/atoms.css">
-    <link rel="stylesheet" href="/AHM_WEB/css/molecules.css">
-    <link rel="stylesheet" href="/AHM_WEB/css/organisms.css">
-    <link rel="stylesheet" href="/AHM_WEB/css/forms.css">
-    <link rel="stylesheet" href="/AHM_WEB/css/components.css">
-    
-    <!-- Font Preload for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Phase 3 scoped styles -->
-    <link rel="stylesheet" href="/AHM_WEB/css/phase3.css">
-    <!-- Font Awesome (Free CDN) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
 </head>
 <body>
     <div class="wrapper">
         <!-- Dev diagnostics removed for pure-static deployment -->
     <!-- Navigation (modular include) -->
-    <div data-include="AHM_Website/components/organisms/header.html"></div>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
 
     <!-- Hero Section -->
     <!-- Hero (modular include) -->
-    <div data-include="AHM_Website/components/organisms/hero.html"></div>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/hero.html"></div>
 
     <!-- Overview of Services -->
     <section id="services-overview" class="services-section">
@@ -55,42 +38,42 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-database icon icon-2xl"></i>
+                        <i class="fas fa-database"></i>
                     </div>
                     <h5 class="service-title"><a href="/AHM_Website/pages/services/informatica.html">Informatica</a></h5>
                     <p class="service-description">Data integration and management solutions for enterprise environments</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-snowflake icon icon-2xl"></i>
+                        <i class="fas fa-snowflake"></i>
                     </div>
                     <h5 class="service-title"><a href="/AHM_Website/pages/services/snowflake.html">Snowflake</a></h5>
                     <p class="service-description">Cloud data warehousing and analytics platform</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-cloud icon icon-2xl"></i>
+                        <i class="fas fa-cloud"></i>
                     </div>
                     <h5 class="service-title"><a href="/AHM_Website/pages/services/idmc.html">IDMC</a></h5>
                     <p class="service-description">Intelligent data management cloud solutions</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-robot icon icon-2xl"></i>
+                        <i class="fas fa-robot"></i>
                     </div>
                     <h5 class="service-title"><a href="/AHM_Website/pages/services/python-ai.html">Python & AI</a></h5>
                     <p class="service-description">Machine learning and automation services</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-code icon icon-2xl"></i>
+                        <i class="fas fa-code"></i>
                     </div>
                     <h5 class="service-title"><a href="/AHM_Website/pages/services/web-development.html">Web Development</a></h5>
                     <p class="service-description">Custom web applications and responsive sites</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-code icon icon-2xl"></i>
+                        <i class="fas fa-code"></i>
                     </div>
                     <h5 class="service-title"><a href="/AHM_Website/pages/services/web-development.html">Mobile App</a></h5>
                     <p class="service-description">Custom mobile applications as per clients dream</p>
@@ -527,7 +510,7 @@
     </section>
 </div>
     <!-- Include site footer -->
-    <div data-include="AHM_Website/components/organisms/footer.html"></div>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -535,11 +518,11 @@
     <!-- Font Awesome kit removed (using CDN stylesheet in <head>) -->
     
     <!-- Partials loader (injects modular components) -->
-    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="./js/partials.js" defer></script>
     <!-- Phase 3 JS (small behaviors) -->
-    <script src="/AHM_WEB/js/phase3.js" defer></script>
+    <script src="./js/phase3.js" defer></script>
     <!-- Custom JS -->
-    <script src="/AHM_WEB/js/main.js"></script>
+    <script src="./js/main.js"></script>
 
 </body>
 </html>

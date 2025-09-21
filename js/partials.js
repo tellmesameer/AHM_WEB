@@ -40,20 +40,24 @@
     }
     await Promise.all(els.map(async el=>{
       const originalPath = el.getAttribute('data-include');
+      // Strip hardcoded project prefix when present
+      const sanitizedPath = String(originalPath).replace(/^\/?AHM_WEB\//i, '');
       // Resolve against document.baseURI first so pages with a <base> tag work
       let resolvedHref = null;
       try{
         // new URL will respect <base href="..."> when resolving
-        resolvedHref = new URL(originalPath, document.baseURI).href;
+        resolvedHref = new URL(sanitizedPath, document.baseURI).href;
       }catch(e){
         // ignore
       }
-      // Add a project-prefix fallback used for GitHub Pages project sites
-      const PROJECT_PREFIX = '/AHM_WEB/';
-      const prefixed = PROJECT_PREFIX + originalPath.replace(/^\/+/, '');
+  // Use central SITE_BASE (inserted via js/site-config.js)
+  const SITE_BASE = (typeof window !== 'undefined' && window.SITE_BASE) ? window.SITE_BASE : './';
+  // Ensure SITE_BASE ends with a single slash
+  const normalizedBase = SITE_BASE.replace(/\/+$/,'') + '/';
+  const prefixed = normalizedBase + sanitizedPath.replace(/^\/+/, '');
       const attempts = resolvedHref
-        ? [resolvedHref, prefixed, originalPath, '/' + originalPath, './' + originalPath]
-        : [prefixed, originalPath, '/' + originalPath, './' + originalPath];
+        ? [resolvedHref, prefixed, sanitizedPath, '/' + sanitizedPath, './' + sanitizedPath]
+        : [prefixed, sanitizedPath, '/' + sanitizedPath, './' + sanitizedPath];
       let loaded = false;
       for(const path of attempts){
         try{
@@ -62,6 +66,9 @@
           el.innerHTML = html;
           loaded = true;
           console.debug('[includes] loaded (cache ok)', path);
+          try{
+            console.info('[includes] final-resolved-path', {original: originalPath, chosen: path});
+          }catch(e){}
           break;
         }catch(err){
           console.warn('[includes] failed', path, err && err.message ? err.message : err);
