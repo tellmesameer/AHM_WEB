@@ -26,7 +26,7 @@
               console.debug('[includes] using 304 cache', path);
               return cached.html;
           }
-          if(!res.ok) throw new Error(path + ' -> ' + res.status);
+          if(!res.ok) throw new Error(`Fetch failed: ${res.status}`);
           const html = await res.text();
           const etag = res.headers.get('ETag');
           const lastModified = res.headers.get('Last-Modified');
@@ -53,24 +53,12 @@
     }
     await Promise.all(els.map(async el=>{
       const originalPath = el.getAttribute('data-include');
-      // Strip hardcoded project prefix when present
-      const sanitizedPath = String(originalPath).replace(/^\/?AHM_WEB\//i, '');
-      // Resolve against document.baseURI first so pages with a <base> tag work
-      let resolvedHref = null;
-      try{
-          // new URL will respect <base href="..."> when resolving
-          resolvedHref = new URL(sanitizedPath, document.baseURI).href;
-      }catch(e){// ignore
-          console.debug('[includes] Could not resolve against baseURI', sanitizedPath, e);
-      }
+      // Replace the sanitizedPath regex to remove any leading './' or '/' characters
+      const sanitizedPath = String(originalPath).replace(/^(\.?\/)+/i, '');
 
-      // Use central SITE_BASE (inserted via js/site-config.js)
-      const SITE_BASE = (typeof window !== 'undefined' && window.SITE_BASE) ? window.SITE_BASE : './';
-      // Ensure SITE_BASE ends with a single slash
-      const normalizedBase = SITE_BASE.replace(/\/+$/,'') + '/';
-
-      // Construct the path using SITE_BASE + sanitizedPath (without leading slash)
-      const basePathed = normalizedBase + sanitizedPath.replace(/^\/+/, '');
+      // Centralize the base path for fetching partials
+      const BASE_FETCH_PATH = "./AHM_Website/";
+      const basePathed = BASE_FETCH_PATH + sanitizedPath;
 
   // Fallback paths (less reliable)
   const fallbacks = [ sanitizedPath, '/' + sanitizedPath, './' + sanitizedPath ];
