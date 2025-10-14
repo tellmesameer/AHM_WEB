@@ -6,7 +6,7 @@
 - **Mobile**: < 3s load time, < 1.5s FCP
 - **Desktop**: < 2s load time, < 1s FCP
 - **CLS Score**: < 0.1 across all devices
-- **LCP**: < 2.5s for hero images
+- **LCP**: < 2.5s for hero images.
 
 ## 📝 **Text Content Strategy**
 
