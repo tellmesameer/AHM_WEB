@@ -5,31 +5,46 @@
   const _cache = new Map(); // path -> {html, ts, etag, lastModified}
   const TTL = 1000 * 60 * 5; // 5 minutes
 
+  // Inside js/partials.js, replace the fetchWithCache function with this version:
+
   async function fetchWithCache(path){
-    const cached = _cache.get(path);
-    const headers = {};
-    if(cached){
-      // attempt conditional GET
-      if(cached.etag) headers['If-None-Match'] = cached.etag;
-      if(cached.lastModified) headers['If-Modified-Since'] = cached.lastModified;
-    }
-    try{
-      const res = await fetch(path, {cache:'no-cache', headers});
-      if(res.status === 304 && cached){
-        cached.ts = Date.now();
-        return cached.html;
+      const cached = _cache.get(path);
+
+      // if cache still valid and within TTL, return it
+      if(cached && (Date.now() - cached.ts) < TTL) {
+          console.debug('[includes] using cache', path);
+          return cached.html;
       }
-      if(!res.ok) throw new Error(path + ' -> ' + res.status);
-      const html = await res.text();
-      const etag = res.headers.get('ETag');
-      const lastModified = res.headers.get('Last-Modified');
-      _cache.set(path, {html, ts: Date.now(), etag, lastModified});
-      return html;
-    }catch(err){
-      // if cache still valid and within TTL, return it as fallback
-      if(cached && (Date.now() - cached.ts) < TTL) return cached.html;
-      throw err;
-    }
+
+      const headers = {};
+      if(cached){// attempt conditional GET
+          if(cached.etag) headers['If-None-Match'] = cached.etag;
+          if(cached.lastModified) headers['If-Modified-Since'] = cached.lastModified;
+      }
+      try{
+          const res = await fetch(path, {cache:'no-cache', headers});
+          if(res.status === 304 && cached){
+              cached.ts = Date.now(); // Update timestamp
+              console.debug('[includes] using 304 cache', path);
+              return cached.html;
+          }
+          if(!res.ok) throw new Error(path + ' -> ' + res.status);
+          const html = await res.text();
+          const etag = res.headers.get('ETag');
+          const lastModified = res.headers.get('Last-Modified');
+          _cache.set(path, {html, ts: Date.now(), etag, lastModified});
+          console.debug('[includes] fetched and cached', path);
+          return html;
+      }catch(err){
+          console.error('[includes] fetch error for', path, err);
+          // If there was a previously cached version (even if expired), return it as a fallback, otherwise propagate the error
+          if (cached) {
+              console.warn('[includes] returning expired cache for', path, 'due to fetch error:', err.message);
+              return cached.html; // Return expired cache as fallback
+          }
+          // If no cache and fetch failed, re-throw the error
+          throw err;
+      }
   }
 
   async function loadIncludes(){
