@@ -162,4 +162,4 @@ Based on the tree map structure, here's the comprehensive responsiveness matrix 
 - **Body Text**: clamp(1rem, 0.9rem + 0.5vw, 1.125rem)
 - **Small Text**: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)
 
-This matrix ensures consistent, responsive behavior across all breakpoints while maintaining optimal user experience and performance.
+This matrix ensures consistent, responsive behavior across all breakpoints while maintaining optimal user experience and performance
