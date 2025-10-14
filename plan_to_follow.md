@@ -274,6 +274,6 @@ Privacy Policy & Terms
 
 **c.** Avoid duplicate HTML/JS/CSS code.
 
-**d.** Create reusable templates/snippets for repeated UI sections.
+**d.** Create reusable templates/snippets for repeated UI sections
 
 ---
