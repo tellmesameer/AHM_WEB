@@ -72,12 +72,17 @@
       // Construct the path using SITE_BASE + sanitizedPath (without leading slash)
       const basePathed = normalizedBase + sanitizedPath.replace(/^\/+/, '');
 
-      // Fallback paths (less reliable)
-      const fallbacks = [ sanitizedPath, '/' + sanitizedPath, './' + sanitizedPath ];
+  // Fallback paths (less reliable)
+  const fallbacks = [ sanitizedPath, '/' + sanitizedPath, './' + sanitizedPath ];
 
-      // Try the SITE_BASE prefixed path first, then fallback paths
-      // Prioritize resolvedHref if available, but prefer basePathed (SITE_BASE)
-      const attempts = resolvedHref ? [resolvedHref, basePathed, ...fallbacks] : [basePathed, ...fallbacks];
+  // Build attempts array, prioritizing the SITE_BASE-prefixed path first.
+  // Then try the resolvedHref (which respects <base>), then fallbacks.
+  const candidates = [ basePathed ];
+  if(resolvedHref) candidates.push(resolvedHref);
+  candidates.push(...fallbacks);
+
+  // Remove duplicates while preserving order and filter falsy values
+  const attempts = Array.from(new Set(candidates.filter(Boolean)));
 
       let loaded = false;
       for(const path of attempts){
