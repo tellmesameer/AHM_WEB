@@ -159,7 +159,8 @@ main.container { flex: 1 0 auto; }
   background: transparent;
 }
 .site-footer.card {
-    max-width: 1460px;
+    /* max-width: 1460px; */
+    max-width: auto;
     margin: 10px;
     background: #ffffff;
     border-radius: 12px;
