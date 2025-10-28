@@ -400,7 +400,7 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   color: var(--text-primary);
-  margin-bottom: var(--space-4);
+  /* margin-bottom: var(--space-4); */
   text-align: center;
   color: black;
 
