@@ -3,6 +3,77 @@ function initPhase3(){
   if(window.__phase3Inited) return;
   window.__phase3Inited = true;
 
+  // --- Page fade transitions (enter/exit) ---
+  (function setupPageTransitions(){
+    try{
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(prefersReduced) return; // Respect reduced motion
+
+      const body = document.body;
+      // Enter animation: start hidden, then fade in
+      body.classList.add('pt-enter');
+      requestAnimationFrame(()=>{
+        body.classList.add('pt-enter-active');
+        // Clean up the enter class after transition
+        setTimeout(()=>{
+          body.classList.remove('pt-enter');
+        }, 300);
+      });
+
+      const isInternal = (url)=>{
+        try{
+          const u = new URL(url, window.location.href);
+          return u.origin === window.location.origin;
+        }catch(_e){ return false; }
+      };
+
+      const shouldIntercept = (a)=>{
+        if(!a) return false;
+        const href = a.getAttribute('href');
+        if(!href || href.startsWith('#')) return false;
+        if(a.hasAttribute('download')) return false;
+        if(a.target && a.target !== '' && a.target !== '_self') return false;
+        return isInternal(href);
+      };
+
+      // Lightweight prefetch on hover for internal links
+      const prefetchSet = new Set();
+      const prefetch = (url)=>{
+        try{
+          const u = new URL(url, location.href);
+          if(prefetchSet.has(u.href)) return;
+          prefetchSet.add(u.href);
+          const l = document.createElement('link');
+          l.rel = 'prefetch';
+          l.href = u.href;
+          document.head.appendChild(l);
+        }catch(_e){ /* ignore */ }
+      };
+
+      document.addEventListener('mouseover', function(e){
+        const a = e.target.closest && e.target.closest('a');
+        if(a && shouldIntercept(a)) prefetch(a.href);
+      }, { passive: true });
+
+      // Intercept clicks on internal links for exit fade
+      document.addEventListener('click', function(e){
+        const anchor = e.target.closest && e.target.closest('a');
+        if(!anchor) return;
+        if(!shouldIntercept(anchor)) return;
+        e.preventDefault();
+        const href = anchor.href;
+        // Trigger exit fade then navigate
+        body.classList.add('pt-exit');
+        setTimeout(()=>{ window.location.href = href; }, 220);
+      }, true);
+
+      // Also handle non-click navigations (e.g., programmatic, back/forward)
+      window.addEventListener('beforeunload', function(){
+        body.classList.add('pt-exit');
+      });
+    }catch(_err){ /* no-op fallback */ }
+  })();
+
   // mobile nav toggle behavior
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.main-nav');

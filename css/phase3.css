@@ -295,3 +295,16 @@ main.container { flex: 1 0 auto; }
 .my-1 { margin-top: 8px !important; margin-bottom: 8px !important; }
 .my-2 { margin-top: 16px !important; margin-bottom: 16px !important; }
 .my-3 { margin-top: 24px !important; margin-bottom: 24px !important; }
+
+/* --------------------------------------------------
+   Page fade transitions (global, low-risk)
+   - Works across full navigations using small CSS + JS hooks
+   - Respects reduced motion preference
+  -------------------------------------------------- */
+body { transition: opacity .24s ease; }
+body.pt-enter { opacity: 0; }
+body.pt-enter-active { opacity: 1; }
+body.pt-exit { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none !important; }
+}
