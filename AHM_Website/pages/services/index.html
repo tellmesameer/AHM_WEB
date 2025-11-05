@@ -5,9 +5,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
   <script src="../../../js/site-config.js" defer></script>
+  <style>
+    /* Critical CSS: constrain media before stylesheets/partials are injected */
+    img, svg, video { max-width: 100%; height: auto; }
+    body { max-width: 100vw; overflow-x: hidden; }
+  </style>
   <title>Services - AHM Data Solutions</title>
   
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+  <link rel="stylesheet" href="/AHM_WEB/css/design-tokens.css">
+  <link rel="stylesheet" href="/AHM_WEB/css/responsive.css">
+  <link rel="stylesheet" href="/AHM_WEB/css/atoms.css">
+  <link rel="stylesheet" href="/AHM_WEB/css/molecules.css">
+  <link rel="stylesheet" href="/AHM_WEB/css/organisms.css">
+  <link rel="stylesheet" href="/AHM_WEB/css/forms.css">
+  <link rel="stylesheet" href="/AHM_WEB/css/components.css">
+  <link rel="stylesheet" href="/AHM_WEB/css/phase3.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 </head>
 <body>
   <style>
@@ -74,7 +92,7 @@
     }
   </style>
   <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main>
+  <main id="main">
     <section class="services-section enhanced-services-section">
       <div class="container">
         <div class="section-header">

@@ -26,13 +26,33 @@ main.container { flex: 1 0 auto; }
 .main-nav__list{list-style:none;margin:0;padding:0;display:flex;gap:12px}
 .main-nav__list li a{text-decoration: none; font-size: 20px; color: #333;padding: 0px 16px;}
 .main-nav__list li a:hover{text-decoration: underline; font-size: 20px; color: #000;}
+
+/* Make nav items clearly interactive (button-like), avoid text-input feel */
+.main-nav__list li a{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.main-nav__list li a:hover{
+  background: #f5f7f9;
+  text-decoration: none;
+}
+.main-nav__list li a:focus-visible{
+  outline: 3px solid rgba(25,118,210,.4);
+  outline-offset: 2px;
+}
 .nav-toggle{display:none}
 
 /* small-screen nav behavior */
 @media(max-width:899px){
   .nav-toggle{display:inline-flex;background:#eee;border:0;padding:8px;border-radius:6px}
   .main-nav{display:none}
-  .main-nav[aria-hidden="false"], .main-nav[style*="display:block"]{display:block;background:#fff;padding:12px;border-radius:6px;position:absolute;right:12px;top:56px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+  .main-nav.is-open{display:block;background:#fff;padding:12px;border-radius:6px;position:absolute;right:12px;top:56px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
   .main-nav__list{flex-direction:column;gap:8px}
 }
 
@@ -131,27 +151,7 @@ main.container { flex: 1 0 auto; }
 .services-grid .service-title, .services-grid .service-description { text-align:center }
 
 /* Back to top button */
-.back-to-top{
-  position:fixed;
-  right:28px;
-  bottom:28px;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:#1976d2;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 6px 18px rgba(0,0,0,0.12);
-  border:0;
-  cursor:pointer;
-  z-index:1200;
-  opacity:0;pointer-events:none;
-  transition:opacity .2s ease,transform .15s ease;
-}
-.back-to-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
-.back-to-top:focus{outline:3px solid rgba(25,118,210,0.3);outline-offset:3px}
+/* Back-to-top: use the newer unified styling below; older duplicate removed */
 
 /* --- Card-style site footer (appended) --- */
 .site-footer-wrapper {
@@ -243,6 +243,11 @@ main.container { flex: 1 0 auto; }
   .site-header.docked .header-logo{ height:32px }
 }
 
+/* Mobile nav visibility controlled via class toggling */
+.main-nav { display: none; }
+.main-nav.is-open { display: block; }
+@media (min-width: 900px){ .main-nav { display: flex !important; } }
+
 /* --------------------------------------------------
    Site spacing normalization (low-risk overrides)
    These rules tighten vertical rhythm across pages
@@ -253,6 +258,10 @@ main.container { flex: 1 0 auto; }
   padding-bottom: 3rem;
 }
 
+/* Smooth scroll offset via CSS (works with anchor targets) */
+[id] { scroll-margin-top: 72px; }
+@media (max-width: 600px){ [id]{ scroll-margin-top: 56px; } }
+
 .section-header { /* ensure consistent header spacing for sections */
   margin-bottom: 1rem; /* compact but readable */
 }
@@ -260,7 +269,7 @@ main.container { flex: 1 0 auto; }
 .section-title {
   /* margin: 0 0 0.5rem 0; title spacing */
   /* line-height: 1.15; */
-  line-height: 1px;
+  line-height: 1.15;
 }
 
 .section-subtitle {
