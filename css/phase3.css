@@ -308,3 +308,9 @@ body.pt-exit { opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
   body { transition: none !important; }
 }
+
+/* --------------------------------------------------
+   Render cost reduction for below-the-fold content
+   content-visibility defers rendering of off-screen sections
+  -------------------------------------------------- */
+.section { content-visibility: auto; contain-intrinsic-size: 1px 1000px; }
