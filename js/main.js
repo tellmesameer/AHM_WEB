@@ -282,6 +282,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create success message
         const successDiv = document.createElement('div');
         successDiv.className = 'form-success';
+        successDiv.setAttribute('role','status');
+        successDiv.setAttribute('aria-live','polite');
         successDiv.innerHTML = `
             <div class="d-flex align-items-center">
                 <i class="fas fa-check-circle me-2"></i>
@@ -319,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create error message
         const errorDiv = document.createElement('div');
         errorDiv.className = 'form-error';
+        errorDiv.setAttribute('role','alert');
         errorDiv.innerHTML = `
             <div class="d-flex align-items-center">
                 <i class="fas fa-exclamation-triangle me-2"></i>
@@ -382,18 +385,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Skip to main content link
-    const skipLink = document.querySelector('.skip-link');
-    if (skipLink) {
-        skipLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.focus();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    }
     
     // ===== HEADER DOCK ENHANCEMENTS =====
     // Keyboard roving tabindex for dock items

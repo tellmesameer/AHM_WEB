@@ -55,6 +55,15 @@ function initPhase3(){
         if(a && shouldIntercept(a)) prefetch(a.href);
       }, { passive: true });
 
+      // Idle prefetch for top navigation links
+      const idle = window.requestIdleCallback || function(cb){ return setTimeout(cb, 500); };
+      idle(()=>{
+        try{
+          const topLinks = document.querySelectorAll('#site-nav a[href]');
+          topLinks.forEach(a=>{ if(shouldIntercept(a)) prefetch(a.href); });
+        }catch(_e){}
+      });
+
       // Intercept clicks on internal links for exit fade
       document.addEventListener('click', function(e){
         const anchor = e.target.closest && e.target.closest('a');
@@ -81,7 +90,8 @@ function initPhase3(){
     toggle.addEventListener('click',function(){
       const expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', String(!expanded));
-      nav.style.display = expanded ? '' : 'block';
+      nav.classList.toggle('is-open', !expanded);
+      nav.setAttribute('aria-hidden', String(expanded));
     });
   }
 
