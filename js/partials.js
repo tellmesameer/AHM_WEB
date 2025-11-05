@@ -53,24 +53,24 @@
     }
     await Promise.all(els.map(async el=>{
       const originalPath = el.getAttribute('data-include');
-      // Replace the sanitizedPath regex to remove any leading './' or '/' characters
-      const sanitizedPath = String(originalPath).replace(/^(\.?\/)+/i, '');
+      // Normalize common authoring forms: './path', '/path', '/AHM_WEB/path', etc.
+      const sanitizedPath = String(originalPath).replace(/^(\/?AHM_WEB\/|\.\/|\/)+/i, '');
 
-      // Centralize the base path for fetching partials
-      const BASE_FETCH_PATH = "./AHM_Website/";
-      const basePathed = BASE_FETCH_PATH + sanitizedPath;
+      // Prefer a SITE_BASE-aware path when helper is available
+      const primary = (typeof window !== 'undefined' && typeof window.withBase === 'function')
+        ? window.withBase(originalPath)
+        : originalPath;
 
-  // Fallback paths (less reliable)
-  const fallbacks = [ sanitizedPath, '/' + sanitizedPath, './' + sanitizedPath ];
+      // Build candidate attempts from most to least specific
+      const candidates = [
+        primary,
+        sanitizedPath,
+        '/' + sanitizedPath,
+        './' + sanitizedPath
+      ];
 
-  // Build attempts array, prioritizing the SITE_BASE-prefixed path first.
-  // Then try the resolvedHref (which respects <base>), then fallbacks.
-  const candidates = [ basePathed ];
-  if(resolvedHref) candidates.push(resolvedHref);
-  candidates.push(...fallbacks);
-
-  // Remove duplicates while preserving order and filter falsy values
-  const attempts = Array.from(new Set(candidates.filter(Boolean)));
+      // Remove duplicates while preserving order and filter falsy values
+      const attempts = Array.from(new Set(candidates.filter(Boolean)));
 
       let loaded = false;
       for(const path of attempts){
