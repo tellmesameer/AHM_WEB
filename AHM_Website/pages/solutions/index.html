@@ -5,28 +5,164 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
   <script src="../../../js/site-config.js"></script>
-  <title>Solutions — AHM</title>
+  <title>Solutions - AHM Data Solutions</title>
   <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
 </head>
 <body>
   <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main class="container">
-    <h1>Solutions</h1>
-    <p>Industry-focused solutions and case studies.</p>
-    <section id="solutions-list">
-      <article>
-        <h2>Finance</h2>
-        <p>Data analytics and reporting solutions for finance.</p>
-      </article>
-      <article>
-        <h2>Healthcare</h2>
-        <p>Secure data platforms for healthcare providers.</p>
-      </article>
+
+  <style>
+    /* Match Services page vertical cards: side-by-side responsive grid */
+    .enhanced-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .enhanced-service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.07), 0 1.5px 6px rgba(33, 203, 243, 0.04);
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      text-align: center;
+      color: #222;
+      transition: box-shadow 0.25s, transform 0.22s, background 0.22s;
+      min-height: 340px;
+      border: 1.5px solid #e3f0ff;
+    }
+    .enhanced-service-card:hover {
+      box-shadow: 0 8px 32px rgba(25, 118, 210, 0.13), 0 4px 16px rgba(33, 203, 243, 0.09);
+      transform: translateY(-8px) scale(1.025);
+      background: linear-gradient(120deg, #f5faff 60%, #e3f0ff 100%);
+      border-color: #b3e0ff;
+    }
+    .enhanced-service-card .service-title {
+      color: #1976d2;
+      font-weight: 600;
+      font-size: 1.18rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .enhanced-service-card .service-description {
+      color: #222;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .enhanced-service-card .service-icon { margin-bottom: 1.2rem; }
+    .enhanced-service-card .service-icon svg { display: block; margin: 0 auto; filter: drop-shadow(0 2px 8px rgba(25, 118, 210, 0.08)); }
+    @media (max-width: 767.98px) {
+      .enhanced-services-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .enhanced-service-card { padding: 2rem 1rem 1.5rem 1rem; min-height: 260px; }
+    }
+  </style>
+
+  <main id="main" role="main">
+    <section class="py-5" aria-labelledby="solutions-hero">
+      <div class="container">
+        <div class="section-header text-center mb-4">
+          <h1 id="solutions-hero" class="section-title">Industry Solutions</h1>
+          <p class="section-subtitle">Practical, secure, and scalable blueprints tailored to common industry needs.</p>
+        </div>
+        <div class="kpi-grid" aria-label="solution highlights">
+          <div class="kpi-card"><div class="kpi-number">8-12 wks</div><div class="kpi-label">Typical delivery</div></div>
+          <div class="kpi-card"><div class="kpi-number">50%+</div><div class="kpi-label">Faster insights</div></div>
+          <div class="kpi-card"><div class="kpi-number">30%+</div><div class="kpi-label">Cost savings</div></div>
+          <div class="kpi-card"><div class="kpi-number">Enterprise</div><div class="kpi-label">Security & governance</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" aria-labelledby="solution-catalog">
+      <div class="container">
+        <div class="section-header mb-3">
+          <h2 id="solution-catalog" class="section-title">Solution Catalog</h2>
+          <p class="section-subtitle">Battle-tested patterns implemented with Informatica, Snowflake, IDMC, Python/AI, and modern web apps.</p>
+        </div>
+
+        <div class="services-grid enhanced-services-grid">
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon"><i class="fas fa-warehouse"></i></div>
+            <h5 class="service-title">Data Platform Modernisation</h5>
+            <p class="service-description">Migrate legacy DWH to cloud with automated ELT, lineage, and cost controls.</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h5 class="service-title">Analytics & BI Accelerator</h5>
+            <p class="service-description">Subject-area marts, KPIs, and dashboards with governance baked in.</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon"><i class="fas fa-robot"></i></div>
+            <h5 class="service-title">AI/ML for Operations</h5>
+            <p class="service-description">Forecasting, anomaly detection, and NLP using Python and MLOps pipelines.</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon"><i class="fas fa-diagram-project"></i></div>
+            <h5 class="service-title">Integration & APIs</h5>
+            <p class="service-description">Real-time ingestion, event streams, and secure APIs for partners and apps.</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+            <h5 class="service-title">Governance & Security</h5>
+            <p class="service-description">Data catalog, lineage, RBAC/ABAC, PII masking, and policy enforcement.</p>
+          </div>
+          <div class="service-card enhanced-service-card">
+            <div class="service-icon"><i class="fas fa-dollar-sign"></i></div>
+            <h5 class="service-title">Cost Optimisation</h5>
+            <p class="service-description">Storage tiering, workload scheduling, and spend observability dashboards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" aria-labelledby="industry-examples">
+      <div class="container">
+        <div class="section-header mb-3">
+          <h2 id="industry-examples" class="section-title">Industry Examples</h2>
+          <p class="section-subtitle">Preconfigured templates to accelerate time-to-value.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card__title">Financial Services</h3>
+                <p class="card__desc">Regulatory reporting, risk analytics, and 360° customer views with governed access.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card__title">Healthcare</h3>
+                <p class="card__desc">FHIR-compatible data hub, clinical analytics, and protected research workspaces.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card__title">Retail</h3>
+                <p class="card__desc">Demand forecasting, marketing attribution, and supply chain optimisation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-light text-center" aria-labelledby="solutions-cta">
+      <div class="container">
+        <h2 id="solutions-cta" class="section-title">Start with a quick discovery</h2>
+        <p class="section-subtitle mb-4">We’ll map your current state, identify quick wins, and propose a roadmap.</p>
+        <a class="btn btn-primary me-2" href="/AHM_WEB/AHM_Website/pages/consultation/index.html">Book a free consultation</a>
+        <a class="btn btn-outline-secondary" href="/AHM_WEB/AHM_Website/pages/services/index.html">Explore our services</a>
+      </div>
     </section>
   </main>
+
   <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
 
-  <!-- scripts -->
   <script src="../../../js/partials.js" defer></script>
   <script src="../../../js/phase3.js" defer></script>
 </body>

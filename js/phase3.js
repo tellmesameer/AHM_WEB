@@ -9,14 +9,14 @@ function initPhase3(){
       const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if(prefersReduced) return; // Respect reduced motion
 
-      const body = document.body;
-      // Enter animation: start hidden, then fade in
-      body.classList.add('pt-enter');
+      const target = document.querySelector('main') || document.body;
+      // Enter animation on main: start hidden, then fade in
+      target.classList.add('pt-enter');
       requestAnimationFrame(()=>{
-        body.classList.add('pt-enter-active');
+        target.classList.add('pt-enter-active');
         // Clean up the enter class after transition
         setTimeout(()=>{
-          body.classList.remove('pt-enter');
+          target.classList.remove('pt-enter');
         }, 300);
       });
 
@@ -71,16 +71,48 @@ function initPhase3(){
         if(!shouldIntercept(anchor)) return;
         e.preventDefault();
         const href = anchor.href;
-        // Trigger exit fade then navigate
-        body.classList.add('pt-exit');
+        // Trigger exit fade on main then navigate
+        target.classList.add('pt-exit');
         setTimeout(()=>{ window.location.href = href; }, 220);
       }, true);
 
       // Also handle non-click navigations (e.g., programmatic, back/forward)
       window.addEventListener('beforeunload', function(){
-        body.classList.add('pt-exit');
+        target.classList.add('pt-exit');
       });
     }catch(_err){ /* no-op fallback */ }
+  })();
+
+  // --- Lightweight skeletons for hero/cards ---
+  (function setupSkeletons(){
+    try{
+      const enable = true;
+      if(!enable) return;
+      const cards = document.querySelectorAll('.service-card, .solution-card, .testimonial-card');
+      cards.forEach(card=> card.classList.add('skeleton'));
+
+      // Remove skeleton on includes loaded and after a small delay to avoid flash
+      function clearSkeletons(){
+        cards.forEach(card=> card.classList.remove('skeleton'));
+      }
+      document.addEventListener('includes:loaded', ()=>{
+        setTimeout(clearSkeletons, 300);
+      }, { once: true });
+
+      // If images inside a card load earlier, clear that card's skeleton
+      cards.forEach(card=>{
+        const imgs = card.querySelectorAll('img');
+        imgs.forEach(img=>{
+          if(img.complete){ card.classList.remove('skeleton'); }
+          else {
+            img.addEventListener('load', ()=> card.classList.remove('skeleton'), { once: true });
+            img.addEventListener('error', ()=> card.classList.remove('skeleton'), { once: true });
+          }
+        });
+      });
+      // Safety timeout
+      setTimeout(clearSkeletons, 2000);
+    }catch(_e){}
   })();
 
   // mobile nav toggle behavior
