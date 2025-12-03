@@ -117,5 +117,16 @@
   }
 
   // Re-run rewriting after async includes are injected
+  // Re-run rewriting after async includes are injected
   document.addEventListener('includes:loaded', rewriteAttributes);
+
+  // Centralized Configuration
+  window.SITE_CONFIG = {
+    CRITICAL_IMAGES: [
+      '/AHM_WEB/images/backgorundImage.svg',
+      '/AHM_WEB/images/AHM logo clear bg red[1].png',
+      '/AHM_WEB/images/Remove background project.png',
+      '/AHM_WEB/images/web development logo.png'
+    ]
+  };
 })();
