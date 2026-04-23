@@ -11,55 +11,9 @@
 <body>
   <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
 
-  <style>
-    /* Match Services page vertical cards: side-by-side responsive grid */
-    .enhanced-services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    .enhanced-service-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.07), 0 1.5px 6px rgba(33, 203, 243, 0.04);
-      padding: 2.5rem 1.5rem 2rem 1.5rem;
-      text-align: center;
-      color: #222;
-      transition: box-shadow 0.25s, transform 0.22s, background 0.22s;
-      min-height: 340px;
-      border: 1.5px solid #e3f0ff;
-    }
-    .enhanced-service-card:hover {
-      box-shadow: 0 8px 32px rgba(25, 118, 210, 0.13), 0 4px 16px rgba(33, 203, 243, 0.09);
-      transform: translateY(-8px) scale(1.025);
-      background: linear-gradient(120deg, #f5faff 60%, #e3f0ff 100%);
-      border-color: #b3e0ff;
-    }
-    .enhanced-service-card .service-title {
-      color: #1976d2;
-      font-weight: 600;
-      font-size: 1.18rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .enhanced-service-card .service-description {
-      color: #222;
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .enhanced-service-card .service-icon { margin-bottom: 1.2rem; }
-    .enhanced-service-card .service-icon svg { display: block; margin: 0 auto; filter: drop-shadow(0 2px 8px rgba(25, 118, 210, 0.08)); }
-    @media (max-width: 767.98px) {
-      .enhanced-services-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-      .enhanced-service-card { padding: 2rem 1rem 1.5rem 1rem; min-height: 260px; }
-    }
-  </style>
 
-  <main id="main" role="main">
-    <section class="py-5" aria-labelledby="solutions-hero">
+  <main id="main" role="main" class="solutions-page">
+    <section class="py-5 solutions-hero-shell" aria-labelledby="solutions-hero">
       <div class="container">
         <div class="section-header text-center mb-4">
           <h1 id="solutions-hero" class="section-title">Industry Solutions</h1>
@@ -74,40 +28,40 @@
       </div>
     </section>
 
-    <section class="py-5" aria-labelledby="solution-catalog">
+    <section class="py-5 solutions-catalog-shell" aria-labelledby="solution-catalog">
       <div class="container">
         <div class="section-header text-center mb-3">
           <h2 id="solution-catalog" class="section-title">Solution Catalog</h2>
           <p class="section-subtitle">Battle-tested patterns implemented with Informatica, Snowflake, IDMC, Python/AI, and modern web apps.</p>
         </div>
 
-        <div class="services-grid enhanced-services-grid">
-          <div class="service-card enhanced-service-card">
+        <div class="services-grid solution-catalog-grid">
+          <div class="service-card solution-catalog-card">
             <div class="service-icon"><i class="fas fa-warehouse"></i></div>
             <h5 class="service-title">Data Platform Modernisation</h5>
             <p class="service-description">Migrate legacy DWH to cloud with automated ELT, lineage, and cost controls.</p>
           </div>
-          <div class="service-card enhanced-service-card">
+          <div class="service-card solution-catalog-card">
             <div class="service-icon"><i class="fas fa-chart-line"></i></div>
             <h5 class="service-title">Analytics & BI Accelerator</h5>
             <p class="service-description">Subject-area marts, KPIs, and dashboards with governance baked in.</p>
           </div>
-          <div class="service-card enhanced-service-card">
+          <div class="service-card solution-catalog-card">
             <div class="service-icon"><i class="fas fa-robot"></i></div>
             <h5 class="service-title">AI/ML for Operations</h5>
             <p class="service-description">Forecasting, anomaly detection, and NLP using Python and MLOps pipelines.</p>
           </div>
-          <div class="service-card enhanced-service-card">
+          <div class="service-card solution-catalog-card">
             <div class="service-icon"><i class="fas fa-diagram-project"></i></div>
             <h5 class="service-title">Integration & APIs</h5>
             <p class="service-description">Real-time ingestion, event streams, and secure APIs for partners and apps.</p>
           </div>
-          <div class="service-card enhanced-service-card">
+          <div class="service-card solution-catalog-card">
             <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
             <h5 class="service-title">Governance & Security</h5>
             <p class="service-description">Data catalog, lineage, RBAC/ABAC, PII masking, and policy enforcement.</p>
           </div>
-          <div class="service-card enhanced-service-card">
+          <div class="service-card solution-catalog-card">
             <div class="service-icon"><i class="fas fa-dollar-sign"></i></div>
             <h5 class="service-title">Cost Optimisation</h5>
             <p class="service-description">Storage tiering, workload scheduling, and spend observability dashboards.</p>
@@ -116,7 +70,7 @@
       </div>
     </section>
 
-    <section class="py-5" aria-labelledby="industry-examples">
+    <section class="py-5 industry-examples-shell" aria-labelledby="industry-examples">
       <div class="container">
         <div class="section-header text-center mb-3">
           <h2 id="industry-examples" class="section-title">Industry Examples</h2>
@@ -151,7 +105,7 @@
       </div>
     </section>
 
-    <section class="py-5 bg-light text-center" aria-labelledby="solutions-cta">
+    <section class="py-5 text-center solutions-cta-shell" aria-labelledby="solutions-cta">
       <div class="container">
         <h2 id="solutions-cta" class="section-title">Start with a quick discovery</h2>
         <p class="section-subtitle mb-4">We’ll map your current state, identify quick wins, and propose a roadmap.</p>
