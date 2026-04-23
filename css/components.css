@@ -836,3 +836,63 @@ body {
   .partners-page .partners-hero { padding-top: 3rem; padding-bottom: 3.5rem; }
   .partner-grid--premium { grid-template-columns: 1fr; gap: 12px; }
 }
+
+/* ===== Shared CTA alignment across pages ===== */
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== About page redesign ===== */
+.about-page {
+  background: radial-gradient(1000px 360px at 50% -120px, rgba(83, 122, 216, .16), transparent 60%),
+              linear-gradient(180deg, #f6f9ff 0%, #eef3f8 100%);
+}
+
+.about-page .about-intro-shell,
+.about-page .about-team-shell,
+.about-page .about-values-shell,
+.about-page .about-cta-shell {
+  position: relative;
+}
+
+.about-page .about-hero .section-title {
+  letter-spacing: -0.02em;
+}
+
+.about-page .about-hero .section-subtitle {
+  max-width: 780px;
+  margin-inline: auto;
+  color: #55637b;
+}
+
+.about-page .card,
+.about-page .value-card {
+  border: 1px solid #d7e2ef;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  background: linear-gradient(165deg, rgba(255,255,255,.95), rgba(247,250,255,.9));
+}
+
+.about-page .team-card .avatar {
+  box-shadow: 0 8px 20px rgba(27, 90, 215, 0.22);
+}
+
+.about-page .about-cta-shell {
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+  background: transparent;
+}
+
+.about-page .about-cta-shell .section-subtitle {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .cta-actions { flex-direction: column; }
+  .cta-actions .btn { width: min(100%, 320px); justify-content: center; }
+}

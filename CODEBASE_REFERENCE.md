@@ -16,6 +16,8 @@ Last updated: 2026-04-23 (UTC)
 
 - Redesigned the Partners page with a premium card layout and added intrinsic logo dimensions (`width`/`height`) plus async decoding/lazy loading to reduce initial logo reflow/glitch on navigation.
 
+- Reimagined the About page by removing the duplicated hero-style section from that page flow, applying a cleaner premium layout, and normalizing CTA button alignment (`.cta-actions`) across About/Solutions CTAs.
+
 ## 1) Recent fixes implemented
 
 The following changes from the latest UI/cleanup work are now implemented:
