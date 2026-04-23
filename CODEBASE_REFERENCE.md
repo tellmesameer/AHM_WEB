@@ -18,6 +18,8 @@ Last updated: 2026-04-23 (UTC)
 
 - Reimagined the About page by removing the duplicated hero-style section from that page flow, applying a cleaner premium layout, and normalizing CTA button alignment (`.cta-actions`) across About/Solutions CTAs.
 
+- Implemented a unified SaaS design system across Home/Services/Solutions/Partners/About/Contact pages (typography scale, palette, shared hero layout, unified card/button system, fixed container width, consistent spacing rhythm, and standardized CTA alignment).
+
 ## 1) Recent fixes implemented
 
 The following changes from the latest UI/cleanup work are now implemented:

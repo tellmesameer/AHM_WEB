@@ -5,147 +5,45 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
   <script src="../../../js/site-config.js" defer></script>
-  <style>
-    /* Critical CSS: constrain media before stylesheets/partials are injected */
-    img, svg, video { max-width: 100%; height: auto; }
-    body { max-width: 100vw; overflow-x: hidden; }
-  </style>
   <title>Services - AHM Data Solutions</title>
-  
-  <link rel="stylesheet" href="/AHM_WEB/css/design-tokens.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/responsive.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/atoms.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/molecules.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/organisms.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/forms.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/components.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/phase3.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
 </head>
 <body>
-  <style>
-    .enhanced-services-section {
-      position: relative;
-      background: linear-gradient(135deg, #f5faff 0%, #e3f0ff 100%);
-      overflow: hidden;
-      padding-bottom: 64px;
-    }
-    .enhanced-services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    .enhanced-service-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.07), 0 1.5px 6px rgba(33, 203, 243, 0.04);
-      padding: 2.5rem 1.5rem 2rem 1.5rem;
-      text-align: center;
-      color: #222;
-      transition: box-shadow 0.25s, transform 0.22s, background 0.22s;
-      min-height: 340px;
-      border: 1.5px solid #e3f0ff;
-    }
-    .enhanced-service-card:hover {
-      box-shadow: 0 8px 32px rgba(25, 118, 210, 0.13), 0 4px 16px rgba(33, 203, 243, 0.09);
-      transform: translateY(-8px) scale(1.025);
-      background: linear-gradient(120deg, #f5faff 60%, #e3f0ff 100%);
-      border-color: #b3e0ff;
-    }
-    .enhanced-service-card .service-title {
-      color: #1976d2;
-      font-weight: 600;
-      font-size: 1.18rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .enhanced-service-card .service-description {
-      color: #222;
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .enhanced-service-card .service-icon {
-      margin-bottom: 1.2rem;
-    }
-    .enhanced-service-card .service-icon svg {
-      display: block;
-      margin: 0 auto;
-      filter: drop-shadow(0 2px 8px rgba(25, 118, 210, 0.08));
-    }
-    @media (max-width: 767.98px) {
-      .enhanced-services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-      }
-      .enhanced-service-card {
-        padding: 2rem 1rem 1.5rem 1rem;
-        min-height: 260px;
-      }
-    }
-  </style>
   <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main id="main">
-    <section class="services-section enhanced-services-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Core Services</h2>
-          <p class="section-subtitle">Comprehensive data solutions tailored to your business needs</p>
+
+  <main id="main" class="saas-page">
+    <section class="page-hero" aria-labelledby="services-title">
+      <div class="container page-hero__grid">
+        <div>
+          <p class="eyebrow">What we do</p>
+          <h1 id="services-title">Enterprise data and cloud services</h1>
+          <p>From platform modernization to AI-powered automation, we deliver secure solutions designed for measurable business impact.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="/AHM_WEB/AHM_Website/pages/consultation/index.html">Book a consultation</a>
+            <a class="btn btn-outline-secondary" href="/AHM_WEB/AHM_Website/pages/contact/index.html">Talk to our team</a>
+          </div>
         </div>
-        <div class="services-grid enhanced-services-grid">
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-database"></i>
-            </div>
-            <h5 class="service-title">Informatica</h5>
-            <p class="service-description">Data integration and management solutions for enterprise environments</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-snowflake"></i>
-            </div>
-            <h5 class="service-title">Snowflake</h5>
-            <p class="service-description">Cloud data warehousing and analytics platform</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-cloud"></i>
-            </div>
-            <h5 class="service-title">IDMC</h5>
-            <p class="service-description">Intelligent data management cloud solutions</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-robot"></i>
-            </div>
-            <h5 class="service-title">Python &amp; AI</h5>
-            <p class="service-description">Machine learning and automation services</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h5 class="service-title">Web Development</h5>
-            <p class="service-description">Custom web applications and responsive sites</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h5 class="service-title">Mobile App</h5>
-            <p class="service-description">Custom mobile applications as per clients dream</p>
-          </div>
+        <div class="hero-visual" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="section-shell" aria-labelledby="services-grid">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 id="services-grid" class="section-title">Core services</h2>
+        </div>
+        <div class="services-grid services-grid--2col">
+          <div class="service-card"><div class="service-icon"><i class="fas fa-database"></i></div><h5 class="service-title">Informatica</h5><p class="service-description">Data integration and governance frameworks for enterprise ecosystems.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-snowflake"></i></div><h5 class="service-title">Snowflake</h5><p class="service-description">Cloud data warehousing and workload optimization for faster insights.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-cloud"></i></div><h5 class="service-title">IDMC</h5><p class="service-description">Intelligent data management cloud solutions with quality and trust built-in.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-robot"></i></div><h5 class="service-title">Python & AI</h5><p class="service-description">ML and automation pipelines for forecasting, anomaly detection, and decisioning.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-code"></i></div><h5 class="service-title">Web Platforms</h5><p class="service-description">Modern web apps and internal tooling built for scale and reliability.</p></div>
+          <div class="service-card"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h5 class="service-title">Mobile Applications</h5><p class="service-description">Cross-platform mobile experiences with secure API-first architecture.</p></div>
         </div>
       </div>
     </section>
   </main>
+
   <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
   <script src="../../../js/partials.js" defer></script>
   <script src="../../../js/phase3.js" defer></script>
