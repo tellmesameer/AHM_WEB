@@ -8,6 +8,9 @@ Last updated: 2026-04-23 (UTC)
 - Unified header/hero contrast, corrected subtitle spacing (`margin-top: 0`), and applied consistent container card styling across sections.
 - Improved mobile behavior for hero and nav theme states.
 
+- Added 1920px-focused alignment and spacing normalization in `css/phase3.css` (centered section headers/subtitles, constrained form width, improved wide-screen grid behavior).
+- Removed problematic legacy spacing constraints in `css/organisms.css` (`margin-top: -39px`, excessive min-heights, and over-dense 6-column 1400px grid).
+
 
 ## 1) Recent fixes implemented
 

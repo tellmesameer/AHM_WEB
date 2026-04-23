@@ -544,3 +544,59 @@ body {
     color: #e5edff;
   }
 }
+
+/* ========================================
+   1920px alignment + spacing normalization
+   ======================================== */
+
+.section-header {
+  text-align: center;
+}
+
+.section-header .section-title,
+.section-header .section-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header .section-subtitle {
+  max-width: 72ch;
+}
+
+.contact-form-container {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.partner-grid {
+  max-width: 1320px;
+  margin-inline: auto;
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1440px;
+  }
+
+  main .container {
+    padding-left: clamp(1.5rem, 2.5vw, 2.75rem);
+    padding-right: clamp(1.5rem, 2.5vw, 2.75rem);
+  }
+
+  .services-grid.enhanced-services-grid,
+  .enhanced-services-grid {
+    max-width: 1320px;
+    margin-inline: auto;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    gap: clamp(1.25rem, 1.6vw, 2rem);
+  }
+
+  .kpi-grid {
+    max-width: 1320px;
+    margin-inline: auto;
+  }
+
+  .row.g-4 {
+    --bs-gutter-x: 2rem;
+  }
+}
