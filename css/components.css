@@ -1057,3 +1057,97 @@ p, .section-subtitle, .service-description, .card__desc { font-size: 1rem; line-
   .services-grid, .services-grid--2col { grid-template-columns: 1fr; }
   .logo-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* ===== Contact page targeted redesign ===== */
+.contact-page .contact-hero {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(130deg, #e8f0ff 0%, #f2f7ff 48%, #f8fafc 100%);
+}
+
+.contact-page .hero-copy { max-width: 46ch; }
+
+.contact-hero-visual {
+  min-height: 280px;
+  border-radius: 22px;
+  border: 1px solid #d7e2f1;
+  background: radial-gradient(circle at 20% 20%, rgba(37,99,235,.26), transparent 40%),
+              radial-gradient(circle at 70% 70%, rgba(59,130,246,.22), transparent 46%),
+              linear-gradient(145deg, #eff5ff, #f8fbff);
+  position: relative;
+  overflow: hidden;
+}
+
+.signal-card {
+  position: absolute;
+  border: 1px solid rgba(142, 173, 226, 0.5);
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(30, 64, 175, 0.14);
+}
+.signal-card--one { width: 58%; height: 64px; top: 14%; left: 10%; }
+.signal-card--two { width: 66%; height: 74px; top: 42%; left: 18%; }
+.signal-card--three { width: 54%; height: 60px; top: 70%; left: 28%; }
+
+.contact-form-section { padding-top: 72px; }
+.contact-page .contact-form-wrap {
+  max-width: 780px;
+  border-radius: 16px;
+  padding: 32px;
+  animation: elevateIn .35s ease;
+}
+@keyframes elevateIn {
+  from { opacity: .7; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-page .form-label {
+  font-size: .85rem;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+.contact-page .form-control {
+  min-height: 48px;
+  border: 1px solid #cfd9e8;
+}
+.contact-page textarea.form-control { min-height: 130px; }
+.contact-page .form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.16);
+}
+
+.contact-page .contact-submit {
+  width: 100%;
+  min-height: 50px;
+}
+
+.trust-strip {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #e3ebf6;
+}
+.trust-strip p {
+  text-align: center;
+  font-size: .92rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+.trust-logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.trust-logos img {
+  width: 100%;
+  max-height: 44px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.76;
+}
+
+@media (max-width: 992px) {
+  .contact-page .contact-hero { min-height: auto; }
+  .trust-logos { grid-template-columns: 1fr; }
+}

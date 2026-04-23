@@ -20,6 +20,8 @@ Last updated: 2026-04-23 (UTC)
 
 - Implemented a unified SaaS design system across Home/Services/Solutions/Partners/About/Contact pages (typography scale, palette, shared hero layout, unified card/button system, fixed container width, consistent spacing rhythm, and standardized CTA alignment).
 
+- Applied a targeted Contact page redesign with high-impact hero + meaningful right-side visual, a larger centered conversion-focused form card, stronger CTA hierarchy, and a trust-logo strip for AWS/Snowflake/Microsoft.
+
 ## 1) Recent fixes implemented
 
 The following changes from the latest UI/cleanup work are now implemented:
