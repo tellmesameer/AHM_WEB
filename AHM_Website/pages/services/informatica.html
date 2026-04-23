@@ -1,47 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <title>Informatica Services - AHM</title>
-  
-  <script src="../../../js/site-config.js"></script>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>Informatica Services - AHM Data Solutions</title>
+    <meta name="description" content="Enterprise-grade data integration and governance services using Informatica platforms.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main>
-    <section class="services-section enhanced-services-section">
-      <div class="services-bg-shape"></div>
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Informatica Services</h2>
-          <p class="section-subtitle">Enterprise-grade data integration and governance services using Informatica platforms.</p>
-        </div>
-        <div class="services-grid enhanced-services-grid">
-          <div class="service-card enhanced-service-card fade-in">
-            <div class="service-icon gradient-icon">
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="28" cy="28" r="24" fill="url(#grad1)" />
-                <defs>
-                  <linearGradient id="grad1" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#1976d2" />
-                    <stop offset="1" stop-color="#21cbf3" />
-                  </linearGradient>
-                </defs>
-              </svg>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="ds-hero" id="hero">
+            <div class="ds-container">
+                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                        <span class="ds-badge">Data Integration</span>
+                        <h1 class="ds-hero__title">Informatica Services</h1>
+                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Enterprise-grade data integration and governance services using Informatica platforms.</p>
+                        <div class="ds-hero__actions" style="justify-content:center;">
+                            <a href="/AHM_WEB/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Get Started</a>
+                            <a href="/AHM_WEB/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">All Services</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h5 class="service-title">Informatica</h5>
-            <p class="service-description">Data integration and management solutions for enterprise environments</p>
-            <span class="learn-more-btn">Learn more</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+        </section>
+
+        <!-- Capabilities -->
+        <section id="capabilities" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>What We Deliver</h2>
+                    <p>End-to-end Informatica consulting across the full product suite.</p>
+                </div>
+                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
+                    <div class="ds-card ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-exchange-alt"></i></div>
+                        <h3 class="ds-card__title">PowerCenter Migrations</h3>
+                        <p class="ds-card__desc">Migrate legacy ETL workloads to modern cloud-native architectures with zero downtime.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3 class="ds-card__title">Data Quality & MDM</h3>
+                        <p class="ds-card__desc">Implement master data management and quality rules that scale with your data estate.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="ds-card__title">Data Governance</h3>
+                        <p class="ds-card__desc">Build governance frameworks with lineage tracking, cataloging, and policy enforcement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="ds-cta-band">
+            <div class="ds-container ds-animate">
+                <h2>Ready to modernize your Informatica stack?</h2>
+                <p>Our certified engineers can audit your current setup and recommend a migration path.</p>
+                <div class="ds-cta-band__actions">
+                    <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="/AHM_WEB/js/main.js" defer></script>
 </body>
 </html>

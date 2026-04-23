@@ -1,50 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <script src="../../../js/site-config.js"></script>
-  <title>Solutions - AHM Data Solutions</title>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>Solutions - AHM Data Solutions</title>
+    <meta name="description" content="Battle-tested architecture patterns for finance, healthcare, retail, and enterprise teams.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
 
-  <main id="main" class="saas-page">
-    <section class="page-hero" aria-labelledby="solutions-hero">
-      <div class="container page-hero__grid">
-        <div>
-          <p class="eyebrow">Industry blueprints</p>
-          <h1 id="solutions-hero">Solution accelerators for every vertical</h1>
-          <p>Battle-tested architecture patterns for finance, healthcare, retail, and regulated enterprise teams.</p>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="/AHM_WEB/AHM_Website/pages/consultation/index.html">Book a free consultation</a>
-            <a class="btn btn-outline-secondary" href="/AHM_WEB/AHM_Website/pages/services/index.html">Explore our services</a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true"></div>
-      </div>
-    </section>
+    <main id="main">
+        <section class="ds-hero" id="hero">
+            <div class="ds-container">
+                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                        <span class="ds-badge">Industry Blueprints</span>
+                        <h1 class="ds-hero__title">Solution Accelerators for Every Vertical</h1>
+                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Battle-tested architecture patterns for finance, healthcare, retail, and regulated enterprise teams.</p>
+                        <div class="ds-hero__actions" style="justify-content:center;">
+                            <a href="/AHM_WEB/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Book a Free Consultation</a>
+                            <a href="/AHM_WEB/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="section-shell" aria-labelledby="solution-catalog">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 id="solution-catalog" class="section-title">Solution catalog</h2>
-        </div>
-        <div class="services-grid services-grid--2col">
-          <div class="service-card"><span class="badge-tag">Finance</span><div class="service-icon"><i class="fas fa-warehouse"></i></div><h5 class="service-title">Data Platform Modernisation</h5><p class="service-description">Migrate legacy DWH to cloud with ELT automation and observability.</p></div>
-          <div class="service-card"><span class="badge-tag">Retail</span><div class="service-icon"><i class="fas fa-chart-line"></i></div><h5 class="service-title">Analytics & BI Accelerator</h5><p class="service-description">Domain marts, KPI packs, and governance-ready dashboards.</p></div>
-          <div class="service-card"><span class="badge-tag">Healthcare</span><div class="service-icon"><i class="fas fa-robot"></i></div><h5 class="service-title">AI/ML for Operations</h5><p class="service-description">Forecasting, anomaly detection, and NLP pipelines with MLOps controls.</p></div>
-          <div class="service-card"><span class="badge-tag">Enterprise</span><div class="service-icon"><i class="fas fa-diagram-project"></i></div><h5 class="service-title">Integration & APIs</h5><p class="service-description">Real-time ingestion and secure APIs for partners and applications.</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
+        <section id="catalog" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>Solution Catalog</h2>
+                    <p>Pre-built accelerators designed to compress delivery timelines.</p>
+                </div>
+                <div class="ds-grid" style="grid-template-columns:repeat(2,1fr)">
+                    <div class="ds-card ds-animate ds-animate-delay-1">
+                        <span class="ds-badge" style="margin-bottom:var(--sp-2)">Finance</span>
+                        <div class="ds-card__icon"><i class="fas fa-warehouse"></i></div>
+                        <h3 class="ds-card__title">Data Platform Modernisation</h3>
+                        <p class="ds-card__desc">Migrate legacy DWH to cloud with ELT automation and observability.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2">
+                        <span class="ds-badge" style="margin-bottom:var(--sp-2)">Retail</span>
+                        <div class="ds-card__icon"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="ds-card__title">Analytics & BI Accelerator</h3>
+                        <p class="ds-card__desc">Domain marts, KPI packs, and governance-ready dashboards.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-1">
+                        <span class="ds-badge" style="margin-bottom:var(--sp-2)">Healthcare</span>
+                        <div class="ds-card__icon"><i class="fas fa-robot"></i></div>
+                        <h3 class="ds-card__title">AI/ML for Operations</h3>
+                        <p class="ds-card__desc">Forecasting, anomaly detection, and NLP pipelines with MLOps controls.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2">
+                        <span class="ds-badge" style="margin-bottom:var(--sp-2)">Enterprise</span>
+                        <div class="ds-card__icon"><i class="fas fa-diagram-project"></i></div>
+                        <h3 class="ds-card__title">Integration & APIs</h3>
+                        <p class="ds-card__desc">Real-time ingestion and secure APIs for partners and applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+        <section class="ds-cta-band">
+            <div class="ds-container ds-animate">
+                <h2>Don't see your industry?</h2>
+                <p>We build custom solutions for any vertical. Let's talk about your specific requirements.</p>
+                <div class="ds-cta-band__actions">
+                    <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="/AHM_WEB/js/main.js" defer></script>
 </body>
 </html>

@@ -1,51 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <script src="../../../js/site-config.js" defer></script>
-  <title>Services - AHM Data Solutions</title>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>Services - AHM Data Solutions</title>
+    <meta name="description" content="Enterprise data and cloud services. From platform modernization to AI-powered automation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <!-- Reference the new system.css from root -->
+    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+    <!-- Navigation -->
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
 
-  <main id="main" class="saas-page">
-    <section class="page-hero" aria-labelledby="services-title">
-      <div class="container page-hero__grid">
-        <div>
-          <p class="eyebrow">What we do</p>
-          <h1 id="services-title">Enterprise data and cloud services</h1>
-          <p>From platform modernization to AI-powered automation, we deliver secure solutions designed for measurable business impact.</p>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="/AHM_WEB/AHM_Website/pages/consultation/index.html">Book a consultation</a>
-            <a class="btn btn-outline-secondary" href="/AHM_WEB/AHM_Website/pages/contact/index.html">Talk to our team</a>
+    <!-- Hero -->
+    <section class="ds-hero" id="hero">
+      <div class="ds-container">
+        <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+          <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+            <span class="ds-badge">What We Do</span>
+            <h1 class="ds-hero__title">Enterprise Data &amp; Cloud Services</h1>
+            <p class="ds-hero__subtitle" style="margin-left: auto; margin-right: auto;">From platform modernization to AI-powered automation, we deliver secure solutions designed for measurable business impact.</p>
+            <div class="ds-hero__actions" style="justify-content: center;">
+              <a href="/AHM_WEB/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Book a Consultation</a>
+              <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Talk to Our Team</a>
+            </div>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true"></div>
       </div>
     </section>
 
-    <section class="section-shell" aria-labelledby="services-grid">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 id="services-grid" class="section-title">Core services</h2>
-        </div>
-        <div class="services-grid services-grid--2col">
-          <div class="service-card"><div class="service-icon"><i class="fas fa-database"></i></div><h5 class="service-title">Informatica</h5><p class="service-description">Data integration and governance frameworks for enterprise ecosystems.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-snowflake"></i></div><h5 class="service-title">Snowflake</h5><p class="service-description">Cloud data warehousing and workload optimization for faster insights.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-cloud"></i></div><h5 class="service-title">IDMC</h5><p class="service-description">Intelligent data management cloud solutions with quality and trust built-in.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-robot"></i></div><h5 class="service-title">Python & AI</h5><p class="service-description">ML and automation pipelines for forecasting, anomaly detection, and decisioning.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-code"></i></div><h5 class="service-title">Web Platforms</h5><p class="service-description">Modern web apps and internal tooling built for scale and reliability.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h5 class="service-title">Mobile Applications</h5><p class="service-description">Cross-platform mobile experiences with secure API-first architecture.</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <main id="main">
 
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+    <!-- ===== CORE SERVICES ===== -->
+    <section id="services-grid" class="ds-section ds-section--surface">
+        <div class="ds-container">
+            <div class="ds-section-header ds-animate">
+                <h2>Core Services</h2>
+                <p>Specialized expertise across the modern data stack.</p>
+            </div>
+            <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
+                <div class="ds-card ds-animate ds-animate-delay-1">
+                    <div class="ds-card__icon"><i class="fas fa-database"></i></div>
+                    <h3 class="ds-card__title">Informatica</h3>
+                    <p class="ds-card__desc">Data integration and governance frameworks for enterprise ecosystems.</p>
+                    <a href="/AHM_WEB/AHM_Website/pages/services/informatica.html" class="ds-card__link">Learn more →</a>
+                </div>
+                <div class="ds-card ds-animate ds-animate-delay-2">
+                    <div class="ds-card__icon"><i class="fas fa-snowflake"></i></div>
+                    <h3 class="ds-card__title">Snowflake</h3>
+                    <p class="ds-card__desc">Cloud data warehousing and workload optimization for faster insights.</p>
+                    <a href="/AHM_WEB/AHM_Website/pages/services/snowflake.html" class="ds-card__link">Learn more →</a>
+                </div>
+                <div class="ds-card ds-animate ds-animate-delay-3">
+                    <div class="ds-card__icon"><i class="fas fa-cloud"></i></div>
+                    <h3 class="ds-card__title">IDMC</h3>
+                    <p class="ds-card__desc">Intelligent data management cloud solutions with quality and trust built-in.</p>
+                    <a href="/AHM_WEB/AHM_Website/pages/services/idmc.html" class="ds-card__link">Learn more →</a>
+                </div>
+                <div class="ds-card ds-animate ds-animate-delay-1">
+                    <div class="ds-card__icon"><i class="fas fa-robot"></i></div>
+                    <h3 class="ds-card__title">Python & AI</h3>
+                    <p class="ds-card__desc">ML and automation pipelines for forecasting, anomaly detection, and decisioning.</p>
+                    <a href="/AHM_WEB/AHM_Website/pages/services/python-ai.html" class="ds-card__link">Learn more →</a>
+                </div>
+                <div class="ds-card ds-animate ds-animate-delay-2">
+                    <div class="ds-card__icon"><i class="fas fa-code"></i></div>
+                    <h3 class="ds-card__title">Web Platforms</h3>
+                    <p class="ds-card__desc">Modern web apps and internal tooling built for scale and reliability.</p>
+                    <a href="/AHM_WEB/AHM_Website/pages/services/web-development.html" class="ds-card__link">Learn more →</a>
+                </div>
+                <div class="ds-card ds-animate ds-animate-delay-3">
+                    <div class="ds-card__icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="ds-card__title">Mobile Applications</h3>
+                    <p class="ds-card__desc">Cross-platform mobile experiences with secure API-first architecture.</p>
+                    <a href="/AHM_WEB/AHM_Website/pages/services/web-development.html" class="ds-card__link">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MID CTA ===== -->
+    <section id="cta-mid" class="ds-cta-band">
+        <div class="ds-container ds-animate">
+            <h2>Need a tailored solution?</h2>
+            <p>Our engineers can architect a stack that fits your specific requirements.</p>
+            <div class="ds-cta-band__actions">
+                <a href="/AHM_WEB/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Schedule Free Review</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+
+    <!-- JS -->
+    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="/AHM_WEB/js/main.js" defer></script>
 </body>
 </html>

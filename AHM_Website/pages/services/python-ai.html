@@ -1,47 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <title>Python & AI Services - AHM</title>
-  
-  <script src="../../../js/site-config.js"></script>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>Python & AI Services - AHM Data Solutions</title>
+    <meta name="description" content="ML and automation pipelines for forecasting, anomaly detection, and intelligent decisioning.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main>
-    <section class="services-section enhanced-services-section">
-      <div class="services-bg-shape"></div>
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Python &amp; AI Services</h2>
-          <p class="section-subtitle">Machine learning, model development, and automation using Python and modern tooling.</p>
-        </div>
-        <div class="services-grid enhanced-services-grid">
-          <div class="service-card enhanced-service-card fade-in">
-            <div class="service-icon gradient-icon">
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="28" cy="28" r="24" fill="url(#grad4)" />
-                <defs>
-                  <linearGradient id="grad4" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#f7971e" />
-                    <stop offset="1" stop-color="#ffd200" />
-                  </linearGradient>
-                </defs>
-              </svg>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+
+    <main id="main">
+        <section class="ds-hero" id="hero">
+            <div class="ds-container">
+                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                        <span class="ds-badge">AI & Automation</span>
+                        <h1 class="ds-hero__title">Python & AI Services</h1>
+                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">ML and automation pipelines for forecasting, anomaly detection, and intelligent decisioning.</p>
+                        <div class="ds-hero__actions" style="justify-content:center;">
+                            <a href="/AHM_WEB/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Get Started</a>
+                            <a href="/AHM_WEB/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">All Services</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h5 class="service-title">Python &amp; AI</h5>
-            <p class="service-description">Machine learning, automation, and AI-driven solutions for your business.</p>
-            <span class="learn-more-btn">Learn more</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+        </section>
+
+        <section id="capabilities" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>What We Deliver</h2>
+                    <p>Production-grade AI/ML solutions from prototype to deployment.</p>
+                </div>
+                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
+                    <div class="ds-card ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-brain"></i></div>
+                        <h3 class="ds-card__title">ML Model Development</h3>
+                        <p class="ds-card__desc">Custom models for classification, regression, NLP, and computer vision tailored to your domain.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-cogs"></i></div>
+                        <h3 class="ds-card__title">Pipeline Automation</h3>
+                        <p class="ds-card__desc">End-to-end data pipelines with Airflow, Prefect, or custom Python orchestration.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-chart-bar"></i></div>
+                        <h3 class="ds-card__title">Forecasting & Analytics</h3>
+                        <p class="ds-card__desc">Time-series forecasting, anomaly detection, and statistical analysis for operational intelligence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds-cta-band">
+            <div class="ds-container ds-animate">
+                <h2>Have an AI use case in mind?</h2>
+                <p>We'll help you validate feasibility and build a proof of concept in weeks, not months.</p>
+                <div class="ds-cta-band__actions">
+                    <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="/AHM_WEB/js/main.js" defer></script>
 </body>
 </html>

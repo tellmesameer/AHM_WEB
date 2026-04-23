@@ -1,24 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <title>Client Feedback - AHM</title>
-    
-    <script src="../../../js/site-config.js"></script>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yH0fV6Yk1GqvYfD3Qk6i5+1Vv6xKc3yQ7F2s6g3Q4pJf3ZLq1k2Gf5s6Hk7l2a3b9c0d1e2f3g4h5i6j7k8l9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>Client Feedback - AHM Data Solutions</title>
+    <meta name="description" content="Read testimonials and case studies from AHM Data Solutions clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main class="container">
-    <h1>Client Feedback</h1>
-    <p>Read testimonials and case studies from our clients.</p>
-  </main>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+
+    <main id="main">
+        <section class="ds-hero" id="hero">
+            <div class="ds-container">
+                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                        <span class="ds-badge">Client Stories</span>
+                        <h1 class="ds-hero__title">Client Feedback</h1>
+                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Read testimonials and case studies from the organizations we've helped transform.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>What Our Clients Say</h2>
+                </div>
+                <div class="ds-grid" style="grid-template-columns:repeat(2,1fr)">
+                    <div class="ds-card ds-animate ds-animate-delay-1" style="text-align:left">
+                        <div style="display:flex;align-items:center;gap:var(--sp-1);margin-bottom:var(--sp-2)">
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                        </div>
+                        <p class="ds-card__desc" style="font-style:italic">"AHM transformed our legacy data warehouse into a modern cloud platform in under 12 weeks. The team's Snowflake expertise was exceptional."</p>
+                        <p style="color:var(--sys-muted);font-size:var(--sys-label);margin-top:var(--sp-2)">— VP of Data Engineering, Fortune 500 Retailer</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2" style="text-align:left">
+                        <div style="display:flex;align-items:center;gap:var(--sp-1);margin-bottom:var(--sp-2)">
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                            <i class="fas fa-star" style="color:#f59e0b;font-size:14px"></i>
+                        </div>
+                        <p class="ds-card__desc" style="font-style:italic">"Their Informatica migration saved us 40% on annual licensing costs while improving pipeline performance by 3x."</p>
+                        <p style="color:var(--sys-muted);font-size:var(--sys-label);margin-top:var(--sp-2)">— CTO, Healthcare Analytics Firm</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds-cta-band">
+            <div class="ds-container ds-animate">
+                <h2>Ready to become our next success story?</h2>
+                <p>Let's discuss how we can help your organization.</p>
+                <div class="ds-cta-band__actions">
+                    <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="/AHM_WEB/js/main.js" defer></script>
 </body>
 </html>

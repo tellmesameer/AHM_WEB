@@ -1,49 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <script src="../../../js/site-config.js"></script>
-  <title>About Us - AHM Data Solutions</title>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>About - AHM Data Solutions</title>
+    <meta name="description" content="Learn about AHM Data Solutions. We build enterprise-grade data platforms.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+    <!-- Navigation -->
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
 
-  <main class="saas-page" id="main" role="main">
-    <section class="page-hero" aria-labelledby="about-intro">
-      <div class="container page-hero__grid">
-        <div>
-          <p class="eyebrow">About AHM</p>
-          <h1 id="about-intro">Data engineering specialists for modern enterprises</h1>
-          <p>We combine cloud, analytics, and governance expertise to help teams build reliable data foundations and faster decision systems.</p>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="/AHM_WEB/AHM_Website/pages/consultation/index.html">Get a free consultation</a>
-            <a class="btn btn-outline-secondary" href="/AHM_WEB/AHM_Website/pages/services/index.html">Explore services</a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true"></div>
-      </div>
-    </section>
+    <main id="main">
+        <!-- ===== HERO ===== -->
+        <section class="ds-hero" id="hero">
+            <div class="ds-container">
+                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                        <span class="ds-badge">Our Mission</span>
+                        <h1 class="ds-hero__title">Engineering trust in data</h1>
+                        <p class="ds-hero__subtitle" style="margin-left: auto; margin-right: auto;">We are a team of certified data architects, cloud engineers, and developers dedicated to helping organizations build scalable, resilient data infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="section-shell" aria-labelledby="team">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 id="team" class="section-title">Leadership & Team</h2>
-        </div>
-        <div class="services-grid services-grid--2col">
-          <div class="service-card"><div class="service-icon"><i class="fas fa-user-tie"></i></div><h5 class="service-title">Jane Doe</h5><p class="service-description">Founder & CEO — 15+ years building enterprise-grade data programs.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-gears"></i></div><h5 class="service-title">Raj Patel</h5><p class="service-description">Head of Engineering — cloud architecture and platform modernization lead.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-chart-area"></i></div><h5 class="service-title">Aisha Khan</h5><p class="service-description">Director of Analytics — AI/ML strategy and business intelligence delivery.</p></div>
-          <div class="service-card"><div class="service-icon"><i class="fas fa-shield-halved"></i></div><h5 class="service-title">Security Office</h5><p class="service-description">Data protection, governance, and compliance embedded in every engagement.</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
+        <!-- ===== VALUES ===== -->
+        <section id="values" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>Our Core Values</h2>
+                    <p>The principles that guide our engineering and consulting practices.</p>
+                </div>
+                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
+                    <div class="ds-card ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="ds-card__title">Security First</h3>
+                        <p class="ds-card__desc">We design systems with zero-trust architecture, ensuring your data is protected at rest and in transit.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="ds-card__title">Performance</h3>
+                        <p class="ds-card__desc">Optimization isn't an afterthought. We build for low latency and high throughput from day one.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-handshake"></i></div>
+                        <h3 class="ds-card__title">Partnership</h3>
+                        <p class="ds-card__desc">We don't just hand over code. We work as an extension of your team to ensure long-term success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+        <!-- ===== METRICS ===== -->
+        <section id="metrics" class="ds-section ds-section--alt">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>By The Numbers</h2>
+                    <p>A track record of delivering enterprise-scale solutions.</p>
+                </div>
+                <div class="ds-metrics ds-animate">
+                    <div class="ds-metric-card">
+                        <div class="ds-metric-card__value" style="color:var(--sys-primary-light)">10+</div>
+                        <div class="ds-metric-card__label">Years Experience</div>
+                    </div>
+                    <div class="ds-metric-card">
+                        <div class="ds-metric-card__value" style="color:var(--sys-primary-light)">50+</div>
+                        <div class="ds-metric-card__label">Enterprise Deployments</div>
+                    </div>
+                    <div class="ds-metric-card">
+                        <div class="ds-metric-card__value" style="color:var(--sys-primary-light)">100%</div>
+                        <div class="ds-metric-card__label">Client Retention</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+
+    <!-- JS -->
+    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="/AHM_WEB/js/main.js" defer></script>
 </body>
 </html>

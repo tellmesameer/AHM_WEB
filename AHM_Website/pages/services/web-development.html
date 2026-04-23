@@ -1,47 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <script src="../../../js/site-config.js"></script>
-  <title>Web Development - AHM</title>
-    
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>Web Development - AHM Data Solutions</title>
+    <meta name="description" content="Modern web apps and internal tooling built for scale and reliability.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main>
-    <section class="services-section enhanced-services-section">
-      <div class="services-bg-shape"></div>
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Web Development</h2>
-          <p class="section-subtitle">Responsive, accessible, and performant web applications and sites.</p>
-        </div>
-        <div class="services-grid enhanced-services-grid">
-          <div class="service-card enhanced-service-card fade-in">
-            <div class="service-icon gradient-icon">
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="28" cy="28" r="24" fill="url(#grad5)" />
-                <defs>
-                  <linearGradient id="grad5" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#11998e" />
-                    <stop offset="1" stop-color="#38ef7d" />
-                  </linearGradient>
-                </defs>
-              </svg>
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+
+    <main id="main">
+        <section class="ds-hero" id="hero">
+            <div class="ds-container">
+                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                        <span class="ds-badge">Digital Products</span>
+                        <h1 class="ds-hero__title">Web Development</h1>
+                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Modern web apps and internal tooling built for scale, security, and reliability.</p>
+                        <div class="ds-hero__actions" style="justify-content:center;">
+                            <a href="/AHM_WEB/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Get Started</a>
+                            <a href="/AHM_WEB/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">All Services</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h5 class="service-title">Web Development</h5>
-            <p class="service-description">Custom web applications and responsive sites for your business needs.</p>
-            <span class="learn-more-btn">Learn more</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+        </section>
+
+        <section id="capabilities" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>What We Deliver</h2>
+                    <p>Full-stack web engineering for enterprise and startup teams.</p>
+                </div>
+                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
+                    <div class="ds-card ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-layer-group"></i></div>
+                        <h3 class="ds-card__title">Full-Stack Apps</h3>
+                        <p class="ds-card__desc">React, Next.js, and Node.js applications with CI/CD, testing, and production-grade infrastructure.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-tools"></i></div>
+                        <h3 class="ds-card__title">Internal Tooling</h3>
+                        <p class="ds-card__desc">Admin dashboards, data portals, and workflow tools that accelerate your team's productivity.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3 class="ds-card__title">Responsive & Mobile</h3>
+                        <p class="ds-card__desc">Cross-platform responsive design and progressive web apps with offline-first capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds-cta-band">
+            <div class="ds-container ds-animate">
+                <h2>Need a web platform built right?</h2>
+                <p>From MVP to enterprise-scale — we deliver production-ready web solutions.</p>
+                <div class="ds-cta-band__actions">
+                    <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+    <script src="/AHM_WEB/js/partials.js" defer></script>
+    <script src="/AHM_WEB/js/main.js" defer></script>
 </body>
 </html>
