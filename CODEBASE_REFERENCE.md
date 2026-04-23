@@ -2,6 +2,13 @@
 
 Last updated: 2026-04-23 (UTC)
 
+## 0) Latest update (theme correction)
+
+- Reworked the homepage theme in `css/phase3.css` to resolve inconsistent dark/gray blocks and improve visual cohesion.
+- Unified header/hero contrast, corrected subtitle spacing (`margin-top: 0`), and applied consistent container card styling across sections.
+- Improved mobile behavior for hero and nav theme states.
+
+
 ## 1) Recent fixes implemented
 
 The following changes from the latest UI/cleanup work are now implemented:
@@ -39,7 +46,7 @@ The following changes from the latest UI/cleanup work are now implemented:
 | `css/molecules.css` | ✅ Yes | Referenced stylesheet exists. |
 | `css/organisms.css` | ✅ Yes | Referenced stylesheet exists. |
 | `css/forms.css` | ✅ Yes | Referenced stylesheet exists. |
-| `css/phase3.css` | ✅ Yes | Referenced stylesheet exists. |
+| `css/phase3.css` | ✅ Yes | Referenced stylesheet exists; theme rework overrides added. |
 
 ---
 
