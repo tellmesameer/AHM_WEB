@@ -14,6 +14,8 @@ Last updated: 2026-04-23 (UTC)
 - Refreshed the Solutions page structure and styling with an Apple-inspired compact layout: removed inline CSS from `AHM_Website/pages/solutions/index.html`, added scoped shells/classes, tightened catalog card density, and improved KPI/industry card visuals in `css/components.css`.
 
 
+- Redesigned the Partners page with a premium card layout and added intrinsic logo dimensions (`width`/`height`) plus async decoding/lazy loading to reduce initial logo reflow/glitch on navigation.
+
 ## 1) Recent fixes implemented
 
 The following changes from the latest UI/cleanup work are now implemented:
