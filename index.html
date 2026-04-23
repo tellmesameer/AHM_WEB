@@ -2,13 +2,6 @@
 <html lang="en">
     <!-- Main file -->
     <head>
-        <style>
-            /* Critical CSS: loaded inline to avoid image blow-up before stylesheets are injected */
-            html { scroll-behavior: smooth; }
-            img, svg, video { max-width: 100%; height: auto; }
-            /* Ensure media never exceeds viewport width pre-CSS */
-            body { max-width: 100vw; overflow-x: hidden; }
-        </style>
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="./AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
@@ -45,7 +38,7 @@
 
     <main id="main">
     <!-- Overview of Services -->
-    <section id="services-overview" class="services-section">
+    <section id="services-overview" class="services-section section-shell">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Our Core Services</h2>
@@ -99,7 +92,7 @@
     </section>
 
     <!-- Quick Links to Solutions/Industries -->
-    <section id="solutions-preview" class="py-5 bg-light">
+    <section id="solutions-preview" class="py-5 bg-light section-shell section-shell--muted">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
@@ -153,7 +146,7 @@
     </section>
 
     <!-- Partners & Certifications -->
-    <section id="partners" class="partners-section">
+    <section id="partners" class="partners-section section-shell">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Trusted Partners & Certifications</h2>
@@ -183,7 +176,7 @@
     </section>
 
     <!-- Client Feedback Preview -->
-    <section id="testimonials" class="testimonials-section">
+    <section id="testimonials" class="testimonials-section section-shell section-shell--gradient">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">What Our Clients Say</h2>
@@ -248,7 +241,7 @@
         </div>
     </section>
     <!-- Contact Section with Secure Form -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5 section-shell">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
@@ -262,7 +255,6 @@
                         <form id="contactForm" class="secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
                             <!-- Formspree Configuration -->
                             <input type="hidden" name="_subject" value="New Contact Form Submission - AHM Website">
-                            <input type="hidden" name="_next" value="https://yoursite.com/thank-you">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
                             
@@ -379,7 +371,6 @@
                     <form id="consultationForm" class="secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
                         <!-- Formspree Configuration -->
                         <input type="hidden" name="_subject" value="Free Consultation Request - AHM Website">
-                        <input type="hidden" name="_next" value="https://yoursite.com/consultation-confirmation">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
                         
@@ -472,7 +463,7 @@
     </div>
 
     <!-- Newsletter Signup Section -->
-    <section id="newsletter" class="py-5 bg-light">
+    <section id="newsletter" class="py-5 bg-light section-shell section-shell--muted">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
@@ -482,7 +473,6 @@
                     <form id="newsletterForm" class="newsletter-form secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
                         <!-- Formspree Configuration -->
                         <input type="hidden" name="_subject" value="Newsletter Subscription - AHM Website">
-                        <input type="hidden" name="_next" value="https://yoursite.com/newsletter-confirmation">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
                         
@@ -509,7 +499,7 @@
     </main>
 </div>
     <!-- Include site footer -->
-    <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
+    <div data-include="./AHM_Website/components/organisms/footer.html"></div>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

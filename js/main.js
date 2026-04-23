@@ -519,8 +519,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== RESPONSIVE TESTING UTILITIES =====
     // Development helper to test different breakpoints
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.log('Responsive utilities loaded');
-        console.log('Current breakpoint:', getCurrentBreakpoint());
         
         // Add breakpoint indicator in development
         const indicator = document.createElement('div');
