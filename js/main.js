@@ -146,6 +146,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   document.addEventListener('includes:loaded', initNav);
   initNav(); // also try immediately in case includes already loaded
+  document.addEventListener('includes:loaded', setActiveNav);
+  setActiveNav();
 
   // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
   document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -274,15 +276,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function setActiveNav() {
   const links = document.querySelectorAll('.ds-nav__link');
-  const current = window.location.pathname.replace(/\/index\.html$/, '');
+  const normalize = (input) => {
+    const raw = String(input || '')
+      .replace(window.location.origin, '')
+      .replace(/\/+$/, '')
+      .replace(/\/index\.html$/i, '');
+    return raw || '/';
+  };
+  const current = normalize(window.location.pathname);
 
   links.forEach(link => {
-    const href = link.getAttribute('href').replace(/\/index\.html$/, '');
-
-    if (current === href) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    const href = normalize(link.getAttribute('href'));
+    const isHome = href === '/';
+    const active = isHome ? current === '/' : current === href || current.startsWith(href + '/');
+    link.classList.toggle('active', active);
+    link.setAttribute('aria-current', active ? 'page' : 'false');
   });
 }
