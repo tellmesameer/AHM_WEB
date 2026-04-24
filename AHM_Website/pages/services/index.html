@@ -55,15 +55,15 @@
     <div class="ds-container">
       <div class="ds-section-header"><h2>Service Architecture</h2></div>
       <div class="ds-pipeline">
-        <div class="ds-pipeline__step"><h3 class="ds-pipeline__title">Data Sources</h3></div>
+        <div class="ds-pipeline__step" data-tip="ERP, CRM, APIs, logs"><h3 class="ds-pipeline__title">Data Sources</h3></div>
         <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step"><h3 class="ds-pipeline__title">ETL</h3></div>
+        <div class="ds-pipeline__step" data-tip="Validation + transformation"><h3 class="ds-pipeline__title">ETL</h3></div>
         <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step"><h3 class="ds-pipeline__title">Storage</h3></div>
+        <div class="ds-pipeline__step" data-tip="Lakehouse and warehouse layers"><h3 class="ds-pipeline__title">Storage</h3></div>
         <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step"><h3 class="ds-pipeline__title">BI</h3></div>
+        <div class="ds-pipeline__step" data-tip="Governed semantic models"><h3 class="ds-pipeline__title">BI</h3></div>
         <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step"><h3 class="ds-pipeline__title">Apps</h3></div>
+        <div class="ds-pipeline__step" data-tip="Operational and executive apps"><h3 class="ds-pipeline__title">Apps</h3></div>
       </div>
     </div>
   </section>
@@ -99,11 +99,23 @@
         <div class="ds-col-6">
           <h2>Code / API Operations</h2>
           <p class="ds-mt-2">Every implementation includes API observability and clear operational endpoints for engineering and business teams.</p>
+          <div class="ds-tabbar ds-mt-2" role="tablist" aria-label="API format tabs">
+            <button class="ds-tab is-active" type="button" data-tab="rest" role="tab" aria-selected="true">REST</button>
+            <button class="ds-tab" type="button" data-tab="graphql" role="tab" aria-selected="false">GraphQL</button>
+          </div>
         </div>
         <div class="ds-col-6">
           <div class="ds-code">
-            <div class="ds-code__header"><span>GET /pipeline/status</span></div>
-            <pre class="ds-code__body">{
+            <div class="ds-code__header"><span id="api-code-title">GET /pipeline/status</span><button class="ds-copy-btn" type="button" data-copy-target="api-code-body">Copy</button></div>
+            <pre class="ds-code__body" id="api-code-body" data-rest='{
+  "latency": "124ms",
+  "status": "healthy"
+}' data-graphql='query PipelineStatus {
+  pipelineStatus {
+    latency
+    status
+  }
+}'>{
   "latency": "124ms",
   "status": "healthy"
 }</pre>

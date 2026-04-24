@@ -45,6 +45,50 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('includes:loaded', initThemeToggle);
   initThemeToggle();
 
+  // ===== API TABS + COPY (services page) =====
+  function initApiTabs() {
+    const codeEl = document.getElementById('api-code-body');
+    const titleEl = document.getElementById('api-code-title');
+    if (!codeEl) return;
+    const tabs = document.querySelectorAll('.ds-tab');
+    tabs.forEach(tab => {
+      if (tab.dataset.bound === 'true') return;
+      tab.dataset.bound = 'true';
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        const mode = tab.dataset.tab || 'rest';
+        const payload = codeEl.dataset[mode] || '';
+        codeEl.textContent = payload;
+        if (titleEl) titleEl.textContent = mode === 'graphql' ? 'POST /graphql' : 'GET /pipeline/status';
+      });
+    });
+    document.querySelectorAll('.ds-copy-btn').forEach(btn => {
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', async () => {
+        const targetId = btn.getAttribute('data-copy-target');
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        try {
+          await navigator.clipboard.writeText(target.textContent || '');
+          const original = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => { btn.textContent = original; }, 1200);
+        } catch (_) {
+          btn.textContent = 'Copy failed';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 1200);
+        }
+      });
+    });
+  }
+  document.addEventListener('includes:loaded', initApiTabs);
+  initApiTabs();
+
   // ===== SCROLL ANIMATIONS =====
   const observedSet = new WeakSet();
   const animObserver = new IntersectionObserver((entries) => {
@@ -200,6 +244,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
+
+  // ===== METRIC COUNT-UP =====
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.counted === 'true') return;
+      el.dataset.counted = 'true';
+      const raw = (el.getAttribute('data-count') || el.textContent || '').trim();
+      const num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+      if (!Number.isFinite(num)) return;
+      const suffix = raw.replace(/[0-9.]/g, '');
+      const decimals = raw.includes('.') ? 2 : 0;
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (t) => {
+        const p = Math.min((t - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const value = (num * eased).toFixed(decimals);
+        el.textContent = `${value}${suffix}`;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.45 });
+  document.querySelectorAll('.ds-metric-card__value[data-count]').forEach(el => counterObserver.observe(el));
 });
 
 function setActiveNav() {
