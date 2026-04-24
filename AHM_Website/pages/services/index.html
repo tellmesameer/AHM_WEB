@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
     <title>Services - AHM Data Solutions</title>
     <meta name="description" content="Enterprise data and cloud services. From platform modernization to AI-powered automation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,23 +11,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
     <!-- Reference the new system.css from root -->
-    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
+    <link rel="stylesheet" href="/css/system.css">
+    <script src="/base-config.js"></script>
+    <script src="/js/site-config.js"></script>
 </head>
 <body>
     <!-- Navigation -->
-    <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
+    <div data-include="/AHM_Website/components/organisms/header.html"></div>
 
     <!-- Hero -->
     <section class="ds-hero" id="hero">
       <div class="ds-container">
-        <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
-          <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+        <div class="ds-hero__grid">
+          <div class="ds-hero__content ds-animate">
             <span class="ds-badge">What We Do</span>
             <h1 class="ds-hero__title">Enterprise Data &amp; Cloud Services</h1>
-            <p class="ds-hero__subtitle" style="margin-left: auto; margin-right: auto;">From platform modernization to AI-powered automation, we deliver secure solutions designed for measurable business impact.</p>
-            <div class="ds-hero__actions" style="justify-content: center;">
-              <a href="/AHM_WEB/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Book a Consultation</a>
-              <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Talk to Our Team</a>
+            <p class="ds-hero__subtitle">From platform modernization to AI-powered automation, we deliver secure solutions designed for measurable business impact.</p>
+            <div class="ds-hero__actions">
+              <a href="/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Book a Consultation</a>
+              <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Talk to Our Team</a>
+            </div>
+          </div>
+          <div class="ds-hero__visual ds-animate ds-slide-right">
+            <div class="ds-dashboard-mock">
+              <div class="ds-dashboard-header">
+                <div class="ds-dashboard-title">Data Pipeline Dashboard</div>
+                <div class="ds-dashboard-status"><span class="ds-status-dot ds-status--healthy"></span> All Systems Operational</div>
+              </div>
+              <div class="ds-dashboard-metrics">
+                <div class="ds-metric">
+                  <div class="ds-metric-value">12.4K</div>
+                  <div class="ds-metric-label">Queries/sec</div>
+                  <div class="ds-metric-bar"><span style="width:62%"></span></div>
+                </div>
+                <div class="ds-metric">
+                  <div class="ds-metric-value">99.99%</div>
+                  <div class="ds-metric-label">Uptime</div>
+                  <div class="ds-metric-bar"><span style="width:99%"></span></div>
+                </div>
+              </div>
+              <div class="ds-dashboard-chart">
+                <div class="ds-chart-placeholder">
+                  <i class="fas fa-chart-line"></i>
+                  <span>Real-time Analytics</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -48,38 +76,200 @@
                     <div class="ds-card__icon"><i class="fas fa-database"></i></div>
                     <h3 class="ds-card__title">Informatica</h3>
                     <p class="ds-card__desc">Data integration and governance frameworks for enterprise ecosystems.</p>
-                    <a href="/AHM_WEB/AHM_Website/pages/services/informatica.html" class="ds-card__link">Learn more →</a>
+                    <a href="/AHM_Website/pages/services/informatica.html" class="ds-card__link">Learn more →</a>
                 </div>
                 <div class="ds-card ds-animate ds-animate-delay-2">
                     <div class="ds-card__icon"><i class="fas fa-snowflake"></i></div>
                     <h3 class="ds-card__title">Snowflake</h3>
                     <p class="ds-card__desc">Cloud data warehousing and workload optimization for faster insights.</p>
-                    <a href="/AHM_WEB/AHM_Website/pages/services/snowflake.html" class="ds-card__link">Learn more →</a>
+                    <a href="snowflake.html" class="ds-card__link">Learn more →</a>
                 </div>
                 <div class="ds-card ds-animate ds-animate-delay-3">
                     <div class="ds-card__icon"><i class="fas fa-cloud"></i></div>
                     <h3 class="ds-card__title">IDMC</h3>
                     <p class="ds-card__desc">Intelligent data management cloud solutions with quality and trust built-in.</p>
-                    <a href="/AHM_WEB/AHM_Website/pages/services/idmc.html" class="ds-card__link">Learn more →</a>
+                    <a href="idmc.html" class="ds-card__link">Learn more →</a>
                 </div>
                 <div class="ds-card ds-animate ds-animate-delay-1">
                     <div class="ds-card__icon"><i class="fas fa-robot"></i></div>
                     <h3 class="ds-card__title">Python & AI</h3>
                     <p class="ds-card__desc">ML and automation pipelines for forecasting, anomaly detection, and decisioning.</p>
-                    <a href="/AHM_WEB/AHM_Website/pages/services/python-ai.html" class="ds-card__link">Learn more →</a>
+                    <a href="python-ai.html" class="ds-card__link">Learn more →</a>
                 </div>
                 <div class="ds-card ds-animate ds-animate-delay-2">
                     <div class="ds-card__icon"><i class="fas fa-code"></i></div>
                     <h3 class="ds-card__title">Web Platforms</h3>
                     <p class="ds-card__desc">Modern web apps and internal tooling built for scale and reliability.</p>
-                    <a href="/AHM_WEB/AHM_Website/pages/services/web-development.html" class="ds-card__link">Learn more →</a>
+                    <a href="web-development.html" class="ds-card__link">Learn more →</a>
                 </div>
                 <div class="ds-card ds-animate ds-animate-delay-3">
                     <div class="ds-card__icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3 class="ds-card__title">Mobile Applications</h3>
                     <p class="ds-card__desc">Cross-platform mobile experiences with secure API-first architecture.</p>
-                    <a href="/AHM_WEB/AHM_Website/pages/services/web-development.html" class="ds-card__link">Learn more →</a>
+                    <a href="web-development.html" class="ds-card__link">Learn more →</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PIPELINE FLOW ===== -->
+    <section id="pipeline" class="ds-section ds-section--alt">
+        <div class="ds-container">
+            <div class="ds-section-header ds-animate">
+                <span class="ds-badge">How It Works</span>
+                <h2>End-to-End Data Pipeline</h2>
+                <p>From raw data ingestion to business-ready dashboards — a fully managed flow.</p>
+            </div>
+            <div class="ds-pipeline ds-animate">
+                <div class="ds-pipeline__step">
+                    <div class="ds-pipeline__icon"><i class="fas fa-download"></i></div>
+                    <h3 class="ds-pipeline__title">Ingestion</h3>
+                    <p class="ds-pipeline__desc">APIs, files, streams, CDC — pull from any source in real-time or batch.</p>
+                </div>
+                <div class="ds-pipeline__arrow">→</div>
+                <div class="ds-pipeline__step">
+                    <div class="ds-pipeline__icon"><i class="fas fa-cogs"></i></div>
+                    <h3 class="ds-pipeline__title">Processing</h3>
+                    <p class="ds-pipeline__desc">ETL, dbt, Spark — transform, clean, and enrich at scale.</p>
+                </div>
+                <div class="ds-pipeline__arrow">→</div>
+                <div class="ds-pipeline__step">
+                    <div class="ds-pipeline__icon"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="ds-pipeline__title">Semantic Layer</h3>
+                    <p class="ds-pipeline__desc">Metrics, definitions, governed data products ready for consumption.</p>
+                </div>
+                <div class="ds-pipeline__arrow">→</div>
+                <div class="ds-pipeline__step">
+                    <div class="ds-pipeline__icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3 class="ds-pipeline__title">Dashboard</h3>
+                    <p class="ds-pipeline__desc">BI, reports, real-time analytics — actionable insights delivered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CODE BLOCK ===== -->
+    <section id="code" class="ds-section">
+        <div class="ds-container">
+            <div class="ds-grid" style="grid-template-columns:1fr 1fr;align-items:center">
+                <div class="ds-animate ds-slide-left">
+                    <span class="ds-badge">Technical Depth</span>
+                    <h2>Production-Ready Pipelines</h2>
+                    <p class="ds-mt-2" style="color:var(--sys-muted);max-width:440px;line-height:1.7">Our data engineers write clean, tested, version-controlled transformation code — not drag-and-drop workflows. Every pipeline is CI/CD-deployed and monitored.</p>
+                    <div class="ds-mt-4" style="display:flex;gap:var(--sp-2);flex-wrap:wrap">
+                        <a href="snowflake.html" class="ds-btn ds-btn-primary">Explore Architecture</a>
+                        <a href="../contact/index.html" class="ds-btn ds-btn-secondary">Talk to an Engineer</a>
+                    </div>
+                </div>
+                <div class="ds-code ds-animate ds-slide-right">
+                    <div class="ds-code__header">
+                        <div class="ds-code__dots"><span></span><span></span><span></span></div>
+                        <span>etl_pipeline.py</span>
+                    </div>
+                    <pre class="ds-code__body"><span class="cm"># Data quality checks and transformations</span>
+<span class="kw">def</span> <span class="fn">transform_customer_data</span>(df):
+    <span class="cm"># Remove duplicates and standardize formats</span>
+    df = df.drop_duplicates(subset=<span class="str">'customer_id'</span>)
+    df[<span class="str">'email'</span>] = df[<span class="str">'email'</span>].str.lower().str.strip()
+    
+    <span class="cm"># Validate data types</span>
+    df[<span class="str">'signup_date'</span>] = pd.to_datetime(df[<span class="str">'signup_date'</span>])
+    df[<span class="str">'revenue'</span>] = pd.to_numeric(df[<span class="str">'revenue'</span>], errors=<span class="str">'coerce'</span>)
+    
+    <span class="kw">return</span> df
+
+<span class="cm"># Apply transformations</span>
+cleaned_data = transform_customer_data(raw_data)</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== METRICS / OBSERVABILITY ===== -->
+    <section id="metrics" class="ds-section ds-section--alt">
+        <div class="ds-container">
+            <div class="ds-section-header ds-animate">
+                <span class="ds-badge"><i class="fas fa-signal" style="margin-right:4px"></i> Built-in Observability</span>
+                <h2>System Health at a Glance</h2>
+                <p>Real-time monitoring, alerting, and performance metrics across your entire data stack.</p>
+            </div>
+            <div class="ds-metrics ds-animate">
+                <div class="ds-metric-card">
+                    <div class="ds-metric-card__value" style="color:var(--sys-success)">124ms</div>
+                    <div class="ds-metric-card__label">Average Latency</div>
+                    <div class="ds-metric-card__bar"><span style="width:18%"></span></div>
+                </div>
+                <div class="ds-metric-card">
+                    <div class="ds-metric-card__value" style="color:var(--sys-primary-light)">99.99%</div>
+                    <div class="ds-metric-card__label">Platform Uptime</div>
+                    <div class="ds-metric-card__bar"><span style="width:99%"></span></div>
+                </div>
+                <div class="ds-metric-card">
+                    <div class="ds-metric-card__value" style="color:var(--sys-warning)">12.4K</div>
+                    <div class="ds-metric-card__label">Queries / Second</div>
+                    <div class="ds-metric-card__bar"><span style="width:62%"></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPARISON TABLE ===== -->
+    <section id="comparison" class="ds-section">
+        <div class="ds-container">
+            <div class="ds-section-header ds-animate">
+                <span class="ds-badge">Why Choose AHM</span>
+                <h2>Service Comparison</h2>
+                <p>See how our managed services compare to traditional approaches.</p>
+            </div>
+            <div class="ds-table-wrap ds-animate">
+                <table class="ds-table">
+                    <thead>
+                        <tr>
+                            <th>Capability</th>
+                            <th>DIY Development</th>
+                            <th>Basic Consulting</th>
+                            <th class="ds-table--highlight">AHM Managed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>24/7 Support</td>
+                            <td><span class="ds-cross">✗</span></td>
+                            <td><span class="ds-cross">✗</span></td>
+                            <td class="ds-table--highlight"><span class="ds-check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Production Monitoring</td>
+                            <td><span class="ds-cross">✗</span></td>
+                            <td>Partial</td>
+                            <td class="ds-table--highlight"><span class="ds-check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Security Compliance</td>
+                            <td><span class="ds-cross">✗</span></td>
+                            <td><span class="ds-cross">✗</span></td>
+                            <td class="ds-table--highlight"><span class="ds-check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cost Optimization</td>
+                            <td><span class="ds-cross">✗</span></td>
+                            <td>Partial</td>
+                            <td class="ds-table--highlight"><span class="ds-check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Scalability</td>
+                            <td>Partial</td>
+                            <td><span class="ds-check">✓</span></td>
+                            <td class="ds-table--highlight"><span class="ds-check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Time to Deploy</td>
+                            <td>6-12 months</td>
+                            <td>3-6 months</td>
+                            <td class="ds-table--highlight">2-4 weeks</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -101,7 +291,9 @@
     <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
 
     <!-- JS -->
-    <script src="/AHM_WEB/js/partials.js" defer></script>
-    <script src="/AHM_WEB/js/main.js" defer></script>
+    <script src="/js/partials.js" defer></script>
+    <script src="/js/main.js" defer></script>
 </body>
 </html>
+
+

@@ -36,43 +36,43 @@
     window.SITE_BASE = './';
   }
 
-  // Remove leading project folder when authored as "/AHM_WEB/..."
-  function stripProjectPrefix(path){
-    return String(path).replace(/^\/?AHM_WEB\//i, '');
+  console.log('[DEBUG] SITE_BASE:', window.SITE_BASE);
+
+  function normalizePath(path){
+    let value = String(path || '').trim();
+    // Remove common authoring prefixes so result is relative to the AHM_Website root
+    value = value.replace(/^\/?site\//i, '');
+    value = value.replace(/^\/?AHM_WEB\//i, '');
+    value = value.replace(/^\/?AHM_Website\//i, '');
+    // Strip any leading slashes left-over
+    return value.replace(/^\/+/, '');
   }
+
+  console.log('[DEBUG] normalizePath:', normalizePath.toString());
 
   // Expose a small helper to prefix paths with SITE_BASE
   window.withBase = function(path){
     if(!path) return path;
     const normalizedBase = String(window.SITE_BASE || './').replace(/\/+$/,'') + '/';
-    const withoutProj = stripProjectPrefix(path);
-    const clean = String(withoutProj).replace(/^\/+/, '');
+    const clean = normalizePath(path);
     return normalizedBase + clean;
   };
 
   // On DOM ready, normalize common attributes that were authored with absolute 
-  // "/AHM_WEB/" paths so they work under dynamic base as well.
+  // "/AHM_WEB/", "/AHM_Website/", or "site/" paths so they work under dynamic base.
   function rewriteAttributes(){
-    const selector = [
-      'a[href^="/AHM_WEB/"]',
-      'link[href^="/AHM_WEB/"]',
-      'script[src^="/AHM_WEB/"]',
-      'img[src^="/AHM_WEB/"]',
-      '[data-include^="/AHM_WEB/"]'
-    ].join(',');
-    document.querySelectorAll(selector).forEach(el=>{
-      if(el.hasAttribute('href')){
-        const v = el.getAttribute('href');
-        el.setAttribute('href', window.withBase(v));
-      }
-      if(el.hasAttribute('src')){
-        const v = el.getAttribute('src');
-        el.setAttribute('src', window.withBase(v));
-      }
-      if(el.hasAttribute('data-include')){
-        const v = el.getAttribute('data-include');
-        el.setAttribute('data-include', window.withBase(v));
-      }
+    const elements = document.querySelectorAll('[href],[src],[data-include]');
+    elements.forEach(el=>{
+      console.log('[DEBUG] Processing element:', el);
+      ['href','src','data-include'].forEach(attr => {
+        if(!el.hasAttribute(attr)) return;
+        const value = el.getAttribute(attr);
+        if(!value) return;
+        console.log('[DEBUG] Attribute:', attr, 'Value:', el.getAttribute(attr));
+        if(/^(?:\/?(?:AHM_WEB|AHM_Website|site)\/)/i.test(value)){
+          el.setAttribute(attr, window.withBase(value));
+        }
+      });
     });
 
     // Normalize <base href> if present and static

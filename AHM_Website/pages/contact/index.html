@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
+    <link rel="stylesheet" href="/css/system.css">
+    <script src="/base-config.js"></script>
+    <script src="/js/site-config.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -18,13 +20,57 @@
 
     <main id="main">
         <!-- ===== HERO ===== -->
-        <section class="ds-hero" id="hero" style="padding-bottom:var(--sp-6)">
+        <section class="ds-hero" id="hero">
             <div class="ds-container">
-                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
-                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
-                        <span class="ds-badge">Contact Us</span>
-                        <h1 class="ds-hero__title">Let's build your data future</h1>
-                        <p class="ds-hero__subtitle" style="margin-left: auto; margin-right: auto;">Our engineers respond within 24 hours to discuss your architecture, implementation, or scaling needs.</p>
+                <div class="ds-hero__grid">
+                    <!-- Left: Copy -->
+                    <div class="ds-hero__content ds-animate">
+                        <span class="ds-badge">
+                            <span class="ds-status-dot"></span> Get In Touch
+                        </span>
+                        <h1 class="ds-hero__title">Let's build your<br>data future</h1>
+                        <p class="ds-hero__subtitle">Our certified engineers respond within 24 hours to discuss your architecture, implementation, or scaling needs.</p>
+                        <div class="ds-hero__actions">
+                            <a href="#contact" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                            <a href="../consultation/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Free Consultation →</a>
+                        </div>
+                    </div>
+                    <!-- Right: Contact Visual -->
+                    <div class="ds-dashboard ds-animate ds-animate-delay-2">
+                        <div class="ds-dashboard__bar">
+                            <span class="ds-dashboard__dot ds-dashboard__dot--r"></span>
+                            <span class="ds-dashboard__dot ds-dashboard__dot--y"></span>
+                            <span class="ds-dashboard__dot ds-dashboard__dot--g"></span>
+                        </div>
+                        <div class="ds-dashboard__body">
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Response Time</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--success">&lt;24hrs</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Average</div>
+                            </div>
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Support</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--success">24/7</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Enterprise Clients</div>
+                            </div>
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Channels</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--primary">Email</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Phone, Chat</div>
+                            </div>
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Languages</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--success">5+</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Global Support</div>
+                            </div>
+                            <!-- Status Row -->
+                            <div class="ds-dash-status">
+                                <span style="display:flex;align-items:center;font-size:0.8125rem;color:#94A3B8">
+                                    <span class="ds-status-dot"></span> Support Team Online
+                                </span>
+                                <span style="font-size:0.75rem;color:#10B981;font-weight:600">● AVAILABLE</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -33,85 +79,67 @@
         <!-- ===== CONTACT FORM ===== -->
         <section id="contact" class="ds-section ds-section--surface">
             <div class="ds-container">
-                <div class="ds-grid" style="grid-template-columns: 1fr 1fr; align-items: start; gap: var(--sp-6)">
-                    <!-- Contact Info -->
-                    <div class="ds-animate ds-slide-left">
-                        <h2>Direct Contact</h2>
-                        <p class="ds-mt-2" style="color:var(--sys-muted); margin-bottom:var(--sp-4);">Prefer email or phone? Reach out to us directly through the channels below.</p>
-                        
-                        <div class="ds-card ds-mb-3" style="flex-direction:row; align-items:center; gap:var(--sp-2); padding:var(--sp-2)">
-                            <div class="ds-card__icon" style="margin:0; width:40px; height:40px; flex-shrink:0"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h3 style="font-size:1rem; margin:0">Email</h3>
-                                <a href="mailto:info@ahmdatasolutions.com" style="color:var(--sys-muted); font-size:var(--sys-body)">info@ahmdatasolutions.com</a>
-                            </div>
+                <div class="ds-section-header ds-animate">
+                    <span class="ds-badge">Let's Talk</span>
+                    <h2>Get In Touch</h2>
+                    <p>Ready to start your data transformation? Our team responds within 24 hours.</p>
+                </div>
+                <div style="max-width:720px;margin:0 auto" class="ds-animate">
+                    <form id="contactForm" class="ds-form secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - AHM Website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="ds-form-group">
+                            <label for="firstName" class="ds-form-label">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" class="ds-form-input" required placeholder="First Name" autocomplete="given-name">
                         </div>
-
-                        <div class="ds-card ds-mb-3" style="flex-direction:row; align-items:center; gap:var(--sp-2); padding:var(--sp-2)">
-                            <div class="ds-card__icon" style="margin:0; width:40px; height:40px; flex-shrink:0"><i class="fas fa-phone"></i></div>
-                            <div>
-                                <h3 style="font-size:1rem; margin:0">Phone</h3>
-                                <a href="tel:+15551234567" style="color:var(--sys-muted); font-size:var(--sys-body)">+1 (555) 123-4567</a>
-                            </div>
+                        <div class="ds-form-group">
+                            <label for="lastName" class="ds-form-label">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" class="ds-form-input" required placeholder="Last Name" autocomplete="family-name">
                         </div>
-
-                        <div class="ds-card" style="flex-direction:row; align-items:center; gap:var(--sp-2); padding:var(--sp-2)">
-                            <div class="ds-card__icon" style="margin:0; width:40px; height:40px; flex-shrink:0"><i class="fas fa-map-marker-alt"></i></div>
-                            <div>
-                                <h3 style="font-size:1rem; margin:0">Headquarters</h3>
-                                <span style="color:var(--sys-muted); font-size:var(--sys-body)">123 Tech Boulevard<br>San Francisco, CA 94105</span>
-                            </div>
+                        <div class="ds-form-group">
+                            <label for="email" class="ds-form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="ds-form-input" required placeholder="email@example.com" autocomplete="email">
                         </div>
-                    </div>
-
-                    <!-- Form -->
-                    <div class="ds-animate ds-slide-right">
-                        <form id="contactForm" class="ds-form secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
-                            <input type="hidden" name="_subject" value="New Contact Form Submission - AHM Website">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="table">
-                            <div class="ds-form-group">
-                                <label for="firstName" class="ds-form-label">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" class="ds-form-input" required placeholder="First Name">
-                            </div>
-                            <div class="ds-form-group">
-                                <label for="lastName" class="ds-form-label">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" class="ds-form-input" required placeholder="Last Name">
-                            </div>
-                            <div class="ds-form-group">
-                                <label for="email" class="ds-form-label">Email Address *</label>
-                                <input type="email" id="email" name="email" class="ds-form-input" required placeholder="email@example.com">
-                            </div>
-                            <div class="ds-form-group">
-                                <label for="phone" class="ds-form-label">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="ds-form-input" placeholder="+1 (555) 000-0000">
-                            </div>
-                            <div class="ds-form-group ds-form-group--full">
-                                <label for="company" class="ds-form-label">Company Name</label>
-                                <input type="text" id="company" name="company" class="ds-form-input" placeholder="Your Company">
-                            </div>
-                            <div class="ds-form-group ds-form-group--full">
-                                <label for="service" class="ds-form-label">Service Interest *</label>
-                                <select id="service" name="service" class="ds-form-input" required>
-                                    <option value="">Select a service...</option>
-                                    <option value="informatica">Informatica Services</option>
-                                    <option value="snowflake">Snowflake Services</option>
-                                    <option value="idmc">IDMC Solutions</option>
-                                    <option value="python-ai">Python & AI Services</option>
-                                    <option value="web-development">Web Development</option>
-                                    <option value="consultation">General Consultation</option>
-                                </select>
-                            </div>
-                            <div class="ds-form-group ds-form-group--full">
-                                <label for="message" class="ds-form-label">Message *</label>
-                                <textarea id="message" name="message" class="ds-form-input" rows="5" required placeholder="Tell us about your data challenges..."></textarea>
-                            </div>
-                            <div class="ds-form-group ds-form-group--full">
-                                <button type="submit" class="ds-btn ds-btn-primary ds-btn-lg ds-btn-full">
-                                    <span class="btn-text">Send Message</span>
-                                </button>
-                            </div>
-                        </form>
+                        <div class="ds-form-group">
+                            <label for="phone" class="ds-form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="ds-form-input" placeholder="+1 (555) 000-0000" autocomplete="tel">
+                        </div>
+                        <div class="ds-form-group ds-form-group--full">
+                            <label for="company" class="ds-form-label">Company Name</label>
+                            <input type="text" id="company" name="company" class="ds-form-input" placeholder="Your Company" autocomplete="organization">
+                        </div>
+                        <div class="ds-form-group ds-form-group--full">
+                            <label for="service" class="ds-form-label">Service Interest *</label>
+                            <select id="service" name="service" class="ds-form-input" required>
+                                <option value="">Select a service...</option>
+                                <option value="informatica">Informatica Services</option>
+                                <option value="snowflake">Snowflake Services</option>
+                                <option value="idmc">IDMC Solutions</option>
+                                <option value="python-ai">Python & AI Services</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="consultation">General Consultation</option>
+                            </select>
+                        </div>
+                        <div class="ds-form-group ds-form-group--full">
+                            <label for="message" class="ds-form-label">Message *</label>
+                            <textarea id="message" name="message" class="ds-form-input" rows="5" required placeholder="Tell us about your data challenges..."></textarea>
+                        </div>
+                        <div class="ds-form-group ds-form-group--full">
+                            <button type="submit" class="ds-btn ds-btn-primary ds-btn-lg ds-btn-full">
+                                <span class="btn-text">Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                    <div style="margin-top:var(--sp-4);padding-top:var(--sp-3);border-top:1px solid var(--sys-border)">
+                        <p class="ds-text-center" style="font-size:var(--sys-small);color:var(--sys-muted);margin-bottom:var(--sp-2)">Trusted by teams at</p>
+                        <div class="ds-logos" style="gap:var(--sp-3)">
+                            <img src="/images/informatica2000-689.png" alt="Informatica" loading="lazy">
+                            <img src="/images/Snowflake_Logo.svg" alt="Snowflake" loading="lazy">
+                            <img src="/images/MSFT_logo_png_grey.png" alt="Microsoft" loading="lazy">
+                            <img src="/images/Amazon_Web_Services_2025.svg" alt="AWS" loading="lazy">
+                            <img src="/images/Google_Cloud_logo.svg" alt="Google Cloud" loading="lazy">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,7 +150,9 @@
     <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
 
     <!-- JS -->
-    <script src="/AHM_WEB/js/partials.js" defer></script>
-    <script src="/AHM_WEB/js/main.js" defer></script>
+    <script src="/js/partials.js" defer></script>
+    <script src="/js/main.js" defer></script>
 </body>
 </html>
+
+

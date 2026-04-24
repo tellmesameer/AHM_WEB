@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/AHM_WEB/css/system.css">
+    <link rel="stylesheet" href="/css/system.css">
+        <script src="/base-config.js"></script>
+        <script src="/js/site-config.js"></script>
 </head>
 <body>
     <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
@@ -18,49 +20,227 @@
     <main id="main">
         <section class="ds-hero" id="hero">
             <div class="ds-container">
-                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
-                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
-                        <span class="ds-badge">Free Consultation</span>
-                        <h1 class="ds-hero__title">Let's architect your data future</h1>
-                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Our consultation services help you evaluate, plan, and execute digital transformation initiatives with confidence.</p>
-                        <div class="ds-hero__actions" style="justify-content:center;">
-                            <a href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us Now</a>
-                            <a href="/AHM_WEB/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Return Home</a>
+                <div class="ds-hero__grid">
+                    <!-- Left: Copy -->
+                    <div class="ds-hero__content ds-animate">
+                        <span class="ds-badge">
+                            <span class="ds-status-dot"></span> Free Consultation
+                        </span>
+                        <h1 class="ds-hero__title">Architect your<br>data future</h1>
+                        <p class="ds-hero__subtitle">Get expert guidance on your data transformation journey. Our certified architects provide actionable insights and implementation roadmaps.</p>
+                        <div class="ds-hero__actions">
+                            <a href="../contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Book Consultation</a>
+                            <a href="#process" class="ds-btn ds-btn-secondary ds-btn-lg">Learn More →</a>
+                        </div>
+                    </div>
+                    <!-- Right: Consultation Visual -->
+                    <div class="ds-dashboard ds-animate ds-animate-delay-2">
+                        <div class="ds-dashboard__bar">
+                            <span class="ds-dashboard__dot ds-dashboard__dot--r"></span>
+                            <span class="ds-dashboard__dot ds-dashboard__dot--y"></span>
+                            <span class="ds-dashboard__dot ds-dashboard__dot--g"></span>
+                        </div>
+                        <div class="ds-dashboard__body">
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Response Time</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--success">&lt;24hrs</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Initial Contact</div>
+                            </div>
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Assessment</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--success">Free</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Architecture Review</div>
+                            </div>
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Deliverables</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--primary">Custom</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Implementation Plan</div>
+                            </div>
+                            <div class="ds-dash-metric">
+                                <div class="ds-dash-metric__label">Experience</div>
+                                <div class="ds-dash-metric__value ds-dash-metric__value--success">10+</div>
+                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Years Average</div>
+                            </div>
+                            <!-- Status Row -->
+                            <div class="ds-dash-status">
+                                <span style="display:flex;align-items:center;font-size:0.8125rem;color:#94A3B8">
+                                    <span class="ds-status-dot"></span> Consultants Available
+                                </span>
+                                <span style="font-size:0.75rem;color:#10B981;font-weight:600">● READY</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="process" class="ds-section ds-section--surface">
+        <!-- ===== CONSULTATION PROCESS ===== -->
+        <section id="process" class="ds-section ds-section--alt">
             <div class="ds-container">
                 <div class="ds-section-header ds-animate">
-                    <h2>How It Works</h2>
-                    <p>A structured approach to understanding your needs and delivering value fast.</p>
+                    <span class="ds-badge">Our Process</span>
+                    <h2>From Assessment to Action</h2>
+                    <p>A proven methodology that delivers clarity and confidence in your data strategy.</p>
                 </div>
-                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
-                    <div class="ds-card ds-animate ds-animate-delay-1">
-                        <div class="ds-card__icon"><i class="fas fa-comments"></i></div>
-                        <h3 class="ds-card__title">1. Discovery Call</h3>
-                        <p class="ds-card__desc">30-minute call to understand your current stack, pain points, and business objectives.</p>
+                <div class="ds-pipeline ds-animate">
+                    <div class="ds-pipeline__step">
+                        <div class="ds-pipeline__icon"><i class="fas fa-comments"></i></div>
+                        <h3 class="ds-pipeline__title">Discovery</h3>
+                        <p class="ds-pipeline__desc">30-minute call to understand your current architecture, challenges, and business goals.</p>
                     </div>
-                    <div class="ds-card ds-animate ds-animate-delay-2">
-                        <div class="ds-card__icon"><i class="fas fa-drafting-compass"></i></div>
-                        <h3 class="ds-card__title">2. Architecture Review</h3>
-                        <p class="ds-card__desc">We audit your infrastructure and deliver a detailed findings report with recommendations.</p>
+                    <div class="ds-pipeline__arrow">→</div>
+                    <div class="ds-pipeline__step">
+                        <div class="ds-pipeline__icon"><i class="fas fa-search"></i></div>
+                        <h3 class="ds-pipeline__title">Assessment</h3>
+                        <p class="ds-pipeline__desc">Deep-dive analysis of your data stack, performance metrics, and optimization opportunities.</p>
                     </div>
-                    <div class="ds-card ds-animate ds-animate-delay-3">
-                        <div class="ds-card__icon"><i class="fas fa-rocket"></i></div>
-                        <h3 class="ds-card__title">3. Execution Roadmap</h3>
-                        <p class="ds-card__desc">A prioritized implementation plan with timelines, milestones, and resource requirements.</p>
+                    <div class="ds-pipeline__arrow">→</div>
+                    <div class="ds-pipeline__step">
+                        <div class="ds-pipeline__icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h3 class="ds-pipeline__title">Recommendations</h3>
+                        <p class="ds-pipeline__desc">Detailed findings report with prioritized recommendations and implementation roadmap.</p>
+                    </div>
+                    <div class="ds-pipeline__arrow">→</div>
+                    <div class="ds-pipeline__step">
+                        <div class="ds-pipeline__icon"><i class="fas fa-handshake"></i></div>
+                        <h3 class="ds-pipeline__title">Partnership</h3>
+                        <p class="ds-pipeline__desc">Seamless transition to implementation with our engineering team or your internal resources.</p>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
+
+        <!-- ===== ASSESSMENT FRAMEWORK ===== -->
+        <section id="assessment" class="ds-section">
+            <div class="ds-container">
+                <div class="ds-grid" style="grid-template-columns:1fr 1fr;align-items:center">
+                    <div class="ds-animate ds-slide-left">
+                        <span class="ds-badge">Assessment Framework</span>
+                        <h2>Comprehensive Architecture Review</h2>
+                        <p class="ds-mt-2" style="color:var(--sys-muted);max-width:440px;line-height:1.7">Our certified architects evaluate every layer of your data stack — from ingestion to analytics — identifying bottlenecks, security gaps, and optimization opportunities.</p>
+                        <div class="ds-mt-4" style="display:flex;gap:var(--sp-2);flex-wrap:wrap">
+                            <a href="../contact/index.html" class="ds-btn ds-btn-primary">Get Assessment</a>
+                            <a href="../services/index.html" class="ds-btn ds-btn-secondary">View Services →</a>
+                        </div>
+                    </div>
+                    <div class="ds-code ds-animate ds-slide-right">
+                        <div class="ds-code__header">
+                            <div class="ds-code__dots"><span></span><span></span><span></span></div>
+                            <span>assessment_report.py</span>
+                        </div>
+                        <pre class="ds-code__body"><span class="cm"># Architecture assessment framework</span>
+<span class="kw">class</span> DataArchitectureAssessment:
+    <span class="kw">def</span> <span class="fn">evaluate_stack</span>(<span class="dt">self</span>, infrastructure_config):
+        assessment = {
+            <span class="str">'ingestion'</span>: <span class="dt">self</span>.<span class="fn">_check_ingestion_layer</span>(infrastructure_config),
+            <span class="str">'processing'</span>: <span class="dt">self</span>.<span class="fn">_analyze_processing_layer</span>(infrastructure_config),
+            <span class="str">'storage'</span>: <span class="dt">self</span>.<span class="fn">_review_storage_strategy</span>(infrastructure_config),
+            <span class="str">'security'</span>: <span class="dt">self</span>.<span class="fn">_audit_security_posture</span>(infrastructure_config),
+            <span class="str">'performance'</span>: <span class="dt">self</span>.<span class="fn">_benchmark_performance</span>(infrastructure_config)
+        }
+        <span class="kw">return</span> <span class="dt">self</span>.<span class="fn">_generate_recommendations</span>(assessment)
+
+    <span class="kw">def</span> <span class="fn">_generate_recommendations</span>(<span class="dt">self</span>, assessment):
+        <span class="cm"># Generate prioritized action items</span>
+        recommendations = []
+        <span class="kw">for</span> layer, score <span class="kw">in</span> assessment.items():
+            <span class="kw">if</span> score < <span class="dv">0.7</span>:
+                recommendations.<span class="fn">append</span>(<span class="dt">self</span>.<span class="fn">_get_layer_recommendation</span>(layer))
+        <span class="kw">return</span> recommendations</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONSULTATION METRICS ===== -->
+        <section id="metrics" class="ds-section ds-section--alt">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <span class="ds-badge"><i class="fas fa-signal" style="margin-right:4px"></i> Consultation Impact</span>
+                    <h2>Measurable Results</h2>
+                    <p>Our assessments deliver actionable insights that drive real business outcomes.</p>
+                </div>
+                <div class="ds-metrics ds-animate">
+                    <div class="ds-metric-card">
+                        <div class="ds-metric-card__value" style="color:var(--sys-success)">40%</div>
+                        <div class="ds-metric-card__label">Avg Cost Reduction</div>
+                        <div class="ds-metric-card__bar"><span style="width:67%"></span></div>
+                    </div>
+                    <div class="ds-metric-card">
+                        <div class="ds-metric-card__value" style="color:var(--sys-primary-light)">2-4 weeks</div>
+                        <div class="ds-metric-card__label">Time to Insights</div>
+                        <div class="ds-metric-card__bar"><span style="width:25%"></span></div>
+                    </div>
+                    <div class="ds-metric-card">
+                        <div class="ds-metric-card__value" style="color:var(--sys-warning)">95%</div>
+                        <div class="ds-metric-card__label">Client Satisfaction</div>
+                        <div class="ds-metric-card__bar"><span style="width:95%"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PARTNERS ===== -->
+        <section id="partners" class="ds-section">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <span class="ds-badge">Expertise Across</span>
+                    <h2>Leading Platforms</h2>
+                    <p>Our consultants maintain active certifications and deep expertise in enterprise data platforms.</p>
+                </div>
+                <div class="ds-logos ds-animate">
+                    <img src="/images/informatica2000-689.png" alt="Informatica" loading="lazy">
+                    <img src="/images/Snowflake_Logo.svg" alt="Snowflake" loading="lazy">
+                    <img src="/images/MSFT_logo_png_grey.png" alt="Microsoft" loading="lazy">
+                    <img src="/images/Amazon_Web_Services_2025.svg" alt="AWS" loading="lazy">
+                    <img src="/images/Google_Cloud_logo.svg" alt="Google Cloud" loading="lazy">
+                    <img src="/images/Oracle_Corporation_logo.svg" alt="Oracle" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS ===== -->
+        <section id="testimonials" class="ds-section ds-section--alt">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <span class="ds-badge">Client Success</span>
+                    <h2>Consultation Outcomes</h2>
+                    <p>Real results from our architecture assessments and strategic guidance.</p>
+                </div>
+                <div class="ds-grid ds-animate" style="grid-template-columns:repeat(2,1fr)">
+                    <div class="ds-card">
+                        <p class="ds-card__desc" style="font-style:italic;flex:1">"The consultation revealed critical performance bottlenecks we never knew existed. Their roadmap saved us 6 months of development time."</p>
+                        <div style="margin-top:var(--sp-3);border-top:1px solid var(--sys-border);padding-top:var(--sp-2)">
+                            <strong style="color:var(--sys-text);font-size:0.9375rem">Jennifer Walsh</strong>
+                            <div style="font-size:var(--sys-small);color:var(--sys-muted)">Director of Data, RetailCorp</div>
+                        </div>
+                    </div>
+                    <div class="ds-card">
+                        <p class="ds-card__desc" style="font-style:italic;flex:1">"Their assessment was thorough and actionable. We implemented their recommendations and saw immediate improvements in data processing speed."</p>
+                        <div style="margin-top:var(--sp-3);border-top:1px solid var(--sys-border);padding-top:var(--sp-2)">
+                            <strong style="color:var(--sys-text);font-size:0.9375rem">Marcus Thompson</strong>
+                            <div style="font-size:var(--sys-small);color:var(--sys-muted)">CTO, HealthData Systems</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA ===== -->
+        <section id="cta" class="ds-cta-band">
+            <div class="ds-container ds-animate">
+                <h2>Ready to optimize your data architecture?</h2>
+                <p>Book a free consultation and get expert insights on your data transformation journey.</p>
+                <div class="ds-cta-band__actions">
+                    <a href="../contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Book Free Consultation</a>
+                    <a href="../about/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Learn About Our Team →</a>
+                </div>
+            </div>
+        </section>
 
     <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-    <script src="/AHM_WEB/js/partials.js" defer></script>
-    <script src="/AHM_WEB/js/main.js" defer></script>
+    <script src="/js/partials.js" defer></script>
+    <script src="/js/main.js" defer></script>
 </body>
 </html>
+

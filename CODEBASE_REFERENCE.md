@@ -2,52 +2,66 @@
 
 Last updated: 2026-04-23 (UTC)
 
-## 0) Latest update (theme correction)
+## 0) Latest update (SaaS product-grade redesign)
 
-- Reworked the homepage theme in `css/phase3.css` to resolve inconsistent dark/gray blocks and improve visual cohesion.
-- Unified header/hero contrast, corrected subtitle spacing (`margin-top: 0`), and applied consistent container card styling across sections.
-- Improved mobile behavior for hero and nav theme states.
+- Transformed the website from marketing-style to product-grade SaaS interface following Stripe/Databricks patterns.
+- Implemented strict design system: 12-column grid, 8px spacing, typography scale (H1 48px, H2 32px, etc.).
+- Standardized hero sections across all pages: left text + right product UI visual.
+- Added missing product sections: System Flow (pipeline), Data/Code Blocks, Metrics/Observability, Comparison Tables.
+- Unified card system with hover effects, visual depth with gradients/blur panels.
+- Fixed content hierarchy, upgraded CTAs, added trust & proof elements.
+- Redesigned contact form: 2-column grid, full-width fields, message below, trust strip.
+- Fixed all paths to absolute /AHM_WEB/... for consistent serving.
+- Applied design system to all pages: home, services, about, careers, consultation, contact, feedback, partners, solutions, legal/privacy, and service subpages.
 
-- Added 1920px-focused alignment and spacing normalization in `css/phase3.css` (centered section headers/subtitles, constrained form width, improved wide-screen grid behavior).
-- Removed problematic legacy spacing constraints in `css/organisms.css` (`margin-top: -39px`, excessive min-heights, and over-dense 6-column 1400px grid).
+## 1) Design System Components
 
-- Refreshed the Solutions page structure and styling with an Apple-inspired compact layout: removed inline CSS from `AHM_Website/pages/solutions/index.html`, added scoped shells/classes, tightened catalog card density, and improved KPI/industry card visuals in `css/components.css`.
+### Grid & Spacing
+- 12-column layout, max-width 1200px
+- 8px spacing system (sp-1 to sp-6)
+- Consistent gutters and section spacing (80-120px)
 
+### Typography
+- H1: 48px bold, H2: 32px, H3: 20px, Body: 16px, Labels: 13px
+- Inter font family
 
-- Redesigned the Partners page with a premium card layout and added intrinsic logo dimensions (`width`/`height`) plus async decoding/lazy loading to reduce initial logo reflow/glitch on navigation.
+### Cards
+- Equal height, consistent padding/radius/shadow
+- Hover: translateY(-4px), soft shadow increase
+- Icons: 24px, consistent sizing
 
-- Reimagined the About page by removing the duplicated hero-style section from that page flow, applying a cleaner premium layout, and normalizing CTA button alignment (`.cta-actions`) across About/Solutions CTAs.
+### CTAs
+- Primary: solid button, Secondary: outline
+- Multiple levels: hero, mid-section, bottom
 
-- Implemented a unified SaaS design system across Home/Services/Solutions/Partners/About/Contact pages (typography scale, palette, shared hero layout, unified card/button system, fixed container width, consistent spacing rhythm, and standardized CTA alignment).
+### Visual Depth
+- Subtle gradients, layered cards, glass/blur panels
+- Realistic UI mocks (dashboards, charts, pipelines)
 
-- Applied a targeted Contact page redesign with high-impact hero + meaningful right-side visual, a larger centered conversion-focused form card, stronger CTA hierarchy, and a trust-logo strip for AWS/Snowflake/Microsoft.
+## 2) Page Structure
 
-## 1) Recent fixes implemented
+Each page follows:
+- Hero (badge, headline, subtitle, CTAs, right visual)
+- Product sections (flow, code, metrics, comparison)
+- Trust elements (logos, metrics)
+- Contact/CTA sections
 
-The following changes from the latest UI/cleanup work are now implemented:
-
-1. **Inline CSS removed from `index.html`**
-   - Baseline rules were moved to external stylesheet (`css/components.css`).
-2. **Homepage spacing and visual polish added**
-   - Section shell spacing utilities, subtle gradient backgrounds, card elevation/hover consistency, contact/newsletter visual improvements.
-3. **Placeholder form redirect values removed**
-   - Removed dummy `_next` values (`https://yoursite.com/...`) from forms.
-4. **Debug logs removed from production JS path**
-   - Removed `console.log` debug statements from `js/main.js`.
-5. **Footer include path corrected**
-   - Fixed footer partial include to use `./AHM_Website/components/organisms/footer.html` (local relative path).
-
----
-
-## 2) File verification matrix (mentioned/critical files)
+## 3) File verification matrix
 
 | File | Exists | Notes |
 |---|---|---|
-| `index.html` | ✅ Yes | Main page updated with section-shell classes and corrected footer include. |
-| `css/components.css` | ✅ Yes | Externalized baseline rules + visual polish ruleset. |
-| `js/main.js` | ✅ Yes | Debug logs removed; responsive helper retained. |
-| `js/phase3.js` | ✅ Yes | Syntax checked. |
-| `js/partials.js` | ✅ Yes | Syntax checked. |
+| `index.html` | ✅ Yes | Home page with full SaaS redesign. |
+| `css/system.css` | ✅ Yes | Main design system stylesheet. |
+| `css/design-tokens.css` | ✅ Yes | Design tokens and variables. |
+| `css/atoms.css` | ✅ Yes | Atomic styles. |
+| `css/components.css` | ✅ Yes | Component styles. |
+| `css/organisms.css` | ✅ Yes | Organism styles. |
+| `js/main.js` | ✅ Yes | Main JS with animations. |
+| `js/partials.js` | ✅ Yes | Partial loading. |
+| `AHM_Website/components/organisms/header.html` | ✅ Yes | Header component. |
+| `AHM_Website/components/organisms/footer.html` | ✅ Yes | Footer component. |
+| `AHM_Website/components/organisms/hero.html` | ✅ Yes | Hero component. |
+| All pages in `AHM_Website/pages/` | ✅ Yes | Redesigned with consistent design system. |
 | `js/site-config.js` | ✅ Yes | Syntax checked. |
 | `AHM_Website/components/organisms/header.html` | ✅ Yes | Referenced via `data-include`. |
 | `AHM_Website/components/organisms/hero.html` | ✅ Yes | Referenced via `data-include`. |
