@@ -43,10 +43,10 @@
 }
 
 [data-theme="light"]{
-  --sys-bg:#F8FAFC;
-  --sys-bg-alt:#EEF2FF;
-  --sys-surface:#FFFFFF;
-  --sys-surface-hover:#F1F5F9;
+  --sys-bg:#E9EEF7;
+  --sys-bg-alt:#DDE5F3;
+  --sys-surface:#F3F6FC;
+  --sys-surface-hover:#E7EDF8;
   --sys-border:rgba(15,23,42,0.12);
   --sys-border-strong:rgba(15,23,42,0.2);
   --sys-text:#0F172A;
@@ -231,6 +231,8 @@ p{color:var(--sys-text-secondary);line-height:1.7}
 .ds-logos{display:flex;align-items:center;justify-content:center;gap:var(--sp-4);flex-wrap:wrap;padding:var(--sp-4) 0}
 .ds-logos img{height:32px;opacity:.4;filter:grayscale(100%) brightness(2);transition:all .25s var(--ease)}
 .ds-logos img:hover{opacity:.8;filter:grayscale(0%) brightness(1)}
+[data-theme="light"] .ds-logos img{opacity:.75;filter:grayscale(100%) brightness(.65)}
+[data-theme="light"] .ds-logos img:hover{opacity:1;filter:grayscale(10%) brightness(.85)}
 
 /* --- FORM --- */
 .ds-form{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2)}
@@ -365,3 +367,9 @@ select.ds-form-input{appearance:none;background-image:url("data:image/svg+xml,%3
 .ds-avatar{box-shadow:0 0 0 2px rgba(96,165,250,.3),0 0 18px rgba(96,165,250,.25)}
 .ds-card:hover .ds-card__desc{color:var(--sys-text-secondary)}
 .ds-footer{border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(96,165,250,.7),transparent) 1}
+[data-theme="light"] .ds-nav__link{color:#334155}
+[data-theme="light"] .ds-nav__link:hover,[data-theme="light"] .ds-nav__link.active{color:#0F172A;background:rgba(37,99,235,.12)}
+[data-theme="light"] .ds-nav{border-bottom:1px solid rgba(15,23,42,.12)}
+[data-theme="light"] .ds-theme-toggle{background:rgba(15,23,42,.03);color:#334155}
+[data-theme="light"] .ds-dash-metric,[data-theme="light"] .ds-dash-status{background:#EEF3FB}
+[data-theme="light"] .ds-code__body--typing{animation:none;border-right:none;white-space:pre;max-width:none}
