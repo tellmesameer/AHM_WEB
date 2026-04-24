@@ -10,10 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
-        animObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  }, { threshold: 0});
 
   function observeAnimations() {
     document.querySelectorAll('.ds-animate, .ds-slide-left, .ds-slide-right').forEach(el => {
@@ -158,3 +157,18 @@ document.addEventListener('DOMContentLoaded', function () {
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 });
+
+function setActiveNav() {
+  const links = document.querySelectorAll('.ds-nav__link');
+  const current = window.location.pathname.replace(/\/index\.html$/, '');
+
+  links.forEach(link => {
+    const href = link.getAttribute('href').replace(/\/index\.html$/, '');
+
+    if (current === href) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
