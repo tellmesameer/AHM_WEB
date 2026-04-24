@@ -1,46 +1,25 @@
 <!-- Organism: Site Header / Navigation -->
-<header class="site-header" role="banner">
-  <!-- <a class="skip-link" href="#main">Skip to content</a> -->
-  <div class="site-header__inner container">
-    <a class="brand" href="/AHM_WEB/index.html">
-      <!-- logo uses CSS-controlled height for dock animation -->
-      <img src="/AHM_WEB/images/AHM logo clear bg red[1].png" alt="AHM Data Solutions" class="header-logo" />
+<header class="ds-nav" role="banner">
+  <div class="ds-nav__inner">
+    <a class="ds-nav__logo" href="/index.html" aria-label="AHM Home">
+      <img src="/images/AHM logo clear bg red[1].png" alt="AHM Data Solutions" />
     </a>
-    <!-- Dock: quick actions in the top header -->
-    <nav class="header-dock" aria-label="Quick actions">
-      <!-- <ul class="dock-list" role="menubar">
-        <li class="dock-item" role="none">
-          <a role="menuitem" href="/AHM_WEB/AHM_Website/pages/services/index.html" class="dock-link" aria-label="Services" title="Services">
-            <img src="/AHM_WEB/images/icons/015-database.png" alt="Services" class="dock-icon" loading="lazy" />
-          </a>
-        </li>
-        <li class="dock-item" role="none">
-          <a role="menuitem" href="/AHM_WEB/AHM_Website/pages/contact/index.html" class="dock-link" aria-label="Contact" title="Contact">
-            <img src="/AHM_WEB/images/icons/006-envelope.png" alt="Contact" class="dock-icon" loading="lazy" />
-          </a>
-        </li>
-        <li class="dock-item" role="none">
-          <a role="menuitem" href="/AHM_WEB/AHM_Website/pages/about/index.html" class="dock-link" aria-label="About" title="About">
-            <img src="/AHM_WEB/images/icons/017-information.png" alt="About" class="dock-icon" loading="lazy" />
-          </a>
-        </li>
-        <li class="dock-item" role="none">
-          <a role="menuitem" href="/AHM_WEB/AHM_Website/pages/partners/index.html" class="dock-link" aria-label="Partners" title="Partners">
-            <img src="/AHM_WEB/images/icons/003-microsoft.png" alt="Partners" class="dock-icon" loading="lazy" />
-          </a>
-        </li>
-      </ul> -->
+    <nav class="ds-nav__links" id="site-nav" aria-label="Main navigation">
+      <a href="/index.html" class="ds-nav__link">Home</a>
+      <a href="/AHM_Website/pages/services/index.html" class="ds-nav__link">Services</a>
+      <a href="/AHM_Website/pages/solutions/index.html" class="ds-nav__link">Solutions</a>
+      <a href="/AHM_Website/pages/partners/index.html" class="ds-nav__link">Partners</a>
+      <a href="/AHM_Website/pages/about/index.html" class="ds-nav__link">About</a>
+      <a href="/AHM_Website/pages/contact/index.html" class="ds-nav__link">Contact</a>
+      <a href="/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-nav__cta">Get Started</a>
     </nav>
-    <nav id="site-nav" class="main-nav" role="navigation" aria-label="Main">
-      <ul class="main-nav__list">
-  <li><a href="/AHM_WEB/index.html">Home</a></li>
-  <li><a href="/AHM_WEB/AHM_Website/pages/services/index.html">Services</a></li>
-  <li><a href="/AHM_WEB/AHM_Website/pages/solutions/index.html">Solutions</a></li>
-  <li><a href="/AHM_WEB/AHM_Website/pages/partners/index.html">Partners</a></li>
-  <li><a href="/AHM_WEB/AHM_Website/pages/about/index.html">About</a></li>
-  <li><a href="/AHM_WEB/AHM_Website/pages/contact/index.html">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <button class="ds-theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme">
+      <i class="fas fa-moon" aria-hidden="true"></i>
+      <span class="ds-theme-toggle__label">Dark</span>
+    </button>
+    <button class="ds-nav__toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </header>
+

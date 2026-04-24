@@ -1,585 +1,295 @@
-/* ========================================
-   MAIN JAVASCRIPT - Phase 1
-   ======================================== */
+/* =============================================
+   AHM — Main JavaScript (SaaS Redesign)
+   ============================================= */
 
-// ===== RESPONSIVE NAVIGATION =====
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
-                
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Active navigation highlighting
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.navbar-nav .nav-link');
-    
-    function updateActiveNav() {
-        const scrollPos = window.scrollY + 100;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${sectionId}`) {
-                        item.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    
-    // Throttled scroll event for performance
-    let ticking = false;
-    function handleScroll() {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                updateActiveNav();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    // ===== RESPONSIVE IMAGE LOADING =====
-    // Lazy loading for images with intersection observer
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('loading');
-                    observer.unobserve(img);
-                }
-            }
-        });
-    });
-    
-    // Observe all images with data-src attribute
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    lazyImages.forEach(img => {
-        img.classList.add('loading');
-        imageObserver.observe(img);
-    });
-    
-    // ===== RESPONSIVE CARD ANIMATIONS =====
-    // Animate cards on scroll
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    const cards = document.querySelectorAll('.service-card, .solution-card, .testimonial-card');
-    cards.forEach(card => {
-        cardObserver.observe(card);
-    });
-    
-    // ===== ENHANCED FORM HANDLING =====
-    // Secure form validation and submission with Formspree integration
-    const forms = document.querySelectorAll('.secure-form');
-    
-    forms.forEach(form => {
-        // Real-time validation
-        const inputs = form.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            // Real-time validation on input
-            input.addEventListener('input', function() {
-                validateField(this);
-            });
-            
-            // Validation on blur
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-        });
-        
-        // Form submission handling
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validate all fields
-            let isValid = validateForm(form);
-            
-            if (isValid) {
-                submitForm(form);
-            } else {
-                // Focus first invalid field
-                const firstInvalid = form.querySelector('.is-invalid');
-                if (firstInvalid) {
-                    firstInvalid.focus();
-                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-        });
-    });
-    
-    // ===== FORM VALIDATION FUNCTIONS =====
-    function validateField(field) {
-        const value = field.value.trim();
-        const type = field.type;
-        const required = field.hasAttribute('required');
-        
-        // Remove existing validation classes
-        field.classList.remove('is-valid', 'is-invalid');
-        
-        // Skip validation for empty non-required fields
-        if (!required && !value) {
-            return true;
-        }
-        
-        let isValid = true;
-        let errorMessage = '';
-        
-        // Required field validation
-        if (required && !value) {
-            isValid = false;
-            errorMessage = `${getFieldLabel(field)} is required.`;
-        }
-        
-        // Type-specific validation
-        if (value && isValid) {
-            switch (type) {
-                case 'email':
-                    if (!isValidEmail(value)) {
-                        isValid = false;
-                        errorMessage = 'Please enter a valid email address.';
-                    }
-                    break;
-                case 'tel':
-                    if (!isValidPhone(value)) {
-                        isValid = false;
-                        errorMessage = 'Please enter a valid phone number.';
-                    }
-                    break;
-                case 'text':
-                    if (field.name === 'firstName' || field.name === 'lastName') {
-                        if (value.length < 2) {
-                            isValid = false;
-                            errorMessage = 'Name must be at least 2 characters.';
-                        }
-                    }
-                    break;
-            }
-            
-            // Textarea validation
-            if (field.tagName === 'TEXTAREA' && field.name === 'message') {
-                if (value.length < 10) {
-                    isValid = false;
-                    errorMessage = 'Message must be at least 10 characters.';
-                }
-            }
-        }
-        
-        // Apply validation classes
-        if (isValid) {
-            field.classList.add('is-valid');
-        } else {
-            field.classList.add('is-invalid');
-        }
-        
-        return isValid;
-    }
-    
-    function validateForm(form) {
-        const fields = form.querySelectorAll('input, textarea, select');
-        let isValid = true;
-        
-        fields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
-            }
-        });
-        
-        return isValid;
-    }
-    
-    function submitForm(form) {
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const btnLoading = submitBtn.querySelector('.btn-loading');
-        
-        // Show loading state
-        if (btnText && btnLoading) {
-            btnText.classList.add('d-none');
-            btnLoading.classList.remove('d-none');
-        } else {
-            submitBtn.textContent = 'Sending...';
-        }
-        
-        submitBtn.disabled = true;
-        submitBtn.classList.add('loading');
-        
-        // Create FormData
-        const formData = new FormData(form);
-        
-        // Add timestamp for tracking
-        formData.append('_timestamp', new Date().toISOString());
-        formData.append('_user_agent', navigator.userAgent);
-        formData.append('_referrer', document.referrer);
-        
-        // Submit to Formspree
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                showFormSuccess(form);
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(error => {
-            console.error('Form submission error:', error);
-            showFormError(form, 'There was an error sending your message. Please try again.');
-        })
-        .finally(() => {
-            // Reset button state
-            if (btnText && btnLoading) {
-                btnText.classList.remove('d-none');
-                btnLoading.classList.add('d-none');
-            } else {
-                submitBtn.textContent = 'Send Message';
-            }
-            
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('loading');
-        });
-    }
-    
-    function showFormSuccess(form) {
-        // Create success message
-        const successDiv = document.createElement('div');
-        successDiv.className = 'form-success';
-        successDiv.setAttribute('role','status');
-        successDiv.setAttribute('aria-live','polite');
-        successDiv.innerHTML = `
-            <div class="d-flex align-items-center">
-                <i class="fas fa-check-circle me-2"></i>
-                <div>
-                    <strong>Thank you!</strong> Your message has been sent successfully. 
-                    We'll get back to you within 24 hours.
-                </div>
-            </div>
-        `;
-        
-        // Insert success message
-        form.parentNode.insertBefore(successDiv, form);
-        
-        // Hide form
-        form.style.display = 'none';
-        
-        // Scroll to success message
-        successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Auto-remove success message after 10 seconds
-        setTimeout(() => {
-            successDiv.remove();
-            form.style.display = 'block';
-            form.reset();
-            
-            // Clear validation classes
-            const fields = form.querySelectorAll('.is-valid, .is-invalid');
-            fields.forEach(field => {
-                field.classList.remove('is-valid', 'is-invalid');
-            });
-        }, 10000);
-    }
-    
-    function showFormError(form, message) {
-        // Create error message
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'form-error';
-        errorDiv.setAttribute('role','alert');
-        errorDiv.innerHTML = `
-            <div class="d-flex align-items-center">
-                <i class="fas fa-exclamation-triangle me-2"></i>
-                <div>
-                    <strong>Error:</strong> ${message}
-                </div>
-            </div>
-        `;
-        
-        // Insert error message
-        form.parentNode.insertBefore(errorDiv, form);
-        
-        // Scroll to error message
-        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Auto-remove error message after 5 seconds
-        setTimeout(() => {
-            errorDiv.remove();
-        }, 5000);
-    }
-    
-    // ===== VALIDATION UTILITY FUNCTIONS =====
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-    
-    function isValidPhone(phone) {
-        // Remove all non-digit characters
-        const digits = phone.replace(/\D/g, '');
-        // Check if it has 10-15 digits (international format)
-        return digits.length >= 10 && digits.length <= 15;
-    }
-    
-    function getFieldLabel(field) {
-        const label = field.closest('.form-group')?.querySelector('label');
-        return label ? label.textContent.replace('*', '').trim() : 'This field';
-    }
-    
-    // ===== RESPONSIVE UTILITIES =====
-    // Handle window resize events
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Recalculate any size-dependent elements
-            updateActiveNav();
-        }, 250);
-    });
-    
-    // ===== ACCESSIBILITY ENHANCEMENTS =====
-    // Keyboard navigation for dropdowns
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
-    });
-    
-    
-    // ===== HEADER DOCK ENHANCEMENTS =====
-    // Keyboard roving tabindex for dock items
-    const dock = document.querySelector('.header-dock .dock-list');
-    if (dock) {
-        const dockLinks = Array.from(dock.querySelectorAll('.dock-link'));
-        if (dockLinks.length) {
-            dockLinks.forEach((link, index) => {
-                link.setAttribute('tabindex', index === 0 ? '0' : '-1');
-            });
+document.addEventListener('DOMContentLoaded', function () {
+  // ===== THEME TOGGLE =====
+  function getPreferredTheme() {
+    const stored = localStorage.getItem('ahm-theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
 
-            dock.addEventListener('keydown', (e) => {
-                const currentIndex = dockLinks.findIndex(l => l === document.activeElement);
-                if (currentIndex === -1) return;
-                let nextIndex = currentIndex;
-                if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    nextIndex = (currentIndex + 1) % dockLinks.length;
-                } else if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    nextIndex = (currentIndex - 1 + dockLinks.length) % dockLinks.length;
-                }
-                if (nextIndex !== currentIndex) {
-                    dockLinks.forEach((l, i) => l.setAttribute('tabindex', i === nextIndex ? '0' : '-1'));
-                    dockLinks[nextIndex].focus();
-                }
-            });
+  function syncThemeToggleUI(theme) {
+    document.querySelectorAll('#theme-toggle').forEach(btn => {
+      const icon = btn.querySelector('i');
+      const label = btn.querySelector('.ds-theme-toggle__label');
+      const isLight = theme === 'light';
+      if (icon) icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+      if (label) label.textContent = isLight ? 'Light' : 'Dark';
+      btn.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+      btn.setAttribute('title', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+      btn.setAttribute('aria-pressed', String(isLight));
+    });
+  }
+
+  function applyTheme(theme) {
+    const normalized = theme === 'light' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', normalized);
+    localStorage.setItem('ahm-theme', normalized);
+    syncThemeToggleUI(normalized);
+  }
+
+  function initThemeToggle() {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn || btn.dataset.bound === 'true') return;
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    syncThemeToggleUI(document.documentElement.getAttribute('data-theme') || 'dark');
+  }
+
+  applyTheme(getPreferredTheme());
+  document.addEventListener('includes:loaded', initThemeToggle);
+  initThemeToggle();
+
+  // ===== API TABS + COPY (services page) =====
+  function initApiTabs() {
+    const codeEl = document.getElementById('api-code-body');
+    const titleEl = document.getElementById('api-code-title');
+    if (!codeEl) return;
+    const tabs = document.querySelectorAll('.ds-tab');
+    tabs.forEach(tab => {
+      if (tab.dataset.bound === 'true') return;
+      tab.dataset.bound = 'true';
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        const mode = tab.dataset.tab || 'rest';
+        const payload = codeEl.dataset[mode] || '';
+        codeEl.textContent = payload;
+        if (titleEl) titleEl.textContent = mode === 'graphql' ? 'POST /graphql' : 'GET /pipeline/status';
+      });
+    });
+    document.querySelectorAll('.ds-copy-btn').forEach(btn => {
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', async () => {
+        const targetId = btn.getAttribute('data-copy-target');
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        try {
+          await navigator.clipboard.writeText(target.textContent || '');
+          const original = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => { btn.textContent = original; }, 1200);
+        } catch (_) {
+          btn.textContent = 'Copy failed';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 1200);
         }
-    }
+      });
+    });
+  }
+  document.addEventListener('includes:loaded', initApiTabs);
+  initApiTabs();
 
-    // ===== PERFORMANCE OPTIMIZATIONS =====
-    // Preload critical resources
-    function preloadCriticalResources() {
-        const criticalImages = [
-            '/AHM_WEB/images/backgorundImage.svg',
-            '/AHM_WEB/images/AHM logo clear bg red[1].png',
-            '/AHM_WEB/images/Remove background project.png',
-            '/AHM_WEB/images/web development logo.png'
-        ];
-        
-        criticalImages.forEach(src => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = src;
-            document.head.appendChild(link);
-        });
-    }
-    
-    preloadCriticalResources();
-    
-    // ===== RESPONSIVE BREAKPOINT DETECTION =====
-    // Utility function to detect current breakpoint
-    function getCurrentBreakpoint() {
-        const width = window.innerWidth;
-        if (width >= 1400) return 'xxl';
-        if (width >= 1200) return 'xl';
-        if (width >= 992) return 'lg';
-        if (width >= 768) return 'md';
-        if (width >= 576) return 'sm';
-        return 'xs';
-    }
-    
-    // Add breakpoint class to body for CSS targeting
-    function updateBreakpointClass() {
-        const breakpoint = getCurrentBreakpoint();
-        document.body.className = document.body.className.replace(/breakpoint-\w+/g, '');
-        document.body.classList.add(`breakpoint-${breakpoint}`);
-    }
-    
-    updateBreakpointClass();
-    window.addEventListener('resize', updateBreakpointClass);
-    
-    // ===== CUMULATIVE LAYOUT SHIFT (CLS) PREVENTION =====
-    // Reserve space for dynamic content to prevent layout shifts
-    function preventLayoutShift() {
-        // Reserve space for images
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            if (!img.style.aspectRatio) {
-                img.style.aspectRatio = '16/9'; // Default aspect ratio
-            }
-        });
-        
-        // Reserve space for dynamic content
-        const dynamicElements = document.querySelectorAll('.dynamic-content');
-        dynamicElements.forEach(element => {
-            if (!element.style.minHeight) {
-                element.style.minHeight = '200px';
-            }
-        });
-    }
-    
-    preventLayoutShift();
-    
-    // ===== MOBILE NAV TOGGLE =====
-    const navToggle = document.querySelector('.nav-toggle');
-    const siteNav = document.getElementById('site-nav');
-    if (navToggle && siteNav) {
-        navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', String(!expanded));
-            siteNav.classList.toggle('is-open');
-        });
+  // ===== SCROLL ANIMATIONS =====
+  const observedSet = new WeakSet();
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0});
 
-        // Close on escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && siteNav.classList.contains('is-open')) {
-                siteNav.classList.remove('is-open');
-                navToggle.setAttribute('aria-expanded', 'false');
-                navToggle.focus();
-            }
-        });
-    }
+  function observeAnimations() {
+    document.querySelectorAll('.ds-animate, .ds-slide-left, .ds-slide-right').forEach(el => {
+      if (!observedSet.has(el)) {
+        observedSet.add(el);
+        animObserver.observe(el);
+      }
+    });
+  }
+  observeAnimations();
+  // Re-observe after partials.js injects header/hero/footer
+  document.addEventListener('includes:loaded', observeAnimations);
 
-    // ===== STICKY HEADER ON SCROLL =====
-    const header = document.querySelector('.site-header');
-    let lastScrollY = window.scrollY;
-    if (header) {
-        const onScroll = () => {
-            const current = window.scrollY;
-            header.classList.toggle('is-sticky', current > 8);
-            const scrollingDown = current > lastScrollY;
-            const shouldHide = scrollingDown && current > 120;
-            header.classList.toggle('is-hidden', shouldHide);
-            lastScrollY = current;
-        };
-        window.addEventListener('scroll', throttle(onScroll, 50));
-        onScroll();
+  // ===== INIT NAV (runs after partials inject header) =====
+  function initNav() {
+    const navToggle = document.querySelector('.ds-nav__toggle');
+    const navLinks = document.getElementById('site-nav');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('is-open')) {
+          navLinks.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          navToggle.focus();
+        }
+      });
     }
+    const nav = document.querySelector('.ds-nav');
+    if (nav) {
+      const onScroll = () => {
+        const y = window.scrollY;
+        const style = getComputedStyle(document.documentElement);
+        const navBg = style.getPropertyValue('--nav-bg').trim() || 'rgba(11,18,34,0.85)';
+        const navBgScrolled = style.getPropertyValue('--nav-bg-scrolled').trim() || 'rgba(11,18,34,0.96)';
+        nav.style.background = y > 20 ? navBgScrolled : navBg;
+        nav.style.boxShadow = y > 20 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
+  document.addEventListener('includes:loaded', initNav);
+  initNav(); // also try immediately in case includes already loaded
+  document.addEventListener('includes:loaded', setActiveNav);
+  setActiveNav();
 
-    // ===== RESPONSIVE TESTING UTILITIES =====
-    // Development helper to test different breakpoints
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.log('Responsive utilities loaded');
-        console.log('Current breakpoint:', getCurrentBreakpoint());
-        
-        // Add breakpoint indicator in development
-        const indicator = document.createElement('div');
-        indicator.id = 'breakpoint-indicator';
-        indicator.style.cssText = `
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            z-index: 9999;
-            font-family: monospace;
-        `;
-        indicator.textContent = getCurrentBreakpoint();
-        document.body.appendChild(indicator);
-        
-        window.addEventListener('resize', () => {
-            indicator.textContent = getCurrentBreakpoint();
-        });
+  // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const id = this.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ===== FORM HANDLING =====
+  document.querySelectorAll('.secure-form').forEach(form => {
+    const inputs = form.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => validateField(input));
+      input.addEventListener('input', () => {
+        if (input.classList.contains('is-invalid')) validateField(input);
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let valid = true;
+      inputs.forEach(input => { if (!validateField(input)) valid = false; });
+      if (valid) submitForm(form);
+      else {
+        const first = form.querySelector('.is-invalid');
+        if (first) { first.focus(); first.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      }
+    });
+  });
+
+  function validateField(field) {
+    const val = field.value.trim();
+    const req = field.hasAttribute('required');
+    field.classList.remove('is-valid', 'is-invalid');
+    if (!req && !val) return true;
+    let ok = true;
+    if (req && !val) ok = false;
+    if (val && ok) {
+      if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) ok = false;
+      if (field.type === 'tel' && val.replace(/\D/g, '').length < 10) ok = false;
+      if ((field.name === 'firstName' || field.name === 'lastName') && val.length < 2) ok = false;
+      if (field.tagName === 'TEXTAREA' && field.name === 'message' && val.length < 10) ok = false;
     }
+    field.classList.add(ok ? 'is-valid' : 'is-invalid');
+    field.style.borderColor = ok ? '' : 'var(--sys-danger)';
+    return ok;
+  }
+
+  function submitForm(form) {
+    const btn = form.querySelector('button[type="submit"]');
+    const btnText = btn.querySelector('.btn-text');
+    const origText = btnText ? btnText.textContent : btn.textContent;
+    if (btnText) btnText.textContent = 'Sending...';
+    else btn.textContent = 'Sending...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    const data = new FormData(form);
+    data.append('_timestamp', new Date().toISOString());
+
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(r => {
+        if (r.ok) showMsg(form, 'success', 'Thank you! Your message has been sent. We\'ll respond within 24 hours.');
+        else throw new Error('Failed');
+      })
+      .catch(() => showMsg(form, 'error', 'Something went wrong. Please try again or email us directly.'))
+      .finally(() => {
+        if (btnText) btnText.textContent = origText;
+        else btn.textContent = origText;
+        btn.disabled = false;
+        btn.style.opacity = '';
+      });
+  }
+
+  function showMsg(form, type, text) {
+    const div = document.createElement('div');
+    div.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    div.style.cssText = `padding:16px 20px;border-radius:10px;margin-bottom:16px;font-size:0.9375rem;line-height:1.5;border:1px solid ${type === 'error' ? 'var(--sys-danger)' : 'var(--sys-success)'};color:${type === 'error' ? '#FCA5A5' : '#6EE7B7'};background:${type === 'error' ? 'rgba(239,68,68,0.1)' : 'rgba(16,185,129,0.1)'}`;
+    div.textContent = text;
+    form.parentNode.insertBefore(div, form);
+    if (type === 'success') { form.reset(); form.querySelectorAll('.is-valid,.is-invalid').forEach(f => { f.classList.remove('is-valid','is-invalid'); f.style.borderColor = ''; }); }
+    setTimeout(() => div.remove(), 8000);
+  }
+
+  // ===== BACK TO TOP =====
+  const btt = document.getElementById('back-to-top-btn');
+  if (btt) {
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('show', window.scrollY > 400);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // ===== METRIC COUNT-UP =====
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.counted === 'true') return;
+      el.dataset.counted = 'true';
+      const raw = (el.getAttribute('data-count') || el.textContent || '').trim();
+      const num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+      if (!Number.isFinite(num)) return;
+      const suffix = raw.replace(/[0-9.]/g, '');
+      const decimals = raw.includes('.') ? 2 : 0;
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (t) => {
+        const p = Math.min((t - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const value = (num * eased).toFixed(decimals);
+        el.textContent = `${value}${suffix}`;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.45 });
+  document.querySelectorAll('.ds-metric-card__value[data-count]').forEach(el => counterObserver.observe(el));
 });
 
-// ===== UTILITY FUNCTIONS =====
-// Debounce function for performance
-function debounce(func, wait, immediate) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            timeout = null;
-            if (!immediate) func(...args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func(...args);
-    };
-}
+function setActiveNav() {
+  const links = document.querySelectorAll('.ds-nav__link');
+  const normalize = (input) => {
+    const raw = String(input || '')
+      .replace(window.location.origin, '')
+      .replace(/\/+$/, '')
+      .replace(/\/index\.html$/i, '');
+    return raw || '/';
+  };
+  const current = normalize(window.location.pathname);
 
-// Throttle function for scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// ===== EXPORT FOR MODULE USAGE =====
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        debounce,
-        throttle
-    };
+  links.forEach(link => {
+    const href = normalize(link.getAttribute('href'));
+    const isHome = href === '/';
+    const active = isHome ? current === '/' : current === href || current.startsWith(href + '/');
+    link.classList.toggle('active', active);
+    link.setAttribute('aria-current', active ? 'page' : 'false');
+  });
 }

@@ -1,47 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <title>Snowflake Services - AHM</title>
-  
-  <script src="../../../js/site-config.js"></script>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/head-resources.html"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+    <title>Snowflake Services - AHM Data Solutions</title>
+    <meta name="description" content="Cloud data warehousing, workload optimization, and Snowflake architecture consulting.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/system.css">
 </head>
 <body>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main>
-    <section class="services-section enhanced-services-section">
-      <div class="services-bg-shape"></div>
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Snowflake Services</h2>
-          <p class="section-subtitle">Cloud data warehousing, analytics, and migration services with Snowflake.</p>
-        </div>
-        <div class="services-grid enhanced-services-grid">
-          <div class="service-card enhanced-service-card fade-in">
-            <div class="service-icon gradient-icon">
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="28" cy="28" r="24" fill="url(#grad2)" />
-                <defs>
-                  <linearGradient id="grad2" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#00c6fb" />
-                    <stop offset="1" stop-color="#005bea" />
-                  </linearGradient>
-                </defs>
-              </svg>
+    <div data-include="/AHM_Website/components/organisms/header.html"></div>
+
+    <main id="main">
+        <section class="ds-hero" id="hero">
+            <div class="ds-container">
+                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                        <span class="ds-badge">Cloud Data</span>
+                        <h1 class="ds-hero__title">Snowflake Services</h1>
+                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Cloud data warehousing and workload optimization for faster insights at scale.</p>
+                        <div class="ds-hero__actions" style="justify-content:center;">
+                            <a href="/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Get Started</a>
+                            <a href="/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">All Services</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h5 class="service-title">Snowflake</h5>
-            <p class="service-description">Cloud data warehousing and analytics platform for scalable business insights.</p>
-            <span class="learn-more-btn">Learn more</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+        </section>
+
+        <section id="capabilities" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>What We Deliver</h2>
+                    <p>Full-lifecycle Snowflake consulting — from architecture to optimization.</p>
+                </div>
+                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
+                    <div class="ds-card ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-warehouse"></i></div>
+                        <h3 class="ds-card__title">Architecture Design</h3>
+                        <p class="ds-card__desc">Multi-cluster warehouse design with auto-scaling and cost-optimized compute tiers.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <h3 class="ds-card__title">Performance Tuning</h3>
+                        <p class="ds-card__desc">Query optimization, clustering keys, and materialized views for sub-second dashboards.</p>
+                    </div>
+                    <div class="ds-card ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-share-alt"></i></div>
+                        <h3 class="ds-card__title">Data Sharing</h3>
+                        <p class="ds-card__desc">Secure data exchange with partners and business units using Snowflake's native sharing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds-cta-band">
+            <div class="ds-container ds-animate">
+                <h2>Ready to unlock your Snowflake potential?</h2>
+                <p>We'll review your current architecture and identify optimization opportunities.</p>
+                <div class="ds-cta-band__actions">
+                    <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="/AHM_Website/components/organisms/footer.html"></div>
+    <script src="/js/partials.js" defer></script>
+    <script src="/js/main.js" defer></script>
 </body>
 </html>
+
+

@@ -1,153 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="/AHM_WEB/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-  <script src="../../../js/site-config.js" defer></script>
-  <style>
-    /* Critical CSS: constrain media before stylesheets/partials are injected */
-    img, svg, video { max-width: 100%; height: auto; }
-    body { max-width: 100vw; overflow-x: hidden; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
   <title>Services - AHM Data Solutions</title>
-  
-  <link rel="stylesheet" href="/AHM_WEB/css/design-tokens.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/responsive.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/atoms.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/molecules.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/organisms.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/forms.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/components.css">
-  <link rel="stylesheet" href="/AHM_WEB/css/phase3.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/system.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <script src="/base-config.js"></script>
+  <script src="/js/site-config.js"></script>
 </head>
 <body>
-  <style>
-    .enhanced-services-section {
-      position: relative;
-      background: linear-gradient(135deg, #f5faff 0%, #e3f0ff 100%);
-      overflow: hidden;
-      padding-bottom: 64px;
-    }
-    .enhanced-services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    .enhanced-service-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.07), 0 1.5px 6px rgba(33, 203, 243, 0.04);
-      padding: 2.5rem 1.5rem 2rem 1.5rem;
-      text-align: center;
-      color: #222;
-      transition: box-shadow 0.25s, transform 0.22s, background 0.22s;
-      min-height: 340px;
-      border: 1.5px solid #e3f0ff;
-    }
-    .enhanced-service-card:hover {
-      box-shadow: 0 8px 32px rgba(25, 118, 210, 0.13), 0 4px 16px rgba(33, 203, 243, 0.09);
-      transform: translateY(-8px) scale(1.025);
-      background: linear-gradient(120deg, #f5faff 60%, #e3f0ff 100%);
-      border-color: #b3e0ff;
-    }
-    .enhanced-service-card .service-title {
-      color: #1976d2;
-      font-weight: 600;
-      font-size: 1.18rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .enhanced-service-card .service-description {
-      color: #222;
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .enhanced-service-card .service-icon {
-      margin-bottom: 1.2rem;
-    }
-    .enhanced-service-card .service-icon svg {
-      display: block;
-      margin: 0 auto;
-      filter: drop-shadow(0 2px 8px rgba(25, 118, 210, 0.08));
-    }
-    @media (max-width: 767.98px) {
-      .enhanced-services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-      }
-      .enhanced-service-card {
-        padding: 2rem 1rem 1.5rem 1rem;
-        min-height: 260px;
-      }
-    }
-  </style>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/header.html"></div>
-  <main id="main">
-    <section class="services-section enhanced-services-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Core Services</h2>
-          <p class="section-subtitle">Comprehensive data solutions tailored to your business needs</p>
+<div data-include="/AHM_Website/components/organisms/header.html"></div>
+<main>
+  <section class="ds-hero" id="hero">
+    <div class="ds-container">
+      <div class="ds-hero__grid">
+        <div class="ds-hero__content">
+          <span class="ds-badge">Capabilities</span>
+          <h1 class="ds-hero__title">Deep Service Capability Across Data, Cloud, and Apps</h1>
+          <p class="ds-hero__subtitle">One engineering partner for platform design, build, operations, and continuous optimization.</p>
+          <div class="ds-hero__actions">
+            <a class="ds-btn ds-btn-primary ds-btn-lg" href="/AHM_Website/pages/consultation/index.html">Book Consultation</a>
+            <a class="ds-btn ds-btn-secondary ds-btn-lg" href="/AHM_Website/pages/contact/index.html">Talk to Team</a>
+          </div>
         </div>
-        <div class="services-grid enhanced-services-grid">
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-database"></i>
-            </div>
-            <h5 class="service-title">Informatica</h5>
-            <p class="service-description">Data integration and management solutions for enterprise environments</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-snowflake"></i>
-            </div>
-            <h5 class="service-title">Snowflake</h5>
-            <p class="service-description">Cloud data warehousing and analytics platform</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-cloud"></i>
-            </div>
-            <h5 class="service-title">IDMC</h5>
-            <p class="service-description">Intelligent data management cloud solutions</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-robot"></i>
-            </div>
-            <h5 class="service-title">Python &amp; AI</h5>
-            <p class="service-description">Machine learning and automation services</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h5 class="service-title">Web Development</h5>
-            <p class="service-description">Custom web applications and responsive sites</p>
-          </div>
-          <div class="service-card enhanced-service-card">
-            <div class="service-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h5 class="service-title">Mobile App</h5>
-            <p class="service-description">Custom mobile applications as per clients dream</p>
+        <div class="ds-dashboard">
+          <div class="ds-dashboard__body">
+            <div class="ds-dash-metric"><div class="ds-dash-metric__label">Latency</div><div class="ds-dash-metric__value">124ms</div></div>
+            <div class="ds-dash-metric"><div class="ds-dash-metric__label">Uptime</div><div class="ds-dash-metric__value">99.99%</div></div>
+            <div class="ds-dash-metric"><div class="ds-dash-metric__label">Deployments</div><div class="ds-dash-metric__value">420/mo</div></div>
+            <div class="ds-dash-metric"><div class="ds-dash-metric__label">Savings</div><div class="ds-dash-metric__value">40%</div></div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-  <div data-include="/AHM_WEB/AHM_Website/components/organisms/footer.html"></div>
-  <script src="../../../js/partials.js" defer></script>
-  <script src="../../../js/phase3.js" defer></script>
+    </div>
+  </section>
+
+  <section class="ds-section ds-section--surface">
+    <div class="ds-container">
+      <div class="ds-section-header"><h2>Core Services</h2></div>
+      <div class="ds-grid ds-services-six">
+        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-database"></i></div><h3 class="ds-card__title">Informatica</h3><p class="ds-card__desc">Integration, quality, and governance engineering for enterprise data ecosystems.</p><a class="ds-card__link" href="/AHM_Website/pages/services/informatica.html">Learn more →</a></article>
+        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-snowflake"></i></div><h3 class="ds-card__title">Snowflake</h3><p class="ds-card__desc">Warehouse modernization, performance tuning, and secure data sharing patterns.</p><a class="ds-card__link" href="/AHM_Website/pages/services/snowflake.html">Learn more →</a></article>
+        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-cloud"></i></div><h3 class="ds-card__title">IDMC</h3><p class="ds-card__desc">Cloud-native data management with lineage, cataloging, and trust controls.</p><a class="ds-card__link" href="/AHM_Website/pages/services/idmc.html">Learn more →</a></article>
+        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-robot"></i></div><h3 class="ds-card__title">Python & AI</h3><p class="ds-card__desc">Automation and ML pipelines with reusable deployment and monitoring frameworks.</p><a class="ds-card__link" href="/AHM_Website/pages/services/python-ai.html">Learn more →</a></article>
+        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-code"></i></div><h3 class="ds-card__title">Web Development</h3><p class="ds-card__desc">Data products, portals, and admin applications integrated into your cloud stack.</p><a class="ds-card__link" href="/AHM_Website/pages/services/web-development.html">Learn more →</a></article>
+        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-mobile-alt"></i></div><h3 class="ds-card__title">Mobile Apps</h3><p class="ds-card__desc">Mobile-first workflows and operational dashboards for distributed teams.</p><a class="ds-card__link" href="/AHM_Website/pages/services/web-development.html">Learn more →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="arch" class="ds-section">
+    <div class="ds-container">
+      <div class="ds-section-header"><h2>Service Architecture</h2></div>
+      <div class="ds-pipeline">
+        <div class="ds-pipeline__step" data-tip="ERP, CRM, APIs, logs"><h3 class="ds-pipeline__title">Data Sources</h3></div>
+        <div class="ds-pipeline__arrow">→</div>
+        <div class="ds-pipeline__step" data-tip="Validation + transformation"><h3 class="ds-pipeline__title">ETL</h3></div>
+        <div class="ds-pipeline__arrow">→</div>
+        <div class="ds-pipeline__step" data-tip="Lakehouse and warehouse layers"><h3 class="ds-pipeline__title">Storage</h3></div>
+        <div class="ds-pipeline__arrow">→</div>
+        <div class="ds-pipeline__step" data-tip="Governed semantic models"><h3 class="ds-pipeline__title">BI</h3></div>
+        <div class="ds-pipeline__arrow">→</div>
+        <div class="ds-pipeline__step" data-tip="Operational and executive apps"><h3 class="ds-pipeline__title">Apps</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section ds-section--alt">
+    <div class="ds-container">
+      <div class="ds-grid">
+        <article class="ds-card ds-col-6">
+          <h3 class="ds-card__title">Data Engineering</h3>
+          <ul class="ds-list">
+            <li>Ingestion strategy for batch and streaming workloads.</li>
+            <li>Data contracts, schema versioning, and quality enforcement.</li>
+            <li>Observability with SLA alerts and failure classification.</li>
+          </ul>
+          <div class="ds-map ds-mt-2"><div class="ds-map__row"><strong>Flow</strong><span>Source → Validate → Transform → Publish</span></div></div>
+        </article>
+        <article class="ds-card ds-col-6">
+          <h3 class="ds-card__title">Cloud Architecture</h3>
+          <ul class="ds-list">
+            <li>Secure network and IAM design for least-privilege operations.</li>
+            <li>Elastic compute with cost controls and workload isolation.</li>
+            <li>Release automation with environment promotion guardrails.</li>
+          </ul>
+          <div class="ds-map ds-mt-2"><div class="ds-map__row"><strong>Flow</strong><span>Landing Zone → Data Plane → Consumption Plane</span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section">
+    <div class="ds-container">
+      <div class="ds-grid">
+        <div class="ds-col-6">
+          <h2>Code / API Operations</h2>
+          <p class="ds-mt-2">Every implementation includes API observability and clear operational endpoints for engineering and business teams.</p>
+          <div class="ds-tabbar ds-mt-2" role="tablist" aria-label="API format tabs">
+            <button class="ds-tab is-active" type="button" data-tab="rest" role="tab" aria-selected="true">REST</button>
+            <button class="ds-tab" type="button" data-tab="graphql" role="tab" aria-selected="false">GraphQL</button>
+          </div>
+        </div>
+        <div class="ds-col-6">
+          <div class="ds-code">
+            <div class="ds-code__header"><span id="api-code-title">GET /pipeline/status</span><button class="ds-copy-btn" type="button" data-copy-target="api-code-body">Copy</button></div>
+            <pre class="ds-code__body" id="api-code-body" data-rest='{
+  "latency": "124ms",
+  "status": "healthy"
+}' data-graphql='query PipelineStatus {
+  pipelineStatus {
+    latency
+    status
+  }
+}'>{
+  "latency": "124ms",
+  "status": "healthy"
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section ds-section--surface">
+    <div class="ds-container">
+      <div class="ds-section-header"><h2>Metrics / Outcomes</h2></div>
+      <div class="ds-grid ds-metrics-row">
+        <div class="ds-metric-card ds-col-4"><div class="ds-metric-card__value">3.2x</div><div class="ds-metric-card__label">Performance gains</div></div>
+        <div class="ds-metric-card ds-col-4"><div class="ds-metric-card__value">40%</div><div class="ds-metric-card__label">Cost savings</div></div>
+        <div class="ds-metric-card ds-col-4"><div class="ds-metric-card__value">55%</div><div class="ds-metric-card__label">Faster deployment speed</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-cta-band">
+    <div class="ds-container">
+      <h2>Need execution depth, not slideware?</h2>
+      <div class="ds-cta-band__actions"><a class="ds-btn ds-btn-primary" href="/AHM_Website/pages/contact/index.html">Start Service Assessment</a></div>
+    </div>
+  </section>
+</main>
+<div data-include="/AHM_Website/components/organisms/footer.html"></div>
+<script src="/js/partials.js" defer></script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>

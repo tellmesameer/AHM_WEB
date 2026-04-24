@@ -53,8 +53,13 @@
     }
     await Promise.all(els.map(async el=>{
       const originalPath = el.getAttribute('data-include');
-      // Normalize common authoring forms: './path', '/path', '/AHM_WEB/path', etc.
-      const sanitizedPath = String(originalPath).replace(/^(\/?AHM_WEB\/|\.\/|\/)+/i, '');
+      // Normalize common authoring forms: './path', '/path', '/AHM_WEB/path', 'site/path', etc.
+      const sanitizedPath = String(originalPath || '')
+        .replace(/^\/?AHM_WEB\//i, '')
+        .replace(/^\/?AHM_Website\//i, '')
+        .replace(/^\/?site\//i, '')
+        .replace(/^\.\//, '')
+        .replace(/^\/+/, '');
 
       // Prefer a SITE_BASE-aware path when helper is available
       const primary = (typeof window !== 'undefined' && typeof window.withBase === 'function')
@@ -96,6 +101,8 @@
           // Optionally, add a visual error indicator
           el.innerHTML = '<!-- Failed to load component: ' + originalPath + ' -->';
       }
+      // Ensure the data-include attribute is updated in the DOM
+      el.setAttribute('data-include', sanitizedPath);
     }));
 
     document.dispatchEvent(new CustomEvent('includes:loaded'));
