@@ -3,6 +3,47 @@
    ============================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
+  // ===== THEME TOGGLE =====
+  function getPreferredTheme() {
+    const stored = localStorage.getItem('ahm-theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+
+  function syncThemeToggleUI(theme) {
+    document.querySelectorAll('#theme-toggle').forEach(btn => {
+      const icon = btn.querySelector('i');
+      const label = btn.querySelector('.ds-theme-toggle__label');
+      const isLight = theme === 'light';
+      if (icon) icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+      if (label) label.textContent = isLight ? 'Light' : 'Dark';
+      btn.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+      btn.setAttribute('title', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+      btn.setAttribute('aria-pressed', String(isLight));
+    });
+  }
+
+  function applyTheme(theme) {
+    const normalized = theme === 'light' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', normalized);
+    localStorage.setItem('ahm-theme', normalized);
+    syncThemeToggleUI(normalized);
+  }
+
+  function initThemeToggle() {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn || btn.dataset.bound === 'true') return;
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    syncThemeToggleUI(document.documentElement.getAttribute('data-theme') || 'dark');
+  }
+
+  applyTheme(getPreferredTheme());
+  document.addEventListener('includes:loaded', initThemeToggle);
+  initThemeToggle();
 
   // ===== SCROLL ANIMATIONS =====
   const observedSet = new WeakSet();
@@ -49,7 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (nav) {
       const onScroll = () => {
         const y = window.scrollY;
-        nav.style.background = y > 20 ? 'rgba(11,18,34,0.96)' : 'rgba(11,18,34,0.85)';
+        const style = getComputedStyle(document.documentElement);
+        const navBg = style.getPropertyValue('--nav-bg').trim() || 'rgba(11,18,34,0.85)';
+        const navBgScrolled = style.getPropertyValue('--nav-bg-scrolled').trim() || 'rgba(11,18,34,0.96)';
+        nav.style.background = y > 20 ? navBgScrolled : navBg;
         nav.style.boxShadow = y > 20 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
       };
       window.addEventListener('scroll', onScroll, { passive: true });
