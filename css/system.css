@@ -277,3 +277,13 @@ select.ds-form-input{appearance:none;background-image:url("data:image/svg+xml,%3
   transform: none;
   opacity: 1;
 }
+
+.ds-services-six .ds-card{grid-column:span 4}
+.ds-list{margin-top:var(--sp-2);display:grid;gap:8px;list-style:disc;padding-left:20px;color:var(--sys-text-secondary)}
+.ds-metrics-row{align-items:stretch}
+.ds-map{display:grid;gap:10px;margin-top:var(--sp-2)}
+.ds-map__row{display:grid;grid-template-columns:180px 1fr;gap:12px;padding:12px 14px;border:1px solid var(--sys-border);border-radius:var(--r-md);background:var(--sys-surface)}
+.ds-avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sys-primary-glow);font-weight:700;color:var(--sys-primary-light);margin-bottom:10px}
+.ds-footer__grid--six{grid-template-columns:1.6fr repeat(5,1fr)}
+@media(max-width:992px){.ds-services-six .ds-card{grid-column:span 6}.ds-footer__grid--six{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:640px){.ds-services-six .ds-card,.ds-map__row{grid-template-columns:1fr;grid-column:span 12}.ds-footer__grid--six{grid-template-columns:1fr 1fr}}
