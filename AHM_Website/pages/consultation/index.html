@@ -82,29 +82,34 @@
                     <h2>From Assessment to Action</h2>
                     <p>A proven methodology that delivers clarity and confidence in your data strategy.</p>
                 </div>
-                <div class="ds-pipeline ds-animate">
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-comments"></i></div>
-                        <h3 class="ds-pipeline__title">Discovery</h3>
-                        <p class="ds-pipeline__desc">30-minute call to understand your current architecture, challenges, and business goals.</p>
-                    </div>
-                    <div class="ds-pipeline__arrow">→</div>
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-search"></i></div>
-                        <h3 class="ds-pipeline__title">Assessment</h3>
-                        <p class="ds-pipeline__desc">Deep-dive analysis of your data stack, performance metrics, and optimization opportunities.</p>
-                    </div>
-                    <div class="ds-pipeline__arrow">→</div>
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-drafting-compass"></i></div>
-                        <h3 class="ds-pipeline__title">Recommendations</h3>
-                        <p class="ds-pipeline__desc">Detailed findings report with prioritized recommendations and implementation roadmap.</p>
-                    </div>
-                    <div class="ds-pipeline__arrow">→</div>
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-handshake"></i></div>
-                        <h3 class="ds-pipeline__title">Partnership</h3>
-                        <p class="ds-pipeline__desc">Seamless transition to implementation with our engineering team or your internal resources.</p>
+                <div class="ds-flow ds-animate" style="--flow-count:4">
+                    <svg class="ds-flow__svg" viewBox="0 0 840 120" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="dsFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="var(--flow-blue)"/>
+                                <stop offset="100%" stop-color="var(--flow-green)"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="ds-flow__path" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+                        <path class="ds-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+                    </svg>
+                    <div class="ds-flow__nodes">
+                        <div class="ds-flow-node" data-tip="30-minute call to understand your current architecture, challenges, and business goals.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-comments"></i></div>
+                            <span class="ds-flow-node__label">Discovery</span>
+                        </div>
+                        <div class="ds-flow-node" data-tip="Deep-dive analysis of your data stack, performance metrics, and optimization opportunities.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-search"></i></div>
+                            <span class="ds-flow-node__label">Assessment</span>
+                        </div>
+                        <div class="ds-flow-node" data-tip="Detailed findings report with prioritized recommendations and implementation roadmap.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-drafting-compass"></i></div>
+                            <span class="ds-flow-node__label">Recommendations</span>
+                        </div>
+                        <div class="ds-flow-node" data-tip="Seamless transition to implementation with our engineering team or your internal resources.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-handshake"></i></div>
+                            <span class="ds-flow-node__label">Partnership</span>
+                        </div>
                     </div>
                 </div>
             </div>
