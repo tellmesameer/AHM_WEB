@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-    <title>Informatica Services - AHM Data Solutions</title>
-    <meta name="description" content="Enterprise-grade data integration and governance services using Informatica platforms.">
+    <title>Informatica & IDMC Services - AHM Data Solutions</title>
+    <meta name="description" content="Informatica PowerCenter to IDMC migration, CDI, CDG, MDM, data quality, and data governance services.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,57 +16,213 @@
     <div data-include="/AHM_Website/components/organisms/header.html"></div>
 
     <main id="main">
-        <!-- Hero -->
-        <section class="ds-hero" id="hero">
+        <section class="ds-hero ds-service-hero" id="hero">
             <div class="ds-container">
-                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
-                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
-                        <span class="ds-badge">Data Integration</span>
-                        <h1 class="ds-hero__title">Informatica Services</h1>
-                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Enterprise-grade data integration and governance services using Informatica platforms.</p>
-                        <div class="ds-hero__actions" style="justify-content:center;">
-                            <a href="/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Get Started</a>
-                            <a href="/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">All Services</a>
+                <div class="ds-hero__grid">
+                    <div class="ds-hero__content ds-animate">
+                        <span class="ds-badge">Informatica Modernization</span>
+                        <h1 class="ds-hero__title">Informatica & IDMC Services</h1>
+                        <p class="ds-hero__subtitle">One unified delivery page for PowerCenter to IDMC migration, CDI, CDG, MDM, data quality, and governance programs.</p>
+                        <div class="ds-hero__actions">
+                            <a href="/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Plan Migration</a>
+                            <a href="#capabilities" class="ds-btn ds-btn-secondary ds-btn-lg">View Capabilities</a>
+                        </div>
+                    </div>
+                    <div class="ds-hero__visual ds-animate ds-slide-right">
+                        <div class="ds-dashboard ds-service-panel">
+                            <div class="ds-dashboard__bar">
+                                <span class="ds-dashboard__dot ds-dashboard__dot--r"></span>
+                                <span class="ds-dashboard__dot ds-dashboard__dot--y"></span>
+                                <span class="ds-dashboard__dot ds-dashboard__dot--g"></span>
+                            </div>
+                            <div class="ds-service-stack">
+                                <div><span>Legacy ETL</span><strong>PowerCenter</strong></div>
+                                <i class="fas fa-arrow-right"></i>
+                                <div><span>Modern Cloud</span><strong>IDMC</strong></div>
+                            </div>
+                            <div class="ds-dashboard__body">
+                                <div class="ds-dash-metric"><div class="ds-dash-metric__label">Workloads</div><div class="ds-dash-metric__value">Batch + CDC</div></div>
+                                <div class="ds-dash-metric"><div class="ds-dash-metric__label">Trust Layer</div><div class="ds-dash-metric__value">DQ + MDM</div></div>
+                                <div class="ds-dash-metric"><div class="ds-dash-metric__label">Governance</div><div class="ds-dash-metric__value ds-dash-metric__value--success">Lineage</div></div>
+                                <div class="ds-dash-metric"><div class="ds-dash-metric__label">Delivery</div><div class="ds-dash-metric__value ds-dash-metric__value--primary">Phased</div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Capabilities -->
         <section id="capabilities" class="ds-section ds-section--surface">
             <div class="ds-container">
                 <div class="ds-section-header ds-animate">
-                    <h2>What We Deliver</h2>
-                    <p>End-to-end Informatica consulting across the full product suite.</p>
+                    <h2>Unified Informatica Capability</h2>
+                    <p>Each area is planned as part of one connected data management program, not as isolated tools.</p>
                 </div>
-                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
-                    <div class="ds-card ds-animate ds-animate-delay-1">
-                        <div class="ds-card__icon"><i class="fas fa-exchange-alt"></i></div>
-                        <h3 class="ds-card__title">PowerCenter Migrations</h3>
-                        <p class="ds-card__desc">Migrate legacy ETL workloads to modern cloud-native architectures with zero downtime.</p>
-                    </div>
-                    <div class="ds-card ds-animate ds-animate-delay-2">
-                        <div class="ds-card__icon"><i class="fas fa-project-diagram"></i></div>
-                        <h3 class="ds-card__title">Data Quality & MDM</h3>
-                        <p class="ds-card__desc">Implement master data management and quality rules that scale with your data estate.</p>
-                    </div>
-                    <div class="ds-card ds-animate ds-animate-delay-3">
-                        <div class="ds-card__icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="ds-grid ds-capability-grid">
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-1" id="powercenter-idmc">
+                        <div class="ds-card__icon"><i class="fas fa-cloud-arrow-up"></i></div>
+                        <span class="ds-small">Migration</span>
+                        <h3 class="ds-card__title">PowerCenter to IDMC</h3>
+                        <p class="ds-card__desc">Assess mappings, sessions, dependencies, schedules, and reusable components, then migrate to IDMC with phased cutover and validation.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-diagram-project"></i></div>
+                        <span class="ds-small">CDI</span>
+                        <h3 class="ds-card__title">Cloud Data Integration</h3>
+                        <p class="ds-card__desc">Build cloud-native ingestion and transformation pipelines across SaaS, databases, files, APIs, warehouses, and lakehouse targets.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-sitemap"></i></div>
+                        <span class="ds-small">CDG</span>
+                        <h3 class="ds-card__title">Cloud Data Governance</h3>
+                        <p class="ds-card__desc">Establish cataloging, lineage, ownership, business glossary, stewardship workflows, and policy visibility across enterprise data assets.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-circle-nodes"></i></div>
+                        <span class="ds-small">MDM</span>
+                        <h3 class="ds-card__title">Master Data Management</h3>
+                        <p class="ds-card__desc">Design trusted golden records, match and merge rules, survivorship logic, hierarchy management, and publishing patterns for core domains.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-check-double"></i></div>
+                        <span class="ds-small">Quality</span>
+                        <h3 class="ds-card__title">Data Quality</h3>
+                        <p class="ds-card__desc">Implement profiling, cleansing, standardization, exception management, monitoring rules, and scorecards that keep data reliable at scale.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-shield-halved"></i></div>
+                        <span class="ds-small">Governance</span>
                         <h3 class="ds-card__title">Data Governance</h3>
-                        <p class="ds-card__desc">Build governance frameworks with lineage tracking, cataloging, and policy enforcement.</p>
+                        <p class="ds-card__desc">Connect operating model, controls, lineage, access policies, retention rules, and audit-ready reporting into everyday delivery workflows.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds-section">
+            <div class="ds-container">
+                <div class="ds-section-header">
+                    <h2>Migration Path</h2>
+                    <p>A practical route from legacy Informatica investments to governed IDMC operations.</p>
+                </div>
+                <div class="ds-flow ds-service-flow" style="--flow-count:5">
+                    <svg class="ds-flow__svg" viewBox="0 0 840 120" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="dsFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="var(--flow-blue)"/>
+                                <stop offset="100%" stop-color="var(--flow-green)"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="ds-flow__path" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+                        <path class="ds-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+                    </svg>
+                    <div class="ds-flow__nodes">
+                        <div class="ds-flow-node" data-tip="Inventory mappings, workflows, schedules, parameters, and dependencies."><div class="ds-flow-node__ring"><i class="fas fa-magnifying-glass-chart"></i></div><span class="ds-flow-node__label">Assess</span></div>
+                        <div class="ds-flow-node" data-tip="Group workloads by risk, complexity, business priority, and target pattern."><div class="ds-flow-node__ring"><i class="fas fa-layer-group"></i></div><span class="ds-flow-node__label">Plan</span></div>
+                        <div class="ds-flow-node" data-tip="Rebuild or convert pipelines using IDMC standards and reusable templates."><div class="ds-flow-node__ring"><i class="fas fa-cloud-arrow-up"></i></div><span class="ds-flow-node__label">Migrate</span></div>
+                        <div class="ds-flow-node" data-tip="Compare row counts, transformations, data quality, and downstream outputs."><div class="ds-flow-node__ring"><i class="fas fa-clipboard-check"></i></div><span class="ds-flow-node__label">Validate</span></div>
+                        <div class="ds-flow-node" data-tip="Promote with monitoring, governance controls, runbooks, and support handoff."><div class="ds-flow-node__ring"><i class="fas fa-rocket"></i></div><span class="ds-flow-node__label">Operate</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
+        <section class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header">
+                    <h2>Platform Tracks</h2>
+                    <p>Focused service sections for the core Informatica and IDMC capabilities in the modernization roadmap.</p>
+                </div>
+                <div class="ds-grid">
+                    <section class="ds-card ds-col-6 ds-service-track" id="cdi">
+                        <div class="ds-card__icon"><i class="fas fa-diagram-project"></i></div>
+                        <span class="ds-badge">CDI</span>
+                        <h3 class="ds-card__title">Cloud Data Integration</h3>
+                        <p class="ds-card__desc">Design and build IDMC CDI pipelines for batch, CDC, API, file, SaaS, database, warehouse, and lakehouse integration patterns.</p>
+                        <ul class="ds-list">
+                            <li>Reusable mapping templates and parameterized job patterns.</li>
+                            <li>Source-to-target validation, reconciliation, and restartability.</li>
+                            <li>Operational monitoring for failures, latency, and SLA health.</li>
+                        </ul>
+                    </section>
+                    <section class="ds-card ds-col-6 ds-service-track" id="cdg">
+                        <div class="ds-card__icon"><i class="fas fa-sitemap"></i></div>
+                        <span class="ds-badge">CDG</span>
+                        <h3 class="ds-card__title">Cloud Data Governance</h3>
+                        <p class="ds-card__desc">Set up governance foundations across catalog, lineage, glossary, stewardship, ownership, policy workflows, and data asset discovery.</p>
+                        <ul class="ds-list">
+                            <li>Business glossary and data ownership model.</li>
+                            <li>Technical lineage connected to integration and reporting assets.</li>
+                            <li>Stewardship queues for definitions, issues, and approvals.</li>
+                        </ul>
+                    </section>
+                    <section class="ds-card ds-col-6 ds-service-track" id="mdm">
+                        <div class="ds-card__icon"><i class="fas fa-circle-nodes"></i></div>
+                        <span class="ds-badge">MDM</span>
+                        <h3 class="ds-card__title">Master Data Management</h3>
+                        <p class="ds-card__desc">Create trusted master records for customer, product, supplier, location, or finance domains with durable governance around golden data.</p>
+                        <ul class="ds-list">
+                            <li>Domain modeling, match rules, merge rules, and survivorship logic.</li>
+                            <li>Hierarchy, relationship, and cross-reference management.</li>
+                            <li>Publishing patterns for analytics, operations, and downstream apps.</li>
+                        </ul>
+                    </section>
+                    <section class="ds-card ds-col-6 ds-service-track" id="data-governance">
+                        <div class="ds-card__icon"><i class="fas fa-shield-halved"></i></div>
+                        <span class="ds-badge">Governance</span>
+                        <h3 class="ds-card__title">Data Governance</h3>
+                        <p class="ds-card__desc">Turn governance into a working operating model with policy controls, lineage, accountability, quality gates, and audit-ready evidence.</p>
+                        <ul class="ds-list">
+                            <li>Policy, classification, retention, and access-control alignment.</li>
+                            <li>Governance scorecards tied to data quality and ownership.</li>
+                            <li>Audit visibility for lineage, changes, approvals, and exceptions.</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds-section ds-section--alt">
+            <div class="ds-container">
+                <div class="ds-grid">
+                    <div class="ds-col-6">
+                        <span class="ds-badge">Operating Model</span>
+                        <h2>Built as One Informatica Program</h2>
+                        <p class="ds-mt-2">IDMC implementation, PowerCenter modernization, CDI, CDG, MDM, data quality, and governance are aligned to the same standards, release model, and business ownership.</p>
+                    </div>
+                    <div class="ds-col-6">
+                        <div class="ds-map">
+                            <div class="ds-map__row"><strong>Integration</strong><span>Reusable CDI mappings, connectors, parameters, schedules, and operational alerts.</span></div>
+                            <div class="ds-map__row"><strong>Trust</strong><span>Profiling, quality rules, MDM matching, survivorship, and exception review.</span></div>
+                            <div class="ds-map__row"><strong>Governance</strong><span>Catalogs, lineage, glossary, stewardship, policy controls, and audit visibility.</span></div>
+                            <div class="ds-map__row"><strong>Operations</strong><span>Deployment standards, monitoring, runbooks, incident response, and optimization.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header">
+                    <h2>Outcomes We Target</h2>
+                </div>
+                <div class="ds-grid ds-metrics-row">
+                    <div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value">Faster</div><div class="ds-metric-card__label">Cloud-native delivery cycles</div></div>
+                    <div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value">Lower</div><div class="ds-metric-card__label">Legacy platform dependency</div></div>
+                    <div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value">Higher</div><div class="ds-metric-card__label">Data quality and trust</div></div>
+                    <div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value">Clear</div><div class="ds-metric-card__label">Lineage, ownership, and controls</div></div>
+                </div>
+            </div>
+        </section>
+
         <section class="ds-cta-band">
             <div class="ds-container ds-animate">
                 <h2>Ready to modernize your Informatica stack?</h2>
-                <p>Our certified engineers can audit your current setup and recommend a migration path.</p>
+                <p>We can assess your current PowerCenter estate and design a unified IDMC roadmap across integration, quality, MDM, and governance.</p>
                 <div class="ds-cta-band__actions">
                     <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
+                    <a href="/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">All Services</a>
                 </div>
             </div>
         </section>
@@ -77,5 +233,3 @@
     <script src="/js/main.js" defer></script>
 </body>
 </html>
-
-
