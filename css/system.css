@@ -272,6 +272,38 @@ p{color:var(--sys-text-secondary);line-height:1.7}
 [data-theme="light"] .ds-metric-card__icon{background:rgba(37,99,235,0.1)}
 @media(max-width:640px){.ds-metrics{grid-template-columns:1fr}}
 
+/* --- SOLUTIONS KPI / LEGACY KPI GROUP STYLES --- */
+/* Styles ported from solutions page to ensure consistent metrics across site */
+.kpi-groups { display: grid; gap: .85rem; }
+details.kpi-group {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-card);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.kpi-group summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: .78rem .9rem; color: var(--text-main); font-weight: 600;
+}
+.kpi-group summary::-webkit-details-marker { display: none; }
+.kpi-cards { border-top: 1px solid var(--border); padding: .72rem; display: grid; gap: .7rem; grid-template-columns: repeat(3,minmax(0,1fr)); }
+.kpi-card { padding: .7rem; background: var(--surface-card); border: 1px solid var(--border); border-radius: 10px; }
+.kpi-card.is-primary { border-color: rgba(59,130,246,.52); }
+.kpi-value { font-size: 1.35rem; font-weight: 700; color: var(--text-main); }
+.kpi-label { margin-top: .22rem; color: var(--text-muted); font-size: .8rem; }
+.kpi-bar { margin-top: .45rem; height: 6px; border-radius: 999px; background: rgba(148,163,184,.18); overflow: hidden; }
+.kpi-fill { display: block; height: 100%; background: var(--sys-primary); transition: width .24s ease; }
+.kpi-fill.success { background: var(--sys-success); }
+.kpi-fill.critical { background: var(--sys-danger); }
+
+@media (max-width: 1024px) {
+  .kpi-cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .kpi-cards { grid-template-columns: 1fr; }
+}
+
 /* --- KPI ACCORDION --- */
 .kpi-dashboard{margin-top:var(--sp-4)}
 .kpi-accordion{border:1px solid var(--border);border-radius:18px;background:var(--surface-card);margin-bottom:var(--sp-3);overflow:hidden;box-shadow:0 2px 8px rgba(15,23,42,.05)}

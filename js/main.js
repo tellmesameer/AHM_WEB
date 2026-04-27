@@ -84,9 +84,32 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-metrics="global"]').forEach(container => {
       if (container.dataset.rendered === 'true') return;
       container.dataset.rendered = 'true';
-      container.innerHTML = '';
-      GLOBAL_METRIC_DECK.forEach(metric => container.appendChild(renderMetricCard(metric)));
+      // Render as solution-style KPI groups rather than the legacy metric cards
+      container.innerHTML = buildKpiGroupsMarkup(GLOBAL_METRIC_DECK);
     });
+  }
+
+  function buildKpiGroupsMarkup(deck) {
+    // Group indices mapped to deck positions to match Solutions page layout
+    const groups = [
+      { title: 'Financial Impact', indices: [0, 3, 1], open: true },
+      { title: 'Performance Impact', indices: [2, 5, 4], open: true },
+      { title: 'Quality Impact', indices: [6, 8, 9], open: false }
+    ];
+
+    const esc = (s) => String(s == null ? '' : s);
+
+    return groups.map(group => {
+      const cards = group.indices.map((idx, i) => {
+        const m = deck[idx];
+        if (!m) return '';
+        const primary = i === 0 ? ' is-primary' : '';
+        // Use raw metric.value as data-count to enable count-up (script parses numeric portion)
+        return `<article class="kpi-card${primary}"><div class="kpi-value" data-count="${esc(m.value)}">${esc(m.value)}</div><div class="kpi-label">${esc(m.label)}</div><div class="kpi-bar" aria-hidden="true"><span class="kpi-fill${m.tone === 'danger' ? ' critical' : (m.tone === 'success' ? ' success' : '')}" style="width:${esc(m.progress)}%"></span></div></article>`;
+      }).join('');
+
+      return `<details class="kpi-group"${group.open ? ' open' : ''}><summary><span>${esc(group.title)}</span><span>▾</span></summary><div class="kpi-cards">${cards}</div></details>`;
+    }).join('');
   }
 
   renderSharedMetrics();
@@ -354,7 +377,14 @@ document.addEventListener('DOMContentLoaded', function () {
       requestAnimationFrame(tick);
     });
   }, { threshold: 0.45 });
-  document.querySelectorAll('.ds-metric-card__value[data-count]').forEach(el => counterObserver.observe(el));
+  // Observe both legacy metric cards and the new KPI values
+  document.querySelectorAll('.ds-metric-card__value[data-count], .kpi-value[data-count]').forEach(el => counterObserver.observe(el));
+  // Re-run observation after includes load in case metrics are injected later
+  document.addEventListener('includes:loaded', () => {
+    document.querySelectorAll('.ds-metric-card__value[data-count], .kpi-value[data-count]').forEach(el => {
+      try { counterObserver.observe(el); } catch (e) { /* ignore */ }
+    });
+  });
 });
 
 function setActiveNav() {
