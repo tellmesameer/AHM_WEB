@@ -1,8 +1,333 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>About - AHM Data Solutions</title><link rel="stylesheet" href="/css/system.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><script src="/base-config.js"></script><script src="/js/site-config.js"></script></head><body><div data-include="/AHM_Website/components/organisms/header.html"></div><main>
-<section class="ds-hero"><div class="ds-container"><div class="ds-hero__grid" style="grid-template-columns:1fr"><div class="ds-hero__content" style="max-width:760px;text-align:center;margin:auto"><span class="ds-badge">Who We Are</span><h1 class="ds-hero__title">Engineers Focused on Reliable Business Outcomes</h1><p class="ds-hero__subtitle" style="margin:auto">AHM combines data engineering, cloud architecture, and platform operations to deliver measurable impact.</p></div></div></div></section>
-<section class="ds-section ds-section--surface ds-section--dense"><div class="ds-container"><div id="aboutmetrics" class="ds-grid ds-metrics-row"><div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value" data-count="10">10+</div><div class="ds-metric-card__label">years</div></div><div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value" data-count="50">50+</div><div class="ds-metric-card__label">projects</div></div><div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value" data-count="100">100%</div><div class="ds-metric-card__label">client satisfaction</div></div><div class="ds-metric-card ds-col-3"><div class="ds-metric-card__value" data-count="15">15+</div><div class="ds-metric-card__label">experts</div></div></div></div></section>
-<section class="ds-section"><div class="ds-container"><div class="ds-section-header"><h2>Engineering Principles</h2></div><div class="ds-grid"><div class="ds-card ds-col-3"><h3 class="ds-card__title">Security-first</h3></div><div class="ds-card ds-col-3"><h3 class="ds-card__title">Performance</h3></div><div class="ds-card ds-col-3"><h3 class="ds-card__title">Scalability</h3></div><div class="ds-card ds-col-3"><h3 class="ds-card__title">Reliability</h3></div></div></div></section>
-<section class="ds-section ds-section--alt"><div class="ds-container"><div class="ds-section-header"><h2>Leadership</h2></div><div class="ds-grid"><article class="ds-card ds-col-4"><div class="ds-avatar">RK</div><h3 class="ds-card__title">Rahul Kapoor</h3><p>CEO</p><p class="ds-card__desc">Leads strategic transformation initiatives for enterprise clients.<br><span class="ds-small">Hover insight: former data platform lead at a Fortune 100 firm.</span></p></article><article class="ds-card ds-col-4"><div class="ds-avatar">MS</div><h3 class="ds-card__title">Mira Shah</h3><p>VP Engineering</p><p class="ds-card__desc">Builds resilient delivery systems across data and cloud teams.<br><span class="ds-small">Hover insight: runs SRE quality gates across all programs.</span></p></article><article class="ds-card ds-col-4"><div class="ds-avatar">AJ</div><h3 class="ds-card__title">Arjun Iyer</h3><p>Principal Architect</p><p class="ds-card__desc">Designs platform blueprints for governed, high-scale analytics.<br><span class="ds-small">Hover insight: authored the internal architecture playbook.</span></p></article></div></div></section>
-<section class="ds-section"><div class="ds-container"><div class="ds-section-header"><h2>How We Work</h2></div><div id="process" class="ds-pipeline"><div class="ds-pipeline__step" data-tip="Step 1"><h3 class="ds-pipeline__title">Discovery</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 2"><h3 class="ds-pipeline__title">Design</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 3"><h3 class="ds-pipeline__title">Build</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 4"><h3 class="ds-pipeline__title">Deploy</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 5"><h3 class="ds-pipeline__title">Optimize</h3></div></div></div></section>
-<section class="ds-cta-band"><div class="ds-container"><h2>Build with a team that ships reliably.</h2><a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary">Meet the Team</a></div></section>
-</main><div data-include="/AHM_Website/components/organisms/footer.html"></div><script src="/js/partials.js" defer></script><script src="/js/main.js" defer></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - AHM Data Solutions</title>
+  <link rel="stylesheet" href="/css/system.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="/base-config.js"></script>
+  <script src="/js/site-config.js"></script>
+  <style>
+    .about-hero-network {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .46;
+      pointer-events: none;
+    }
+
+    [data-theme="light"] .about-hero-network {
+      opacity: .34;
+    }
+
+    .about-metric-card {
+      display: grid;
+      gap: 10px;
+      place-items: center;
+    }
+
+    .about-metric-icon {
+      width: 42px;
+      height: 42px;
+      color: var(--sys-primary-light);
+      opacity: .88;
+    }
+
+    [data-theme="light"] .about-metric-icon {
+      color: var(--sys-primary-dark);
+    }
+
+    .about-flow {
+      --flow-node-bg: #0f172a;
+      --flow-node-border: #334155;
+      --flow-blue: #3b82f6;
+      --flow-green: #22c55e;
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 0 12px;
+    }
+
+    [data-theme="light"] .about-flow {
+      --flow-node-bg: #ffffff;
+      --flow-node-border: #e5e7eb;
+      --flow-blue: #2563eb;
+      --flow-green: #16a34a;
+    }
+
+    .about-flow__svg {
+      position: absolute;
+      top: 27px;
+      left: 8%;
+      width: 84%;
+      height: 88px;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .about-flow__path,
+    .about-flow__pulse {
+      fill: none;
+      stroke: url(#aboutFlowGradient);
+      stroke-width: 3;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 7px rgba(59,130,246,.35));
+    }
+
+    .about-flow__path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: about-flow-draw 2s ease forwards;
+    }
+
+    .about-flow__pulse {
+      stroke-dasharray: 18 14;
+      opacity: .62;
+      animation: about-flow-pulse 3s linear infinite;
+    }
+
+    .about-flow__nodes {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-flow-node {
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+      color: var(--sys-text);
+      transition: transform .25s var(--ease), filter .25s var(--ease);
+      animation: about-node-in .45s var(--ease) both;
+    }
+
+    .about-flow-node:nth-child(2),
+    .about-flow-node:nth-child(4) {
+      transform: translateY(18px);
+    }
+
+    .about-flow-node:nth-child(1) { animation-delay: .1s; }
+    .about-flow-node:nth-child(2) { animation-delay: .2s; }
+    .about-flow-node:nth-child(3) { animation-delay: .3s; }
+    .about-flow-node:nth-child(4) { animation-delay: .4s; }
+    .about-flow-node:nth-child(5) { animation-delay: .5s; }
+
+    .about-flow-node:hover {
+      transform: translateY(-4px) scale(1.08);
+      filter: drop-shadow(0 0 8px rgba(59,130,246,.6));
+    }
+
+    .about-flow-node:nth-child(2):hover,
+    .about-flow-node:nth-child(4):hover {
+      transform: translateY(12px) scale(1.08);
+    }
+
+    .about-flow-node__ring {
+      width: 82px;
+      height: 82px;
+      border: 1px solid var(--flow-node-border);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--flow-node-bg) 86%, transparent);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 7px rgba(59,130,246,.08), 0 10px 24px rgba(0,0,0,.14);
+      transition: border-color .25s var(--ease), background .25s var(--ease);
+    }
+
+    .about-flow-node:hover .about-flow-node__ring {
+      border-color: var(--flow-blue);
+      background: var(--flow-node-bg);
+    }
+
+    .about-flow-node svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--sys-primary-light);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .about-flow-node__label {
+      font-weight: 600;
+      color: var(--sys-text);
+    }
+
+    .about-flow-node::after {
+      content: attr(data-tip);
+      max-width: 18ch;
+      min-height: 38px;
+      text-align: center;
+      color: var(--sys-muted);
+      font-size: var(--sys-small);
+      line-height: 1.45;
+      opacity: .74;
+    }
+
+    @keyframes about-flow-draw {
+      from { stroke-dashoffset: 1000; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes about-flow-pulse {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: -200; }
+    }
+
+    @keyframes about-node-in {
+      from { opacity: 0; translate: 0 12px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+
+    @media (max-width: 768px) {
+      .about-flow {
+        padding-top: 0;
+      }
+
+      .about-flow__svg {
+        top: 0;
+        left: 50%;
+        width: 88px;
+        height: calc(100% - 56px);
+        transform: translateX(-50%);
+      }
+
+      .about-flow__nodes {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .about-flow-node:nth-child(2),
+      .about-flow-node:nth-child(4),
+      .about-flow-node:nth-child(2):hover,
+      .about-flow-node:nth-child(4):hover {
+        transform: none;
+      }
+
+      .about-flow-node:hover {
+        transform: scale(1.04);
+      }
+    }
+  </style>
+</head>
+<body>
+<div data-include="/AHM_Website/components/organisms/header.html"></div>
+<main>
+  <section class="ds-hero">
+    <svg class="about-hero-network" viewBox="0 0 1200 520" aria-hidden="true">
+      <defs>
+        <linearGradient id="aboutHeroLine" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#3b82f6" stop-opacity=".7"/>
+          <stop offset=".52" stop-color="#60a5fa" stop-opacity=".42"/>
+          <stop offset="1" stop-color="#22c55e" stop-opacity=".52"/>
+        </linearGradient>
+        <radialGradient id="aboutHeroNode">
+          <stop offset="0" stop-color="#ffffff" stop-opacity=".92"/>
+          <stop offset=".42" stop-color="#60a5fa" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#60a5fa" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <path d="M-40 330 C140 210 270 380 430 230 S770 180 940 300 1130 280 1240 150" stroke="url(#aboutHeroLine)" stroke-width="1.5" fill="none"/>
+      <path d="M20 170 C190 120 320 210 470 130 S760 70 890 180 1080 250 1220 80" stroke="url(#aboutHeroLine)" stroke-width="1" fill="none" opacity=".65"/>
+      <path d="M110 420 C260 300 400 410 540 320 S810 260 1010 380" stroke="url(#aboutHeroLine)" stroke-width="1" fill="none" opacity=".55"/>
+      <g stroke="#ffffff" stroke-opacity=".05" stroke-width=".8">
+        <path d="M0 80H1200M0 180H1200M0 280H1200M0 380H1200"/>
+        <path d="M140 0V520M340 0V520M540 0V520M740 0V520M940 0V520M1140 0V520"/>
+      </g>
+      <g fill="url(#aboutHeroNode)">
+        <circle cx="135" cy="245" r="12"/><circle cx="318" cy="312" r="10"/><circle cx="478" cy="130" r="9"/>
+        <circle cx="655" cy="172" r="12"/><circle cx="825" cy="248" r="10"/><circle cx="1005" cy="360" r="13"/>
+      </g>
+    </svg>
+    <div class="ds-container">
+      <div class="ds-hero__grid" style="grid-template-columns:1fr">
+        <div class="ds-hero__content" style="max-width:820px;text-align:center;margin:auto">
+          <span class="ds-badge">Who We Are</span>
+          <h1 class="ds-hero__title">Engineers Focused on Reliable Business Outcomes</h1>
+          <p class="ds-hero__subtitle" style="margin:auto">We turn complex data systems into decisive business leverage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section ds-section--surface ds-section--dense">
+    <div class="ds-container">
+      <div class="ds-section-header ds-animate">
+        <span class="ds-badge">Performance Benchmarks</span>
+        <h2>Shared Outcomes</h2>
+        <p>Core impact metrics that remain consistent across assessment, delivery, and platform experiences.</p>
+      </div>
+      <div id="aboutmetrics" class="ds-metrics ds-animate" data-metrics="global" role="list"></div>
+    </div>
+  </section>
+
+  <section class="ds-section">
+    <div class="ds-container">
+      <div class="ds-section-header"><h2>Engineering Principles</h2></div>
+      <div class="ds-grid">
+        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Security-first</h3></div>
+        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Performance</h3></div>
+        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Scalability</h3></div>
+        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Reliability</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section ds-section--alt">
+    <div class="ds-container">
+      <div class="ds-section-header"><h2>How We Work</h2></div>
+      <div id="process" class="about-flow">
+        <svg class="about-flow__svg" viewBox="0 0 840 120" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="aboutFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--flow-blue)"/>
+              <stop offset="100%" stop-color="var(--flow-green)"/>
+            </linearGradient>
+          </defs>
+          <path class="about-flow__path" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+          <path class="about-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+        </svg>
+        <div class="about-flow__nodes">
+          <div class="about-flow-node" data-tip="Clarify goals, gaps, and measurable outcomes.">
+            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></div>
+            <span class="about-flow-node__label">Discovery</span>
+          </div>
+          <div class="about-flow-node" data-tip="Map the architecture and delivery plan.">
+            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M9 10v9M15 10v9"/></svg></div>
+            <span class="about-flow-node__label">Design</span>
+          </div>
+          <div class="about-flow-node" data-tip="Engineer pipelines, platforms, and controls.">
+            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></div>
+            <span class="about-flow-node__label">Build</span>
+          </div>
+          <div class="about-flow-node" data-tip="Release with monitoring and operational guardrails.">
+            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 2A3 3 0 0 0 7 18Z"/><path d="M12 15V7M9 10l3-3 3 3"/></svg></div>
+            <span class="about-flow-node__label">Deploy</span>
+          </div>
+          <div class="about-flow-node" data-tip="Tune cost, quality, speed, and adoption.">
+            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/><path d="M18 7h-4M18 7v4"/></svg></div>
+            <span class="about-flow-node__label">Optimize</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-cta-band">
+    <div class="ds-container">
+      <h2>Build with a team that ships reliably.</h2>
+      <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary">Meet the Team</a>
+    </div>
+  </section>
+</main>
+<div data-include="/AHM_Website/components/organisms/footer.html"></div>
+<script src="/js/partials.js" defer></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

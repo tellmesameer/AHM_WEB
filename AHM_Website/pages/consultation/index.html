@@ -82,29 +82,34 @@
                     <h2>From Assessment to Action</h2>
                     <p>A proven methodology that delivers clarity and confidence in your data strategy.</p>
                 </div>
-                <div class="ds-pipeline ds-animate">
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-comments"></i></div>
-                        <h3 class="ds-pipeline__title">Discovery</h3>
-                        <p class="ds-pipeline__desc">30-minute call to understand your current architecture, challenges, and business goals.</p>
-                    </div>
-                    <div class="ds-pipeline__arrow">→</div>
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-search"></i></div>
-                        <h3 class="ds-pipeline__title">Assessment</h3>
-                        <p class="ds-pipeline__desc">Deep-dive analysis of your data stack, performance metrics, and optimization opportunities.</p>
-                    </div>
-                    <div class="ds-pipeline__arrow">→</div>
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-drafting-compass"></i></div>
-                        <h3 class="ds-pipeline__title">Recommendations</h3>
-                        <p class="ds-pipeline__desc">Detailed findings report with prioritized recommendations and implementation roadmap.</p>
-                    </div>
-                    <div class="ds-pipeline__arrow">→</div>
-                    <div class="ds-pipeline__step">
-                        <div class="ds-pipeline__icon"><i class="fas fa-handshake"></i></div>
-                        <h3 class="ds-pipeline__title">Partnership</h3>
-                        <p class="ds-pipeline__desc">Seamless transition to implementation with our engineering team or your internal resources.</p>
+                <div class="ds-flow ds-animate" style="--flow-count:4">
+                    <svg class="ds-flow__svg" viewBox="0 0 840 120" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="dsFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="var(--flow-blue)"/>
+                                <stop offset="100%" stop-color="var(--flow-green)"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="ds-flow__path" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+                        <path class="ds-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+                    </svg>
+                    <div class="ds-flow__nodes">
+                        <div class="ds-flow-node" data-tip="30-minute call to understand your current architecture, challenges, and business goals.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-comments"></i></div>
+                            <span class="ds-flow-node__label">Discovery</span>
+                        </div>
+                        <div class="ds-flow-node" data-tip="Deep-dive analysis of your data stack, performance metrics, and optimization opportunities.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-search"></i></div>
+                            <span class="ds-flow-node__label">Assessment</span>
+                        </div>
+                        <div class="ds-flow-node" data-tip="Detailed findings report with prioritized recommendations and implementation roadmap.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-drafting-compass"></i></div>
+                            <span class="ds-flow-node__label">Recommendations</span>
+                        </div>
+                        <div class="ds-flow-node" data-tip="Seamless transition to implementation with our engineering team or your internal resources.">
+                            <div class="ds-flow-node__ring"><i class="fas fa-handshake"></i></div>
+                            <span class="ds-flow-node__label">Partnership</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -160,22 +165,135 @@
                     <h2>Measurable Results</h2>
                     <p>Our assessments deliver actionable insights that drive real business outcomes.</p>
                 </div>
-                <div class="ds-metrics ds-animate">
-                    <div class="ds-metric-card">
-                        <div class="ds-metric-card__value" style="color:var(--sys-success)">40%</div>
-                        <div class="ds-metric-card__label">Avg Cost Reduction</div>
-                        <div class="ds-metric-card__bar"><span style="width:67%"></span></div>
-                    </div>
-                    <div class="ds-metric-card">
-                        <div class="ds-metric-card__value" style="color:var(--sys-primary-light)">2-4 weeks</div>
-                        <div class="ds-metric-card__label">Time to Insights</div>
-                        <div class="ds-metric-card__bar"><span style="width:25%"></span></div>
-                    </div>
-                    <div class="ds-metric-card">
-                        <div class="ds-metric-card__value" style="color:var(--sys-warning)">95%</div>
-                        <div class="ds-metric-card__label">Client Satisfaction</div>
-                        <div class="ds-metric-card__bar"><span style="width:95%"></span></div>
-                    </div>
+                <div class="kpi-dashboard ds-animate" data-accordion="measurable-results">
+                    <section class="kpi-accordion kpi-accordion--open">
+                        <button class="kpi-accordion__header" type="button" aria-expanded="true">
+                            <div class="kpi-accordion__title">
+                                <span class="kpi-accordion__icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></span>
+                                <div class="kpi-accordion__heading">
+                                    <span class="kpi-accordion__section-title">Financial Impact</span>
+                                    <span class="kpi-accordion__subtitle">Savings, growth and conversion improvements</span>
+                                </div>
+                            </div>
+                            <span class="kpi-accordion__chevron"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="kpi-accordion__content">
+                            <div class="kpi-accordion__grid">
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">40%</div>
+                                        <span class="kpi-card__badge">+$1.2M</span>
+                                    </div>
+                                    <div class="kpi-card__label">Cost reduction</div>
+                                    <div class="kpi-card__bar"><span style="width:68%"></span></div>
+                                </article>
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">18.5%</div>
+                                        <span class="kpi-card__badge">Qualified</span>
+                                    </div>
+                                    <div class="kpi-card__label">Conversion rate</div>
+                                    <div class="kpi-card__bar"><span style="width:65%"></span></div>
+                                </article>
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">3.2×</div>
+                                        <span class="kpi-card__badge">vs baseline</span>
+                                    </div>
+                                    <div class="kpi-card__label">Performance improvement</div>
+                                    <div class="kpi-card__bar"><span style="width:82%"></span></div>
+                                </article>
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">260ms</div>
+                                        <span class="kpi-card__badge">42% faster</span>
+                                    </div>
+                                    <div class="kpi-card__label">Load time reduction</div>
+                                    <div class="kpi-card__bar"><span style="width:74%"></span></div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="kpi-accordion">
+                        <button class="kpi-accordion__header" type="button" aria-expanded="false">
+                            <div class="kpi-accordion__title">
+                                <span class="kpi-accordion__icon"><i class="fas fa-cog" aria-hidden="true"></i></span>
+                                <div class="kpi-accordion__heading">
+                                    <span class="kpi-accordion__section-title">Operational Efficiency</span>
+                                    <span class="kpi-accordion__subtitle">System reliability, performance and scalability</span>
+                                </div>
+                            </div>
+                            <span class="kpi-accordion__chevron"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="kpi-accordion__content">
+                            <div class="kpi-accordion__grid">
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">0.8%</div>
+                                        <span class="kpi-card__badge">Industry leading</span>
+                                    </div>
+                                    <div class="kpi-card__label">Error rate</div>
+                                    <div class="kpi-card__bar"><span style="width:92%"></span></div>
+                                </article>
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">72%</div>
+                                        <span class="kpi-card__badge">Cost-efficient</span>
+                                    </div>
+                                    <div class="kpi-card__label">Resource utilization</div>
+                                    <div class="kpi-card__bar"><span style="width:72%"></span></div>
+                                </article>
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">8.4/10</div>
+                                        <span class="kpi-card__badge">Elastic ready</span>
+                                    </div>
+                                    <div class="kpi-card__label">Scalability index</div>
+                                    <div class="kpi-card__bar"><span style="width:84%"></span></div>
+                                </article>
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">5m 18s</div>
+                                        <span class="kpi-card__badge">120 interactions</span>
+                                    </div>
+                                    <div class="kpi-card__label">User engagement</div>
+                                    <div class="kpi-card__bar"><span style="width:58%"></span></div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="kpi-accordion">
+                        <button class="kpi-accordion__header" type="button" aria-expanded="false">
+                            <div class="kpi-accordion__title">
+                                <span class="kpi-accordion__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
+                                <div class="kpi-accordion__heading">
+                                    <span class="kpi-accordion__section-title">Quality &amp; Engineering</span>
+                                    <span class="kpi-accordion__subtitle">Quality, reliability and maintainability</span>
+                                </div>
+                            </div>
+                            <span class="kpi-accordion__chevron"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="kpi-accordion__content">
+                            <div class="kpi-accordion__grid">
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">96/100</div>
+                                        <span class="kpi-card__badge">WCAG-ready</span>
+                                    </div>
+                                    <div class="kpi-card__label">Accessibility score</div>
+                                    <div class="kpi-card__bar"><span style="width:96%"></span></div>
+                                </article>
+                                <article class="kpi-card">
+                                    <div class="kpi-card__top">
+                                        <div class="kpi-card__value">8.9/10</div>
+                                        <span class="kpi-card__badge">Stable &amp; reliable</span>
+                                    </div>
+                                    <div class="kpi-card__label">Maintainability index</div>
+                                    <div class="kpi-card__bar"><span style="width:89%"></span></div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
@@ -200,7 +318,7 @@
         </section>
 
         <!-- ===== TESTIMONIALS ===== -->
-        <section id="testimonials" class="ds-section ds-section--alt">
+        <!-- <section id="testimonials" class="ds-section ds-section--alt">
             <div class="ds-container">
                 <div class="ds-section-header ds-animate">
                     <span class="ds-badge">Client Success</span>
@@ -224,7 +342,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- ===== CTA ===== -->
         <section id="cta" class="ds-cta-band">
