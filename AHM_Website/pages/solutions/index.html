@@ -11,289 +11,158 @@
   <script src="/js/site-config.js"></script>
   <style>
     :root {
-      --bg-primary: #111827;
-      --bg-secondary: #182231;
-      --bg-card: #202c3d;
-      --text-primary: #f4f7fb;
-      --text-secondary: #d3dbe6;
-      --text-muted: #9aa8ba;
-      --border-subtle: rgba(148, 163, 184, 0.28);
+      --bg-primary: #0f1728;
+      --bg-secondary: #152238;
+      --bg-card: #1c2a42;
+      --text-primary: #f2f6fb;
+      --text-secondary: #c8d3e2;
+      --text-muted: #92a3b7;
+      --border-subtle: rgba(148, 163, 184, 0.24);
       --accent-primary: #3b82f6;
       --accent-success: #22c55e;
       --accent-critical: #ef4444;
-      --card-elevation: none;
-      --page-gradient: linear-gradient(180deg, rgba(59, 130, 246, 0.08), transparent 25%);
-      --section-space: clamp(2.4rem, 4vw, 3.4rem);
-      --internal-space: clamp(1rem, 2vw, 1.4rem);
-      --card-pad: 0.95rem;
+      --surface-glow: radial-gradient(circle at 20% 0%, rgba(59, 130, 246, 0.2), transparent 48%);
+      --card-shadow: none;
+      --section-space: clamp(2.2rem, 3.6vw, 3.2rem);
+      --stack-gap: clamp(.95rem, 1.8vw, 1.35rem);
+      --card-pad: .95rem;
     }
 
     [data-theme="light"] {
-      --bg-primary: #edf1f7;
-      --bg-secondary: #e4eaf3;
+      --bg-primary: #eef2f8;
+      --bg-secondary: #e6ecf6;
       --bg-card: #ffffff;
       --text-primary: #0f172a;
-      --text-secondary: #334155;
-      --text-muted: #5f6f84;
-      --border-subtle: rgba(15, 23, 42, 0.11);
-      --card-elevation: 0 6px 18px rgba(15, 23, 42, 0.08);
-      --page-gradient: linear-gradient(180deg, rgba(37, 99, 235, 0.08), transparent 30%);
+      --text-secondary: #34455f;
+      --text-muted: #5c6f86;
+      --border-subtle: rgba(15, 23, 42, 0.12);
+      --surface-glow: radial-gradient(circle at 20% 0%, rgba(37, 99, 235, 0.08), transparent 56%);
+      --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
     }
 
-    .solutions-page {
-      background: var(--page-gradient), var(--bg-primary);
-      color: var(--text-primary);
+    .solutions-page { background: var(--surface-glow), var(--bg-primary); color: var(--text-primary); }
+    .solutions-page .solutions-section { padding: var(--section-space) 0; }
+    .solutions-page .solutions-section--secondary { background: var(--bg-secondary); border-block: 1px solid var(--border-subtle); }
+    .solutions-page .hero { padding-top: calc(var(--nav-h) + 2.6rem); text-align: center; }
+    .solutions-page .eyebrow {
+      display: inline-flex; align-items: center; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--text-muted); border: 1px solid var(--border-subtle); border-radius: 999px; padding: .24rem .68rem;
+      background: rgba(59,130,246,.08);
     }
+    .solutions-page h1 { margin-top: .8rem; font-size: clamp(2rem, 4vw, 2.8rem); }
+    .solutions-page .hero p { max-width: 64ch; margin: .7rem auto 0; color: var(--text-secondary); }
 
-    .solutions-page .solutions-hero {
-      padding: calc(var(--nav-h) + 2.8rem) 0 var(--section-space);
-    }
+    .solutions-page .section-header { text-align: center; margin-bottom: var(--stack-gap); }
+    .solutions-page .section-header h2 { font-size: clamp(1.35rem, 2.4vw, 1.9rem); }
+    .solutions-page .section-header p { margin-top: .35rem; color: var(--text-secondary); }
 
-    .solutions-page .solutions-section {
-      padding: var(--section-space) 0;
-    }
-
-    .solutions-page .solutions-section--secondary {
-      background: var(--bg-secondary);
-      border-block: 1px solid var(--border-subtle);
-    }
-
-    .solutions-page .section-head {
-      display: grid;
-      gap: 0.35rem;
-      margin-bottom: var(--internal-space);
-      text-align: left;
-    }
-
-    .solutions-page .section-head h2 {
-      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-      color: var(--text-primary);
-    }
-
-    .solutions-page .section-head p { color: var(--text-secondary); max-width: 60ch; }
-
-    .solutions-page .solutions-chip {
-      display: inline-flex;
-      align-items: center;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      padding: 0.24rem 0.7rem;
-      width: fit-content;
-    }
-
-    .solutions-page .hero-subtitle {
-      max-width: 72ch;
-      color: var(--text-secondary);
-      margin-top: 0.6rem;
-    }
-
-    .solutions-page .catalog-tabs,
-    .solutions-page .industry-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-bottom: var(--internal-space);
-    }
-
+    .solutions-page .tab-row { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: .85rem; }
     .solutions-page .tab-btn {
-      border: 1px solid var(--border-subtle);
-      background: transparent;
-      color: var(--text-secondary);
-      padding: 0.45rem 0.8rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.86rem;
-      cursor: pointer;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+      border: 1px solid var(--border-subtle); border-radius: 10px; background: transparent; color: var(--text-secondary);
+      padding: .45rem .72rem; font-size: .83rem; font-weight: 600; cursor: pointer;
     }
+    .solutions-page .tab-btn[aria-selected="true"] { background: rgba(59,130,246,.16); color: var(--text-primary); border-color: rgba(59,130,246,.45); }
 
-    .solutions-page .tab-btn[aria-selected="true"] {
-      color: var(--text-primary);
-      border-color: rgba(59, 130, 246, 0.45);
-      background: rgba(59, 130, 246, 0.14);
+    .solutions-page .panel { display: none; }
+    .solutions-page .panel.is-active { display: block; }
+
+    .solutions-page .cards-3 { display: grid; gap: .82rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .solutions-page .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 66%), var(--bg-card);
+      border: 1px solid var(--border-subtle); border-radius: 14px; box-shadow: var(--card-shadow);
+      padding: var(--card-pad); transition: transform .18s ease, border-color .18s ease;
     }
+    .solutions-page .card:hover { transform: translateY(-2px); border-color: rgba(59,130,246,.45); }
 
-    .solutions-page .catalog-panel,
-    .solutions-page .industry-panel { display: none; }
-    .solutions-page .catalog-panel.is-active,
-    .solutions-page .industry-panel.is-active { display: block; }
-
-    .solutions-page .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
+    .solutions-page .catalog-card { display: grid; gap: .45rem; }
+    .solutions-page .catalog-card .row { display: flex; justify-content: space-between; align-items: center; }
+    .solutions-page .catalog-icon {
+      width: 26px; height: 26px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
+      color: var(--accent-primary); background: rgba(59,130,246,.16); font-size: .8rem;
     }
+    .solutions-page .catalog-card h3 { font-size: 1rem; color: var(--text-primary); }
+    .solutions-page .catalog-card p { font-size: .88rem; color: var(--text-secondary); line-height: 1.45; }
 
-    .solutions-page .solution-card,
-    .solutions-page .industry-card,
-    .solutions-page .kpi-card,
-    .solutions-page .cta-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 60%), var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      box-shadow: var(--card-elevation);
+    .solutions-page .industry-matrix {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 68%), var(--bg-card);
+      border: 1px solid var(--border-subtle); border-radius: 14px; box-shadow: var(--card-shadow);
+      padding: .95rem; display: grid; gap: .9rem;
     }
+    .solutions-page .industry-cols { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .8rem; }
+    .solutions-page .industry-cols h4 { font-size: .8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: .4rem; }
+    .solutions-page .industry-cols ul { display: grid; gap: .35rem; }
+    .solutions-page .industry-cols li { color: var(--text-secondary); font-size: .85rem; }
 
-    .solutions-page .solution-card,
-    .solutions-page .industry-card {
-      padding: var(--card-pad);
-      display: grid;
-      gap: 0.45rem;
+    .solutions-page .dashboard-grid { display: grid; grid-template-columns: 280px 1fr; gap: .8rem; }
+    .solutions-page .tool-list { display: grid; gap: .6rem; }
+    .solutions-page .tool-item { display: grid; grid-template-columns: 34px 1fr; gap: .55rem; align-items: start; }
+    .solutions-page .tool-item .catalog-icon { width: 34px; height: 34px; }
+    .solutions-page .tool-item h4 { font-size: .92rem; color: var(--text-primary); }
+    .solutions-page .tool-item p { font-size: .81rem; color: var(--text-secondary); }
+
+    .solutions-page .compare-table { width: 100%; border-collapse: collapse; }
+    .solutions-page .compare-table th,
+    .solutions-page .compare-table td { border-bottom: 1px solid var(--border-subtle); padding: .56rem .5rem; text-align: left; }
+    .solutions-page .compare-table th { font-size: .75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: .04em; }
+    .solutions-page .compare-table td { font-size: .83rem; color: var(--text-secondary); vertical-align: top; }
+    .solutions-page .compare-table tr:last-child td { border-bottom: none; }
+
+    .solutions-page .walkthrough { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: .55rem; position: relative; }
+    .solutions-page .walk-step { text-align: center; display: grid; gap: .42rem; }
+    .solutions-page .walk-dot {
+      width: 44px; height: 44px; margin: 0 auto; border-radius: 999px; border: 1px solid rgba(59,130,246,.4);
+      background: rgba(59,130,246,.12); color: var(--accent-primary); display: inline-flex; align-items: center; justify-content: center;
+      font-size: .98rem;
     }
+    .solutions-page .walk-step h4 { font-size: .85rem; color: var(--text-primary); }
+    .solutions-page .walk-step p { font-size: .8rem; color: var(--text-secondary); }
 
-    .solutions-page .solution-card h3,
-    .solutions-page .industry-card h3 { font-size: 1rem; color: var(--text-primary); }
-
-    .solutions-page .solution-card p,
-    .solutions-page .industry-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.45; }
-
-    .solutions-page .kpi-accordion {
-      display: grid;
-      gap: 0.8rem;
+    .solutions-page .kpi-groups { display: grid; gap: .85rem; }
+    .solutions-page details.kpi-group {
+      border: 1px solid var(--border-subtle); border-radius: 14px; background: var(--bg-card); box-shadow: var(--card-shadow); overflow: hidden;
     }
-
-    .solutions-page .kpi-group {
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      background: var(--bg-card);
-      box-shadow: var(--card-elevation);
-      overflow: hidden;
-    }
-
     .solutions-page .kpi-group summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 0.9rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      color: var(--text-primary);
-      border-bottom: 1px solid transparent;
+      list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+      padding: .78rem .9rem; color: var(--text-primary); font-weight: 600;
     }
-
-    .solutions-page .kpi-group[open] summary { border-bottom-color: var(--border-subtle); }
     .solutions-page .kpi-group summary::-webkit-details-marker { display: none; }
-
-    .solutions-page .kpi-group .group-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 600;
-      margin-right: 0.6rem;
-    }
-
-    .solutions-page .kpi-grid {
-      padding: 0.85rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.7rem;
-    }
-
-    .solutions-page .kpi-card {
-      padding: 0.75rem 0.8rem;
-      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .solutions-page .kpi-card.is-primary {
-      border-color: rgba(59, 130, 246, 0.5);
-    }
-
-    .solutions-page .kpi-value {
-      font-size: clamp(1.15rem, 2vw, 1.45rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--text-primary);
-    }
-
-    .solutions-page .kpi-label {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.35;
-    }
-
-    .solutions-page .kpi-progress {
-      height: 3px;
-      background: rgba(148, 163, 184, 0.25);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .solutions-page .kpi-fill {
-      display: block;
-      height: 100%;
-      background: var(--accent-primary);
-      transition: width 220ms ease;
-    }
-
+    .solutions-page .kpi-cards { border-top: 1px solid var(--border-subtle); padding: .72rem; display: grid; gap: .7rem; grid-template-columns: repeat(3,minmax(0,1fr)); }
+    .solutions-page .kpi-card { padding: .7rem; }
+    .solutions-page .kpi-card.is-primary { border-color: rgba(59,130,246,.52); }
+    .solutions-page .kpi-value { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); }
+    .solutions-page .kpi-label { margin-top: .22rem; color: var(--text-muted); font-size: .8rem; }
+    .solutions-page .kpi-bar { margin-top: .45rem; height: 3px; border-radius: 999px; background: rgba(148,163,184,.26); overflow: hidden; }
+    .solutions-page .kpi-fill { display: block; height: 100%; background: var(--accent-primary); transition: width .24s ease; }
     .solutions-page .kpi-fill.success { background: var(--accent-success); }
     .solutions-page .kpi-fill.critical { background: var(--accent-critical); }
 
-    .solutions-page .kpi-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(59, 130, 246, 0.42);
-      box-shadow: var(--card-elevation), 0 0 0 1px rgba(59, 130, 246, 0.12) inset;
+    .solutions-page .cta-main,
+    .solutions-page .cta-assist {
+      background: linear-gradient(180deg, rgba(59,130,246,.1), transparent 120%), var(--bg-card);
+      border: 1px solid var(--border-subtle); border-radius: 14px; box-shadow: var(--card-shadow);
+      padding: .95rem;
+    }
+    .solutions-page .cta-main { display: grid; grid-template-columns: 1.5fr auto; gap: .85rem; align-items: center; }
+    .solutions-page .cta-assist { margin-top: .75rem; display: grid; grid-template-columns: 1fr auto; gap: .65rem; align-items: center; }
+    .solutions-page .cta-main p,
+    .solutions-page .cta-assist p { color: var(--text-secondary); margin-top: .25rem; }
+    .solutions-page .actions { display: flex; gap: .55rem; flex-wrap: wrap; }
+
+    @media (max-width: 1024px) {
+      .solutions-page .cards-3,
+      .solutions-page .industry-cols,
+      .solutions-page .kpi-cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .solutions-page .dashboard-grid { grid-template-columns: 1fr; }
+      .solutions-page .walkthrough { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .solutions-page .cta-main { grid-template-columns: 1fr; }
     }
 
-    .solutions-page .kpi-card:hover .kpi-fill { filter: saturate(1.08); }
-
-    .solutions-page .status-badge {
-      font-size: 0.72rem;
-      padding: 0.18rem 0.45rem;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.2);
-      color: var(--text-secondary);
-      width: fit-content;
-    }
-
-    .solutions-page .status-badge.success {
-      background: rgba(34, 197, 94, 0.18);
-      color: color-mix(in srgb, var(--accent-success), var(--text-primary) 30%);
-    }
-
-    .solutions-page .status-badge.critical {
-      background: rgba(239, 68, 68, 0.18);
-      color: color-mix(in srgb, var(--accent-critical), var(--text-primary) 35%);
-    }
-
-    .solutions-page .cta-wrap {
-      display: grid;
-      grid-template-columns: 1.4fr auto;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-    }
-
-    .solutions-page .cta-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-
-    .solutions-page .ds-btn.ds-btn-secondary {
-      color: var(--text-secondary);
-      border-color: var(--border-subtle);
-      background: transparent;
-    }
-
-    .solutions-page .ds-btn.ds-btn-secondary:hover {
-      color: var(--text-primary);
-      background: rgba(148, 163, 184, 0.14);
-    }
-
-    @media (max-width: 992px) {
-      .solutions-page .card-grid,
-      .solutions-page .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .solutions-page .cta-wrap { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .solutions-page .card-grid,
-      .solutions-page .kpi-grid { grid-template-columns: 1fr; }
-      .solutions-page .solutions-hero { padding-top: calc(var(--nav-h) + 2.2rem); }
+    @media (max-width: 680px) {
+      .solutions-page .cards-3,
+      .solutions-page .industry-cols,
+      .solutions-page .walkthrough,
+      .solutions-page .kpi-cards { grid-template-columns: 1fr; }
+      .solutions-page .cta-assist { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -301,48 +170,68 @@
   <div data-include="/AHM_Website/components/organisms/header.html"></div>
 
   <main>
-    <section class="solutions-hero">
+    <section class="solutions-section hero">
       <div class="ds-container">
-        <span class="solutions-chip">Vertical Solutions</span>
+        <span class="eyebrow">Vertical Solutions</span>
         <h1>Outcome-Focused Data Solutions by Industry</h1>
-        <p class="hero-subtitle">A structured catalog of delivery accelerators, grouped outcomes, and measurable KPI blocks designed for fast executive scanning and decision-oriented planning.</p>
+        <p>Imaginary but realistic accelerators tailored to your operating model, risk profile, and growth stage.</p>
       </div>
     </section>
 
     <section class="solutions-section solutions-section--secondary">
       <div class="ds-container">
-        <div class="section-head">
+        <div class="section-header">
           <h2>Solution Catalog</h2>
-          <p>Browse by category. Each group shows only high-value entries first to keep scan effort low.</p>
         </div>
 
-        <div class="catalog-tabs" role="tablist" aria-label="Solution catalog groups">
-          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="catalog-finance" id="tab-finance">Finance & Risk</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-ops" id="tab-ops">Operations</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-ai" id="tab-ai">AI & Intelligence</button>
+        <div class="tab-row" role="tablist" aria-label="Catalog groups">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="catalog-all" id="catalog-all-tab">All Solutions</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-platform" id="catalog-platform-tab">Platform</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-analytics" id="catalog-analytics-tab">Analytics</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-ai" id="catalog-ai-tab">AI / ML</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-operations" id="catalog-operations-tab">Operations</button>
         </div>
 
-        <div class="catalog-panel is-active" id="catalog-finance" role="tabpanel" aria-labelledby="tab-finance">
-          <div class="card-grid">
-            <article class="solution-card"><span class="status-badge">Financial</span><h3>Data Platform Modernization</h3><p>Migration blueprint with governance-first controls and risk-aware operating metrics.</p></article>
-            <article class="solution-card"><span class="status-badge">Financial</span><h3>Regulatory Reporting Core</h3><p>Trusted data marts and control evidence pipelines for board and audit reporting.</p></article>
-            <article class="solution-card"><span class="status-badge success">Positive signal</span><h3>Cost Performance Program</h3><p>Warehouse workload tuning and spend governance tied to margin outcomes.</p></article>
+        <div class="panel is-active" id="catalog-all" role="tabpanel" aria-labelledby="catalog-all-tab">
+          <div class="cards-3">
+            <article class="card catalog-card"><div class="row"><span class="catalog-icon"><i class="fa-solid fa-database"></i></span></div><h3>Data Platform Modernization</h3><p>Migrate, unify, and govern data with performance and observability.</p></article>
+            <article class="card catalog-card"><div class="row"><span class="catalog-icon"><i class="fa-solid fa-chart-line"></i></span></div><h3>BI Accelerator</h3><p>Pre-built metric layer and executive-ready dashboards.</p></article>
+            <article class="card catalog-card"><div class="row"><span class="catalog-icon"><i class="fa-solid fa-sparkles"></i></span></div><h3>AI/ML Ops</h3><p>Model lifecycle controls with observability and feedback.</p></article>
+            <article class="card catalog-card"><div class="row"><span class="catalog-icon"><i class="fa-solid fa-shield"></i></span></div><h3>Data Governance</h3><p>Policy packs, lineage, and stewardship workflows.</p></article>
+            <article class="card catalog-card"><div class="row"><span class="catalog-icon"><i class="fa-solid fa-coins"></i></span></div><h3>Cost Optimization</h3><p>Warehouse right-sizing and workload scheduling.</p></article>
+            <article class="card catalog-card"><div class="row"><span class="catalog-icon"><i class="fa-solid fa-wave-square"></i></span></div><h3>Real-time Streaming</h3><p>Event ingestion and real-time decision loops.</p></article>
           </div>
         </div>
 
-        <div class="catalog-panel" id="catalog-ops" role="tabpanel" aria-labelledby="tab-ops">
-          <div class="card-grid">
-            <article class="solution-card"><span class="status-badge">Performance</span><h3>Real-Time Decision Streaming</h3><p>Event ingestion and low-latency decision loops for service and operations teams.</p></article>
-            <article class="solution-card"><span class="status-badge">Performance</span><h3>Demand & Inventory Sensing</h3><p>Unified telemetry model for forecast correction, replenishment, and OTIF reliability.</p></article>
-            <article class="solution-card"><span class="status-badge critical">Alert path</span><h3>Incident Root-Cause Graph</h3><p>Cross-system correlation for faster recovery and reduced repeated outages.</p></article>
+        <div class="panel" id="catalog-platform" role="tabpanel" aria-labelledby="catalog-platform-tab">
+          <div class="cards-3">
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-database"></i></span><h3>Data Platform Modernization</h3><p>Cloud migration and governance operating model.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-shield"></i></span><h3>Data Governance</h3><p>Policy automation, lineage and ownership workflows.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-coins"></i></span><h3>Cost Optimization</h3><p>Storage and compute efficiency with FinOps controls.</p></article>
           </div>
         </div>
 
-        <div class="catalog-panel" id="catalog-ai" role="tabpanel" aria-labelledby="tab-ai">
-          <div class="card-grid">
-            <article class="solution-card"><span class="status-badge">Quality</span><h3>AI/ML Ops Governance</h3><p>Model lifecycle controls with drift detection, approvals, and rollback playbooks.</p></article>
-            <article class="solution-card"><span class="status-badge">Quality</span><h3>Trusted Semantic Layer</h3><p>Shared KPI definitions and metric contracts for analytics and generative workflows.</p></article>
-            <article class="solution-card"><span class="status-badge success">Positive signal</span><h3>Executive Insight Co-pilot</h3><p>Decision support with governed retrieval and role-based data access boundaries.</p></article>
+        <div class="panel" id="catalog-analytics" role="tabpanel" aria-labelledby="catalog-analytics-tab">
+          <div class="cards-3">
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-chart-line"></i></span><h3>BI Accelerator</h3><p>Executive scorecards and reusable analytics templates.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span><h3>Insight Marketplace</h3><p>Self-service KPI catalog for teams and leadership.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-gauge"></i></span><h3>Operational Dashboards</h3><p>Cross-functional monitoring for daily decision cycles.</p></article>
+          </div>
+        </div>
+
+        <div class="panel" id="catalog-ai" role="tabpanel" aria-labelledby="catalog-ai-tab">
+          <div class="cards-3">
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-sparkles"></i></span><h3>AI/ML Ops</h3><p>Model versioning, alerts and retraining triggers.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-robot"></i></span><h3>Assistant Enablement</h3><p>Governed retrieval pipelines with role-aware controls.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-network-wired"></i></span><h3>Feature Reliability</h3><p>Reusable feature contracts and data quality SLAs.</p></article>
+          </div>
+        </div>
+
+        <div class="panel" id="catalog-operations" role="tabpanel" aria-labelledby="catalog-operations-tab">
+          <div class="cards-3">
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-wave-square"></i></span><h3>Real-time Streaming</h3><p>Operational event backbone for immediate action.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-arrows-spin"></i></span><h3>Workflow Orchestration</h3><p>Automated runbooks and exception routing paths.</p></article>
+            <article class="card catalog-card"><span class="catalog-icon"><i class="fa-solid fa-triangle-exclamation"></i></span><h3>Incident Correlation</h3><p>Root-cause links across data, apps and infra stacks.</p></article>
           </div>
         </div>
       </div>
@@ -350,119 +239,139 @@
 
     <section class="solutions-section">
       <div class="ds-container">
-        <div class="section-head">
-          <h2>KPI Outcomes</h2>
-          <p>Grouped metrics with one primary indicator per group. Expand/collapse each group as needed.</p>
+        <div class="section-header">
+          <h2>Industry Mapping</h2>
+          <p>Pick an industry to see high-impact use cases and outcomes.</p>
+        </div>
+        <div class="tab-row" role="tablist" aria-label="Industry tabs">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="ind-finance" id="ind-finance-tab">Finance</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ind-health" id="ind-health-tab">Healthcare</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ind-retail" id="ind-retail-tab">Retail</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ind-manu" id="ind-manu-tab">Manufacturing</button>
         </div>
 
-        <div class="kpi-accordion">
+        <div class="panel is-active" id="ind-finance" role="tabpanel" aria-labelledby="ind-finance-tab">
+          <div class="industry-matrix">
+            <div class="industry-cols">
+              <div><h4>Top Use Cases</h4><ul><li>Fraud detection</li><li>Regulatory reporting</li><li>Risk analytics</li></ul></div>
+              <div><h4>Primary Outcomes</h4><ul><li>Reduce cost</li><li>Improve accuracy</li><li>Faster time to insight</li></ul></div>
+              <div><h4>Recommended Solutions</h4><ul><li>Data Platform</li><li>BI Accelerator</li><li>AI/ML Ops</li></ul></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="ind-health" role="tabpanel" aria-labelledby="ind-health-tab">
+          <div class="industry-matrix"><div class="industry-cols"><div><h4>Top Use Cases</h4><ul><li>Readmission risk</li><li>Claims integrity</li><li>Capacity forecasting</li></ul></div><div><h4>Primary Outcomes</h4><ul><li>Improve care quality</li><li>Reduce leakage</li><li>Optimize staffing</li></ul></div><div><h4>Recommended Solutions</h4><ul><li>Data Governance</li><li>AI/ML Ops</li><li>Streaming</li></ul></div></div></div>
+        </div>
+
+        <div class="panel" id="ind-retail" role="tabpanel" aria-labelledby="ind-retail-tab">
+          <div class="industry-matrix"><div class="industry-cols"><div><h4>Top Use Cases</h4><ul><li>Demand sensing</li><li>Promo analysis</li><li>Customer segmentation</li></ul></div><div><h4>Primary Outcomes</h4><ul><li>Increase sell-through</li><li>Lower stockouts</li><li>Faster campaign decisions</li></ul></div><div><h4>Recommended Solutions</h4><ul><li>BI Accelerator</li><li>Streaming</li><li>Cost Optimization</li></ul></div></div></div>
+        </div>
+
+        <div class="panel" id="ind-manu" role="tabpanel" aria-labelledby="ind-manu-tab">
+          <div class="industry-matrix"><div class="industry-cols"><div><h4>Top Use Cases</h4><ul><li>Predictive maintenance</li><li>Quality traceability</li><li>Yield monitoring</li></ul></div><div><h4>Primary Outcomes</h4><ul><li>Reduce downtime</li><li>Increase throughput</li><li>Improve first-pass yield</li></ul></div><div><h4>Recommended Solutions</h4><ul><li>Platform Modernization</li><li>Streaming</li><li>Data Governance</li></ul></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions-section solutions-section--secondary">
+      <div class="ds-container">
+        <div class="section-header">
+          <h2>Choose the right dashboard layer</h2>
+          <p>Compare Power BI, Tableau, and Looker across decision factors that matter most.</p>
+        </div>
+        <div class="dashboard-grid">
+          <div class="tool-list">
+            <article class="card tool-item"><span class="catalog-icon"><i class="fa-solid fa-chart-column"></i></span><div><h4>Power BI</h4><p>Best for Microsoft stack and self-serve reporting.</p></div></article>
+            <article class="card tool-item"><span class="catalog-icon"><i class="fa-solid fa-snowflake"></i></span><div><h4>Tableau</h4><p>Strong for exploratory analytics and storytelling.</p></div></article>
+            <article class="card tool-item"><span class="catalog-icon"><i class="fa-solid fa-eye"></i></span><div><h4>Looker</h4><p>Ideal for governed semantic models and analytics.</p></div></article>
+          </div>
+          <div class="card">
+            <table class="compare-table">
+              <thead><tr><th>Tool</th><th>Best for</th><th>Strength</th><th>Watch point</th><th>Monitoring use</th></tr></thead>
+              <tbody>
+                <tr><td>Power BI</td><td>Microsoft-first teams</td><td>Fast rollout and broad adoption</td><td>Requires semantic governance</td><td>Department KPIs and executive dashboards</td></tr>
+                <tr><td>Tableau</td><td>Analyst-driven discovery</td><td>Flexible visual exploration</td><td>Can drift without standard models</td><td>Trend monitoring and anomaly review</td></tr>
+                <tr><td>Looker</td><td>Governed analytics</td><td>Central metric definitions</td><td>Needs disciplined modeling workflow</td><td>Enterprise reporting and governed alerts</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions-section">
+      <div class="ds-container">
+        <div class="section-header"><h2>Use Case Walkthrough</h2></div>
+        <div class="walkthrough">
+          <article class="walk-step"><span class="walk-dot"><i class="fa-solid fa-database"></i></span><h4>1. Raw Data</h4><p>Ingest sources and event streams.</p></article>
+          <article class="walk-step"><span class="walk-dot"><i class="fa-solid fa-filter"></i></span><h4>2. Cleaning</h4><p>Standardize, validate, and enrich records.</p></article>
+          <article class="walk-step"><span class="walk-dot"><i class="fa-solid fa-chart-line"></i></span><h4>3. Modeling</h4><p>Shape trusted metrics and logic.</p></article>
+          <article class="walk-step"><span class="walk-dot"><i class="fa-solid fa-table-columns"></i></span><h4>4. Dashboard</h4><p>Publish executive-ready views.</p></article>
+          <article class="walk-step"><span class="walk-dot"><i class="fa-solid fa-flag-checkered"></i></span><h4>5. Decision</h4><p>Turn insight into accountable action.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions-section solutions-section--secondary">
+      <div class="ds-container">
+        <div class="section-header">
+          <h2>Outcome Benchmarks</h2>
+          <p>Unified business and platform metrics that reflect consistent performance.</p>
+        </div>
+
+        <div class="kpi-groups">
           <details class="kpi-group" open>
-            <summary><span><span class="group-label">Financial</span>Revenue and spend impact</span><span>▾</span></summary>
-            <div class="kpi-grid">
-              <article class="kpi-card is-primary">
-                <div class="kpi-value">+18.4%</div>
-                <div class="kpi-label">Gross margin improvement</div>
-                <div class="kpi-progress"><span class="kpi-fill success" style="width:78%"></span></div>
-              </article>
-              <article class="kpi-card">
-                <div class="kpi-value">-26%</div>
-                <div class="kpi-label">Data platform operating cost</div>
-                <div class="kpi-progress"><span class="kpi-fill" style="width:65%"></span></div>
-              </article>
-              <article class="kpi-card">
-                <div class="kpi-value">9.2 mo</div>
-                <div class="kpi-label">Payback period</div>
-                <div class="kpi-progress"><span class="kpi-fill" style="width:70%"></span></div>
-              </article>
+            <summary><span>Financial Impact</span><span>▾</span></summary>
+            <div class="kpi-cards">
+              <article class="card kpi-card is-primary"><div class="kpi-value">40%</div><div class="kpi-label">Cost reduction</div><div class="kpi-bar"><span class="kpi-fill" style="width: 86%"></span></div></article>
+              <article class="card kpi-card"><div class="kpi-value">18.5%</div><div class="kpi-label">Lead-to-action growth</div><div class="kpi-bar"><span class="kpi-fill success" style="width: 74%"></span></div></article>
+              <article class="card kpi-card"><div class="kpi-value">3.2x</div><div class="kpi-label">Pipeline throughput</div><div class="kpi-bar"><span class="kpi-fill" style="width: 80%"></span></div></article>
             </div>
           </details>
 
           <details class="kpi-group" open>
-            <summary><span><span class="group-label">Performance</span>Operational throughput and speed</span><span>▾</span></summary>
-            <div class="kpi-grid">
-              <article class="kpi-card is-primary">
-                <div class="kpi-value">2.6x</div>
-                <div class="kpi-label">Decision cycle acceleration</div>
-                <div class="kpi-progress"><span class="kpi-fill" style="width:82%"></span></div>
-              </article>
-              <article class="kpi-card">
-                <div class="kpi-value">4.8s</div>
-                <div class="kpi-label">Median data freshness</div>
-                <div class="kpi-progress"><span class="kpi-fill success" style="width:74%"></span></div>
-              </article>
-              <article class="kpi-card">
-                <div class="kpi-value">-31%</div>
-                <div class="kpi-label">Incident response time</div>
-                <div class="kpi-progress"><span class="kpi-fill" style="width:66%"></span></div>
-              </article>
+            <summary><span>Performance Impact</span><span>▾</span></summary>
+            <div class="kpi-cards">
+              <article class="card kpi-card is-primary"><div class="kpi-value">260ms</div><div class="kpi-label">Avg query response</div><div class="kpi-bar"><span class="kpi-fill" style="width: 78%"></span></div></article>
+              <article class="card kpi-card"><div class="kpi-value">72%</div><div class="kpi-label">Compute utilization</div><div class="kpi-bar"><span class="kpi-fill success" style="width: 72%"></span></div></article>
+              <article class="card kpi-card"><div class="kpi-value">0.8%</div><div class="kpi-label">Platform failure rate</div><div class="kpi-bar"><span class="kpi-fill critical" style="width: 24%"></span></div></article>
             </div>
           </details>
 
           <details class="kpi-group">
-            <summary><span><span class="group-label">Quality</span>Reliability and governance quality</span><span>▾</span></summary>
-            <div class="kpi-grid">
-              <article class="kpi-card is-primary">
-                <div class="kpi-value">98.7%</div>
-                <div class="kpi-label">Policy-compliant production datasets</div>
-                <div class="kpi-progress"><span class="kpi-fill success" style="width:88%"></span></div>
-              </article>
-              <article class="kpi-card">
-                <div class="kpi-value">-43%</div>
-                <div class="kpi-label">Data quality exceptions</div>
-                <div class="kpi-progress"><span class="kpi-fill" style="width:61%"></span></div>
-              </article>
-              <article class="kpi-card">
-                <div class="kpi-value">0.4%</div>
-                <div class="kpi-label">Critical lineage gaps</div>
-                <div class="kpi-progress"><span class="kpi-fill critical" style="width:24%"></span></div>
-              </article>
+            <summary><span>Quality Impact</span><span>▾</span></summary>
+            <div class="kpi-cards">
+              <article class="card kpi-card is-primary"><div class="kpi-value">8.4/10</div><div class="kpi-label">Growth capacity score</div><div class="kpi-bar"><span class="kpi-fill" style="width: 76%"></span></div></article>
+              <article class="card kpi-card"><div class="kpi-value">96/100</div><div class="kpi-label">Design accessibility</div><div class="kpi-bar"><span class="kpi-fill success" style="width: 92%"></span></div></article>
+              <article class="card kpi-card"><div class="kpi-value">8.9/10</div><div class="kpi-label">Code & ops maturity</div><div class="kpi-bar"><span class="kpi-fill" style="width: 84%"></span></div></article>
             </div>
           </details>
         </div>
       </div>
     </section>
 
-    <section class="solutions-section solutions-section--secondary">
-      <div class="ds-container">
-        <div class="section-head">
-          <h2>Industry Blueprints</h2>
-          <p>Industry patterns are grouped to improve scan speed without exposing every detail at once.</p>
-        </div>
-
-        <div class="industry-tabs" role="tablist" aria-label="Industry blueprint groups">
-          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="industry-regulated" id="industry-regulated-tab">Regulated</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="industry-demand" id="industry-demand-tab">Demand-Driven</button>
-        </div>
-
-        <div class="industry-panel is-active" id="industry-regulated" role="tabpanel" aria-labelledby="industry-regulated-tab">
-          <div class="card-grid">
-            <article class="industry-card"><h3>Finance</h3><p>Fraud telemetry fusion with governance checkpoints for compliance-ready analytics.</p></article>
-            <article class="industry-card"><h3>Healthcare</h3><p>Interoperability mapping with outcome tracking and quality-of-care metric packs.</p></article>
-            <article class="industry-card"><h3>Public Sector</h3><p>Program integrity monitoring with explainable risk signals and audit traceability.</p></article>
-          </div>
-        </div>
-
-        <div class="industry-panel" id="industry-demand" role="tabpanel" aria-labelledby="industry-demand-tab">
-          <div class="card-grid">
-            <article class="industry-card"><h3>Retail</h3><p>Demand sensing + customer segmentation with campaign and replenishment feedback loops.</p></article>
-            <article class="industry-card"><h3>Manufacturing</h3><p>IoT telemetry + predictive maintenance for downtime reduction and schedule stability.</p></article>
-            <article class="industry-card"><h3>Logistics</h3><p>Cross-network visibility with ETA risk scoring and service-level compliance forecasting.</p></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="solutions-section">
       <div class="ds-container">
-        <div class="cta-card cta-wrap">
+        <div class="cta-main">
           <div>
-            <span class="solutions-chip">Next Step</span>
             <h2>Deploy a solution accelerator in weeks, not quarters.</h2>
-            <p>One unified engagement path for discovery, KPI baselining, and a phased implementation roadmap.</p>
+            <p>Start with focused discovery. Scale with confidence through a governed implementation path.</p>
           </div>
-          <div class="cta-actions">
+          <div class="actions">
             <a class="ds-btn ds-btn-primary" href="/AHM_Website/pages/contact/index.html">Talk to Solutions Team</a>
-            <a class="ds-btn ds-btn-secondary" href="/AHM_Website/pages/consultation/index.html">View delivery approach</a>
+            <a class="ds-btn ds-btn-secondary" href="/AHM_Website/pages/consultation/index.html">Book Consultation</a>
+          </div>
+        </div>
+
+        <div class="cta-assist">
+          <div>
+            <h3>Need help with your data platform?</h3>
+            <p>Talk to specialists about data engineering, analytics, and advisory support.</p>
+          </div>
+          <div class="actions">
+            <a class="ds-btn ds-btn-primary" href="/AHM_Website/pages/consultation/index.html">Book Consultation</a>
+            <a class="ds-btn ds-btn-secondary" href="tel:+919011191156">Call Now</a>
           </div>
         </div>
       </div>
@@ -470,28 +379,26 @@
   </main>
 
   <div data-include="/AHM_Website/components/organisms/footer.html"></div>
-
   <script src="/js/partials.js" defer></script>
   <script src="/js/main.js" defer></script>
   <script>
     (function () {
-      const setupTabs = (selector) => {
-        const wrappers = document.querySelectorAll(selector);
-        wrappers.forEach((wrapper) => {
-          const tabButtons = wrapper.querySelectorAll('[role="tab"]');
-          tabButtons.forEach((btn) => {
-            btn.addEventListener('click', () => {
-              const root = wrapper.parentElement;
-              const tabPanels = root.querySelectorAll('[role="tabpanel"]');
-              tabButtons.forEach((tab) => tab.setAttribute('aria-selected', tab === btn ? 'true' : 'false'));
-              tabPanels.forEach((panel) => panel.classList.toggle('is-active', panel.id === btn.getAttribute('aria-controls')));
+      const bindTabs = (tablistSelector) => {
+        document.querySelectorAll(tablistSelector).forEach((tablist) => {
+          const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+          tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+              const region = tablist.parentElement;
+              tabs.forEach((btn) => btn.setAttribute('aria-selected', btn === tab ? 'true' : 'false'));
+              region.querySelectorAll('.panel').forEach((panel) => {
+                panel.classList.toggle('is-active', panel.id === tab.getAttribute('aria-controls'));
+              });
             });
           });
         });
       };
-
-      setupTabs('.catalog-tabs');
-      setupTabs('.industry-tabs');
+      bindTabs('[aria-label="Catalog groups"]');
+      bindTabs('[aria-label="Industry tabs"]');
     })();
   </script>
 </body>
