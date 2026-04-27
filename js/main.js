@@ -45,6 +45,112 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('includes:loaded', initThemeToggle);
   initThemeToggle();
 
+  const GLOBAL_METRIC_DECK = [
+    { label: 'Cost reduction', value: '40%', badge: '+$1.2M', meta: 'Annual operating savings', progress: 68, icon: 'fas fa-dollar-sign', tone: 'success' },
+    { label: 'Performance improvement', value: '3.2×', badge: 'vs baseline', meta: 'Pipeline throughput uplift', progress: 82, icon: 'fas fa-rocket' },
+    { label: 'Load time reduction', value: '260ms', badge: '42% faster', meta: 'Average query response', progress: 74, icon: 'fas fa-tachometer-alt' },
+    { label: 'Conversion rate', value: '18.5%', badge: 'Qualified pipeline', meta: 'Lead-to-action growth', progress: 65, icon: 'fas fa-chart-line' },
+    { label: 'Error rate', value: '0.8%', badge: 'Industry leading', meta: 'Platform failure rate', progress: 92, icon: 'fas fa-shield-alt', tone: 'danger' },
+    { label: 'Resource utilization', value: '72%', badge: 'Cost-efficient', meta: 'Compute & storage usage', progress: 72, icon: 'fas fa-server' },
+    { label: 'Scalability index', value: '8.4/10', badge: 'Elastic readiness', meta: 'Growth capacity score', progress: 84, icon: 'fas fa-expand-arrows-alt' },
+    { label: 'User engagement', value: '5m 18s', badge: '120 interactions', meta: 'Session depth and activity', progress: 58, icon: 'fas fa-clock' },
+    { label: 'Accessibility score', value: '96/100', badge: 'WCAG-ready', meta: 'Design accessibility rating', progress: 96, icon: 'fas fa-universal-access' },
+    { label: 'Maintainability index', value: '8.9/10', badge: 'Stable architecture', meta: 'Code and operations maturity', progress: 89, icon: 'fas fa-tools' }
+  ];
+
+  function renderMetricCard(metric) {
+    const card = document.createElement('article');
+    card.className = 'ds-metric-card';
+    if (metric.tone) card.dataset.tone = metric.tone;
+    card.setAttribute('role', 'listitem');
+    const iconHtml = metric.icon ? `<span class="ds-metric-card__icon" aria-hidden="true"><i class="${metric.icon}"></i></span>` : '';
+    const badgeHtml = metric.badge ? `<span class="ds-metric-card__badge">${metric.badge}</span>` : '';
+    card.innerHTML = `
+      <div class="ds-metric-card__header">
+        ${iconHtml}
+        <div class="ds-metric-card__header-text">
+          <div class="ds-metric-card__value">${metric.value}</div>
+          ${metric.meta ? `<div class="ds-metric-card__meta">${metric.meta}</div>` : ''}
+        </div>
+        ${badgeHtml}
+      </div>
+      <div class="ds-metric-card__label">${metric.label}</div>
+      <div class="ds-metric-card__bar" aria-hidden="true"><span style="width:${metric.progress}%"></span></div>
+    `;
+    return card;
+  }
+
+  function renderSharedMetrics() {
+    document.querySelectorAll('[data-metrics="global"]').forEach(container => {
+      if (container.dataset.rendered === 'true') return;
+      container.dataset.rendered = 'true';
+      // Render as solution-style KPI groups rather than the legacy metric cards
+      container.innerHTML = buildKpiGroupsMarkup(GLOBAL_METRIC_DECK);
+    });
+  }
+
+  function buildKpiGroupsMarkup(deck) {
+    // Group indices mapped to deck positions to match Solutions page layout
+    const groups = [
+      { title: 'Financial Impact', indices: [0, 3, 1], open: true },
+      { title: 'Performance Impact', indices: [2, 5, 4], open: true },
+      { title: 'Quality Impact', indices: [6, 8, 9], open: false }
+    ];
+
+    const esc = (s) => String(s == null ? '' : s);
+
+    return groups.map(group => {
+      const cards = group.indices.map((idx, i) => {
+        const m = deck[idx];
+        if (!m) return '';
+        const primary = i === 0 ? ' is-primary' : '';
+        // Use raw metric.value as data-count to enable count-up (script parses numeric portion)
+        return `<article class="kpi-card${primary}"><div class="kpi-value" data-count="${esc(m.value)}">${esc(m.value)}</div><div class="kpi-label">${esc(m.label)}</div><div class="kpi-bar" aria-hidden="true"><span class="kpi-fill${m.tone === 'danger' ? ' critical' : (m.tone === 'success' ? ' success' : '')}" style="width:${esc(m.progress)}%"></span></div></article>`;
+      }).join('');
+
+      return `<details class="kpi-group"${group.open ? ' open' : ''}><summary><span>${esc(group.title)}</span><span>▾</span></summary><div class="kpi-cards">${cards}</div></details>`;
+    }).join('');
+  }
+
+  renderSharedMetrics();
+  document.addEventListener('includes:loaded', renderSharedMetrics);
+
+  function initKpiAccordions() {
+    document.querySelectorAll('[data-accordion="measurable-results"]').forEach(container => {
+      if (container.dataset.bound === 'true') return;
+      container.dataset.bound = 'true';
+      const headers = container.querySelectorAll('.kpi-accordion__header');
+
+      function setPanel(section, open) {
+        const content = section.querySelector('.kpi-accordion__content');
+        section.classList.toggle('kpi-accordion--open', open);
+        section.querySelector('.kpi-accordion__header').setAttribute('aria-expanded', String(open));
+        content.style.maxHeight = open ? `${content.scrollHeight}px` : '0';
+      }
+
+      headers.forEach((header, index) => {
+        const section = header.closest('.kpi-accordion');
+        const content = section.querySelector('.kpi-accordion__content');
+        const isOpen = section.classList.contains('kpi-accordion--open');
+        content.style.maxHeight = isOpen ? `${content.scrollHeight}px` : '0';
+        header.addEventListener('click', () => {
+          const currentlyOpen = header.getAttribute('aria-expanded') === 'true';
+          headers.forEach(h => setPanel(h.closest('.kpi-accordion'), false));
+          if (!currentlyOpen) setPanel(section, true);
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        container.querySelectorAll('.kpi-accordion--open .kpi-accordion__content').forEach(content => {
+          content.style.maxHeight = `${content.scrollHeight}px`;
+        });
+      });
+    });
+  }
+
+  initKpiAccordions();
+  document.addEventListener('includes:loaded', initKpiAccordions);
+
   // ===== API TABS + COPY (services page) =====
   function initApiTabs() {
     const codeEl = document.getElementById('api-code-body');
@@ -271,7 +377,14 @@ document.addEventListener('DOMContentLoaded', function () {
       requestAnimationFrame(tick);
     });
   }, { threshold: 0.45 });
-  document.querySelectorAll('.ds-metric-card__value[data-count]').forEach(el => counterObserver.observe(el));
+  // Observe both legacy metric cards and the new KPI values
+  document.querySelectorAll('.ds-metric-card__value[data-count], .kpi-value[data-count]').forEach(el => counterObserver.observe(el));
+  // Re-run observation after includes load in case metrics are injected later
+  document.addEventListener('includes:loaded', () => {
+    document.querySelectorAll('.ds-metric-card__value[data-count], .kpi-value[data-count]').forEach(el => {
+      try { counterObserver.observe(el); } catch (e) { /* ignore */ }
+    });
+  });
 });
 
 function setActiveNav() {

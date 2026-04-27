@@ -43,7 +43,7 @@
       <div class="ds-grid ds-services-six">
         <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-database"></i></div><h3 class="ds-card__title">Informatica</h3><p class="ds-card__desc">Integration, quality, and governance engineering for enterprise data ecosystems.</p><a class="ds-card__link" href="/AHM_Website/pages/services/informatica.html">Learn more →</a></article>
         <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-snowflake"></i></div><h3 class="ds-card__title">Snowflake</h3><p class="ds-card__desc">Warehouse modernization, performance tuning, and secure data sharing patterns.</p><a class="ds-card__link" href="/AHM_Website/pages/services/snowflake.html">Learn more →</a></article>
-        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-cloud"></i></div><h3 class="ds-card__title">IDMC</h3><p class="ds-card__desc">Cloud-native data management with lineage, cataloging, and trust controls.</p><a class="ds-card__link" href="/AHM_Website/pages/services/idmc.html">Learn more →</a></article>
+        <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-shield-halved"></i></div><h3 class="ds-card__title">Data Governance</h3><p class="ds-card__desc">IDMC cataloging, lineage, stewardship, and trust controls delivered through Informatica.</p><a class="ds-card__link" href="/AHM_Website/pages/services/informatica.html#data-governance">Learn more →</a></article>
         <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-robot"></i></div><h3 class="ds-card__title">Python & AI</h3><p class="ds-card__desc">Automation and ML pipelines with reusable deployment and monitoring frameworks.</p><a class="ds-card__link" href="/AHM_Website/pages/services/python-ai.html">Learn more →</a></article>
         <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-code"></i></div><h3 class="ds-card__title">Web Development</h3><p class="ds-card__desc">Data products, portals, and admin applications integrated into your cloud stack.</p><a class="ds-card__link" href="/AHM_Website/pages/services/web-development.html">Learn more →</a></article>
         <article class="ds-card ds-col-4"><div class="ds-card__icon"><i class="fas fa-mobile-alt"></i></div><h3 class="ds-card__title">Mobile Apps</h3><p class="ds-card__desc">Mobile-first workflows and operational dashboards for distributed teams.</p><a class="ds-card__link" href="/AHM_Website/pages/services/web-development.html">Learn more →</a></article>
@@ -54,16 +54,24 @@
   <section id="arch" class="ds-section">
     <div class="ds-container">
       <div class="ds-section-header"><h2>Service Architecture</h2></div>
-      <div class="ds-pipeline">
-        <div class="ds-pipeline__step" data-tip="ERP, CRM, APIs, logs"><h3 class="ds-pipeline__title">Data Sources</h3></div>
-        <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step" data-tip="Validation + transformation"><h3 class="ds-pipeline__title">ETL</h3></div>
-        <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step" data-tip="Lakehouse and warehouse layers"><h3 class="ds-pipeline__title">Storage</h3></div>
-        <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step" data-tip="Governed semantic models"><h3 class="ds-pipeline__title">BI</h3></div>
-        <div class="ds-pipeline__arrow">→</div>
-        <div class="ds-pipeline__step" data-tip="Operational and executive apps"><h3 class="ds-pipeline__title">Apps</h3></div>
+      <div class="ds-flow">
+        <svg class="ds-flow__svg" viewBox="0 0 840 120" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="dsFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--flow-blue)"/>
+              <stop offset="100%" stop-color="var(--flow-green)"/>
+            </linearGradient>
+          </defs>
+          <path class="ds-flow__path" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+          <path class="ds-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+        </svg>
+        <div class="ds-flow__nodes">
+          <div class="ds-flow-node" data-tip="ERP, CRM, APIs, logs"><div class="ds-flow-node__ring"><i class="fas fa-database"></i></div><span class="ds-flow-node__label">Data Sources</span></div>
+          <div class="ds-flow-node" data-tip="Validation + transformation"><div class="ds-flow-node__ring"><i class="fas fa-gears"></i></div><span class="ds-flow-node__label">ETL</span></div>
+          <div class="ds-flow-node" data-tip="Lakehouse and warehouse layers"><div class="ds-flow-node__ring"><i class="fas fa-layer-group"></i></div><span class="ds-flow-node__label">Storage</span></div>
+          <div class="ds-flow-node" data-tip="Governed semantic models"><div class="ds-flow-node__ring"><i class="fas fa-chart-column"></i></div><span class="ds-flow-node__label">BI</span></div>
+          <div class="ds-flow-node" data-tip="Operational and executive apps"><div class="ds-flow-node__ring"><i class="fas fa-window-restore"></i></div><span class="ds-flow-node__label">Apps</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -128,11 +136,34 @@
   <section class="ds-section ds-section--surface">
     <div class="ds-container">
       <div class="ds-section-header"><h2>Metrics / Outcomes</h2></div>
-      <div class="ds-grid ds-metrics-row">
-        <div class="ds-metric-card ds-col-4"><div class="ds-metric-card__value">3.2x</div><div class="ds-metric-card__label">Performance gains</div></div>
-        <div class="ds-metric-card ds-col-4"><div class="ds-metric-card__value">40%</div><div class="ds-metric-card__label">Cost savings</div></div>
-        <div class="ds-metric-card ds-col-4"><div class="ds-metric-card__value">55%</div><div class="ds-metric-card__label">Faster deployment speed</div></div>
-      </div>
+        <div class="kpi-groups">
+          <details class="kpi-group" open>
+            <summary><span>Financial Impact</span><span>▾</span></summary>
+            <div class="kpi-cards">
+              <article class="kpi-card is-primary"><div class="kpi-value">40%</div><div class="kpi-label">Cost reduction</div><div class="kpi-bar"><span class="kpi-fill" style="width:86%"></span></div></article>
+              <article class="kpi-card"><div class="kpi-value">18.5%</div><div class="kpi-label">Lead-to-action growth</div><div class="kpi-bar"><span class="kpi-fill success" style="width:74%"></span></div></article>
+              <article class="kpi-card"><div class="kpi-value">3.2x</div><div class="kpi-label">Pipeline throughput</div><div class="kpi-bar"><span class="kpi-fill" style="width:80%"></span></div></article>
+            </div>
+          </details>
+
+          <details class="kpi-group" open>
+            <summary><span>Performance Impact</span><span>▾</span></summary>
+            <div class="kpi-cards">
+              <article class="kpi-card is-primary"><div class="kpi-value">260ms</div><div class="kpi-label">Avg query response</div><div class="kpi-bar"><span class="kpi-fill" style="width:78%"></span></div></article>
+              <article class="kpi-card"><div class="kpi-value">72%</div><div class="kpi-label">Compute utilization</div><div class="kpi-bar"><span class="kpi-fill success" style="width:72%"></span></div></article>
+              <article class="kpi-card"><div class="kpi-value">0.8%</div><div class="kpi-label">Platform failure rate</div><div class="kpi-bar"><span class="kpi-fill critical" style="width:24%"></span></div></article>
+            </div>
+          </details>
+
+          <details class="kpi-group">
+            <summary><span>Quality Impact</span><span>▾</span></summary>
+            <div class="kpi-cards">
+              <article class="kpi-card is-primary"><div class="kpi-value">8.4/10</div><div class="kpi-label">Growth capacity score</div><div class="kpi-bar"><span class="kpi-fill" style="width:76%"></span></div></article>
+              <article class="kpi-card"><div class="kpi-value">96/100</div><div class="kpi-label">Design accessibility</div><div class="kpi-bar"><span class="kpi-fill success" style="width:92%"></span></div></article>
+              <article class="kpi-card"><div class="kpi-value">8.9/10</div><div class="kpi-label">Code & ops maturity</div><div class="kpi-bar"><span class="kpi-fill" style="width:84%"></span></div></article>
+            </div>
+          </details>
+        </div>
     </div>
   </section>
 
