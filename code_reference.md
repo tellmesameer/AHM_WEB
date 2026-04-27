@@ -1,10 +1,10 @@
 # CODEBASE_REFERENCE
 
-Last updated: 2026-04-24 (UTC)
+Last updated: 2026-04-27 (UTC)
 
 ## 1) Current runtime architecture
 
-This project is a static multi-page site with HTML + CSS + vanilla JS.
+This project is a static multi-page website (HTML + CSS + vanilla JS).
 
 ### Primary runtime entry points
 - `index.html`
@@ -19,39 +19,38 @@ This project is a static multi-page site with HTML + CSS + vanilla JS.
 - `AHM_Website/components/organisms/footer.html`
 
 ### Core runtime scripts/styles used by primary pages
-- CSS: `css/system.css`
-- JS: `js/partials.js` (component include loader), `js/main.js` (UI behavior)
-- Base config: `base-config.js`, `js/site-config.js`
+- CSS: `css/system.css` (~42.5 KB)
+- JS:
+  - `js/partials.js` (~4.7 KB) — client-side include loader + cache
+  - `js/main.js` (~18.5 KB) — UI behavior and interactions
+  - `js/site-config.js` (~4.1 KB) + `base-config.js`
 
-## 2) Dependency check (double-checked)
+## 2) Dependency check
 
 ### External dependencies currently used
 - Google Fonts (Inter)
 - Font Awesome CDN (`cdnjs.cloudflare.com`)
 
 ### Local JS dependencies
-- **Required (primary pages):**
+- **Required by active pages:**
   - `js/main.js`
   - `js/partials.js`
   - `js/site-config.js`
-- **Only used by legacy 404 page:**
+- **Legacy-only (404 path):**
   - `js/includes.js`
   - `js/site-phase3.js`
-- **Currently unreferenced:**
+- **Currently unreferenced by HTML:**
   - `js/phase3.js`
 
 ### Local CSS dependencies
-- **Required (primary pages):**
+- **Required by active pages:**
   - `css/system.css`
-- **Legacy styles still present and referenced by old/aux pages:**
+- **Legacy styles still in repo:**
   - `css/design-tokens.css`, `css/atoms.css`, `css/molecules.css`, `css/components.css`, `css/organisms.css`, `css/forms.css`, `css/responsive.css`, `css/phase3.css`
-- **Currently unreferenced:**
+- **Currently unreferenced by HTML:**
   - `css/multi-step-forms.css`
 
-## 3) Unused / not-required code inventory (current)
-
-> Scope used for this list: files not referenced by the current primary pages and component partial chain.
-> Some files may be intentionally retained for legacy routes (ex: `404.html`) or future migration.
+## 3) Unused / low-value inventory (current)
 
 ### A) Unused component templates (not included anywhere)
 - `AHM_Website/components/organisms/hero.html`
@@ -65,35 +64,53 @@ This project is a static multi-page site with HTML + CSS + vanilla JS.
 - `js/phase3.js`
 - `css/multi-step-forms.css`
 
-### C) Legacy/duplicate icon/image assets not required by current main pages
-- Duplicate icon sets (both locations mostly unused by active pages):
+### C) Duplicate or potentially removable asset sets
+- Duplicate icon trees:
   - `images/icons/*`
-  - `AHM_Website/assets/icons/*` (except favicon)
-- Example unused images currently not referenced in primary pages:
-  - `images/Gemini_Generated_Image_3o0zde3o0zde3o0z.png`
-  - `images/Python_AI.png`
-  - `images/Remove background project.png`
-  - `images/WhatsApp Image 2025-09-12 at 12.01.56_714598bf.jpg`
-  - `images/WhatsApp Image 2025-09-12 at 12.01.56_714598bf (1).jpg`
-  - `images/asrg.png`
-  - `images/backgorundImage.svg`
-  - `images/web development logo.png`
+  - `AHM_Website/assets/icons/*`
+- Large PNG assets (strong candidates for compression/WebP conversion):
+  - `images/asrg.png` (~836 KB)
+  - `images/Gemini_Generated_Image_3o0zde3o0zde3o0z.png` (~836 KB)
+  - `images/Python_AI.png` (~734 KB)
+  - `images/AHM logo clear bg red[1].png` (~452 KB)
 
 ### D) Legacy page path
-- `404.html` (uses legacy script pipeline `js/includes.js` + `js/site-phase3.js`).
+- `404.html` uses old script pipeline (`js/includes.js` + `js/site-phase3.js`).
 
-## 4) Recommended cleanup order (safe)
+## 4) Speed improvement opportunities (prioritized)
 
-1. Remove or archive unreferenced component templates in `components/atoms|molecules` and old `organisms/hero.html`.
-2. Remove `js/phase3.js` and `css/multi-step-forms.css` if no upcoming feature depends on them.
-3. Consolidate icon folders (`images/icons` vs `AHM_Website/assets/icons`) and keep one canonical location.
-4. Prune unused image assets after final visual QA.
-5. Either modernize `404.html` to current stack (`partials.js` + `main.js`) or keep legacy scripts intentionally documented.
+### Priority 1 (largest gains)
+1. **Convert heavy PNGs to WebP/AVIF** and serve responsive sizes (`srcset`, width/height hints).
+2. **Lazy-load non-critical images** on pages that still render logos/images without `loading="lazy"` (e.g., `index.html`, `about`, `partners`, `contact`).
+3. **Remove duplicate icon folders** and keep one canonical path to reduce transfer + maintenance overhead.
 
-## 5) Commands used for verification
+### Priority 2 (network + render path)
+4. **Enable strong static caching headers** (`Cache-Control` for CSS/JS/images and immutable hashed filenames).
+5. **Preload critical assets** (`system.css`, above-the-fold hero image when applicable) and keep non-critical scripts deferred.
+6. **Self-host icon/font subsets (or reduce icon set usage)** to limit third-party dependency latency.
+
+### Priority 3 (runtime JS micro-optimizations)
+7. In `js/main.js`, avoid computing `getComputedStyle(document.documentElement)` on every scroll tick; cache theme/nav colors once per theme change.
+8. In `js/main.js`, throttle/debounce expensive resize-driven accordion height recalculations.
+9. In `js/partials.js`, gate verbose `console.debug/info/warn` behind a debug flag to reduce runtime overhead/noise in production.
+
+## 5) Suggested cleanup order
+
+1. Delete/archive unreferenced templates in `components/atoms|molecules` and `components/organisms/hero.html`.
+2. Remove `js/phase3.js` and `css/multi-step-forms.css` if no feature branch depends on them.
+3. Consolidate icon folders and update references.
+4. Compress/convert large PNGs and add lazy-loading where missing.
+5. Modernize `404.html` to the same stack as other pages or explicitly document it as intentionally legacy.
+
+## 6) Commands used for verification
 
 ```bash
-rg -n "includes\.js|site-phase3\.js|phase3\.js|multi-step-forms\.css"
-python <reference scanner for src/href/data-include across *.html>
-node -e "new Function(require('fs').readFileSync('js/main.js','utf8')); console.log('main.js syntax ok')"
+rg -n "partials\.js|main\.js|site-config\.js|includes\.js|site-phase3\.js|phase3\.js|multi-step-forms\.css|system\.css" *.html AHM_Website/pages/**/*.html 404.html
+python - <<'PY'
+# checks reference status for selected files in HTML attributes
+PY
+wc -c css/*.css js/*.js | sort -n
+du -h --max-depth=2 | sort -h | tail -n 20
+find . -type f -printf '%s %p\n' | sort -nr | head -n 15
+rg -n "<img|loading=\"lazy\"|font-awesome|fonts.googleapis|preconnect|defer" index.html AHM_Website/pages/**/*.html
 ```
