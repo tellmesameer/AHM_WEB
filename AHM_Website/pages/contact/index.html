@@ -1,158 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-    <title>Contact Us - AHM Data Solutions</title>
-    <meta name="description" content="Get in touch with AHM Data Solutions for your enterprise data and cloud needs.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/system.css">
-    <script src="/base-config.js"></script>
-    <script src="/js/site-config.js"></script>
+<head><link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - AHM Data Solutions</title>
+  <link rel="stylesheet" href="/css/system.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="/base-config.js"></script><script src="/js/site-config.js"></script>
+  <style>
+    .contact-hero {
+      isolation: isolate;
+    }
+
+    .contact-hero__network {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .38;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    [data-theme="light"] .contact-hero__network {
+      opacity: .34;
+      mix-blend-mode: multiply;
+    }
+
+    .contact-hero__network .network-path {
+      stroke-dasharray: 12 16;
+      animation: contact-network-flow 16s linear infinite;
+    }
+
+    .contact-hero__network .network-node {
+      transform-origin: center;
+      animation: contact-node-pulse 2.8s ease-in-out infinite;
+    }
+
+    .contact-hero__network .network-node:nth-of-type(2n) {
+      animation-delay: .55s;
+    }
+
+    .contact-hero__network .network-node:nth-of-type(3n) {
+      animation-delay: 1.1s;
+    }
+
+    .contact-hero .ds-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-signal {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-signal::before {
+      content: '';
+      position: absolute;
+      inset: -45%;
+      background: conic-gradient(from 180deg, transparent, rgba(59,130,246,.16), rgba(34,197,94,.12), transparent 48%);
+      animation: contact-signal-rotate 9s linear infinite;
+    }
+
+    [data-theme="light"] .contact-signal::before {
+      background: conic-gradient(from 180deg, transparent, rgba(37,99,235,.18), rgba(22,163,74,.14), transparent 48%);
+    }
+
+    .contact-signal .ds-dashboard__body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-orbit {
+      grid-column: span 2;
+      height: 118px;
+      border: 1px solid var(--sys-border);
+      border-radius: var(--r-md);
+      background: rgba(15,23,42,.28);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .contact-orbit {
+      background: rgba(255,255,255,.52);
+      border-color: rgba(15,23,42,.12);
+    }
+
+    .contact-orbit svg {
+      width: min(100%, 360px);
+      height: 100%;
+    }
+
+    .contact-orbit .orbit-ring {
+      transform-origin: 50% 50%;
+      animation: contact-orbit-spin 14s linear infinite;
+    }
+
+    .contact-orbit .orbit-ring--slow {
+      animation-duration: 20s;
+      animation-direction: reverse;
+    }
+
+    .contact-orbit .orbit-dot {
+      animation: contact-node-pulse 2.4s ease-in-out infinite;
+    }
+
+    .contact-link {
+      color: var(--sys-text-secondary);
+      word-break: break-word;
+    }
+
+    .contact-link:hover {
+      color: var(--sys-primary-light);
+    }
+
+    .contact-card {
+      gap: 6px;
+      animation: contact-card-in .55s var(--ease) both;
+    }
+
+    .contact-card:nth-child(2) {
+      animation-delay: .1s;
+    }
+
+    .contact-card:nth-child(3) {
+      animation-delay: .2s;
+    }
+
+    .contact-card:hover .ds-card__icon {
+      transform: scale(1.08);
+      box-shadow: 0 0 22px rgba(59,130,246,.34);
+    }
+
+    [data-theme="light"] .contact-card:hover .ds-card__icon {
+      box-shadow: 0 0 18px rgba(37,99,235,.22);
+    }
+
+    .contact-card .ds-small {
+      margin-top: auto;
+    }
+
+    .contact-form-shell {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: var(--sp-4);
+      align-items: start;
+      position: relative;
+      animation: contact-card-in .6s var(--ease) both;
+    }
+
+    .contact-form-shell::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--r-xl);
+      background: linear-gradient(120deg, rgba(59,130,246,.18), transparent 36%, rgba(34,197,94,.14));
+      opacity: .35;
+      pointer-events: none;
+      filter: blur(18px);
+    }
+
+    [data-theme="light"] .contact-form-shell::before {
+      background: linear-gradient(120deg, rgba(37,99,235,.12), transparent 38%, rgba(22,163,74,.1));
+      opacity: .42;
+    }
+
+    .contact-form-copy {
+      position: sticky;
+      top: 96px;
+    }
+
+    .contact-form-copy p {
+      margin-top: var(--sp-1);
+      color: var(--sys-muted);
+    }
+
+    .contact-form-shell form,
+    .contact-form-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes contact-network-flow {
+      to { stroke-dashoffset: -220; }
+    }
+
+    @keyframes contact-node-pulse {
+      0%, 100% { opacity: .42; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.25); }
+    }
+
+    @keyframes contact-signal-rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes contact-orbit-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes contact-card-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(prefers-reduced-motion: reduce) {
+      .contact-hero__network .network-path,
+      .contact-hero__network .network-node,
+      .contact-signal::before,
+      .contact-orbit .orbit-ring,
+      .contact-orbit .orbit-dot,
+      .contact-card,
+      .contact-form-shell {
+        animation: none !important;
+      }
+    }
+
+    @media(max-width: 768px) {
+      .contact-form-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form-copy {
+        position: static;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div data-include="/AHM_Website/components/organisms/header.html"></div>
+<div data-include="/AHM_Website/components/organisms/header.html"></div>
+<main>
+<section class="ds-hero contact-hero">
+  <svg class="contact-hero__network" viewBox="0 0 1200 520" aria-hidden="true">
+    <defs>
+      <linearGradient id="contactHeroGradient" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#3b82f6" stop-opacity=".7"/>
+        <stop offset=".52" stop-color="#60a5fa" stop-opacity=".38"/>
+        <stop offset="1" stop-color="#22c55e" stop-opacity=".55"/>
+      </linearGradient>
+      <radialGradient id="contactHeroNode">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
+        <stop offset=".45" stop-color="#60a5fa" stop-opacity=".58"/>
+        <stop offset="1" stop-color="#60a5fa" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g stroke="#ffffff" stroke-opacity=".045" stroke-width=".8">
+      <path d="M0 90H1200M0 190H1200M0 290H1200M0 390H1200"/>
+      <path d="M120 0V520M320 0V520M520 0V520M720 0V520M920 0V520M1120 0V520"/>
+    </g>
+    <path class="network-path" d="M-50 340 C120 210 250 390 420 238 S740 175 910 302 1110 282 1250 130" stroke="url(#contactHeroGradient)" stroke-width="1.5" fill="none"/>
+    <path class="network-path" d="M40 165 C210 105 340 210 485 126 S775 70 910 185 1090 250 1228 74" stroke="url(#contactHeroGradient)" stroke-width="1" fill="none" opacity=".72"/>
+    <path class="network-path" d="M96 432 C260 292 395 418 552 318 S820 248 1030 378" stroke="url(#contactHeroGradient)" stroke-width="1" fill="none" opacity=".62"/>
+    <g fill="url(#contactHeroNode)">
+      <circle class="network-node" cx="138" cy="245" r="12"/>
+      <circle class="network-node" cx="320" cy="312" r="10"/>
+      <circle class="network-node" cx="486" cy="126" r="9"/>
+      <circle class="network-node" cx="664" cy="172" r="12"/>
+      <circle class="network-node" cx="835" cy="250" r="10"/>
+      <circle class="network-node" cx="1010" cy="360" r="13"/>
+    </g>
+  </svg>
+  <div class="ds-container">
+    <div class="ds-hero__grid">
+      <div class="ds-hero__content"><span class="ds-badge">Contact</span><h1 class="ds-hero__title">Talk to an Engineering Specialist</h1><p class="ds-hero__subtitle">Share your platform goals and we will return a technical plan for next steps.</p><div class="ds-hero__actions"><a class="ds-btn ds-btn-primary ds-btn-lg" href="tel:+919211991996">Call +91 9211991996</a><a class="ds-btn ds-btn-secondary ds-btn-lg" href="mailto:contact@ahminfotech.com">Email Us</a></div></div>
+      <div class="ds-hero__visual">
+        <div class="ds-dashboard contact-signal"><div class="ds-dashboard__body"><div class="ds-dash-metric"><div class="ds-dash-metric__label">Response Time</div><div class="ds-dash-metric__value">&lt;24h</div></div><div class="ds-dash-metric"><div class="ds-dash-metric__label">Office</div><div class="ds-dash-metric__value">Delhi</div></div><div class="contact-orbit"><svg viewBox="0 0 360 120" aria-hidden="true"><g class="orbit-ring" fill="none" stroke="url(#contactOrbitGradient)" stroke-width="1.5"><ellipse cx="180" cy="60" rx="116" ry="36"/><ellipse cx="180" cy="60" rx="82" ry="25"/></g><g class="orbit-ring orbit-ring--slow" fill="none" stroke="#60a5fa" stroke-opacity=".45" stroke-width="1"><ellipse cx="180" cy="60" rx="132" ry="44"/></g><defs><linearGradient id="contactOrbitGradient" x1="48" x2="312" y1="24" y2="96"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#22c55e"/></linearGradient></defs><circle cx="180" cy="60" r="14" fill="rgba(59,130,246,.16)" stroke="#60a5fa"/><path d="M173 60h14M180 53v14" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round"/><circle class="orbit-dot" cx="63" cy="60" r="5" fill="#60a5fa"/><circle class="orbit-dot" cx="264" cy="36" r="5" fill="#22c55e"/><circle class="orbit-dot" cx="298" cy="78" r="4" fill="#93c5fd"/></svg></div><div class="ds-dash-status"><span><span class="ds-live-dot"></span>New Delhi Team Available</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <main id="main">
-        <!-- ===== HERO ===== -->
-        <section class="ds-hero" id="hero">
-            <div class="ds-container">
-                <div class="ds-hero__grid">
-                    <!-- Left: Copy -->
-                    <div class="ds-hero__content ds-animate">
-                        <span class="ds-badge">
-                            <span class="ds-status-dot"></span> Get In Touch
-                        </span>
-                        <h1 class="ds-hero__title">Let's build your<br>data future</h1>
-                        <p class="ds-hero__subtitle">Our certified engineers respond within 24 hours to discuss your architecture, implementation, or scaling needs.</p>
-                        <div class="ds-hero__actions">
-                            <a href="#contact" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
-                            <a href="../consultation/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">Free Consultation →</a>
-                        </div>
-                    </div>
-                    <!-- Right: Contact Visual -->
-                    <div class="ds-dashboard ds-animate ds-animate-delay-2">
-                        <div class="ds-dashboard__bar">
-                            <span class="ds-dashboard__dot ds-dashboard__dot--r"></span>
-                            <span class="ds-dashboard__dot ds-dashboard__dot--y"></span>
-                            <span class="ds-dashboard__dot ds-dashboard__dot--g"></span>
-                        </div>
-                        <div class="ds-dashboard__body">
-                            <div class="ds-dash-metric">
-                                <div class="ds-dash-metric__label">Response Time</div>
-                                <div class="ds-dash-metric__value ds-dash-metric__value--success">&lt;24hrs</div>
-                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Average</div>
-                            </div>
-                            <div class="ds-dash-metric">
-                                <div class="ds-dash-metric__label">Support</div>
-                                <div class="ds-dash-metric__value ds-dash-metric__value--success">24/7</div>
-                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Enterprise Clients</div>
-                            </div>
-                            <div class="ds-dash-metric">
-                                <div class="ds-dash-metric__label">Channels</div>
-                                <div class="ds-dash-metric__value ds-dash-metric__value--primary">Email</div>
-                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Phone, Chat</div>
-                            </div>
-                            <div class="ds-dash-metric">
-                                <div class="ds-dash-metric__label">Languages</div>
-                                <div class="ds-dash-metric__value ds-dash-metric__value--success">5+</div>
-                                <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px">Global Support</div>
-                            </div>
-                            <!-- Status Row -->
-                            <div class="ds-dash-status">
-                                <span style="display:flex;align-items:center;font-size:0.8125rem;color:#94A3B8">
-                                    <span class="ds-status-dot"></span> Support Team Online
-                                </span>
-                                <span style="font-size:0.75rem;color:#10B981;font-weight:600">● AVAILABLE</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section class="ds-section ds-section--surface">
+  <div class="ds-container" style="max-width:1040px">
+    <div class="contact-form-shell">
+      <div class="contact-form-copy">
+        <span class="ds-badge">Start a Conversation</span>
+        <h2>Tell us what you are building.</h2>
+        <p>Send the essentials and the team will follow up with the right technical next step.</p>
+      </div>
+      <form class="ds-form" action="mailto:contact@ahminfotech.com" method="post" enctype="text/plain">
+        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="firstName" name="First name" autocomplete="given-name" required><label class="ds-form-label" for="firstName">First Name</label></div>
+        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="lastName" name="Last name" autocomplete="family-name"><label class="ds-form-label" for="lastName">Last Name</label></div>
+        <div class="ds-form-group ds-form-group--full ds-floating-group"><input class="ds-form-input" placeholder=" " id="workEmail" name="Work email" type="email" autocomplete="email" required><label class="ds-form-label" for="workEmail">Work Email</label></div>
+        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="phone" name="Phone" type="tel" autocomplete="tel"><label class="ds-form-label" for="phone">Phone</label></div>
+        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="company" name="Company" autocomplete="organization"><label class="ds-form-label" for="company">Company</label></div>
+        <div class="ds-form-group ds-form-group--full"><label class="ds-form-label" for="interest">What do you need?</label><select class="ds-form-input" id="interest" name="Interest"><option>Data Engineering</option><option>Cloud Architecture</option><option>Informatica / IDMC</option><option>Snowflake</option><option>Python & AI</option><option>Web or Mobile App</option></select></div>
+        <div class="ds-form-group ds-form-group--full ds-floating-group"><textarea class="ds-form-input" placeholder=" " id="projectDetails" name="Project details" required></textarea><label class="ds-form-label" for="projectDetails">Project Details</label></div>
+        <div class="ds-form-group ds-form-group--full"><button class="ds-btn ds-btn-primary ds-btn-full" type="submit">Send Request</button></div>
+      </form>
+    </div>
+  </div>
+</section>
 
-        <!-- ===== CONTACT FORM ===== -->
-        <section id="contact" class="ds-section ds-section--surface">
-            <div class="ds-container">
-                <div class="ds-section-header ds-animate">
-                    <span class="ds-badge">Let's Talk</span>
-                    <h2>Get In Touch</h2>
-                    <p>Ready to start your data transformation? Our team responds within 24 hours.</p>
-                </div>
-                <div style="max-width:720px;margin:0 auto" class="ds-animate">
-                    <form id="contactForm" class="ds-form secure-form" action="https://formspree.io/f/mdklygjr" method="POST">
-                        <input type="hidden" name="_subject" value="New Contact Form Submission - AHM Website">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <div class="ds-form-group">
-                            <label for="firstName" class="ds-form-label">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" class="ds-form-input" required placeholder="First Name" autocomplete="given-name">
-                        </div>
-                        <div class="ds-form-group">
-                            <label for="lastName" class="ds-form-label">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" class="ds-form-input" required placeholder="Last Name" autocomplete="family-name">
-                        </div>
-                        <div class="ds-form-group">
-                            <label for="email" class="ds-form-label">Email Address *</label>
-                            <input type="email" id="email" name="email" class="ds-form-input" required placeholder="email@example.com" autocomplete="email">
-                        </div>
-                        <div class="ds-form-group">
-                            <label for="phone" class="ds-form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="ds-form-input" placeholder="+1 (555) 000-0000" autocomplete="tel">
-                        </div>
-                        <div class="ds-form-group ds-form-group--full">
-                            <label for="company" class="ds-form-label">Company Name</label>
-                            <input type="text" id="company" name="company" class="ds-form-input" placeholder="Your Company" autocomplete="organization">
-                        </div>
-                        <div class="ds-form-group ds-form-group--full">
-                            <label for="service" class="ds-form-label">Service Interest *</label>
-                            <select id="service" name="service" class="ds-form-input" required>
-                                <option value="">Select a service...</option>
-                                <option value="informatica">Informatica Services</option>
-                                <option value="snowflake">Snowflake Services</option>
-                                <option value="idmc">IDMC Solutions</option>
-                                <option value="python-ai">Python & AI Services</option>
-                                <option value="web-development">Web Development</option>
-                                <option value="consultation">General Consultation</option>
-                            </select>
-                        </div>
-                        <div class="ds-form-group ds-form-group--full">
-                            <label for="message" class="ds-form-label">Message *</label>
-                            <textarea id="message" name="message" class="ds-form-input" rows="5" required placeholder="Tell us about your data challenges..."></textarea>
-                        </div>
-                        <div class="ds-form-group ds-form-group--full">
-                            <button type="submit" class="ds-btn ds-btn-primary ds-btn-lg ds-btn-full">
-                                <span class="btn-text">Send Message</span>
-                            </button>
-                        </div>
-                    </form>
-                    <div style="margin-top:var(--sp-4);padding-top:var(--sp-3);border-top:1px solid var(--sys-border)">
-                        <p class="ds-text-center" style="font-size:var(--sys-small);color:var(--sys-muted);margin-bottom:var(--sp-2)">Trusted by teams at</p>
-                        <div class="ds-logos" style="gap:var(--sp-3)">
-                            <img src="/images/informatica2000-689.png" alt="Informatica" loading="lazy">
-                            <img src="/images/Snowflake_Logo.svg" alt="Snowflake" loading="lazy">
-                            <img src="/images/MSFT_logo_png_grey.png" alt="Microsoft" loading="lazy">
-                            <img src="/images/Amazon_Web_Services_2025.svg" alt="AWS" loading="lazy">
-                            <img src="/images/Google_Cloud_logo.svg" alt="Google Cloud" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+<section class="ds-section ds-section--dense">
+  <div class="ds-container"><div class="ds-grid">
+    <div class="ds-card ds-col-4 contact-card"><div class="ds-card__icon"><i class="fas fa-envelope"></i></div><h3 class="ds-card__title">Email</h3><p class="ds-card__desc"><a class="contact-link" href="mailto:contact@ahminfotech.com">contact@ahminfotech.com</a></p><p class="ds-small">Best for project briefs and partnership requests.</p></div>
+    <div class="ds-card ds-col-4 contact-card"><div class="ds-card__icon"><i class="fas fa-phone"></i></div><h3 class="ds-card__title">Phone</h3><p class="ds-card__desc"><a class="contact-link" href="tel:+919211991996">+91 9211991996</a></p><p class="ds-small">Call for quick consultation scheduling.</p></div>
+    <div class="ds-card ds-col-4 contact-card"><div class="ds-card__icon"><i class="fas fa-location-dot"></i></div><h3 class="ds-card__title">Office</h3><p class="ds-card__desc">New Delhi, India</p><p class="ds-small">Serving clients across India and global teams.</p></div>
+  </div></div>
+</section>
 
-    <!-- Footer -->
-    <div data-include="/AHM_Website/components/organisms/footer.html"></div>
-
-    <!-- JS -->
-    <script src="/js/partials.js" defer></script>
-    <script src="/js/main.js" defer></script>
+<section class="ds-section ds-section--alt" style="border-top:1px solid var(--sys-border)">
+  <div class="ds-container"><div class="ds-section-header"><h2>Trusted Delivery</h2></div><div class="ds-logos"><img src="/images/Snowflake_Logo.svg" alt="Snowflake"><img src="/images/informatica2000-689.png" alt="Informatica"><img src="/images/Amazon_Web_Services_2025.svg" alt="AWS"></div><div class="ds-metrics ds-animate" data-metrics="global" role="list"></div></div>
+</section>
+</main>
+<div data-include="/AHM_Website/components/organisms/footer.html"></div>
+<script src="/js/partials.js" defer></script><script src="/js/main.js" defer></script>
 </body>
 </html>
-
-
