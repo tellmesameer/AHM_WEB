@@ -1,8 +1,498 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml"><title>Solutions - AHM Data Solutions</title><link rel="stylesheet" href="/css/system.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><script src="/base-config.js"></script><script src="/js/site-config.js"></script></head><body><div data-include="/AHM_Website/components/organisms/header.html"></div><main>
-<section class="ds-hero"><div class="ds-container"><div class="ds-hero__grid" style="grid-template-columns:1fr"><div class="ds-hero__content" style="max-width:760px;margin:auto;text-align:center"><span class="ds-badge">Vertical Solutions</span><h1 class="ds-hero__title">Outcome-Focused Data Solutions by Industry</h1><p class="ds-hero__subtitle" style="margin:auto">Imaginary but realistic accelerators tailored to your operating model, risk profile, and growth stage.</p></div></div></div></section>
-<section class="ds-section ds-section--surface ds-section--dense"><div class="ds-container"><div class="ds-section-header"><h2>Solution Catalog</h2></div><div class="ds-grid"><article class="ds-card ds-col-4"><span class="ds-badge">Finance</span><h3 class="ds-card__title">Data Platform Modernization</h3><p class="ds-small">KPI +42% throughput</p><p class="ds-card__desc">Migration playbook with governance and operational metrics.</p></article><article class="ds-card ds-col-4"><span class="ds-badge">Retail</span><h3 class="ds-card__title">BI Accelerator</h3><p class="ds-small">KPI 2.1x report speed</p><p class="ds-card__desc">Domain metrics layer and executive-ready dashboards.</p></article><article class="ds-card ds-col-4"><span class="ds-badge">AI</span><h3 class="ds-card__title">AI/ML Ops</h3><p class="ds-small">KPI 35% faster cycles</p><p class="ds-card__desc">Model lifecycle controls with observability and rollback.</p></article><article class="ds-card ds-col-4"><span class="ds-badge">Governance</span><h3 class="ds-card__title">Data Governance</h3><p class="ds-small">KPI 98% policy coverage</p><p class="ds-card__desc">Policy packs, lineage, stewardship workflows.</p></article><article class="ds-card ds-col-4"><span class="ds-badge">FinOps</span><h3 class="ds-card__title">Cost Optimization</h3><p class="ds-small">KPI 30% cloud savings</p><p class="ds-card__desc">Warehouse right-sizing and workload scheduling.</p></article><article class="ds-card ds-col-4"><span class="ds-badge">Streaming</span><h3 class="ds-card__title">Real-time Streaming</h3><p class="ds-small">KPI &lt;5s freshness</p><p class="ds-card__desc">Event ingestion and near-real-time decision loops.</p></article></div></div></section>
-<section class="ds-section"><div class="ds-container"><div class="ds-grid"><div class="ds-col-4" style="position:sticky;top:90px;height:fit-content"><h2>Industry Mapping</h2><p class="ds-text-muted">Pick an industry on the right to review imaginary blueprint outcomes.</p></div><div class="ds-col-8"><div class="ds-map"><div class="ds-map__row"><strong>Finance</strong><span>Fraud detection + regulatory marts</span></div><div class="ds-map__row"><strong>Healthcare</strong><span>Clinical interoperability + outcome analytics</span></div><div class="ds-map__row"><strong>Retail</strong><span>Demand sensing + customer segmentation</span></div><div class="ds-map__row"><strong>Manufacturing</strong><span>IoT telemetry + predictive maintenance</span></div></div></div></div></div></section>
-<section class="ds-section ds-section--dense"><div class="ds-container"><div class="ds-section-header"><h2>Use Case Walkthrough</h2></div><div id="usecase" class="ds-pipeline"><div class="ds-pipeline__step" data-tip="Step 1"><h3 class="ds-pipeline__title">1. Raw Data</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 2"><h3 class="ds-pipeline__title">2. Cleaning</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 3"><h3 class="ds-pipeline__title">3. Modeling</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 4"><h3 class="ds-pipeline__title">4. Dashboard</h3></div><div class="ds-pipeline__arrow">→</div><div class="ds-pipeline__step" data-tip="Step 5"><h3 class="ds-pipeline__title">5. Decision</h3></div></div></div></section>
-<section class="ds-section ds-section--alt"><div class="ds-container"><div class="ds-grid"><div class="ds-metric-card ds-col-6"><div class="ds-metric-card__value" data-count="50">50%</div><div class="ds-metric-card__label">Faster insights</div></div><div class="ds-metric-card ds-col-6"><div class="ds-metric-card__value" data-count="30">30%</div><div class="ds-metric-card__label">Cost reduction</div></div></div></div></section>
-<section class="ds-cta-band"><div class="ds-container"><h2>Deploy a solution accelerator in weeks, not quarters.</h2><div class="ds-cta-band__actions"><a class="ds-btn ds-btn-primary" href="/AHM_Website/pages/contact/index.html">Talk to Solutions Team</a></div></div></section>
-</main><div data-include="/AHM_Website/components/organisms/footer.html"></div><script src="/js/partials.js" defer></script><script src="/js/main.js" defer></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
+  <title>Solutions - AHM Data Solutions</title>
+  <link rel="stylesheet" href="/css/system.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="/base-config.js"></script>
+  <script src="/js/site-config.js"></script>
+  <style>
+    :root {
+      --bg-primary: #111827;
+      --bg-secondary: #182231;
+      --bg-card: #202c3d;
+      --text-primary: #f4f7fb;
+      --text-secondary: #d3dbe6;
+      --text-muted: #9aa8ba;
+      --border-subtle: rgba(148, 163, 184, 0.28);
+      --accent-primary: #3b82f6;
+      --accent-success: #22c55e;
+      --accent-critical: #ef4444;
+      --card-elevation: none;
+      --page-gradient: linear-gradient(180deg, rgba(59, 130, 246, 0.08), transparent 25%);
+      --section-space: clamp(2.4rem, 4vw, 3.4rem);
+      --internal-space: clamp(1rem, 2vw, 1.4rem);
+      --card-pad: 0.95rem;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #edf1f7;
+      --bg-secondary: #e4eaf3;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #5f6f84;
+      --border-subtle: rgba(15, 23, 42, 0.11);
+      --card-elevation: 0 6px 18px rgba(15, 23, 42, 0.08);
+      --page-gradient: linear-gradient(180deg, rgba(37, 99, 235, 0.08), transparent 30%);
+    }
+
+    .solutions-page {
+      background: var(--page-gradient), var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .solutions-page .solutions-hero {
+      padding: calc(var(--nav-h) + 2.8rem) 0 var(--section-space);
+    }
+
+    .solutions-page .solutions-section {
+      padding: var(--section-space) 0;
+    }
+
+    .solutions-page .solutions-section--secondary {
+      background: var(--bg-secondary);
+      border-block: 1px solid var(--border-subtle);
+    }
+
+    .solutions-page .section-head {
+      display: grid;
+      gap: 0.35rem;
+      margin-bottom: var(--internal-space);
+      text-align: left;
+    }
+
+    .solutions-page .section-head h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      color: var(--text-primary);
+    }
+
+    .solutions-page .section-head p { color: var(--text-secondary); max-width: 60ch; }
+
+    .solutions-page .solutions-chip {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 0.24rem 0.7rem;
+      width: fit-content;
+    }
+
+    .solutions-page .hero-subtitle {
+      max-width: 72ch;
+      color: var(--text-secondary);
+      margin-top: 0.6rem;
+    }
+
+    .solutions-page .catalog-tabs,
+    .solutions-page .industry-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: var(--internal-space);
+    }
+
+    .solutions-page .tab-btn {
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 0.45rem 0.8rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .solutions-page .tab-btn[aria-selected="true"] {
+      color: var(--text-primary);
+      border-color: rgba(59, 130, 246, 0.45);
+      background: rgba(59, 130, 246, 0.14);
+    }
+
+    .solutions-page .catalog-panel,
+    .solutions-page .industry-panel { display: none; }
+    .solutions-page .catalog-panel.is-active,
+    .solutions-page .industry-panel.is-active { display: block; }
+
+    .solutions-page .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .solutions-page .solution-card,
+    .solutions-page .industry-card,
+    .solutions-page .kpi-card,
+    .solutions-page .cta-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 60%), var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      box-shadow: var(--card-elevation);
+    }
+
+    .solutions-page .solution-card,
+    .solutions-page .industry-card {
+      padding: var(--card-pad);
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .solutions-page .solution-card h3,
+    .solutions-page .industry-card h3 { font-size: 1rem; color: var(--text-primary); }
+
+    .solutions-page .solution-card p,
+    .solutions-page .industry-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.45; }
+
+    .solutions-page .kpi-accordion {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .solutions-page .kpi-group {
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      background: var(--bg-card);
+      box-shadow: var(--card-elevation);
+      overflow: hidden;
+    }
+
+    .solutions-page .kpi-group summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.9rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--text-primary);
+      border-bottom: 1px solid transparent;
+    }
+
+    .solutions-page .kpi-group[open] summary { border-bottom-color: var(--border-subtle); }
+    .solutions-page .kpi-group summary::-webkit-details-marker { display: none; }
+
+    .solutions-page .kpi-group .group-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      margin-right: 0.6rem;
+    }
+
+    .solutions-page .kpi-grid {
+      padding: 0.85rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .solutions-page .kpi-card {
+      padding: 0.75rem 0.8rem;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .solutions-page .kpi-card.is-primary {
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .solutions-page .kpi-value {
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    .solutions-page .kpi-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .solutions-page .kpi-progress {
+      height: 3px;
+      background: rgba(148, 163, 184, 0.25);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .solutions-page .kpi-fill {
+      display: block;
+      height: 100%;
+      background: var(--accent-primary);
+      transition: width 220ms ease;
+    }
+
+    .solutions-page .kpi-fill.success { background: var(--accent-success); }
+    .solutions-page .kpi-fill.critical { background: var(--accent-critical); }
+
+    .solutions-page .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(59, 130, 246, 0.42);
+      box-shadow: var(--card-elevation), 0 0 0 1px rgba(59, 130, 246, 0.12) inset;
+    }
+
+    .solutions-page .kpi-card:hover .kpi-fill { filter: saturate(1.08); }
+
+    .solutions-page .status-badge {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.2);
+      color: var(--text-secondary);
+      width: fit-content;
+    }
+
+    .solutions-page .status-badge.success {
+      background: rgba(34, 197, 94, 0.18);
+      color: color-mix(in srgb, var(--accent-success), var(--text-primary) 30%);
+    }
+
+    .solutions-page .status-badge.critical {
+      background: rgba(239, 68, 68, 0.18);
+      color: color-mix(in srgb, var(--accent-critical), var(--text-primary) 35%);
+    }
+
+    .solutions-page .cta-wrap {
+      display: grid;
+      grid-template-columns: 1.4fr auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .solutions-page .cta-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+    .solutions-page .ds-btn.ds-btn-secondary {
+      color: var(--text-secondary);
+      border-color: var(--border-subtle);
+      background: transparent;
+    }
+
+    .solutions-page .ds-btn.ds-btn-secondary:hover {
+      color: var(--text-primary);
+      background: rgba(148, 163, 184, 0.14);
+    }
+
+    @media (max-width: 992px) {
+      .solutions-page .card-grid,
+      .solutions-page .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .solutions-page .cta-wrap { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .solutions-page .card-grid,
+      .solutions-page .kpi-grid { grid-template-columns: 1fr; }
+      .solutions-page .solutions-hero { padding-top: calc(var(--nav-h) + 2.2rem); }
+    }
+  </style>
+</head>
+<body class="solutions-page">
+  <div data-include="/AHM_Website/components/organisms/header.html"></div>
+
+  <main>
+    <section class="solutions-hero">
+      <div class="ds-container">
+        <span class="solutions-chip">Vertical Solutions</span>
+        <h1>Outcome-Focused Data Solutions by Industry</h1>
+        <p class="hero-subtitle">A structured catalog of delivery accelerators, grouped outcomes, and measurable KPI blocks designed for fast executive scanning and decision-oriented planning.</p>
+      </div>
+    </section>
+
+    <section class="solutions-section solutions-section--secondary">
+      <div class="ds-container">
+        <div class="section-head">
+          <h2>Solution Catalog</h2>
+          <p>Browse by category. Each group shows only high-value entries first to keep scan effort low.</p>
+        </div>
+
+        <div class="catalog-tabs" role="tablist" aria-label="Solution catalog groups">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="catalog-finance" id="tab-finance">Finance & Risk</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-ops" id="tab-ops">Operations</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="catalog-ai" id="tab-ai">AI & Intelligence</button>
+        </div>
+
+        <div class="catalog-panel is-active" id="catalog-finance" role="tabpanel" aria-labelledby="tab-finance">
+          <div class="card-grid">
+            <article class="solution-card"><span class="status-badge">Financial</span><h3>Data Platform Modernization</h3><p>Migration blueprint with governance-first controls and risk-aware operating metrics.</p></article>
+            <article class="solution-card"><span class="status-badge">Financial</span><h3>Regulatory Reporting Core</h3><p>Trusted data marts and control evidence pipelines for board and audit reporting.</p></article>
+            <article class="solution-card"><span class="status-badge success">Positive signal</span><h3>Cost Performance Program</h3><p>Warehouse workload tuning and spend governance tied to margin outcomes.</p></article>
+          </div>
+        </div>
+
+        <div class="catalog-panel" id="catalog-ops" role="tabpanel" aria-labelledby="tab-ops">
+          <div class="card-grid">
+            <article class="solution-card"><span class="status-badge">Performance</span><h3>Real-Time Decision Streaming</h3><p>Event ingestion and low-latency decision loops for service and operations teams.</p></article>
+            <article class="solution-card"><span class="status-badge">Performance</span><h3>Demand & Inventory Sensing</h3><p>Unified telemetry model for forecast correction, replenishment, and OTIF reliability.</p></article>
+            <article class="solution-card"><span class="status-badge critical">Alert path</span><h3>Incident Root-Cause Graph</h3><p>Cross-system correlation for faster recovery and reduced repeated outages.</p></article>
+          </div>
+        </div>
+
+        <div class="catalog-panel" id="catalog-ai" role="tabpanel" aria-labelledby="tab-ai">
+          <div class="card-grid">
+            <article class="solution-card"><span class="status-badge">Quality</span><h3>AI/ML Ops Governance</h3><p>Model lifecycle controls with drift detection, approvals, and rollback playbooks.</p></article>
+            <article class="solution-card"><span class="status-badge">Quality</span><h3>Trusted Semantic Layer</h3><p>Shared KPI definitions and metric contracts for analytics and generative workflows.</p></article>
+            <article class="solution-card"><span class="status-badge success">Positive signal</span><h3>Executive Insight Co-pilot</h3><p>Decision support with governed retrieval and role-based data access boundaries.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions-section">
+      <div class="ds-container">
+        <div class="section-head">
+          <h2>KPI Outcomes</h2>
+          <p>Grouped metrics with one primary indicator per group. Expand/collapse each group as needed.</p>
+        </div>
+
+        <div class="kpi-accordion">
+          <details class="kpi-group" open>
+            <summary><span><span class="group-label">Financial</span>Revenue and spend impact</span><span>▾</span></summary>
+            <div class="kpi-grid">
+              <article class="kpi-card is-primary">
+                <div class="kpi-value">+18.4%</div>
+                <div class="kpi-label">Gross margin improvement</div>
+                <div class="kpi-progress"><span class="kpi-fill success" style="width:78%"></span></div>
+              </article>
+              <article class="kpi-card">
+                <div class="kpi-value">-26%</div>
+                <div class="kpi-label">Data platform operating cost</div>
+                <div class="kpi-progress"><span class="kpi-fill" style="width:65%"></span></div>
+              </article>
+              <article class="kpi-card">
+                <div class="kpi-value">9.2 mo</div>
+                <div class="kpi-label">Payback period</div>
+                <div class="kpi-progress"><span class="kpi-fill" style="width:70%"></span></div>
+              </article>
+            </div>
+          </details>
+
+          <details class="kpi-group" open>
+            <summary><span><span class="group-label">Performance</span>Operational throughput and speed</span><span>▾</span></summary>
+            <div class="kpi-grid">
+              <article class="kpi-card is-primary">
+                <div class="kpi-value">2.6x</div>
+                <div class="kpi-label">Decision cycle acceleration</div>
+                <div class="kpi-progress"><span class="kpi-fill" style="width:82%"></span></div>
+              </article>
+              <article class="kpi-card">
+                <div class="kpi-value">4.8s</div>
+                <div class="kpi-label">Median data freshness</div>
+                <div class="kpi-progress"><span class="kpi-fill success" style="width:74%"></span></div>
+              </article>
+              <article class="kpi-card">
+                <div class="kpi-value">-31%</div>
+                <div class="kpi-label">Incident response time</div>
+                <div class="kpi-progress"><span class="kpi-fill" style="width:66%"></span></div>
+              </article>
+            </div>
+          </details>
+
+          <details class="kpi-group">
+            <summary><span><span class="group-label">Quality</span>Reliability and governance quality</span><span>▾</span></summary>
+            <div class="kpi-grid">
+              <article class="kpi-card is-primary">
+                <div class="kpi-value">98.7%</div>
+                <div class="kpi-label">Policy-compliant production datasets</div>
+                <div class="kpi-progress"><span class="kpi-fill success" style="width:88%"></span></div>
+              </article>
+              <article class="kpi-card">
+                <div class="kpi-value">-43%</div>
+                <div class="kpi-label">Data quality exceptions</div>
+                <div class="kpi-progress"><span class="kpi-fill" style="width:61%"></span></div>
+              </article>
+              <article class="kpi-card">
+                <div class="kpi-value">0.4%</div>
+                <div class="kpi-label">Critical lineage gaps</div>
+                <div class="kpi-progress"><span class="kpi-fill critical" style="width:24%"></span></div>
+              </article>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions-section solutions-section--secondary">
+      <div class="ds-container">
+        <div class="section-head">
+          <h2>Industry Blueprints</h2>
+          <p>Industry patterns are grouped to improve scan speed without exposing every detail at once.</p>
+        </div>
+
+        <div class="industry-tabs" role="tablist" aria-label="Industry blueprint groups">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="industry-regulated" id="industry-regulated-tab">Regulated</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="industry-demand" id="industry-demand-tab">Demand-Driven</button>
+        </div>
+
+        <div class="industry-panel is-active" id="industry-regulated" role="tabpanel" aria-labelledby="industry-regulated-tab">
+          <div class="card-grid">
+            <article class="industry-card"><h3>Finance</h3><p>Fraud telemetry fusion with governance checkpoints for compliance-ready analytics.</p></article>
+            <article class="industry-card"><h3>Healthcare</h3><p>Interoperability mapping with outcome tracking and quality-of-care metric packs.</p></article>
+            <article class="industry-card"><h3>Public Sector</h3><p>Program integrity monitoring with explainable risk signals and audit traceability.</p></article>
+          </div>
+        </div>
+
+        <div class="industry-panel" id="industry-demand" role="tabpanel" aria-labelledby="industry-demand-tab">
+          <div class="card-grid">
+            <article class="industry-card"><h3>Retail</h3><p>Demand sensing + customer segmentation with campaign and replenishment feedback loops.</p></article>
+            <article class="industry-card"><h3>Manufacturing</h3><p>IoT telemetry + predictive maintenance for downtime reduction and schedule stability.</p></article>
+            <article class="industry-card"><h3>Logistics</h3><p>Cross-network visibility with ETA risk scoring and service-level compliance forecasting.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions-section">
+      <div class="ds-container">
+        <div class="cta-card cta-wrap">
+          <div>
+            <span class="solutions-chip">Next Step</span>
+            <h2>Deploy a solution accelerator in weeks, not quarters.</h2>
+            <p>One unified engagement path for discovery, KPI baselining, and a phased implementation roadmap.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="ds-btn ds-btn-primary" href="/AHM_Website/pages/contact/index.html">Talk to Solutions Team</a>
+            <a class="ds-btn ds-btn-secondary" href="/AHM_Website/pages/consultation/index.html">View delivery approach</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/AHM_Website/components/organisms/footer.html"></div>
+
+  <script src="/js/partials.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script>
+    (function () {
+      const setupTabs = (selector) => {
+        const wrappers = document.querySelectorAll(selector);
+        wrappers.forEach((wrapper) => {
+          const tabButtons = wrapper.querySelectorAll('[role="tab"]');
+          tabButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+              const root = wrapper.parentElement;
+              const tabPanels = root.querySelectorAll('[role="tabpanel"]');
+              tabButtons.forEach((tab) => tab.setAttribute('aria-selected', tab === btn ? 'true' : 'false'));
+              tabPanels.forEach((panel) => panel.classList.toggle('is-active', panel.id === btn.getAttribute('aria-controls')));
+            });
+          });
+        });
+      };
+
+      setupTabs('.catalog-tabs');
+      setupTabs('.industry-tabs');
+    })();
+  </script>
+</body>
+</html>
