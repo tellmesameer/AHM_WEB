@@ -141,6 +141,175 @@
       opacity: .74;
     }
 
+    .monitoring-suite {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+      gap: var(--sp-4);
+      align-items: stretch;
+    }
+
+    .monitoring-suite__intro {
+      border: 1px solid var(--sys-border);
+      border-radius: var(--r-lg);
+      background: linear-gradient(165deg, rgba(59,130,246,.14), rgba(16,185,129,.06)), var(--sys-surface);
+      padding: var(--sp-4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      box-shadow: var(--shadow-md);
+    }
+
+    .monitoring-suite__intro h2 {
+      margin-bottom: var(--sp-1);
+    }
+
+    .monitoring-suite__intro p {
+      color: var(--sys-text-secondary);
+    }
+
+    .monitoring-suite__signals {
+      display: grid;
+      gap: 10px;
+      margin-top: var(--sp-4);
+    }
+
+    .monitoring-signal {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--sys-border);
+      border-radius: var(--r-md);
+      background: rgba(255,255,255,.04);
+      color: var(--sys-text-secondary);
+      font-size: var(--sys-label);
+    }
+
+    .monitoring-signal i {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--r-sm);
+      background: var(--sys-primary-glow);
+      color: var(--sys-primary-light);
+      flex-shrink: 0;
+    }
+
+    .monitoring-tools {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-3);
+    }
+
+    .monitoring-tool {
+      border: 1px solid var(--sys-border);
+      border-radius: var(--r-lg);
+      background: var(--sys-surface);
+      padding: var(--sp-3);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+    }
+
+    .monitoring-tool:hover {
+      transform: translateY(-5px);
+      border-color: rgba(96,165,250,.45);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .monitoring-tool__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-1);
+      margin-bottom: var(--sp-2);
+    }
+
+    .monitoring-tool__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-md);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.25rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,.18);
+    }
+
+    .monitoring-tool__icon--powerbi {
+      background: linear-gradient(135deg, #f59e0b, #facc15);
+    }
+
+    .monitoring-tool__icon--tableau {
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+    }
+
+    .monitoring-tool__icon--looker {
+      background: linear-gradient(135deg, #16a34a, #3b82f6);
+    }
+
+    .monitoring-tool__fit {
+      font-size: var(--sys-small);
+      font-weight: 700;
+      color: var(--sys-primary-light);
+      background: var(--sys-primary-glow);
+      border: 1px solid rgba(59,130,246,.2);
+      border-radius: 999px;
+      padding: 4px 9px;
+      white-space: nowrap;
+    }
+
+    .monitoring-tool h3 {
+      margin-bottom: 8px;
+    }
+
+    .monitoring-tool p {
+      color: var(--sys-muted);
+      font-size: var(--sys-label);
+      line-height: 1.6;
+      margin-bottom: var(--sp-2);
+    }
+
+    .monitoring-tool__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .monitoring-tool__chips span {
+      border: 1px solid var(--sys-border);
+      border-radius: 999px;
+      color: var(--sys-text-secondary);
+      background: rgba(255,255,255,.03);
+      font-size: var(--sys-small);
+      padding: 4px 9px;
+    }
+
+    .monitoring-comparison .ds-table th,
+    .monitoring-comparison .ds-table td {
+      vertical-align: top;
+    }
+
+    .monitoring-comparison strong {
+      color: var(--sys-text);
+    }
+
+    [data-theme="light"] .monitoring-suite__intro {
+      background: linear-gradient(165deg, rgba(37,99,235,.11), rgba(22,163,74,.07)), #ffffff;
+      box-shadow: var(--shadow-md);
+    }
+
+    [data-theme="light"] .monitoring-signal,
+    [data-theme="light"] .monitoring-tool__chips span {
+      background: rgba(255,255,255,.68);
+    }
+
     @keyframes solution-flow-draw {
       from { stroke-dashoffset: 1000; }
       to { stroke-dashoffset: 0; }
@@ -183,6 +352,15 @@
 
       .solution-flow-node:hover {
         transform: scale(1.04);
+      }
+
+      .monitoring-suite,
+      .monitoring-tools {
+        grid-template-columns: 1fr;
+      }
+
+      .monitoring-suite__intro {
+        min-height: 0;
       }
     }
   </style>
@@ -235,6 +413,92 @@
     </div>
   </section>
 
+  <section class="ds-section ds-section--surface ds-section--dense">
+    <div class="ds-container">
+      <div class="monitoring-suite">
+        <aside class="monitoring-suite__intro">
+          <div>
+            <span class="ds-badge">Monitoring & BI</span>
+            <h2>Choose the right dashboard layer</h2>
+            <p>Compare Power BI, Tableau, and Looker across the decisions teams usually care about: speed, modeling depth, ecosystem fit, and operational monitoring.</p>
+          </div>
+          <div class="monitoring-suite__signals" aria-label="Monitoring signals">
+            <div class="monitoring-signal"><i class="fas fa-gauge-high" aria-hidden="true"></i><span>Track executive KPIs and operational SLAs in one view.</span></div>
+            <div class="monitoring-signal"><i class="fas fa-bell" aria-hidden="true"></i><span>Surface alerts before reporting gaps become business delays.</span></div>
+            <div class="monitoring-signal"><i class="fas fa-shield-halved" aria-hidden="true"></i><span>Keep ownership, access, and governance visible.</span></div>
+          </div>
+        </aside>
+        <div>
+          <div class="monitoring-tools">
+            <article class="monitoring-tool">
+              <div class="monitoring-tool__top">
+                <div class="monitoring-tool__icon monitoring-tool__icon--powerbi"><i class="fas fa-chart-column" aria-hidden="true"></i></div>
+                <span class="monitoring-tool__fit">Microsoft fit</span>
+              </div>
+              <h3>Power BI</h3>
+              <p>Best when teams already use Microsoft 365, Azure, Excel, and want fast adoption with strong self-service reporting.</p>
+              <div class="monitoring-tool__chips"><span>Cost friendly</span><span>Excel native</span><span>Azure ready</span></div>
+            </article>
+            <article class="monitoring-tool">
+              <div class="monitoring-tool__top">
+                <div class="monitoring-tool__icon monitoring-tool__icon--tableau"><i class="fas fa-chart-pie" aria-hidden="true"></i></div>
+                <span class="monitoring-tool__fit">Visual depth</span>
+              </div>
+              <h3>Tableau</h3>
+              <p>Strong for exploratory analytics, polished visual storytelling, and analyst-led discovery across complex datasets.</p>
+              <div class="monitoring-tool__chips"><span>Rich visuals</span><span>Ad hoc analysis</span><span>Storyboards</span></div>
+            </article>
+            <article class="monitoring-tool">
+              <div class="monitoring-tool__top">
+                <div class="monitoring-tool__icon monitoring-tool__icon--looker"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                <span class="monitoring-tool__fit">Semantic model</span>
+              </div>
+              <h3>Looker</h3>
+              <p>Useful when governed metrics, reusable semantic layers, embedded analytics, and cloud-native workflows matter most.</p>
+              <div class="monitoring-tool__chips"><span>LookML</span><span>Embedded BI</span><span>Governed KPIs</span></div>
+            </article>
+          </div>
+          <div class="ds-table-wrap monitoring-comparison">
+            <table class="ds-table">
+              <thead>
+                <tr>
+                  <th>Platform</th>
+                  <th>Best For</th>
+                  <th>Strength</th>
+                  <th>Watch Point</th>
+                  <th>Monitoring Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ds-table--highlight">
+                  <td><strong>Power BI</strong></td>
+                  <td>Microsoft-first teams and business reporting</td>
+                  <td>Quick rollout, familiar Excel-style adoption, strong pricing</td>
+                  <td>Large semantic models need careful governance</td>
+                  <td>Department KPI scorecards, refresh tracking, executive dashboards</td>
+                </tr>
+                <tr>
+                  <td><strong>Tableau</strong></td>
+                  <td>Analyst discovery and high-impact visual exploration</td>
+                  <td>Flexible visual analytics with polished storytelling</td>
+                  <td>Enterprise rollout can require more enablement</td>
+                  <td>Trend monitoring, anomaly review, operational performance views</td>
+                </tr>
+                <tr>
+                  <td><strong>Looker</strong></td>
+                  <td>Governed metrics and embedded analytics</td>
+                  <td>Central semantic layer and reusable business logic</td>
+                  <td>Requires disciplined modeling and developer workflow</td>
+                  <td>Metric definitions, embedded customer reporting, governed alerts</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="ds-section ds-section--dense">
     <div class="ds-container">
       <div class="ds-section-header"><h2>Use Case Walkthrough</h2></div>
@@ -277,10 +541,11 @@
 
   <section class="ds-section ds-section--alt">
     <div class="ds-container">
-      <div class="ds-grid">
-        <div class="ds-metric-card ds-col-6"><div class="ds-metric-card__value" data-count="50">50%</div><div class="ds-metric-card__label">Faster insights</div></div>
-        <div class="ds-metric-card ds-col-6"><div class="ds-metric-card__value" data-count="30">30%</div><div class="ds-metric-card__label">Cost reduction</div></div>
+      <div class="ds-section-header">
+        <h2>Outcome Benchmarks</h2>
+        <p>Unified business and platform metrics that reflect consistent performance expectations.</p>
       </div>
+      <div class="ds-metrics ds-animate" data-metrics="global" role="list"></div>
     </div>
   </section>
 
