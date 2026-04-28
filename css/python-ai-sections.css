@@ -1,0 +1,309 @@
+/* ========================================
+   NEW SECTIONS CSS - Python & AI Services Page
+   ======================================== */
+
+/* --- CASE BLOCK STYLES --- */
+.ds-case-block {
+  background: var(--sys-surface);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+  transition: all 0.25s var(--ease);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ds-case-block:hover {
+  border-color: var(--sys-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.ds-case-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+}
+
+.ds-case-block__title {
+  font-size: var(--sys-h3);
+  font-weight: 600;
+  color: var(--sys-text);
+  margin: 0;
+}
+
+.ds-case-block__problem,
+.ds-case-block__solution {
+  font-size: var(--sys-body);
+  color: var(--sys-text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--sp-2);
+}
+
+.ds-case-block__problem strong,
+.ds-case-block__solution strong {
+  color: var(--sys-text);
+  font-weight: 600;
+}
+
+.ds-case-block__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+  margin-top: auto;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--sys-border);
+}
+
+.ds-case-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ds-case-metric__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--sys-primary-light);
+  line-height: 1.1;
+}
+
+.ds-case-metric__label {
+  font-size: var(--sys-label);
+  color: var(--sys-muted);
+  margin-top: 4px;
+}
+
+/* --- CAPABILITY CARD STYLES --- */
+.ds-capability-card {
+  background: var(--sys-surface);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-3);
+  text-align: center;
+  transition: all 0.25s var(--ease);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.ds-capability-card:hover {
+  border-color: var(--sys-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.ds-capability-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-md);
+  background: var(--sys-primary-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-2);
+  color: var(--sys-primary-light);
+  font-size: 1.5rem;
+}
+
+.ds-capability-card h3 {
+  font-size: var(--sys-h3);
+  font-weight: 600;
+  margin-bottom: var(--sp-1);
+  color: var(--sys-text);
+}
+
+.ds-capability-card p {
+  font-size: 0.95rem;
+  color: var(--sys-muted);
+  line-height: 1.6;
+}
+
+/* --- TECH STACK GRID --- */
+#tech-stack.ds-section {
+  padding: 80px 0;
+}
+
+.ds-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+}
+
+.ds-stack-group {
+  background: var(--sys-surface);
+  border: 1px solid var(--sys-border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-3);
+  transition: all 0.25s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  cursor: default;
+  min-height: 180px;
+}
+
+.ds-stack-group:hover {
+  border-color: var(--sys-primary);
+  background: var(--sys-surface-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ds-stack-group h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sys-text);
+  margin: 0;
+}
+
+.ds-stack-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ds-stack-items span {
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  background: var(--sys-bg);
+  border: 1px solid var(--sys-border);
+  color: var(--sys-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* --- ENGAGEMENT PIPELINE CUSTOMIZATIONS --- */
+.ds-pipeline--engagement .ds-pipeline__step {
+  background: var(--sys-surface);
+  border: 1px solid var(--sys-border);
+}
+
+.ds-pipeline--engagement .ds-pipeline__step:hover {
+  border-color: var(--sys-primary);
+  background: var(--sys-surface-hover);
+}
+
+/* --- METRICS BANNER --- */
+.ds-metrics-banner {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.12),
+    rgba(99, 102, 241, 0.08)
+  ),
+  var(--sys-bg);
+  border-top: 1px solid var(--sys-border);
+  border-bottom: 1px solid var(--sys-border);
+  padding: var(--sp-8) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-metrics-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 60V0h60' fill='none' stroke='%23ffffff' stroke-opacity='.02' stroke-width='.5'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ds-metrics-banner__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-4);
+  position: relative;
+  z-index: 1;
+}
+
+.ds-metrics-banner__item {
+  text-align: center;
+  padding: var(--sp-2) 0;
+}
+
+.ds-metrics-banner__value {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--sys-primary-light);
+  line-height: 1.1;
+  margin-bottom: var(--sp-1);
+  letter-spacing: -0.02em;
+}
+
+.ds-metrics-banner__label {
+  display: block;
+  font-size: 1rem;
+  color: var(--sys-text-secondary);
+  line-height: 1.5;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+  .ds-pipeline--engagement {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .ds-pipeline--engagement .ds-pipeline__arrow {
+    width: auto;
+    height: 32px;
+    transform: rotate(90deg);
+  }
+
+  .ds-stack-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .ds-case-block__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ds-case-block__metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-stack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-metrics-banner {
+    padding: var(--sp-6) 0;
+  }
+
+  .ds-metrics-banner__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-3);
+  }
+
+  .ds-metrics-banner__value {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+  }
+
+  .ds-metrics-banner__label {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- LIGHT THEME ADJUSTMENTS --- */
+[data-theme="light"] {
+  --sys-case-block-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .ds-case-block:hover,
+[data-theme="light"] .ds-capability-card:hover,
+[data-theme="light"] .ds-stack-group:hover {
+  box-shadow: var(--sys-case-block-shadow);
+}
