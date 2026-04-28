@@ -27,6 +27,10 @@
       --about-cta-bg: linear-gradient(135deg, rgba(59,130,246,0.16), rgba(20,184,166,0.12));
       --about-cta-border: rgba(148, 163, 184, 0.26);
       --about-flow-shadow: rgba(59,130,246,.42);
+      --about-level-0: #050c1f;
+      --about-level-1: color-mix(in srgb, #0f172a 95%, #000 5%);
+      --about-level-2: color-mix(in srgb, #111b33 90%, transparent);
+      --about-level-3-shadow: 0 28px 56px rgba(2, 6, 23, 0.48);
     }
 
     [data-theme="light"] .about-page {
@@ -46,10 +50,17 @@
       --about-cta-bg: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.08));
       --about-cta-border: rgba(15, 23, 42, 0.12);
       --about-flow-shadow: rgba(37,99,235,.24);
+      --about-level-0: #edf3fb;
+      --about-level-1: #f7faff;
+      --about-level-2: #ffffff;
+      --about-level-3-shadow: 0 22px 44px rgba(15, 23, 42, 0.16);
     }
 
     .about-page .ds-hero {
-      background: var(--about-hero-bg);
+      background:
+        radial-gradient(900px circle at 8% 0%, rgba(59,130,246,.18), transparent 58%),
+        linear-gradient(145deg, color-mix(in srgb, var(--about-level-0) 94%, #1d4ed8 6%) 0%, var(--about-level-1) 44%, color-mix(in srgb, var(--about-level-1) 88%, #14b8a6 12%) 100%),
+        var(--about-hero-bg);
       border-bottom: 1px solid var(--about-card-border);
       position: relative;
       overflow: hidden;
@@ -82,8 +93,9 @@
 
     .about-hero .ds-hero__title {
       max-width: 14ch;
-      line-height: 1.08;
+      line-height: 1.02;
       letter-spacing: -0.02em;
+      font-size: clamp(2.5rem, 5.45vw, 4.05rem);
     }
 
     .about-hero .hero-gradient-word {
@@ -105,7 +117,7 @@
       border: 1px solid var(--about-card-border);
       border-radius: 24px;
       background: color-mix(in srgb, var(--about-card-bg) 78%, transparent);
-      box-shadow: var(--about-floating-shadow), var(--about-floating-glow), inset 0 1px 0 rgba(255,255,255,.12);
+      box-shadow: var(--about-level-3-shadow), var(--about-floating-glow), inset 0 1px 0 rgba(255,255,255,.16), inset 0 -20px 34px rgba(15,23,42,.16);
       overflow: hidden;
       backdrop-filter: blur(18px);
     }
@@ -140,7 +152,7 @@
       border: 1px solid rgba(148,163,184,.34);
       overflow: hidden;
       transform: perspective(900px) rotateY(-10deg) rotateX(6deg);
-      box-shadow: 0 22px 44px rgba(2, 6, 23, 0.4), 0 0 18px rgba(59,130,246,.26);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.34), 0 0 18px rgba(59,130,246,.24), inset 0 1px 0 rgba(255,255,255,.22);
     }
 
     .about-hero-iso::before,
@@ -233,6 +245,23 @@
       width: 96px;
     }
 
+    .about-hero-float {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,.46);
+      background: linear-gradient(145deg, rgba(255,255,255,.34), rgba(59,130,246,.15));
+      box-shadow: 0 10px 22px rgba(2,6,23,.26), inset 0 1px 0 rgba(255,255,255,.5);
+      backdrop-filter: blur(4px);
+      z-index: 4;
+      animation: about-float-micro 5.5s ease-in-out infinite;
+    }
+
+    .about-hero-float--a { right: 8%; top: 36%; }
+    .about-hero-float--b { left: -12px; top: 52%; width: 26px; height: 26px; border-radius: 50%; animation-delay: -1.8s; }
+    .about-hero-float--c { right: 20%; bottom: -8px; width: 20px; height: 20px; border-radius: 50%; animation-delay: -3s; }
+
     .about-hero .ds-hero__actions .ds-btn-primary {
       box-shadow: 0 10px 24px rgba(37, 99, 235, 0.34), 0 0 0 1px rgba(255,255,255,.08) inset;
     }
@@ -264,12 +293,12 @@
 
     .about-overview {
       padding: 64px 0;
-      background: var(--about-surface);
+      background: var(--about-level-1);
       border-bottom: 1px solid var(--about-card-border);
     }
 
     .about-panel {
-      background: var(--about-card-bg);
+      background: color-mix(in srgb, var(--about-level-2) 95%, transparent);
       border: 1px solid var(--about-card-border);
       border-radius: 20px;
       padding: 26px;
@@ -299,6 +328,19 @@
       overflow: hidden;
     }
 
+    .about-strength-card:nth-child(-n+2) {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .about-strength-card:nth-child(odd) {
+      background: linear-gradient(145deg, color-mix(in srgb, var(--about-card-bg) 94%, rgba(59,130,246,.03) 6%), color-mix(in srgb, var(--about-card-bg) 98%, transparent));
+    }
+
+    .about-strength-card:nth-child(even) {
+      background: linear-gradient(145deg, color-mix(in srgb, var(--about-card-bg) 94%, rgba(20,184,166,.03) 6%), color-mix(in srgb, var(--about-card-bg) 98%, transparent));
+    }
+
     .about-strength-card::before {
       content: "";
       position: absolute;
@@ -309,9 +351,9 @@
     }
 
     .about-strength-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       border-color: color-mix(in srgb, var(--sys-primary) 55%, var(--about-card-border));
-      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.18), 0 0 20px rgba(59,130,246,.18);
+      box-shadow: 0 22px 36px rgba(15, 23, 42, 0.22), 0 0 20px rgba(59,130,246,.18);
     }
 
     .about-strength-card:hover::before {
@@ -324,9 +366,9 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: color-mix(in srgb, var(--sys-primary-light) 18%, transparent);
+      background: linear-gradient(145deg, color-mix(in srgb, var(--sys-primary-light) 42%, transparent), color-mix(in srgb, var(--sys-primary) 20%, transparent));
       color: var(--sys-primary);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sys-primary-light) 28%, transparent);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sys-primary-light) 30%, transparent), inset 0 0 12px rgba(96,165,250,.36);
       animation: about-icon-pulse 2.8s ease-in-out infinite;
       position: relative;
       z-index: 1;
@@ -394,7 +436,7 @@
     .about-flow__pulse {
       fill: none;
       stroke: url(#aboutFlowGradient);
-      stroke-width: 3.4;
+      stroke-width: 4.4;
       stroke-linecap: round;
       filter: drop-shadow(0 0 7px var(--about-flow-shadow));
     }
@@ -456,8 +498,8 @@
     }
 
     .about-flow-node__ring {
-      width: 82px;
-      height: 82px;
+      width: 94px;
+      height: 94px;
       border: 1px solid var(--flow-node-border);
       border-radius: 50%;
       background: color-mix(in srgb, var(--flow-node-bg) 86%, transparent);
@@ -474,8 +516,8 @@
     }
 
     .about-flow-node svg {
-      width: 30px;
-      height: 30px;
+      width: 34px;
+      height: 34px;
       stroke: var(--sys-primary-light);
       stroke-width: 1.8;
       fill: none;
@@ -486,6 +528,23 @@
     .about-flow-node__label {
       font-weight: 600;
       color: var(--sys-text);
+    }
+
+    .about-flow-node__index {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      font-size: .84rem;
+      letter-spacing: .06em;
+      color: color-mix(in srgb, var(--sys-primary-light) 80%, var(--sys-text));
+    }
+
+    .about-flow-node.is-active .about-flow-node__ring {
+      border-color: var(--flow-blue);
+      background: color-mix(in srgb, var(--flow-node-bg) 84%, rgba(59,130,246,.16));
+      box-shadow: inset 0 0 0 10px rgba(59,130,246,.18), 0 16px 30px rgba(59,130,246,.3), 0 0 24px rgba(59,130,246,.26);
     }
 
     .about-flow-node::after {
@@ -518,7 +577,7 @@
 
     .about-approach-section {
       padding: 36px 0 22px;
-      background: var(--about-surface-soft);
+      background: color-mix(in srgb, var(--about-level-1) 90%, var(--about-surface-soft));
       border-top: 1px solid var(--about-card-border);
       border-bottom: 1px solid var(--about-card-border);
     }
@@ -572,7 +631,17 @@
 
     .about-vision {
       padding: 36px 0 8px;
-      background: var(--about-surface);
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--about-level-1) 78%, rgba(59,130,246,.06) 22%), var(--about-level-1));
+      position: relative;
+    }
+
+    .about-vision::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(59,130,246,.06), rgba(20,184,166,.04));
+      pointer-events: none;
     }
 
     .about-vision__card {
@@ -604,7 +673,7 @@
 
     .about-vision__content .ds-btn-primary {
       margin-top: 14px;
-      box-shadow: 0 10px 26px rgba(37,99,235,.3);
+      box-shadow: 0 10px 24px rgba(37,99,235,.28), 0 0 0 1px rgba(255,255,255,.2) inset;
     }
 
     .about-vision__content h2 {
@@ -613,7 +682,7 @@
 
     [data-theme="dark"] .about-vision__content .ds-btn-primary,
     :root:not([data-theme="light"]) .about-vision__content .ds-btn-primary {
-      box-shadow: 0 10px 24px rgba(59,130,246,.42), 0 0 18px rgba(59,130,246,.35);
+      box-shadow: 0 10px 24px rgba(59,130,246,.4), 0 0 18px rgba(59,130,246,.35), 0 0 0 1px rgba(148,163,184,.24);
     }
 
     .about-vision__globe {
@@ -629,6 +698,29 @@
       place-items: center;
       backdrop-filter: blur(10px);
       box-shadow: 0 18px 34px rgba(2, 6, 23, 0.28), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .about-vision-link {
+      position: absolute;
+      left: -120px;
+      top: 48%;
+      width: 150px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,.56), rgba(45,212,191,.56));
+      transform: rotate(-10deg);
+      box-shadow: 0 0 10px rgba(59,130,246,.3);
+    }
+
+    .about-vision-link::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      top: -4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #60a5fa;
+      box-shadow: 0 0 12px rgba(59,130,246,.55);
     }
 
     [data-theme="light"] .about-vision__globe {
@@ -745,6 +837,38 @@
     .about-page footer,
     .about-page .footer {
       padding-top: 42px;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--about-level-1) 74%, transparent), color-mix(in srgb, var(--about-level-0) 94%, #000 6%));
+    }
+
+    .about-page .ds-footer::before {
+      background:
+        linear-gradient(180deg, rgba(59,130,246,.12), transparent 42%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cpath d='M0 72V0h72' fill='none' stroke='%23ffffff' stroke-opacity='.025' stroke-width='1'/%3E%3C/svg%3E");
+    }
+
+    .about-page .ds-footer-cta {
+      animation: about-cta-border-flow 12s linear infinite;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
+      background:
+        linear-gradient(var(--about-card-bg), var(--about-card-bg)) padding-box,
+        linear-gradient(120deg, rgba(59,130,246,.55), rgba(45,212,191,.55), rgba(59,130,246,.55)) border-box;
+      box-shadow: 0 16px 36px rgba(2,6,23,.2), inset 0 1px 0 rgba(255,255,255,.15);
+    }
+
+    .about-page .ds-footer-cta__actions {
+      gap: 14px;
+    }
+
+    .about-page .ds-footer-cta__actions .ds-btn-secondary {
+      border: 1px solid color-mix(in srgb, var(--sys-primary-light) 70%, var(--about-card-border));
+      box-shadow: 0 8px 18px rgba(15,23,42,.12);
+    }
+
+    .about-page .ds-footer-cta__actions .ds-btn-secondary i {
+      margin-right: 8px;
     }
 
     .about-page footer .footer-grid,
@@ -805,6 +929,16 @@
     @keyframes about-orbit {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
+    }
+
+    @keyframes about-float-micro {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes about-cta-border-flow {
+      0% { background-position: 0 0, 0 0; }
+      100% { background-position: 0 0, 280% 0; }
     }
 
     @media (max-width: 992px) {
@@ -946,6 +1080,9 @@
             <span class="about-hero-node about-hero-node--b"></span>
             <span class="about-hero-node about-hero-node--c"></span>
           </div>
+          <span class="about-hero-float about-hero-float--a"></span>
+          <span class="about-hero-float about-hero-float--b"></span>
+          <span class="about-hero-float about-hero-float--c"></span>
         </div>
       </div>
     </div>
@@ -1001,23 +1138,28 @@
             <path class="about-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
           </svg>
           <div class="about-flow__nodes">
-            <div class="about-flow-node" data-tip="Understand business needs.">
+            <div class="about-flow-node is-active" data-tip="Understand business needs.">
+              <span class="about-flow-node__index">01</span>
               <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></div>
               <span class="about-flow-node__label">Understand</span>
             </div>
             <div class="about-flow-node" data-tip="Design scalable solutions.">
+              <span class="about-flow-node__index">02</span>
               <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M9 10v9M15 10v9"/></svg></div>
               <span class="about-flow-node__label">Design</span>
             </div>
             <div class="about-flow-node" data-tip="Implement with precision.">
+              <span class="about-flow-node__index">03</span>
               <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></div>
               <span class="about-flow-node__label">Implement</span>
             </div>
             <div class="about-flow-node" data-tip="Support proactively.">
+              <span class="about-flow-node__index">04</span>
               <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 2A3 3 0 0 0 7 18Z"/><path d="M12 15V7M9 10l3-3 3 3"/></svg></div>
               <span class="about-flow-node__label">Support</span>
             </div>
             <div class="about-flow-node" data-tip="Optimize for outcomes.">
+              <span class="about-flow-node__index">05</span>
               <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/><path d="M18 7h-4M18 7v4"/></svg></div>
               <span class="about-flow-node__label">Optimize</span>
             </div>
@@ -1037,6 +1179,7 @@
           <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary">Get in Touch</a>
         </div>
         <div class="about-vision__globe" aria-hidden="true">
+          <span class="about-vision-link"></span>
           <div class="about-vision-orbit"></div>
           <div class="about-vision-core"></div>
         </div>
