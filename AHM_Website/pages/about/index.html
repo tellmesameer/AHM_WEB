@@ -10,40 +10,361 @@
   <script src="/base-config.js"></script>
   <script src="/js/site-config.js"></script>
   <style>
+    .about-page {
+      --about-hero-grid: rgba(148, 163, 184, 0.16);
+      --about-hero-bg:
+        radial-gradient(900px circle at 6% 0%, rgba(37, 99, 235, 0.26), transparent 64%),
+        radial-gradient(600px circle at 88% 8%, rgba(20, 184, 166, 0.2), transparent 58%),
+        radial-gradient(760px circle at 52% 96%, rgba(34, 197, 94, 0.14), transparent 65%),
+        linear-gradient(130deg, #020617 0%, #0b132d 44%, #071426 100%);
+      --about-surface: color-mix(in srgb, #0f172a 94%, #000 6%);
+      --about-surface-soft: color-mix(in srgb, #0b1225 92%, #020617 8%);
+      --about-card-bg: color-mix(in srgb, #0f172a 90%, transparent);
+      --about-card-border: rgba(148, 163, 184, 0.24);
+      --about-card-shadow: 0 18px 34px rgba(2, 6, 23, 0.34);
+      --about-floating-shadow: 0 28px 56px rgba(2, 6, 23, 0.48);
+      --about-floating-glow: 0 0 0 1px rgba(125, 211, 252, 0.16), 0 0 28px rgba(59,130,246,.28);
+      --about-cta-bg: linear-gradient(135deg, rgba(59,130,246,0.16), rgba(20,184,166,0.12));
+      --about-cta-border: rgba(148, 163, 184, 0.26);
+      --about-flow-shadow: rgba(59,130,246,.42);
+    }
+
+    [data-theme="light"] .about-page {
+      --about-hero-grid: rgba(15, 23, 42, 0.09);
+      --about-hero-bg:
+        radial-gradient(820px circle at 8% 0%, rgba(37, 99, 235, 0.15), transparent 62%),
+        radial-gradient(640px circle at 96% 12%, rgba(20, 184, 166, 0.12), transparent 56%),
+        radial-gradient(640px circle at 50% 100%, rgba(34, 197, 94, 0.09), transparent 62%),
+        linear-gradient(130deg, #ffffff 0%, #f6f9ff 44%, #eef4ff 100%);
+      --about-surface: #f7faff;
+      --about-surface-soft: #edf3fc;
+      --about-card-bg: #ffffff;
+      --about-card-border: rgba(15, 23, 42, 0.11);
+      --about-card-shadow: 0 14px 26px rgba(15, 23, 42, 0.1);
+      --about-floating-shadow: 0 24px 44px rgba(15, 23, 42, 0.16);
+      --about-floating-glow: 0 0 0 1px rgba(59,130,246,.1);
+      --about-cta-bg: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.08));
+      --about-cta-border: rgba(15, 23, 42, 0.12);
+      --about-flow-shadow: rgba(37,99,235,.24);
+    }
+
+    .about-page .ds-hero {
+      background: var(--about-hero-bg);
+      border-bottom: 1px solid var(--about-card-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-page .ds-hero::before {
+      background:
+        linear-gradient(90deg, transparent 0%, var(--about-hero-grid) 50%, transparent 100%),
+        repeating-linear-gradient(0deg, transparent 0 46px, rgba(148, 163, 184, 0.06) 46px 47px);
+      opacity: .9;
+    }
+
     .about-hero-network {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      opacity: .46;
+      opacity: .56;
       pointer-events: none;
+      animation: about-network-float 24s linear infinite alternate;
     }
 
     [data-theme="light"] .about-hero-network {
-      opacity: .34;
+      opacity: .4;
     }
 
-    .about-metric-card {
+    .about-hero .ds-hero__content {
+      max-width: 560px;
+    }
+
+    .about-hero .ds-hero__title {
+      max-width: 14ch;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .about-hero .hero-gradient-word {
+      background: linear-gradient(90deg, #3b82f6 0%, #22d3ee 46%, #14b8a6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 26px rgba(34, 211, 238, 0.32);
+    }
+
+    .about-hero .ds-hero__subtitle {
+      max-width: 52ch;
+      font-size: 1.04rem;
+    }
+
+    .about-hero-visual {
+      position: relative;
+      min-height: 380px;
+      border: 1px solid var(--about-card-border);
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--about-card-bg) 78%, transparent);
+      box-shadow: var(--about-floating-shadow), var(--about-floating-glow), inset 0 1px 0 rgba(255,255,255,.12);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .about-hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.2);
+      pointer-events: none;
+    }
+
+    .about-hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.1), transparent 30%),
+        linear-gradient(90deg, rgba(125,211,252,.12), transparent 28%, transparent 72%, rgba(45,212,191,.1));
+    }
+
+    .about-hero-iso {
+      position: absolute;
+      inset: 12% 8% 10%;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 36% 35%, rgba(59,130,246,.26), transparent 48%),
+        radial-gradient(circle at 72% 70%, rgba(16,185,129,.22), transparent 42%),
+        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.02));
+      border: 1px solid rgba(148,163,184,.34);
+      overflow: hidden;
+      transform: perspective(900px) rotateY(-10deg) rotateX(6deg);
+      box-shadow: 0 22px 44px rgba(2, 6, 23, 0.4), 0 0 18px rgba(59,130,246,.26);
+    }
+
+    .about-hero-iso::before,
+    .about-hero-iso::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      border: 1px dashed rgba(148,163,184,.42);
+      animation: about-orbit 14s linear infinite;
+    }
+
+    .about-hero-iso::before {
+      width: 210px;
+      height: 210px;
+      top: 18%;
+      left: 18%;
+    }
+
+    .about-hero-iso::after {
+      width: 132px;
+      height: 132px;
+      top: 44%;
+      left: 56%;
+      animation-duration: 11s;
+      animation-direction: reverse;
+    }
+
+    .about-hero-cloud {
+      position: absolute;
+      top: 26%;
+      left: 24%;
+      width: 200px;
+      height: 110px;
+      border-radius: 60px;
+      background: linear-gradient(145deg, rgba(59,130,246,.65), rgba(14,165,233,.38));
+      box-shadow: inset 0 10px 18px rgba(255,255,255,.24), 0 20px 38px rgba(2, 6, 23, 0.45);
+      filter: drop-shadow(0 0 20px rgba(59,130,246,.32));
+    }
+
+    .about-hero-cloud::before,
+    .about-hero-cloud::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(125,211,252,.78), rgba(59,130,246,.58));
+    }
+
+    .about-hero-cloud::before {
+      width: 98px;
+      height: 98px;
+      left: 24px;
+      top: -42px;
+    }
+
+    .about-hero-cloud::after {
+      width: 84px;
+      height: 84px;
+      right: 28px;
+      top: -28px;
+    }
+
+    .about-hero-node {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #bfdbfe;
+      box-shadow: 0 0 0 6px rgba(59,130,246,.18), 0 0 22px rgba(59,130,246,.46);
+      animation: about-node-drift 6s ease-in-out infinite;
+    }
+
+    .about-hero-node::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120px;
+      border-top: 1px dashed rgba(125, 211, 252, 0.42);
+      transform: translateY(-50%);
+      transform-origin: left center;
+    }
+
+    .about-hero-node--a { top: 18%; left: 70%; }
+    .about-hero-node--b { top: 42%; left: 16%; animation-delay: -2s; }
+    .about-hero-node--c { top: 70%; left: 66%; animation-delay: -4s; }
+    .about-hero-node--c::after { width: 86px; }
+
+    .about-hero-node--b::after {
+      transform: translateY(-50%) rotate(22deg);
+      width: 96px;
+    }
+
+    .about-hero .ds-hero__actions .ds-btn-primary {
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.34), 0 0 0 1px rgba(255,255,255,.08) inset;
+    }
+
+    [data-theme="dark"] .about-hero .ds-hero__actions .ds-btn-primary,
+    :root:not([data-theme="light"]) .about-hero .ds-hero__actions .ds-btn-primary {
+      box-shadow: 0 10px 26px rgba(59,130,246,.5), 0 0 24px rgba(59,130,246,.44);
+    }
+
+    .about-hero .ds-hero__actions .ds-btn-secondary {
+      background: transparent;
+      border: 1px solid color-mix(in srgb, var(--sys-primary-light) 62%, var(--about-card-border));
+      color: var(--sys-text);
+    }
+
+    .about-hero .ds-hero__actions .ds-btn-secondary:hover {
+      background: color-mix(in srgb, var(--sys-primary-light) 18%, transparent);
+      box-shadow: 0 8px 18px rgba(59,130,246,.2);
+    }
+
+    .about-hero .ds-btn {
+      border-radius: 14px;
+      transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+    }
+
+    .about-hero .ds-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .about-overview {
+      padding: 64px 0;
+      background: var(--about-surface);
+      border-bottom: 1px solid var(--about-card-border);
+    }
+
+    .about-panel {
+      background: var(--about-card-bg);
+      border: 1px solid var(--about-card-border);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--about-card-shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .about-strength-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 18px;
+    }
+
+    .about-strength-card {
+      border: 1px solid var(--about-card-border);
+      border-radius: 16px;
+      padding: 20px 18px;
+      background: color-mix(in srgb, var(--about-card-bg) 96%, transparent);
+      box-shadow: var(--about-card-shadow);
+      transition: transform .26s var(--ease), border-color .26s var(--ease), box-shadow .26s var(--ease);
+      min-height: 148px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-strength-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(130deg, rgba(59,130,246,.08), transparent 44%, rgba(16,185,129,.07));
+      opacity: 0;
+      transition: opacity .24s var(--ease);
+    }
+
+    .about-strength-card:hover {
+      transform: translateY(-6px);
+      border-color: color-mix(in srgb, var(--sys-primary) 55%, var(--about-card-border));
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.18), 0 0 20px rgba(59,130,246,.18);
+    }
+
+    .about-strength-card:hover::before {
+      opacity: 1;
+    }
+
+    .about-strength-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
       place-items: center;
+      background: color-mix(in srgb, var(--sys-primary-light) 18%, transparent);
+      color: var(--sys-primary);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sys-primary-light) 28%, transparent);
+      animation: about-icon-pulse 2.8s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
     }
 
-    .about-metric-icon {
-      width: 42px;
-      height: 42px;
-      color: var(--sys-primary-light);
-      opacity: .88;
+    .about-strength-card h4 {
+      font-size: .98rem;
+      font-weight: 650;
+      color: var(--sys-text);
+      line-height: 1.42;
+      letter-spacing: -0.01em;
+      position: relative;
+      z-index: 1;
     }
 
-    [data-theme="light"] .about-metric-icon {
-      color: var(--sys-primary-dark);
+    .about-strength-card p {
+      font-size: .82rem;
+      color: color-mix(in srgb, var(--sys-muted) 88%, transparent);
+      line-height: 1.45;
+      position: relative;
+      z-index: 1;
+      margin-top: 2px;
+    }
+
+    [data-theme="light"] .about-strength-card:hover {
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.13);
+    }
+
+    [data-theme="dark"] .about-strength-card:hover,
+    :root:not([data-theme="light"]) .about-strength-card:hover {
+      box-shadow: 0 20px 36px rgba(2, 6, 23, 0.35), 0 0 18px rgba(59,130,246,.26);
     }
 
     .about-flow {
       --flow-node-bg: #0f172a;
       --flow-node-border: #334155;
       --flow-blue: #3b82f6;
+      --flow-teal: #14b8a6;
       --flow-green: #22c55e;
       position: relative;
       max-width: 980px;
@@ -55,6 +376,7 @@
       --flow-node-bg: #ffffff;
       --flow-node-border: #e5e7eb;
       --flow-blue: #2563eb;
+      --flow-teal: #0d9488;
       --flow-green: #16a34a;
     }
 
@@ -72,9 +394,9 @@
     .about-flow__pulse {
       fill: none;
       stroke: url(#aboutFlowGradient);
-      stroke-width: 3;
+      stroke-width: 3.4;
       stroke-linecap: round;
-      filter: drop-shadow(0 0 7px rgba(59,130,246,.35));
+      filter: drop-shadow(0 0 7px var(--about-flow-shadow));
     }
 
     .about-flow__path {
@@ -84,15 +406,15 @@
     }
 
     .about-flow__pulse {
-      stroke-dasharray: 18 14;
-      opacity: .62;
+      stroke-dasharray: 0;
+      opacity: .44;
       animation: about-flow-pulse 3s linear infinite;
     }
 
     .about-flow__nodes {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 18px;
+      gap: 24px;
       position: relative;
       z-index: 1;
     }
@@ -104,6 +426,7 @@
       color: var(--sys-text);
       transition: transform .25s var(--ease), filter .25s var(--ease);
       animation: about-node-in .45s var(--ease) both;
+      position: relative;
     }
 
     .about-flow-node:nth-child(2),
@@ -116,15 +439,20 @@
     .about-flow-node:nth-child(3) { animation-delay: .3s; }
     .about-flow-node:nth-child(4) { animation-delay: .4s; }
     .about-flow-node:nth-child(5) { animation-delay: .5s; }
+    .about-flow-node:nth-child(1) { scale: .96; }
+    .about-flow-node:nth-child(2) { scale: .98; }
+    .about-flow-node:nth-child(3) { scale: 1; }
+    .about-flow-node:nth-child(4) { scale: 1.02; }
+    .about-flow-node:nth-child(5) { scale: 1.05; }
 
     .about-flow-node:hover {
-      transform: translateY(-4px) scale(1.08);
-      filter: drop-shadow(0 0 8px rgba(59,130,246,.6));
+      transform: translateY(-6px) scale(1.08);
+      filter: drop-shadow(0 0 10px rgba(59,130,246,.56));
     }
 
     .about-flow-node:nth-child(2):hover,
     .about-flow-node:nth-child(4):hover {
-      transform: translateY(12px) scale(1.08);
+      transform: translateY(10px) scale(1.08);
     }
 
     .about-flow-node__ring {
@@ -135,13 +463,14 @@
       background: color-mix(in srgb, var(--flow-node-bg) 86%, transparent);
       display: grid;
       place-items: center;
-      box-shadow: inset 0 0 0 7px rgba(59,130,246,.08), 0 10px 24px rgba(0,0,0,.14);
+      box-shadow: inset 0 0 0 7px rgba(59,130,246,.08), inset 0 0 20px rgba(45,212,191,.12), 0 12px 28px rgba(0,0,0,.18);
       transition: border-color .25s var(--ease), background .25s var(--ease);
     }
 
     .about-flow-node:hover .about-flow-node__ring {
       border-color: var(--flow-blue);
       background: var(--flow-node-bg);
+      box-shadow: inset 0 0 0 8px rgba(59,130,246,.12), 0 14px 28px rgba(59,130,246,.24), 0 0 18px rgba(59,130,246,.2);
     }
 
     .about-flow-node svg {
@@ -161,13 +490,291 @@
 
     .about-flow-node::after {
       content: attr(data-tip);
-      max-width: 18ch;
-      min-height: 38px;
+      position: absolute;
+      top: -56px;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      max-width: 22ch;
+      min-width: 14ch;
+      text-align: center;
+      color: var(--sys-text);
+      font-size: .72rem;
+      line-height: 1.4;
+      opacity: 0;
+      pointer-events: none;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--about-card-border);
+      background: color-mix(in srgb, var(--about-card-bg) 94%, transparent);
+      box-shadow: 0 10px 20px rgba(2, 6, 23, 0.18);
+      transition: opacity .2s var(--ease), transform .2s var(--ease);
+      z-index: 3;
+    }
+
+    .about-flow-node:hover::after {
+      opacity: .98;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .about-approach-section {
+      padding: 36px 0 22px;
+      background: var(--about-surface-soft);
+      border-top: 1px solid var(--about-card-border);
+      border-bottom: 1px solid var(--about-card-border);
+    }
+
+    .about-approach-section .about-panel {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .about-approach-section .ds-card__title {
+      text-align: center;
+      margin-bottom: 12px;
+      font-size: clamp(1.65rem, 2.5vw, 2rem);
+    }
+
+    .about-approach-subtitle {
       text-align: center;
       color: var(--sys-muted);
-      font-size: var(--sys-small);
-      line-height: 1.45;
-      opacity: .74;
+      max-width: 58ch;
+      margin: 0 auto 8px;
+      font-size: .95rem;
+    }
+
+    .about-approach-compact .about-flow {
+      padding: 10px 0 0;
+    }
+
+    .about-approach-compact .about-flow__svg {
+      top: 18px;
+      height: 72px;
+    }
+
+    .about-approach-compact .about-flow-node__ring {
+      width: 58px;
+      height: 58px;
+    }
+
+    .about-approach-compact .about-flow-node svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .about-approach-compact .about-flow-node__label {
+      font-size: .76rem;
+    }
+
+    .about-approach-compact .about-flow-node::after {
+      font-size: .7rem;
+      max-width: 16ch;
+    }
+
+    .about-vision {
+      padding: 36px 0 8px;
+      background: var(--about-surface);
+    }
+
+    .about-vision__card {
+      background:
+        radial-gradient(500px circle at 24% 18%, rgba(59,130,246,.18), transparent 58%),
+        var(--about-card-bg);
+      border: 1px solid var(--about-card-border);
+      border-radius: 22px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      align-items: center;
+      gap: 28px;
+      box-shadow: var(--about-card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-vision__card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(148,163,184,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.1) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: .16;
+      mask-image: radial-gradient(circle at 72% 50%, rgba(255,255,255,.8), transparent 62%);
+    }
+
+    .about-vision__content .ds-btn-primary {
+      margin-top: 14px;
+      box-shadow: 0 10px 26px rgba(37,99,235,.3);
+    }
+
+    .about-vision__content h2 {
+      line-height: 1.28 !important;
+    }
+
+    [data-theme="dark"] .about-vision__content .ds-btn-primary,
+    :root:not([data-theme="light"]) .about-vision__content .ds-btn-primary {
+      box-shadow: 0 10px 24px rgba(59,130,246,.42), 0 0 18px rgba(59,130,246,.35);
+    }
+
+    .about-vision__globe {
+      min-height: 248px;
+      border-radius: 16px;
+      border: 1px solid var(--about-card-border);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(59,130,246,.2), transparent 56%),
+        linear-gradient(160deg, rgba(15,23,42,.76), rgba(2,6,23,.94));
+      position: relative;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 34px rgba(2, 6, 23, 0.28), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    [data-theme="light"] .about-vision__globe {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(59,130,246,.18), transparent 56%),
+        linear-gradient(160deg, #f7fbff, #edf3fb);
+    }
+
+    .about-vision-orbit {
+      width: 198px;
+      height: 198px;
+      border-radius: 50%;
+      border: 1px dashed rgba(125, 211, 252, 0.5);
+      position: relative;
+      animation: about-orbit 12s linear infinite;
+    }
+
+    .about-vision-orbit::before,
+    .about-vision-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #60a5fa, #2dd4bf);
+      box-shadow: 0 0 16px rgba(59,130,246,.38);
+    }
+
+    .about-vision-orbit::before {
+      width: 16px;
+      height: 16px;
+      top: -8px;
+      left: calc(50% - 8px);
+    }
+
+    .about-vision-orbit::after {
+      width: 12px;
+      height: 12px;
+      bottom: 10px;
+      right: 14px;
+    }
+
+    .about-vision-core {
+      position: absolute;
+      width: 106px;
+      height: 106px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #bfdbfe, #2563eb 62%, #1d4ed8 100%);
+      box-shadow: 0 0 22px rgba(59,130,246,.42);
+    }
+
+    .about-help-band-wrap {
+      padding: 8px 0 30px;
+      background: var(--about-surface);
+    }
+
+    .about-help-strip {
+      margin-top: 8px;
+      margin-bottom: 24px;
+      background:
+        linear-gradient(var(--about-card-bg), var(--about-card-bg)) padding-box,
+        linear-gradient(120deg, rgba(59,130,246,.56), rgba(45,212,191,.48), rgba(34,197,94,.42)) border-box;
+      border: 1px solid transparent;
+      border-radius: 18px;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      backdrop-filter: blur(12px);
+      position: relative;
+      top: 10px;
+      box-shadow: 0 14px 28px rgba(2, 6, 23, 0.22);
+    }
+
+    .about-help-strip h3 {
+      font-size: 1.08rem;
+      margin-bottom: 3px;
+    }
+
+    .about-help-strip p {
+      font-size: .86rem;
+      color: var(--sys-muted);
+    }
+
+    .about-help-strip__actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .about-help-strip .ds-btn {
+      padding: 9px 18px;
+      font-size: .84rem;
+      min-width: 130px;
+      border-radius: 12px;
+    }
+
+    .about-help-strip .ds-btn-primary {
+      box-shadow: 0 8px 20px rgba(37,99,235,.34);
+    }
+
+    .about-help-strip .ds-btn-secondary {
+      background: transparent;
+      border: 1px solid color-mix(in srgb, var(--sys-primary-light) 48%, var(--about-card-border));
+    }
+
+    .about-help-strip .ds-btn-secondary:hover {
+      background: color-mix(in srgb, var(--sys-primary-light) 12%, transparent);
+    }
+
+    .about-page [data-include*="footer"] {
+      border-top: 1px solid color-mix(in srgb, var(--about-card-border) 72%, transparent);
+    }
+
+    .about-page footer,
+    .about-page .footer {
+      padding-top: 42px;
+    }
+
+    .about-page footer .footer-grid,
+    .about-page .footer .footer-grid {
+      gap: 30px;
+    }
+
+    .about-page footer .footer-logo,
+    .about-page .footer .footer-logo {
+      max-width: 120px;
+      opacity: .9;
+    }
+
+    .about-page .ds-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    [data-theme="dark"] .about-page,
+    :root:not([data-theme="light"]) .about-page {
+      color: color-mix(in srgb, var(--sys-text) 96%, #fff 4%);
+    }
+
+    [data-theme="dark"] .about-page p,
+    :root:not([data-theme="light"]) .about-page p {
+      color: color-mix(in srgb, var(--sys-muted) 75%, #fff 25%);
+    }
+
+    @keyframes about-network-float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
     }
 
     @keyframes about-flow-draw {
@@ -185,7 +792,53 @@
       to { opacity: 1; translate: 0 0; }
     }
 
+    @keyframes about-node-drift {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes about-icon-pulse {
+      0%, 100% { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sys-primary-light) 28%, transparent), 0 0 0 0 rgba(59,130,246,0); }
+      50% { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sys-primary-light) 42%, transparent), 0 0 0 8px rgba(59,130,246,.08); }
+    }
+
+    @keyframes about-orbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 992px) {
+      .about-vision__card {
+        grid-template-columns: 1fr;
+      }
+
+      .about-strength-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero .ds-hero__title {
+        max-width: 100%;
+      }
+
+      .about-vision__globe {
+        min-height: 196px;
+      }
+    }
+
     @media (max-width: 768px) {
+      .about-hero .ds-hero__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero-visual {
+        min-height: 312px;
+      }
+
+      .about-hero-iso {
+        transform: none;
+        inset: 10% 8% 10%;
+      }
+
       .about-flow {
         padding-top: 0;
       }
@@ -213,13 +866,43 @@
       .about-flow-node:hover {
         transform: scale(1.04);
       }
+
+      .about-approach-compact .about-flow__svg {
+        display: none;
+      }
+
+      .about-flow-node::after {
+        top: -48px;
+      }
+
+      .about-help-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        top: 0;
+      }
+
+      .about-help-strip__actions {
+        width: 100%;
+      }
+
+      .about-help-strip .ds-btn {
+        flex: 1 1 0;
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-page * {
+        animation: none !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
-<body>
+<body class="about-page">
 <div data-include="/AHM_Website/components/organisms/header.html"></div>
 <main>
-  <section class="ds-hero">
+  <section class="ds-hero about-hero">
     <svg class="about-hero-network" viewBox="0 0 1200 520" aria-hidden="true">
       <defs>
         <linearGradient id="aboutHeroLine" x1="0" x2="1" y1="0" y2="1">
@@ -246,116 +929,122 @@
       </g>
     </svg>
     <div class="ds-container">
-      <div class="ds-hero__grid" style="grid-template-columns:1fr">
-        <div class="ds-hero__content" style="max-width:820px;text-align:center;margin:auto">
+      <div class="ds-hero__grid">
+        <div class="ds-hero__content">
           <span class="ds-badge">About AHM Infotech</span>
-          <h1 class="ds-hero__title">Fast-Growing Experts in Data Integration and Cloud Transformation</h1>
-          <p class="ds-hero__subtitle" style="margin:auto">AHM Infotech is a fast-growing technology company specializing in data integration, cloud transformation, and enterprise data management solutions. We help organizations unlock the true value of their data by building scalable, reliable, and future-ready systems.</p>
-          <p class="ds-hero__subtitle" style="margin:auto">With deep expertise in Informatica PowerCenter and Informatica Intelligent Data Management Cloud (IDMC), we enable seamless migration from legacy systems to modern cloud environments.</p>
+          <h1 class="ds-hero__title">Building the Future with <span class="hero-gradient-word">Data, Cloud &amp; Intelligent</span> Integration</h1>
+          <p class="ds-hero__subtitle">AHM Infotech is a fast-growing technology company specializing in data integration, cloud transformation, and enterprise data management solutions. We help organizations unlock the true value of their data by building scalable, reliable, and future-ready systems.</p>
+          <div class="ds-hero__actions">
+            <a href="/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary">Book Consultation</a>
+            <a href="/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary">Explore Services</a>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ds-section ds-section--surface ds-section--dense">
-    <div class="ds-container">
-      <div class="ds-section-header ds-animate">
-        <span class="ds-badge">What We Do</span>
-        <h2>End-to-End Data and Technology Services</h2>
-        <p>Our solutions are designed to improve data accuracy, streamline operations, and support better decision-making.</p>
-      </div>
-      <div id="aboutmetrics" class="ds-animate" data-metrics="global" role="list">
-        <div class="kpi-groups">
-          <details class="kpi-group" open>
-            <summary><span>Data Foundation</span><span>▾</span></summary>
-            <div class="kpi-cards">
-              <article class="kpi-card is-primary"><div class="kpi-value">ETL</div><div class="kpi-label">Data Integration &amp; ETL Development</div><div class="kpi-bar"><span class="kpi-fill" style="width:92%"></span></div></article>
-              <article class="kpi-card"><div class="kpi-value">IDMC</div><div class="kpi-label">PowerCenter to IDMC Migration</div><div class="kpi-bar"><span class="kpi-fill success" style="width:88%"></span></div></article>
-              <article class="kpi-card"><div class="kpi-value">MDM</div><div class="kpi-label">Master Data Management</div><div class="kpi-bar"><span class="kpi-fill" style="width:84%"></span></div></article>
-            </div>
-          </details>
-
-          <details class="kpi-group" open>
-            <summary><span>Trust &amp; Governance</span><span>▾</span></summary>
-            <div class="kpi-cards">
-              <article class="kpi-card is-primary"><div class="kpi-value">DQ</div><div class="kpi-label">Data Quality &amp; Governance</div><div class="kpi-bar"><span class="kpi-fill" style="width:90%"></span></div></article>
-              <article class="kpi-card"><div class="kpi-value">CLOUD</div><div class="kpi-label">Cloud Data Transformation</div><div class="kpi-bar"><span class="kpi-fill success" style="width:86%"></span></div></article>
-              <article class="kpi-card"><div class="kpi-value">E2E</div><div class="kpi-label">End-to-End Delivery</div><div class="kpi-bar"><span class="kpi-fill" style="width:89%"></span></div></article>
-            </div>
-          </details>
-
-          <details class="kpi-group">
-            <summary><span>Business Outcomes</span><span>▾</span></summary>
-            <div class="kpi-cards">
-              <article class="kpi-card is-primary"><div class="kpi-value">FAST</div><div class="kpi-label">Improved Operational Efficiency</div><div class="kpi-bar"><span class="kpi-fill" style="width:87%"></span></div></article>
-              <article class="kpi-card"><div class="kpi-value">SMART</div><div class="kpi-label">Better Decision-Making Support</div><div class="kpi-bar"><span class="kpi-fill success" style="width:91%"></span></div></article>
-              <article class="kpi-card"><div class="kpi-value">SCALE</div><div class="kpi-label">Future-Ready Architecture</div><div class="kpi-bar"><span class="kpi-fill" style="width:88%"></span></div></article>
-            </div>
-          </details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ds-section">
-    <div class="ds-container">
-      <div class="ds-section-header"><h2>Our Strength</h2></div>
-      <div class="ds-grid">
-        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Experienced team with strong Informatica expertise</h3></div>
-        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Offshore delivery center in New Delhi, India</h3></div>
-        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Cost-effective and high-quality services</h3></div>
-        <div class="ds-card ds-col-3"><h3 class="ds-card__title">Agile and flexible engagement model</h3></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ds-section ds-section--alt">
-    <div class="ds-container">
-      <div class="ds-section-header"><h2>Our Approach</h2></div>
-      <div id="process" class="about-flow">
-        <svg class="about-flow__svg" viewBox="0 0 840 120" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="aboutFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="var(--flow-blue)"/>
-              <stop offset="100%" stop-color="var(--flow-green)"/>
-            </linearGradient>
-          </defs>
-          <path class="about-flow__path" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
-          <path class="about-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
-        </svg>
-        <div class="about-flow__nodes">
-          <div class="about-flow-node" data-tip="Understand business requirements deeply.">
-            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></div>
-            <span class="about-flow-node__label">Understand</span>
-          </div>
-          <div class="about-flow-node" data-tip="Design scalable and efficient solutions.">
-            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M9 10v9M15 10v9"/></svg></div>
-            <span class="about-flow-node__label">Design</span>
-          </div>
-          <div class="about-flow-node" data-tip="Ensure smooth implementation with minimal disruption.">
-            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></div>
-            <span class="about-flow-node__label">Implement</span>
-          </div>
-          <div class="about-flow-node" data-tip="Provide continuous support and optimization.">
-            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 2A3 3 0 0 0 7 18Z"/><path d="M12 15V7M9 10l3-3 3 3"/></svg></div>
-            <span class="about-flow-node__label">Support</span>
-          </div>
-          <div class="about-flow-node" data-tip="Optimize for quality, speed, and long-term value.">
-            <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/><path d="M18 7h-4M18 7v4"/></svg></div>
-            <span class="about-flow-node__label">Optimize</span>
+        <div class="about-hero-visual" aria-hidden="true">
+          <div class="about-hero-iso">
+            <div class="about-hero-cloud"></div>
+            <span class="about-hero-node about-hero-node--a"></span>
+            <span class="about-hero-node about-hero-node--b"></span>
+            <span class="about-hero-node about-hero-node--c"></span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="ds-cta-band">
+  <section class="about-overview">
     <div class="ds-container">
-      <h2>Our Vision: To be a trusted partner for organizations modernizing their data ecosystem and driving business growth through innovative technology solutions.</h2>
-      <p>Partner with AHM Infotech to accelerate your data journey and achieve digital transformation with confidence.</p>
-      <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary">Get in Touch</a>
+      <div style="display:grid;gap:16px">
+        <div class="about-panel">
+          <h3 class="ds-card__title" style="margin-bottom:12px">Our Strength</h3>
+          <div class="about-strength-grid">
+            <article class="about-strength-card">
+              <span class="about-strength-icon"><i class="fa-regular fa-handshake"></i></span>
+              <h4>Experienced team with strong Informatica expertise</h4>
+              <p>Specialists with deep delivery maturity for complex enterprise data programs.</p>
+            </article>
+            <article class="about-strength-card">
+              <span class="about-strength-icon"><i class="fa-regular fa-compass"></i></span>
+              <h4>Offshore delivery center in New Delhi, India</h4>
+              <p>Dedicated execution hub aligned for global collaboration and continuity.</p>
+            </article>
+            <article class="about-strength-card">
+              <span class="about-strength-icon"><i class="fa-regular fa-shield-halved"></i></span>
+              <h4>Cost-effective and high-quality services</h4>
+              <p>Optimized outcomes with consistent quality, governance, and speed.</p>
+            </article>
+            <article class="about-strength-card">
+              <span class="about-strength-icon"><i class="fa-regular fa-users"></i></span>
+              <h4>Agile and flexible engagement model</h4>
+              <p>Scalable teams and adaptive workflows tailored to your delivery pace.</p>
+            </article>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <section class="about-approach-section">
+    <div class="ds-container">
+      <div class="about-panel about-approach-compact">
+        <h3 class="ds-card__title" style="margin-bottom:4px">Our Approach</h3>
+        <p class="about-approach-subtitle">A focused delivery model from requirement discovery to optimization, designed for speed and reliability.</p>
+        <div id="process" class="about-flow">
+          <svg class="about-flow__svg" viewBox="0 0 840 120" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="aboutFlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--flow-blue)"/>
+                <stop offset="56%" stop-color="var(--flow-teal)"/>
+                <stop offset="100%" stop-color="var(--flow-green)"/>
+              </linearGradient>
+            </defs>
+            <path class="about-flow__path" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+            <path class="about-flow__pulse" d="M8 58 C110 18 165 98 240 58 S370 18 420 58 550 98 600 58 725 18 832 58"/>
+          </svg>
+          <div class="about-flow__nodes">
+            <div class="about-flow-node" data-tip="Understand business needs.">
+              <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></div>
+              <span class="about-flow-node__label">Understand</span>
+            </div>
+            <div class="about-flow-node" data-tip="Design scalable solutions.">
+              <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M9 10v9M15 10v9"/></svg></div>
+              <span class="about-flow-node__label">Design</span>
+            </div>
+            <div class="about-flow-node" data-tip="Implement with precision.">
+              <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></div>
+              <span class="about-flow-node__label">Implement</span>
+            </div>
+            <div class="about-flow-node" data-tip="Support proactively.">
+              <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 2A3 3 0 0 0 7 18Z"/><path d="M12 15V7M9 10l3-3 3 3"/></svg></div>
+              <span class="about-flow-node__label">Support</span>
+            </div>
+            <div class="about-flow-node" data-tip="Optimize for outcomes.">
+              <div class="about-flow-node__ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 4 3 4-7"/><path d="M18 7h-4M18 7v4"/></svg></div>
+              <span class="about-flow-node__label">Optimize</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-vision">
+    <div class="ds-container">
+      <div class="about-vision__card">
+        <div class="about-vision__content">
+          <span class="ds-badge">Our Vision</span>
+          <h2 style="font-size:clamp(1.9rem,3vw,2.25rem);line-height:1.18;max-width:24ch">Partner with AHM Infotech to accelerate your data journey.</h2>
+          <p style="margin-top:8px;max-width:46ch">To be a trusted partner for organizations modernizing their data ecosystem and driving business growth through innovative technology solutions.</p>
+          <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary">Get in Touch</a>
+        </div>
+        <div class="about-vision__globe" aria-hidden="true">
+          <div class="about-vision-orbit"></div>
+          <div class="about-vision-core"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 </main>
 <div data-include="/AHM_Website/components/organisms/footer.html"></div>
 <script src="/js/partials.js" defer></script>
