@@ -4,29 +4,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/AHM_Website/assets/icons/favicon.svg" type="image/svg+xml">
-    <title>Web Development - AHM Data Solutions</title>
-    <meta name="description" content="Modern web apps and internal tooling built for scale and reliability.">
+    <title>Web and Mobile Apps - AHM Data Solutions</title>
+    <meta name="description" content="Modern web and mobile apps, portals, and internal tooling built for scale and reliability.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/system.css">
+    <style>
+        .web-mobile-page {
+            --wm-blue: #60A5FA;
+            --wm-teal: #2DD4BF;
+            --wm-green: #34D399;
+            --wm-amber: #FBBF24;
+            --wm-violet: #A78BFA;
+            --wm-card-glow: rgba(96, 165, 250, 0.16);
+            --wm-card-tint: rgba(255, 255, 255, 0.045);
+            --wm-section-wash:
+                radial-gradient(700px circle at 12% 8%, rgba(45, 212, 191, 0.12), transparent 46%),
+                radial-gradient(620px circle at 88% 14%, rgba(167, 139, 250, 0.1), transparent 44%);
+        }
+
+        [data-theme="light"] .web-mobile-page {
+            --wm-blue: #2563EB;
+            --wm-teal: #0D9488;
+            --wm-green: #16A34A;
+            --wm-amber: #D97706;
+            --wm-violet: #7C3AED;
+            --wm-card-glow: rgba(37, 99, 235, 0.1);
+            --wm-card-tint: rgba(255, 255, 255, 0.74);
+            --wm-section-wash:
+                radial-gradient(720px circle at 12% 8%, rgba(13, 148, 136, 0.12), transparent 48%),
+                radial-gradient(620px circle at 88% 14%, rgba(124, 58, 237, 0.09), transparent 46%);
+        }
+
+        .web-mobile-page .ds-hero {
+            background:
+                radial-gradient(760px circle at 22% 4%, rgba(96, 165, 250, 0.22), transparent 52%),
+                radial-gradient(620px circle at 78% 18%, rgba(45, 212, 191, 0.14), transparent 48%),
+                radial-gradient(640px circle at 50% 100%, rgba(251, 191, 36, 0.08), transparent 54%),
+                var(--sys-bg);
+        }
+
+        .web-mobile-page .ds-hero__title {
+            background: linear-gradient(90deg, var(--sys-text), var(--wm-blue) 42%, var(--wm-teal) 78%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .web-mobile-page .ds-hero__grid {
+            grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+            text-align: left;
+        }
+
+        .web-mobile-page .ds-hero__content {
+            margin: 0;
+        }
+
+        .web-mobile-page .ds-hero__subtitle {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .web-mobile-page .ds-hero__actions {
+            justify-content: flex-start;
+        }
+
+        .web-mobile-page .wm-hero-visual {
+            width: min(760px, 100%);
+            margin: 0 0 0 auto;
+            padding: 18px;
+            border: 1px solid color-mix(in srgb, var(--sys-border-strong) 72%, var(--wm-blue));
+            border-radius: 24px;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent 58%),
+                color-mix(in srgb, var(--sys-surface) 92%, transparent);
+            box-shadow: 0 24px 48px rgba(2, 6, 23, 0.26), 0 0 32px var(--wm-card-glow);
+            overflow: hidden;
+        }
+
+        .web-mobile-page .wm-hero-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .web-mobile-page .wm-hero-svg .wm-screen,
+        .web-mobile-page .wm-hero-svg .wm-phone {
+            fill: color-mix(in srgb, var(--sys-surface-hover) 78%, transparent);
+            stroke: color-mix(in srgb, var(--sys-border-strong) 72%, var(--wm-blue));
+        }
+
+        .web-mobile-page .wm-hero-svg .wm-line {
+            fill: none;
+            stroke: url(#wmHeroFlow);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 14 12;
+            animation: wm-flow 2.4s linear infinite;
+        }
+
+        .web-mobile-page .wm-hero-svg .wm-panel {
+            fill: color-mix(in srgb, var(--wm-blue) 12%, transparent);
+            stroke: color-mix(in srgb, var(--wm-blue) 45%, transparent);
+            animation: wm-float 5.6s ease-in-out infinite;
+        }
+
+        .web-mobile-page .wm-hero-svg .wm-panel:nth-of-type(2) {
+            animation-delay: -1.7s;
+        }
+
+        .web-mobile-page .wm-hero-svg .wm-dot {
+            transform-origin: center;
+            animation: wm-pulse 2s ease-in-out infinite;
+        }
+
+        .web-mobile-page .wm-hero-svg .wm-dot--teal { fill: var(--wm-teal); animation-delay: -.4s; }
+        .web-mobile-page .wm-hero-svg .wm-dot--blue { fill: var(--wm-blue); animation-delay: -.9s; }
+        .web-mobile-page .wm-hero-svg .wm-dot--amber { fill: var(--wm-amber); animation-delay: -1.3s; }
+        .web-mobile-page .wm-hero-svg .wm-bar { fill: color-mix(in srgb, var(--wm-green) 72%, var(--wm-blue)); animation: wm-bar 3s ease-in-out infinite; transform-origin: bottom; }
+        .web-mobile-page .wm-hero-svg .wm-bar:nth-child(2) { animation-delay: -.8s; }
+        .web-mobile-page .wm-hero-svg .wm-bar:nth-child(3) { animation-delay: -1.4s; }
+
+        @keyframes wm-flow {
+            to { stroke-dashoffset: -52; }
+        }
+
+        @keyframes wm-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes wm-pulse {
+            0%, 100% { opacity: .72; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.28); }
+        }
+
+        @keyframes wm-bar {
+            0%, 100% { transform: scaleY(.72); opacity: .72; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+
+        [data-theme="light"] .web-mobile-page .wm-hero-visual {
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.5)),
+                var(--sys-surface);
+            box-shadow: 0 22px 42px rgba(15, 23, 42, 0.12), 0 0 22px var(--wm-card-glow);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .web-mobile-page .wm-hero-svg * {
+                animation: none !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .web-mobile-page .ds-hero__grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .web-mobile-page .ds-hero__content {
+                margin: 0 auto;
+            }
+
+            .web-mobile-page .ds-hero__subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .web-mobile-page .ds-hero__actions {
+                justify-content: center;
+            }
+
+            .web-mobile-page .wm-hero-visual {
+                margin: var(--sp-4) auto 0;
+            }
+        }
+
+        .web-mobile-page .ds-section--surface {
+            background: var(--wm-section-wash), var(--sys-surface);
+        }
+
+        .web-mobile-page .ds-section--alt {
+            background:
+                radial-gradient(640px circle at 86% 8%, rgba(251, 191, 36, 0.08), transparent 46%),
+                radial-gradient(720px circle at 8% 88%, rgba(96, 165, 250, 0.1), transparent 48%),
+                var(--sys-bg-alt);
+        }
+
+        .web-mobile-page .ds-card {
+            border-color: color-mix(in srgb, var(--sys-border-strong) 78%, var(--wm-blue));
+            background:
+                linear-gradient(160deg, var(--wm-card-tint), transparent 58%),
+                var(--sys-surface);
+        }
+
+        .web-mobile-page .ds-card:hover {
+            box-shadow: 0 18px 34px rgba(2, 6, 23, 0.28), 0 0 26px var(--wm-card-glow);
+        }
+
+        .web-mobile-page .ds-card__icon {
+            background: linear-gradient(145deg, rgba(96, 165, 250, 0.18), rgba(45, 212, 191, 0.12));
+            color: var(--wm-blue);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .web-mobile-page .ds-card:nth-child(3n+2) .ds-card__icon {
+            background: linear-gradient(145deg, rgba(45, 212, 191, 0.18), rgba(52, 211, 153, 0.12));
+            color: var(--wm-teal);
+        }
+
+        .web-mobile-page .ds-card:nth-child(3n) .ds-card__icon {
+            background: linear-gradient(145deg, rgba(251, 191, 36, 0.18), rgba(167, 139, 250, 0.12));
+            color: var(--wm-amber);
+        }
+
+        .web-mobile-page .ds-badge {
+            border-color: color-mix(in srgb, var(--wm-teal) 45%, transparent);
+            background: color-mix(in srgb, var(--wm-teal) 14%, transparent);
+            color: var(--wm-teal);
+        }
+
+        .web-mobile-page #project-snapshots .ds-card:nth-child(1) .ds-badge { color: var(--wm-blue); background: color-mix(in srgb, var(--wm-blue) 14%, transparent); border-color: color-mix(in srgb, var(--wm-blue) 42%, transparent); }
+        .web-mobile-page #project-snapshots .ds-card:nth-child(2) .ds-badge { color: var(--wm-green); background: color-mix(in srgb, var(--wm-green) 14%, transparent); border-color: color-mix(in srgb, var(--wm-green) 42%, transparent); }
+        .web-mobile-page #project-snapshots .ds-card:nth-child(3) .ds-badge { color: var(--wm-violet); background: color-mix(in srgb, var(--wm-violet) 14%, transparent); border-color: color-mix(in srgb, var(--wm-violet) 42%, transparent); }
+
+        .web-mobile-page .kpi-group {
+            border-color: color-mix(in srgb, var(--sys-border-strong) 72%, var(--wm-blue));
+            background:
+                linear-gradient(145deg, color-mix(in srgb, var(--wm-blue) 7%, transparent), transparent 54%),
+                var(--surface-card);
+        }
+
+        .web-mobile-page .kpi-card.is-primary {
+            border-color: color-mix(in srgb, var(--wm-teal) 55%, var(--sys-border));
+        }
+
+        .web-mobile-page .kpi-fill {
+            background: linear-gradient(90deg, var(--wm-blue), var(--wm-violet));
+        }
+
+        .web-mobile-page .kpi-fill.success {
+            background: linear-gradient(90deg, var(--wm-teal), var(--wm-green));
+        }
+
+        .web-mobile-page .ds-cta-band {
+            background:
+                linear-gradient(135deg, rgba(59, 130, 246, 0.13), rgba(45, 212, 191, 0.11), rgba(167, 139, 250, 0.09));
+        }
+
+        [data-theme="light"] .web-mobile-page .ds-card:hover {
+            box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12), 0 0 20px var(--wm-card-glow);
+        }
+    </style>
 </head>
-<body>
+<body class="web-mobile-page">
     <div data-include="/AHM_Website/components/organisms/header.html"></div>
 
     <main id="main">
         <section class="ds-hero" id="hero">
             <div class="ds-container">
-                <div class="ds-hero__grid" style="grid-template-columns: 1fr; text-align: center;">
-                    <div class="ds-hero__content ds-animate" style="margin: 0 auto;">
+                <div class="ds-hero__grid">
+                    <div class="ds-hero__content ds-animate">
                         <span class="ds-badge">Digital Products</span>
-                        <h1 class="ds-hero__title">Web Development</h1>
-                        <p class="ds-hero__subtitle" style="margin-left:auto;margin-right:auto;">Modern web apps and internal tooling built for scale, security, and reliability.</p>
-                        <div class="ds-hero__actions" style="justify-content:center;">
+                        <h1 class="ds-hero__title">Web and Mobile Apps</h1>
+                        <p class="ds-hero__subtitle">Modern web platforms, mobile-first apps, and internal tooling built for scale, security, and reliability.</p>
+                        <div class="ds-hero__actions">
                             <a href="/AHM_Website/pages/consultation/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Get Started</a>
                             <a href="/AHM_Website/pages/services/index.html" class="ds-btn ds-btn-secondary ds-btn-lg">All Services</a>
                         </div>
+                    </div>
+                    <div class="wm-hero-visual ds-animate ds-animate-delay-2" aria-hidden="true">
+                        <svg class="wm-hero-svg" viewBox="0 0 760 320" role="img" focusable="false">
+                            <defs>
+                                <linearGradient id="wmHeroFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="var(--wm-blue)" />
+                                    <stop offset="48%" stop-color="var(--wm-teal)" />
+                                    <stop offset="100%" stop-color="var(--wm-green)" />
+                                </linearGradient>
+                                <linearGradient id="wmHeroGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="rgba(255,255,255,.18)" />
+                                    <stop offset="100%" stop-color="rgba(255,255,255,.02)" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="34" y="42" width="430" height="230" rx="22" class="wm-screen" />
+                            <rect x="58" y="68" width="382" height="34" rx="12" fill="url(#wmHeroGlass)" />
+                            <rect x="72" y="130" width="102" height="96" rx="16" class="wm-panel" />
+                            <rect x="194" y="126" width="118" height="104" rx="16" class="wm-panel" />
+                            <rect x="332" y="130" width="82" height="96" rx="16" class="wm-panel" />
+                            <g transform="translate(92 206)">
+                                <rect x="0" y="-34" width="14" height="34" rx="7" class="wm-bar" />
+                                <rect x="24" y="-58" width="14" height="58" rx="7" class="wm-bar" />
+                                <rect x="48" y="-44" width="14" height="44" rx="7" class="wm-bar" />
+                            </g>
+                            <path class="wm-line" d="M132 168 C222 90 310 228 392 142 S554 86 624 156" />
+                            <rect x="520" y="54" width="144" height="230" rx="28" class="wm-phone" />
+                            <rect x="542" y="84" width="100" height="22" rx="10" fill="url(#wmHeroGlass)" />
+                            <rect x="542" y="128" width="100" height="44" rx="14" fill="color-mix(in srgb, var(--wm-teal) 16%, transparent)" />
+                            <rect x="542" y="188" width="46" height="46" rx="14" fill="color-mix(in srgb, var(--wm-violet) 17%, transparent)" />
+                            <rect x="596" y="188" width="46" height="46" rx="14" fill="color-mix(in srgb, var(--wm-amber) 16%, transparent)" />
+                            <circle cx="132" cy="168" r="8" class="wm-dot wm-dot--blue" />
+                            <circle cx="392" cy="142" r="8" class="wm-dot wm-dot--teal" />
+                            <circle cx="624" cy="156" r="8" class="wm-dot wm-dot--amber" />
+                            <circle cx="592" cy="260" r="5" fill="color-mix(in srgb, var(--sys-text) 45%, transparent)" />
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -36,20 +318,20 @@
             <div class="ds-container">
                 <div class="ds-section-header ds-animate">
                     <h2>What We Deliver</h2>
-                    <p>Full-stack web engineering for enterprise and startup teams.</p>
+                    <p>Full-stack web and mobile app engineering for enterprise and startup teams.</p>
                 </div>
-                <div class="ds-grid" style="grid-template-columns:repeat(3,1fr)">
-                    <div class="ds-card ds-animate ds-animate-delay-1">
+                <div class="ds-grid">
+                    <div class="ds-card ds-col-4 ds-animate ds-animate-delay-1">
                         <div class="ds-card__icon"><i class="fas fa-layer-group"></i></div>
                         <h3 class="ds-card__title">Full-Stack Apps</h3>
                         <p class="ds-card__desc">React, Next.js, and Node.js applications with CI/CD, testing, and production-grade infrastructure.</p>
                     </div>
-                    <div class="ds-card ds-animate ds-animate-delay-2">
+                    <div class="ds-card ds-col-4 ds-animate ds-animate-delay-2">
                         <div class="ds-card__icon"><i class="fas fa-tools"></i></div>
                         <h3 class="ds-card__title">Internal Tooling</h3>
                         <p class="ds-card__desc">Admin dashboards, data portals, and workflow tools that accelerate your team's productivity.</p>
                     </div>
-                    <div class="ds-card ds-animate ds-animate-delay-3">
+                    <div class="ds-card ds-col-4 ds-animate ds-animate-delay-3">
                         <div class="ds-card__icon"><i class="fas fa-mobile-alt"></i></div>
                         <h3 class="ds-card__title">Responsive & Mobile</h3>
                         <p class="ds-card__desc">Cross-platform responsive design and progressive web apps with offline-first capabilities.</p>
@@ -58,10 +340,227 @@
             </div>
         </section>
 
+        <section id="project-snapshots" class="ds-section ds-section--alt">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>Project Snapshots</h2>
+                    <p>Anonymized delivery examples with real operating targets, timelines, and measurable outcomes.</p>
+                </div>
+                <div class="ds-grid">
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-1">
+                        <span class="ds-badge">B2B Commerce</span>
+                        <h3 class="ds-card__title">Dealer Ordering Portal</h3>
+                        <p class="ds-card__desc">Built a role-based ordering portal for 180+ dealer locations with quote approvals, inventory checks, payment status, and ERP integration.</p>
+                        <ul class="ds-list">
+                            <li>12-week MVP and 8-week rollout.</li>
+                            <li>2.4s average page load after launch.</li>
+                            <li>31% fewer manual order-entry tickets.</li>
+                            <li>99.95% production uptime target.</li>
+                        </ul>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-2">
+                        <span class="ds-badge">Field Operations</span>
+                        <h3 class="ds-card__title">Technician Mobile Workflow</h3>
+                        <p class="ds-card__desc">Delivered a mobile-first PWA for service technicians with offline job notes, photo capture, asset history, and dispatch synchronization.</p>
+                        <ul class="ds-list">
+                            <li>450+ daily field users supported.</li>
+                            <li>38% faster job closeout cycle.</li>
+                            <li>Offline queue handled 18K+ monthly updates.</li>
+                            <li>4.7/5 internal user satisfaction score.</li>
+                        </ul>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-3">
+                        <span class="ds-badge">Executive Analytics</span>
+                        <h3 class="ds-card__title">Operations Dashboard Suite</h3>
+                        <p class="ds-card__desc">Created a secure dashboard suite for leadership teams with operational KPIs, SLA views, exception workflows, and export-ready reporting.</p>
+                        <ul class="ds-list">
+                            <li>14 dashboards across 5 departments.</li>
+                            <li>Reduced weekly report prep by 22 hours.</li>
+                            <li>Sub-800ms API response for key views.</li>
+                            <li>96/100 accessibility audit score.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="outcomes" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>Measured Outcomes</h2>
+                    <p>We design around business metrics first, then select the architecture that can support them reliably.</p>
+                </div>
+                <div class="kpi-groups">
+                    <details class="kpi-group" open>
+                        <summary><span>Delivery Impact</span><span>▾</span></summary>
+                        <div class="kpi-cards">
+                            <article class="kpi-card is-primary"><div class="kpi-value">8-12 wks</div><div class="kpi-label">Typical MVP delivery window</div><div class="kpi-bar"><span class="kpi-fill" style="width:82%"></span></div></article>
+                            <article class="kpi-card"><div class="kpi-value">30%</div><div class="kpi-label">Less manual operations effort</div><div class="kpi-bar"><span class="kpi-fill success" style="width:70%"></span></div></article>
+                            <article class="kpi-card"><div class="kpi-value">99.9%</div><div class="kpi-label">Availability design target</div><div class="kpi-bar"><span class="kpi-fill" style="width:92%"></span></div></article>
+                        </div>
+                    </details>
+                    <details class="kpi-group" open>
+                        <summary><span>Product Quality</span><span>▾</span></summary>
+                        <div class="kpi-cards">
+                            <article class="kpi-card is-primary"><div class="kpi-value">&lt;2.5s</div><div class="kpi-label">Target page experience on 4G</div><div class="kpi-bar"><span class="kpi-fill" style="width:78%"></span></div></article>
+                            <article class="kpi-card"><div class="kpi-value">90%+</div><div class="kpi-label">Automated test coverage for critical flows</div><div class="kpi-bar"><span class="kpi-fill success" style="width:88%"></span></div></article>
+                            <article class="kpi-card"><div class="kpi-value">WCAG</div><div class="kpi-label">Accessibility-led interface delivery</div><div class="kpi-bar"><span class="kpi-fill" style="width:86%"></span></div></article>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-choose-us" class="ds-section">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>Why Choose Us</h2>
+                    <p>Industry-grade delivery practices for apps that must work every day, not just look polished in a demo.</p>
+                </div>
+                <div class="ds-grid">
+                    <article class="ds-card ds-col-6 ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-diagram-project"></i></div>
+                        <h3 class="ds-card__title">Data-Aware Product Engineering</h3>
+                        <p class="ds-card__desc">AHM brings app development together with data engineering, reporting, integration, and cloud operations so your product connects cleanly to the systems that run the business.</p>
+                    </article>
+                    <article class="ds-card ds-col-6 ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-shield-halved"></i></div>
+                        <h3 class="ds-card__title">Security and Reliability Built In</h3>
+                        <p class="ds-card__desc">We plan authentication, role permissions, audit trails, encryption, API limits, monitoring, backups, and release controls early instead of bolting them on late.</p>
+                    </article>
+                    <article class="ds-card ds-col-6 ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-gauge-high"></i></div>
+                        <h3 class="ds-card__title">Performance by Design</h3>
+                        <p class="ds-card__desc">We tune API shape, database access, caching, bundling, image delivery, and Core Web Vitals so apps stay fast under real usage patterns.</p>
+                    </article>
+                    <article class="ds-card ds-col-6 ds-animate ds-animate-delay-4">
+                        <div class="ds-card__icon"><i class="fas fa-people-arrows"></i></div>
+                        <h3 class="ds-card__title">Business Workflow Fit</h3>
+                        <p class="ds-card__desc">Our team maps how users actually work, then designs screens, approvals, notifications, and exceptions around those operating realities.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="delivery-process" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>How We Deliver</h2>
+                    <p>A practical build process inspired by modern product teams, cloud-native delivery, and enterprise governance.</p>
+                </div>
+                <div class="ds-grid">
+                    <article class="ds-card ds-col-3 ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                        <h3 class="ds-card__title">Discover</h3>
+                        <p class="ds-card__desc">Clarify users, journeys, data sources, integrations, risks, and success metrics before build starts.</p>
+                    </article>
+                    <article class="ds-card ds-col-3 ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-pen-ruler"></i></div>
+                        <h3 class="ds-card__title">Design</h3>
+                        <p class="ds-card__desc">Create information architecture, UX flows, API contracts, data models, and release scope.</p>
+                    </article>
+                    <article class="ds-card ds-col-3 ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-code-branch"></i></div>
+                        <h3 class="ds-card__title">Build</h3>
+                        <p class="ds-card__desc">Develop in short iterations with code reviews, automated tests, staging demos, and CI/CD.</p>
+                    </article>
+                    <article class="ds-card ds-col-3 ds-animate ds-animate-delay-4">
+                        <div class="ds-card__icon"><i class="fas fa-rocket"></i></div>
+                        <h3 class="ds-card__title">Launch</h3>
+                        <p class="ds-card__desc">Deploy with observability, runbooks, training, phased rollout, and post-launch optimization.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="platforms" class="ds-section ds-section--alt">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>Solutions We Build</h2>
+                    <p>Focused digital products for teams that need visibility, automation, and secure access across devices.</p>
+                </div>
+                <div class="ds-grid">
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-store"></i></div>
+                        <h3 class="ds-card__title">Customer and Partner Portals</h3>
+                        <p class="ds-card__desc">Self-service access for orders, tickets, documents, invoices, approvals, and account activity.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="ds-card__title">Operational Dashboards</h3>
+                        <p class="ds-card__desc">Decision-ready KPI views, drilldowns, alerts, and embedded analytics for business teams.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-clipboard-check"></i></div>
+                        <h3 class="ds-card__title">Workflow Applications</h3>
+                        <p class="ds-card__desc">Approvals, task queues, exception handling, audit history, and SLA tracking for repeatable work.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-1">
+                        <div class="ds-card__icon"><i class="fas fa-mobile-screen-button"></i></div>
+                        <h3 class="ds-card__title">Field and Mobile Apps</h3>
+                        <p class="ds-card__desc">Mobile-first forms, offline capture, location-aware workflows, push updates, and field reporting.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-2">
+                        <div class="ds-card__icon"><i class="fas fa-plug"></i></div>
+                        <h3 class="ds-card__title">API and Integration Layers</h3>
+                        <p class="ds-card__desc">Secure APIs connecting CRMs, ERPs, warehouses, payment platforms, and reporting systems.</p>
+                    </article>
+                    <article class="ds-card ds-col-4 ds-animate ds-animate-delay-3">
+                        <div class="ds-card__icon"><i class="fas fa-screwdriver-wrench"></i></div>
+                        <h3 class="ds-card__title">Modernization Programs</h3>
+                        <p class="ds-card__desc">Upgrade legacy screens, slow workflows, unsupported frameworks, and brittle manual processes.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology-stack" class="ds-section ds-section--surface">
+            <div class="ds-container">
+                <div class="ds-section-header ds-animate">
+                    <h2>Technology Stack</h2>
+                    <p>Modern, maintainable platforms selected for speed, security, and long-term support.</p>
+                </div>
+                <div class="ds-grid">
+                    <article class="ds-card ds-col-3">
+                        <h3 class="ds-card__title">Frontend</h3>
+                        <ul class="ds-list">
+                            <li>React, Next.js, TypeScript.</li>
+                            <li>Responsive design systems.</li>
+                            <li>Accessibility and performance testing.</li>
+                        </ul>
+                    </article>
+                    <article class="ds-card ds-col-3">
+                        <h3 class="ds-card__title">Backend</h3>
+                        <ul class="ds-list">
+                            <li>Node.js, Python, REST, GraphQL.</li>
+                            <li>PostgreSQL, SQL Server, MongoDB.</li>
+                            <li>Authentication, authorization, and audit logs.</li>
+                        </ul>
+                    </article>
+                    <article class="ds-card ds-col-3">
+                        <h3 class="ds-card__title">Mobile</h3>
+                        <ul class="ds-list">
+                            <li>Progressive web apps.</li>
+                            <li>React Native and hybrid builds.</li>
+                            <li>Offline sync and push notifications.</li>
+                        </ul>
+                    </article>
+                    <article class="ds-card ds-col-3">
+                        <h3 class="ds-card__title">Cloud and DevOps</h3>
+                        <ul class="ds-list">
+                            <li>AWS, Azure, Docker, CI/CD.</li>
+                            <li>Monitoring, logging, alerting.</li>
+                            <li>Backup, rollback, and release controls.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="ds-cta-band">
             <div class="ds-container ds-animate">
-                <h2>Need a web platform built right?</h2>
-                <p>From MVP to enterprise-scale — we deliver production-ready web solutions.</p>
+                <h2>Need web and mobile apps built right?</h2>
+                <p>From MVP to enterprise-scale, we deliver production-ready digital products.</p>
                 <div class="ds-cta-band__actions">
                     <a href="/AHM_Website/pages/contact/index.html" class="ds-btn ds-btn-primary ds-btn-lg">Contact Us</a>
                 </div>
