@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.documentElement.setAttribute('data-theme', normalized);
     localStorage.setItem('ahm-theme', normalized);
     syncThemeToggleUI(normalized);
+    document.dispatchEvent(new CustomEvent('theme:changed', { detail: { theme: normalized } }));
   }
 
   function initThemeToggle() {
@@ -221,7 +222,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function initNav() {
     const navToggle = document.querySelector('.ds-nav__toggle');
     const navLinks = document.getElementById('site-nav');
-    if (navToggle && navLinks) {
+    if (navToggle && navLinks && navToggle.dataset.bound !== 'true') {
+      navToggle.dataset.bound = 'true';
       navToggle.addEventListener('click', () => {
         const open = navLinks.classList.toggle('is-open');
         navToggle.setAttribute('aria-expanded', String(open));
@@ -237,7 +239,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
     const nav = document.querySelector('.ds-nav');
-    if (nav) {
+    if (nav && nav.dataset.scrollBound !== 'true') {
+      nav.dataset.scrollBound = 'true';
       const onScroll = () => {
         const y = window.scrollY;
         const style = getComputedStyle(document.documentElement);
@@ -247,6 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
         nav.style.boxShadow = y > 20 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
       };
       window.addEventListener('scroll', onScroll, { passive: true });
+      document.addEventListener('theme:changed', onScroll);
       onScroll();
     }
   }
