@@ -279,15 +279,46 @@
         <h2>Tell us what you are building.</h2>
         <p>Send the essentials and the team will follow up with the right technical next step.</p>
       </div>
-      <form class="ds-form" action="mailto:contact@ahminfotech.com" method="post" enctype="text/plain">
-        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="firstName" name="First name" autocomplete="given-name" required><label class="ds-form-label" for="firstName">First Name</label></div>
-        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="lastName" name="Last name" autocomplete="family-name"><label class="ds-form-label" for="lastName">Last Name</label></div>
-        <div class="ds-form-group ds-form-group--full ds-floating-group"><input class="ds-form-input" placeholder=" " id="workEmail" name="Work email" type="email" autocomplete="email" required><label class="ds-form-label" for="workEmail">Work Email</label></div>
-        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="phone" name="Phone" type="tel" autocomplete="tel"><label class="ds-form-label" for="phone">Phone</label></div>
-        <div class="ds-form-group ds-floating-group"><input class="ds-form-input" placeholder=" " id="company" name="Company" autocomplete="organization"><label class="ds-form-label" for="company">Company</label></div>
-        <div class="ds-form-group ds-form-group--full"><label class="ds-form-label" for="interest">What do you need?</label><select class="ds-form-input" id="interest" name="Interest"><option>Data Engineering</option><option>Cloud Architecture</option><option>Informatica / IDMC</option><option>Snowflake</option><option>Python & AI</option><option>Web or Mobile App</option></select></div>
-        <div class="ds-form-group ds-form-group--full ds-floating-group"><textarea class="ds-form-input" placeholder=" " id="projectDetails" name="Project details" required></textarea><label class="ds-form-label" for="projectDetails">Project Details</label></div>
-        <div class="ds-form-group ds-form-group--full"><button class="ds-btn ds-btn-primary ds-btn-full" type="submit">Send Request</button></div>
+
+      <form class="ds-form" action="https://formspree.io/f/xwvyevzq" method="POST">
+        
+        <div class="ds-form-group ds-floating-group">
+          <input class="ds-form-input" placeholder=" " id="firstName" name="firstName" autocomplete="given-name" required>
+          <label class="ds-form-label" for="firstName">First Name</label>
+        </div>
+
+        <div class="ds-form-group ds-floating-group">
+          <input class="ds-form-input" placeholder=" " id="lastName" name="lastName" autocomplete="family-name">
+          <label class="ds-form-label" for="lastName">Last Name</label>
+        </div>
+
+        <div class="ds-form-group ds-form-group--full ds-floating-group">
+          <input class="ds-form-input" placeholder=" " id="workEmail" name="email" type="email" autocomplete="email" required>
+          <label class="ds-form-label" for="workEmail">Work Email</label>
+        </div>
+
+        <div class="ds-form-group ds-floating-group">
+          <input class="ds-form-input" placeholder=" " id="phone" name="phone" type="tel" autocomplete="tel">
+          <label class="ds-form-label" for="phone">Phone</label>
+        </div>
+
+        <div class="ds-form-group ds-floating-group">
+          <input class="ds-form-input" placeholder=" " id="company" name="company" autocomplete="organization">
+          <label class="ds-form-label" for="company">Company</label>
+        </div>
+
+        <div class="ds-form-group ds-form-group--full ds-floating-group">
+          <textarea class="ds-form-input" placeholder=" " id="projectDetails" name="message" required></textarea>
+          <label class="ds-form-label" for="projectDetails">Project Details</label>
+        </div>
+
+        <!-- optional redirect after submit -->
+        <input type="hidden" name="_redirect" value="https://ahminfotech.com/AHM_Website/pages/contact/index.html">
+
+        <div class="ds-form-group ds-form-group--full">
+          <button class="ds-btn ds-btn-primary ds-btn-full" type="submit">Send Request</button>
+        </div>
+
       </form>
     </div>
   </div>
